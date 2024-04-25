@@ -1,0 +1,148 @@
+section .login {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+section .card {
+    width: 90%;
+    max-width: 576px;
+    background-color: var(--cardBackground);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+section .card h2 {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 21px;
+    margin-bottom: 30px;
+}
+
+section .card h2 span{
+    color: var(--secondary);
+}
+
+section .card form {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 30px;
+}
+
+section .card form label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding-bottom: 15px;
+}
+
+section .card form input {
+    background-color: var(--background);
+    border: none;
+    padding: 15px 15px;
+    font-size: 1rem;
+    margin-bottom: 49px;
+    outline: none;
+}
+
+section .card form #password {
+    margin-bottom: 25px;
+}
+
+section .card form input[type='checkbox'] {
+    margin-bottom: 21px;
+}
+
+section .remember-me {
+    display: flex;
+}
+
+section .remember-me p {
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+section .forgot-password {
+    display: flex;
+    align-items: center;
+    margin-bottom: 36px;
+}
+
+section .forgot-password img{
+    width: 12px;
+    margin-right: 7px;
+}
+
+section .forgot-password a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-size: 15px;
+}   
+
+section .forgot-password a:hover {
+    text-decoration: underline;
+}
+
+section .card button {
+    border-radius: 5px;
+    background-color: var(--secondary);
+    border: 1px solid var(--secondary);
+    color: var(--white);
+    font-weight: 700;
+    padding: 12px 0px;
+    font-size: 22px;
+}
+
+section .card button:hover {
+    opacity: 0.9;
+}
+
+.btn-register {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+section .create-an-account {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+section .create-an-account a {
+    text-decoration: none;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+section .create-an-account a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 576px) {
+
+    section .login {
+        margin-bottom: 30px;
+        padding-top: 15px;
+    }
+
+    section .card form {
+        padding: 0px 20px;
+    }
+}
+
+@media (width > 900) {
+    
+    section .card {
+        width: 576px;
+    }
+
+    section .card h2 {
+        font-size: 0px;
+    }
+
+    section .card h2 {
+        font-size: 2px;
+    }
+}

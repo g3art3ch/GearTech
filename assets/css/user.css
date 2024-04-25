@@ -1,0 +1,97 @@
+.title-user {
+    padding: 74px 0px;
+}
+
+.title-user h2 {
+    font-size: 32px;
+}
+
+.box-user {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-user {
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    flex: 1;
+    max-width: 555px;
+    padding: 42px 46px;
+}
+
+.card-user h2 {
+    color: var(--secondary);
+    font-size: 22px;
+    padding-bottom: 51px;
+}
+
+.user-data {
+    display: flex;
+    flex-direction: column;
+}
+
+ label {
+    font-size: 15px;
+    margin-bottom: 19px;
+}
+
+input {
+    background-color: var(--background);
+    border: none;
+    height: 46px;
+    outline: none;
+    padding: 0px 5px;
+    border-radius: 3px;
+}
+
+span {
+    color: var(--secondary);
+}
+
+.card-user img {
+    width: 18px;
+}
+
+#email {
+    padding-top: 44px;
+}
+
+.card-user button {
+    background-color: var(--secondary);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 15px;
+    padding: 12px;
+    font-weight: 700;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 576px) {
+    .user {
+        padding: 30px;
+    }
+
+    .box-user {
+        flex-direction: column;
+    }
+
+    .title-user h2 {
+        font-size: 25px;
+    }
+    
+    .card-user {
+        padding: 18px 18px;
+        margin-top: 40px;
+    }
+
+    .title-user {
+        padding-top: 0px;
+        padding-bottom: 40px;
+    }
+}
