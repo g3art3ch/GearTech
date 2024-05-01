@@ -1,0 +1,113 @@
+.filter {
+    background-color: var(--foreground);
+    padding-bottom: 80px;
+}
+
+.title-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.title-filter h2 {
+    font-size: 32px;
+}
+
+.card-filter {
+    background-color: var(--cardBackground);
+    border-radius: 15px;
+    box-shadow: var(--sombra);
+    width: 100%;
+    margin-top: 34px;
+}
+
+.box-filter {
+    padding: 65px;
+}
+
+.group-1,
+.group-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.group-2 {
+    margin-top: 50px;
+}
+
+.headline {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.headline .title-headline {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.headline img {
+    margin-right: 7px;
+}
+
+.itens-filter {
+    width: 309px;
+}
+
+.itens-filter input,
+.itens-filter select{
+    background-color: var(--background);
+    border: none;
+    border-radius: 3px;
+    outline: none;    
+    width: 100%;
+    padding: 13px 5px;
+}
+
+.itens-filter button {
+    width: 100%;
+    background-color: var(--secondary);
+    color: var(--white);
+    font-weight: 700;
+    box-shadow: var(--sombra);
+    border: none;
+    border-radius: 5px;
+    padding: 13px 0px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.itens-filter button:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+
+    .filter {
+        padding: 10px;
+    }
+
+    .group-1,
+    .group-2 {
+        flex-direction: column;
+    }
+
+    .group-2 {
+        margin: 0;
+        padding-top: 20px;
+    }
+
+    .title-filter h2 {
+        font-size: 25px;
+    }
+
+    .box-filter {
+        padding: 30px;
+    }
+
+    .title-filter {
+        padding-top: 40px;
+    }
+}

@@ -1,0 +1,227 @@
+header {
+    inset: 0 0 auto 0;
+    z-index: 10;
+    padding: 35px 0px;
+}
+
+header .area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10px;
+}
+
+header .logo img {
+    width: 62px;
+}
+
+header .menu-opener {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+header .hamburger-icon {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header .hamburger-icon span {
+    display: block;
+    width: 100%;
+    height: 0.2rem;
+    background-color: #000;
+}
+
+header .close-icon {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+header .close-icon span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 0.2rem;
+    background-color: #000;
+}
+
+header .close-icon span:first-child {
+    transform: rotate(45deg);
+}
+
+header .close-icon span:last-child {
+    transform: rotate(-45deg);
+}
+
+header nav {
+    background-color: var(--background);
+    color: var(--third);
+    overflow-y: hidden;
+    max-height: 0;
+    transition: all ease .4s;
+    padding: 0px 20px;
+}
+
+header nav.opened {
+    max-height: 100vh;
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: column;
+}
+
+header nav li {
+    padding: 12px 0px;
+}
+
+header nav a {
+    color: var(--third);
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+header nav a:hover {
+    opacity: 0.8;
+}
+
+.red {
+    font-weight: 700;
+    margin-right: 7px;
+}
+
+header .user-enter {
+    display: flex;
+}
+
+header .user-enter a {
+    color: var(--secondary);
+}
+
+.dropdown-menu a {
+    padding: 0;
+    border: none;
+    color: var(--third);
+    font-weight: 500;
+}
+
+.arrow-dowm {
+    width: 12px;
+}
+
+@media (width > 900px) {
+
+
+    header .menu-opener {
+        display: none;
+    }
+
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header .area {
+        padding: 0;
+    }
+
+    header .logo img {
+        margin: 0;
+    }
+
+    header nav {
+        max-height: 100vh;
+        padding: 0;
+    }
+
+    header nav ul {
+        align-items: center;
+        flex-direction: row;
+        padding-bottom: 0;
+    }
+
+    header nav li {
+        padding: 16px 28px;
+    }
+
+    header nav a {
+        border: 1px solid var(--third);
+        border-radius: 3px;
+        padding: 12px 40px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    header nav a:hover {
+        background-color: var(--third);
+        color: var(--white);
+        transition: 0.2s;
+    }
+
+    header nav li img {
+        width: 31px;
+    }
+
+    .user-enter {
+        display: flex;
+        align-items: center;
+    }
+
+    .user-enter a {
+        border: none;
+        color: var(--secondary);
+        padding: 0;
+        padding-left: 13px;
+    }
+
+    .user-enter a:hover {
+        background-color: transparent;
+        color: var(--secondary);
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        text-align: right;
+    }
+
+    .options-dropdowm {
+        width: 218px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+    }
+
+    .dropdown-menu li {
+        padding: 0px;
+    }
+
+    .dropdown-menu a {
+        padding: 0;
+        border: none;
+        color: var(--third);
+        font-weight: 500;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: transparent;
+        color: var(--secondary);
+    }
+
+    .arrow-dowm {
+        width: 12px;
+    }
+
+    .arrow-dowm:hover {
+        cursor: pointer;
+    }
+
+}

@@ -1,0 +1,24 @@
+.brands {
+    background-color: var(--secondary);
+    margin-top: 150px;
+}
+
+.logotipos {
+    padding: 35px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+@media (max-width: 480px) {
+    
+    .grid-mobile {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logotipos img {
+        width: 10%;
+    }
+}

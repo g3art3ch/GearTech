@@ -1,0 +1,24 @@
+
+.contact {
+    padding-top: 80px;
+}
+
+.title-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-contact h2 {
+    text-align: center;
+    font-size: 32px;
+}
+
+
+
+@media (max-width: 480px) {
+
+    .title-contact h2 {
+        font-size: 25px;
+    }
+}
