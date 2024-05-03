@@ -10,7 +10,7 @@
 section .box-login {
     display: flex;
     justify-content: center;
-    padding: 40px 0px;
+    padding: 20px 0px;
 }
 
 section .card {
@@ -53,6 +53,7 @@ section .card form input {
     font-size: 15px;
     margin-bottom: 49px;
     outline: none;
+    border-radius: 3px;
 }
 
 section .card form #password {
