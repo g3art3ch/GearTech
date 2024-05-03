@@ -11,6 +11,7 @@
 
 .title-contact h2 {
     font-size: 32px;
+    text-align: center;
 }
 
 .area-contact {
@@ -136,7 +137,7 @@
     }
 
     .title-contact {
-        padding-bottom: 35px;
+        padding-bottom: 18px;
     }
 
     .title-contact h2 {
@@ -152,9 +153,9 @@
 
     .desc-contact-mobile p {
         font-size: 15px;
-        text-align: justify;
+        text-align: center;
         color: var(--third);
-        width: 95%;
+        width: 90%;
         padding-bottom: 30px;
     }
 

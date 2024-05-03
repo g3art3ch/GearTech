@@ -42,16 +42,18 @@ section .right-side img {
     }
 
     section .left-side {
-        width: 80%;
+        width: 85%;
         padding: 0 10px;
     }
 
     section .left-side h2 {
         font-size: 48px;
+        line-height: 1.2;
     }
 
     section .left-side p {
         font-size: 18px;
+        padding-top: 18px;
     }
 
     section .right-side {

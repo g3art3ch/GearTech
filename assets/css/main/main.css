@@ -15,3 +15,15 @@ body {
     max-width: 1240px;
     margin: auto;
 }
+
+.caixa {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.caixa-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}

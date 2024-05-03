@@ -3,12 +3,18 @@
     margin-top: 150px;
 }
 
-.logotipos {
-    padding: 35px 0px;
+.flex-logo {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    
+    padding: 35px 0px;
+}
+
+.logotipos {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 50px;
+    align-items: center;
 }
 
 @media (max-width: 480px) {
@@ -16,13 +22,20 @@
     .brands {
         margin-top: 70px;
     }
-    
-    .grid-mobile {
-        display: flex;
-        justify-content: center;
+
+    .flex-logo {
+        padding: 5px 0px;
+    }
+
+   
+    .logotipos {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
     }
 
     .logotipos img {
-        width: 10%;
+        width: 46%;
+        place-self: center;
+        padding: 10px 0px;
     }
 }

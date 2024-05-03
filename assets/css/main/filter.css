@@ -12,12 +12,14 @@
 
 .title-filter h2 {
     font-size: 32px;
+    text-align: center;
 }
 
 .card-filter {
     background-color: var(--cardBackground);
     border-radius: 15px;
     box-shadow: var(--shadow);
+    max-width: 1240px;
     width: 100%;
     margin-top: 34px;
 }
@@ -31,7 +33,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
 }
 
 .group-2 {
@@ -53,7 +55,8 @@
 }
 
 .itens-filter {
-    width: 309px;
+    max-width: 329px;
+    width: 100%;
 }
 
 .itens-filter input,
@@ -104,13 +107,16 @@
     }
 
     .box-filter {
-        padding: 30px;
+        padding: 30px 16px;
     }
 
     .title-filter {
         padding-top: 30px;
     }
     
+    .itens-filter button {
+        margin-top: 10px;
+    }
     
 
 }
