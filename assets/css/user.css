@@ -1,29 +1,36 @@
-.title-user {
-    padding: 74px 0px;
+.user {
+    padding-top: 40px;
 }
 
 .title-user h2 {
     font-size: 32px;
+    margin-bottom: 30px;
 }
 
 .box-user {
     display: flex;
     justify-content: space-between;
+    gap: 40px;
 }
 
 .card-user {
     background-color: var(--cardBackground);
     box-shadow: var(--shadow);
     border-radius: 15px;
-    flex: 1;
+    width: 100%;
     max-width: 555px;
-    padding: 42px 46px;
+    padding: 25px 20px;
+}
+
+.pessoal {
+    max-height: 371px;
+    height: 100%;
 }
 
 .card-user h2 {
     color: var(--secondary);
     font-size: 22px;
-    padding-bottom: 51px;
+    padding-bottom: 20px;
 }
 
 .user-data {
@@ -31,30 +38,24 @@
     flex-direction: column;
 }
 
- label {
-    font-size: 15px;
-    margin-bottom: 19px;
+.user-data label {
+    font-size: 17px;
+    margin-bottom: 12px;
+    font-weight: 500;
 }
 
-input {
+.user-data input {
     background-color: var(--background);
     border: none;
-    height: 46px;
     outline: none;
-    padding: 0px 5px;
+    padding: 14px 8px;
     border-radius: 3px;
+    margin-bottom: 20px;
+    font-size: 15px;
 }
 
 span {
     color: var(--secondary);
-}
-
-.card-user img {
-    width: 18px;
-}
-
-#email {
-    padding-top: 44px;
 }
 
 .card-user button {
@@ -63,7 +64,7 @@ span {
     border: none;
     border-radius: 5px;
     margin-top: 20px;
-    font-size: 15px;
+    font-size: 17px;
     padding: 12px;
     font-weight: 700;
 }
@@ -74,7 +75,7 @@ button:hover {
 
 @media (max-width: 576px) {
     .user {
-        padding: 30px;
+        padding: 0px 10px;
     }
 
     .box-user {
@@ -84,14 +85,13 @@ button:hover {
     .title-user h2 {
         font-size: 25px;
     }
-    
-    .card-user {
-        padding: 18px 18px;
-        margin-top: 40px;
+
+    .card-user h2 {
+        font-size: 20px;
+        padding-bottom: 25px;
     }
 
     .title-user {
-        padding-top: 0px;
-        padding-bottom: 40px;
+        padding: 0;
     }
 }

@@ -11,9 +11,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 54px;
     padding-top: 43px;
+    width: 100%;
 }
 
-.box-image-card-recomendation img {
+.card-recomentadion img {
     width: 100%;
     height: auto;
     border-top-left-radius: 15px;
@@ -24,8 +25,8 @@
     background-color: var(--cardBackground);
     border-radius: 15px;
     box-shadow: var(--sombra);
-    width: 360px;
-    height: 514px;
+    max-width: 360px;
+    max-height: 514px;
 }
 
 .desc-recomendation {
@@ -72,15 +73,22 @@
 
 @media (max-width: 576px) {
 
-    .box-recomendation {
-        grid-template-columns: 1fr;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .recomendation {
+        padding: 10px;
     }
 
+    .box-recomendation {
+        grid-template-columns: 1fr;
+       
+    }
+    
+    
     .recomendation {
         padding: 20px;
+    }
+
+    .title-recomendation {
+        padding-top: 20px;
     }
 
     .title-recomendation h2 {

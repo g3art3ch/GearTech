@@ -1,14 +1,14 @@
 header {
     inset: 0 0 auto 0;
     z-index: 10;
-    padding: 35px 0px;
+    padding: 20px 0px 10px;
 }
 
 header .area {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10px;
+    padding: 28px 10px;
 }
 
 header .logo img {
@@ -118,6 +118,9 @@ header .user-enter a {
 
 @media (width > 900px) {
 
+    header {
+        padding: 35px 0px 20px;
+    }
 
     header .menu-opener {
         display: none;

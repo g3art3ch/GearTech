@@ -1,6 +1,6 @@
 .filter {
     background-color: var(--foreground);
-    padding-bottom: 80px;
+    padding-bottom: 50px;
 }
 
 .title-filter {
@@ -17,7 +17,7 @@
 .card-filter {
     background-color: var(--cardBackground);
     border-radius: 15px;
-    box-shadow: var(--sombra);
+    box-shadow: var(--shadow);
     width: 100%;
     margin-top: 34px;
 }
@@ -108,6 +108,9 @@
     }
 
     .title-filter {
-        padding-top: 40px;
+        padding-top: 30px;
     }
+    
+    
+
 }

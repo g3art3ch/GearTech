@@ -38,6 +38,7 @@ section .right-side img {
     section .area-banner {
         flex-direction: column;
         padding-top: 20px;
+        padding-bottom: 50px;
     }
 
     section .left-side {

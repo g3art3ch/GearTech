@@ -23,6 +23,7 @@ footer {
     font-weight: 700;
     font-size: 20px;
     padding-right: 23px;
+    text-align: center;
 }
 
 .left-side-footer .links a:hover {
@@ -87,6 +88,7 @@ footer {
     .left-side-footer .links {
         display: flex;
         justify-content: space-between;
+        gap: 15px;
     }
 
     .left-side-footer .links a {
@@ -95,7 +97,7 @@ footer {
     }
 
     .social-icons-footer img {
-        width: 25px;
+        width: 60%;
     }
 
     .right-side-footer {
@@ -114,4 +116,6 @@ footer {
     .copy a {
         font-size: 15px;
     }
+
+    
 }

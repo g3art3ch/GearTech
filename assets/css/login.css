@@ -1,23 +1,32 @@
-section .login {
+.register .box-login{
+    padding: 0;
+}
+
+.register .card form input {
+    margin-bottom: 32px;
+}
+
+
+section .box-login {
     display: flex;
     justify-content: center;
-    padding-top: 40px;
+    padding: 40px 0px;
 }
 
 section .card {
-    width: 90%;
-    max-width: 576px;
+    width: 100%;
+    max-width: 506px;
     background-color: var(--cardBackground);
-    padding: 20px;
+    padding: 15px 0px;
     border-radius: 15px;
     box-shadow: var(--shadow);
 }
 
 section .card h2 {
     text-align: center;
-    padding-top: 30px;
-    font-size: 21px;
-    margin-bottom: 30px;
+    padding-top: 20px;
+    font-size: 22px;
+    margin-bottom: 50px;
 }
 
 section .card h2 span{
@@ -33,33 +42,21 @@ section .card form {
 section .card form label {
     font-size: 1.1rem;
     font-weight: 500;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
+    font-size: 17px;
 }
 
 section .card form input {
     background-color: var(--background);
     border: none;
     padding: 15px 15px;
-    font-size: 1rem;
+    font-size: 15px;
     margin-bottom: 49px;
     outline: none;
 }
 
 section .card form #password {
     margin-bottom: 25px;
-}
-
-section .card form input[type='checkbox'] {
-    margin-bottom: 21px;
-}
-
-section .remember-me {
-    display: flex;
-}
-
-section .remember-me p {
-    margin-left: 5px;
-    font-size: 15px;
 }
 
 section .forgot-password {
@@ -69,8 +66,8 @@ section .forgot-password {
 }
 
 section .forgot-password img{
-    width: 12px;
-    margin-right: 7px;
+    width: 14px;
+    margin-right: 5px;
 }
 
 section .forgot-password a {
@@ -90,7 +87,7 @@ section .card button {
     color: var(--white);
     font-weight: 700;
     padding: 12px 0px;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 section .card button:hover {
@@ -98,8 +95,8 @@ section .card button:hover {
 }
 
 .btn-register {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 22px;
 }
 
 section .create-an-account {
@@ -107,6 +104,7 @@ section .create-an-account {
     justify-content: center;
     padding-top: 30px;
     padding-bottom: 10px;
+    font-size: 16px;
 }
 
 section .create-an-account a {
@@ -122,27 +120,11 @@ section .create-an-account a:hover {
 
 @media (max-width: 576px) {
 
-    section .login {
-        margin-bottom: 30px;
-        padding-top: 15px;
+    .register .card h2 {
+        font-size: 20px;
     }
 
     section .card form {
-        padding: 0px 20px;
-    }
-}
-
-@media (width > 900) {
-    
-    section .card {
-        width: 576px;
-    }
-
-    section .card h2 {
-        font-size: 0px;
-    }
-
-    section .card h2 {
-        font-size: 2px;
+        padding: 0px 18px;
     }
 }

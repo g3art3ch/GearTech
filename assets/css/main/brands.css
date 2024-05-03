@@ -12,6 +12,10 @@
 }
 
 @media (max-width: 480px) {
+
+    .brands {
+        margin-top: 70px;
+    }
     
     .grid-mobile {
         display: flex;
