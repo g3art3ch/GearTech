@@ -86,6 +86,38 @@
     opacity: 0.8;
 }
 
+@media (max-width: 768px) {
+    .title-filter {
+        padding-top: 40px; 
+    }
+
+    .title-filter h2 {
+        font-size: 28px;
+    }
+    
+    .box-filter {
+        padding: 50px; 
+    }
+
+    .group-1,
+    .group-2 {
+        flex-direction: column;
+        gap: 20px; 
+    }
+
+    .group-2 {
+        margin-top: 40px; 
+    }
+
+    .headline .title-headline {
+        margin-bottom: 8px; 
+    }
+
+    .itens-filter {
+        max-width: none; 
+    }
+}
+
 @media (max-width: 480px) {
 
     .filter {
@@ -99,7 +131,7 @@
 
     .group-2 {
         margin: 0;
-        padding-top: 20px;
+        padding-top: 40px;
     }
 
     .title-filter h2 {

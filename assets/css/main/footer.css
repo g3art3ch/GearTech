@@ -119,3 +119,26 @@ footer {
 
     
 }
+
+@media (min-width: 481px) and (max-width: 768px) {
+    footer {
+        margin-top: 100px;
+    }
+
+    .box-footer {
+        flex-direction: column;
+        padding: 30px 0px;
+    }
+
+    .left-side-footer .links {
+        justify-content: center;
+    }
+
+    .left-side-footer .links a {
+        font-size: 17.5px;
+    }
+
+    .right-side-footer {
+        padding-top: 40px;
+    }
+}

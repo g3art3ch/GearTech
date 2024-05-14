@@ -6,7 +6,8 @@ section .area-banner {
 }
 
 section .left-side {
-    width: 520px;
+    max-width: 520px;
+    width: 100%;
 }
 
 section .left-side h2 {
@@ -29,12 +30,31 @@ section .right-side {
     padding-left: 20px;
 }
 
-section .right-side img {
+section .right-side {
     max-width: 645px;
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 
-@media (max-width: 480px) {
+section .right-side img {
+   width: 100%;
+}
+
+@media (min-width: 490px)and (max-width: 1024px) {
+    section .left-side h2 {
+        font-size: 2.5rem; 
+    }
+
+    section .left-side p {
+        font-size: 0.95rem; 
+        padding-top: 25px; 
+    }
+}
+
+
+
+@media (max-width: 670px) {
     section .area-banner {
         flex-direction: column;
         padding-top: 20px;

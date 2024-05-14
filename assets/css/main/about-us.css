@@ -42,6 +42,29 @@
     padding-top: 17px;
 }
 
+@media (max-width: 768px) {
+    .box-about-us {
+        grid-template-columns: repeat(2, 1fr); /* Mudar para duas colunas */
+        gap: 40px; /* Reduzir o espaço entre os itens */
+    }
+
+    .title-about-us h2 {
+        font-size: 28px; /* Reduzir o tamanho do título */
+    }
+
+    .about-us-group img {
+        width: 42px; /* Reduzir o tamanho da imagem */
+    }
+
+    .title-about-us-group h2 {
+        font-size: 16px; /* Reduzir o tamanho do subtítulo */
+    }
+
+    .desc-about-us-group {
+        font-size: 14px; /* Reduzir o tamanho do texto */
+    }
+}
+
 @media (max-width: 480px) {
     .about-us {
         padding: 10px;

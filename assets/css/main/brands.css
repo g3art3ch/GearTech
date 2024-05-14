@@ -17,6 +17,33 @@
     align-items: center;
 }
 
+
+.logotipos img {
+    max-width: 100%; 
+    height: auto;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .brands {
+        margin-top: 100px;
+    }
+
+    .flex-logo {
+        padding: 20px 0px;
+    }
+
+    .logotipos {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 30px;
+    }
+
+    .logotipos img {
+        width: 70%;
+        place-self: center;
+        padding: 15px 0px;
+    }
+}
+
 @media (max-width: 480px) {
 
     .brands {
