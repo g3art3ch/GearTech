@@ -1,58 +1,66 @@
 <?php
 include('connection_cars.php');
-if (isset($_POST["submit"])) {
 
+// Verifica se o formulário foi enviado
+if (isset($_POST["submit"])) {
+    // Obtém os dados do formulário
     $estilo = $_POST["estilo"];
     $no_format_orcamento = $_POST["orcamento"];
-    if($no_format_orcamento == null){
-        header("Location: /GearTech/index.php?error=Preencha todos os campos.");
-    }else
-    $orcamento = number_format($no_format_orcamento, 0, ',', '.');
-    
+    // Validação dos dados do formulário
+    if ($no_format_orcamento == null) {
+        header("Location: /GearTech/assets/pages_connected/connected.php?error=Preencha todos os campos.");
+        exit(); // Encerra o script após o redirecionamento
+    } else {
+        $orcamento = number_format($no_format_orcamento, 0, ',', '.');
+    }
     $combustivel = $_POST["combustivel"];
     $capacidade = $_POST["capacidade"];
     $tipoUso = $_POST["tipoUso"];
-    
-    
 
-    if (empty($estilo) || empty( $orcamento) || empty($combustivel) || empty($capacidade) || empty($tipoUso)) {
+    // Validação dos dados do formulário
+    if (empty($estilo) || empty($orcamento) || empty($combustivel) || empty($capacidade) || empty($tipoUso)) {
         header("Location: /GearTech/assets/pages_connected/connected.php?error=Preencha todos os campos.");
-        exit();
+        exit(); // Encerra o script após o redirecionamento
     }
 
-    $sql_code = "SELECT nc.nome, fc.estilo, oc.orcamento, tc.combustivel, cc.capacidade, uc.tipoUso, iden.idIden, iden.urlCarro
-    FROM nomeCarro nc
+    // Executa a consulta SQL
+    $sql_code = "SELECT 
+        nc.nome,
+        fc.estilo,
+        oc.orcamento,
+        tc.combustivel,
+        cc.capacidade,
+        uc.tipoUso,
+        iden.idIden,
+        iden.urlCarro
+    FROM 
+        nomeCarro nc
     INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
+        filtroCarros fc ON nc.idFiltro = fc.idFiltro
     INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
+        orcamentoCarro oc ON nc.idNome = oc.idNome
     INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
+        tipoCombustivel tc ON nc.idNome = tc.idNome
     INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
+        capacidadeCarro cc ON nc.idNome = cc.idNome
     INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
+        usoCarro uc ON nc.idNome = uc.idNome
     INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome
-WHERE estilo = '$estilo' AND orcamento <= '$orcamento' and combustivel = '$combustivel' and capacidade <= $capacidade and tipoUso='$tipoUso'";
-
+        identificador iden ON nc.idNome = iden.idNome
+    WHERE estilo = '$estilo' AND orcamento <= '$orcamento' and combustivel = '$combustivel' and capacidade <= $capacidade and tipoUso='$tipoUso'";
 
     $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
     $quantidade = $sql_query->num_rows;
-    
 
-    if($quantidade > 0) {
-        if(!isset($_SESSION)) {
-            session_start();
-        }
-        
+    // Verifica se foram encontrados resultados
+    if ($quantidade > 0) {
+        // Inicia a sessão e armazena os resultados
+        session_start();
         $_SESSION['resultados'] = array();
         while ($result = $sql_query->fetch_assoc()) {
             $_SESSION['resultados'][] = $result;
         }
-
-
-    $_SESSION['idCarro'] = $result['idCarro'];
+        $_SESSION['idIden'] = $result['idIden'];
     $_SESSION['urlCarro'] = $result['urlCarro'];
     $_SESSION['nome'] = $result['nome'];
     $_SESSION['estilo'] = $result['estilo'];
@@ -61,7 +69,13 @@ WHERE estilo = '$estilo' AND orcamento <= '$orcamento' and combustivel = '$combu
     $_SESSION['capacidade'] = $result['capacidade'];
     $_SESSION['tipoUso'] = $result['tipoUso'];
 
-    }
+        // Redireciona para a página de recomendação
         header("Location: /GearTech/assets/pages_connected/connected_recommendation.php");
+        exit(); // Encerra o script após o redirecionamento
+    } else {
+        // Se nenhum resultado for encontrado, exibe uma mensagem de erro na mesma página
+        header("Location: /GearTech/assets/pages_connected/connected.php?error=Nenhum resultado encontrado.");
+        exit(); // Encerra o script após o redirecionamento
+    }
 }
-
+?>

@@ -54,8 +54,8 @@
                         </div>
                         <ul class="dropdown-menu">
                             <div class="options-dropdowm">
-                                <li><a href="assets/pages/user.php">Minha conta</a></li>
-                                <li><a href="#">Sair</a></li>
+                                <li><a href="#" onclick="exibirAlerta()">Minha conta</a></li>
+                                <li><a href="#" onclick="exibirAlerta()">Sair</a></li>
                             </div>
                         </ul>
                     </li>
@@ -83,7 +83,15 @@
             <h2>Comece sua busca agora</h2>
         </div>
 
+
+
         <div class="container">
+        <?php 
+        if(isset($_GET['error'])) {
+            // Exibe a mensagem de erro
+            echo "<p>Error: " . $_GET['error'] . "</p>";
+        }
+        ?>
             <div class="card-filter">
                 <form action="assets/pages/recommendation_process.php"  method="post"class="box-filter">
                     <div class="group-1">
@@ -309,6 +317,12 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script>
+
+function exibirAlerta() {
+    window.alert("Você precisa estar logado");
+}
+    </script>
 </body>
 
 </html>
