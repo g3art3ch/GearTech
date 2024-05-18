@@ -49,7 +49,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="">Catálogo</a></li>
+                    <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
                     <li><a href="">Manutenções</a></li>
                     <li class="dropdown">
                         <div class="user-enter">

@@ -1,6 +1,51 @@
 <?php
 include('connection_cars.php');
 include('protect.php');
+if (isset($_GET["id"])) {
+    $carInfo = $_GET["id"];
+
+    $sql_code = "SELECT 
+    nc.nome,
+    fc.estilo,
+    oc.orcamento,
+    tc.combustivel,
+    cc.capacidade,
+    uc.tipoUso,
+    iden.idIden,
+    iden.urlCarro
+FROM 
+    nomeCarro nc
+INNER JOIN 
+    filtroCarros fc ON nc.idFiltro = fc.idFiltro
+INNER JOIN 
+    orcamentoCarro oc ON nc.idNome = oc.idNome
+INNER JOIN 
+    tipoCombustivel tc ON nc.idNome = tc.idNome
+INNER JOIN 
+    capacidadeCarro cc ON nc.idNome = cc.idNome
+INNER JOIN 
+    usoCarro uc ON nc.idNome = uc.idNome
+INNER JOIN 
+    identificador iden ON nc.idNome = iden.idNome
+        WHERE idIden = '$carInfo'";
+
+
+    $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+
+    if ($sql_query->num_rows > 0) {
+
+        $result = $sql_query->fetch_assoc();
+
+        $_SESSION['idIden'] = $result['idIden'];
+        $_SESSION['urlCarro'] = $result['urlCarro'];
+        $_SESSION['nomeCarro'] = $result['nome'];
+        $_SESSION['estilo'] = $result['estilo'];
+        $_SESSION['orcamento'] = $result['orcamento'];
+        $_SESSION['combustivel'] = $result['combustivel'];
+        $_SESSION['capacidade'] = $result['capacidade'];
+        $_SESSION['tipoUso'] = $result['tipoUso'];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +88,7 @@ include('protect.php');
             </div>
             <nav>
                 <ul>
-                    <li><a href="assets/pages/catalog.php">Catálogo</a></li>
+                    <li><a href="">Catálogo</a></li>
                     <li><a href="">Manutenções</a></li>
                     <li>
                         <div class="user-enter">
@@ -61,44 +106,27 @@ include('protect.php');
     <section class="recomendation">
         <div class="container">
             <div class="title-recomendation">
-                <div class=box-recomendation>
-
-                    <?php
-
-                     if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
-                        // Loop através dos resultados e exibe as informações de cada carro
-                        foreach ($_SESSION['resultados'] as $carro) {
-
-                            echo '<div class=card-recomentadion>';
-                            echo '<div class=box-image-card-recomendation>';
-                    ?>
 
                             <img src="<?php
-                                        echo $carro['urlCarro'] . $carro['idIden'];
+                                        echo $_SESSION['urlCarro'] . $_SESSION['idIden'];
                                         ?>.png" alt=>
 
-                    <?php
+                            <?php
                             echo '</div>';
                             echo '<div class=desc-recomendation>';
-                            echo "<div class=title-card-recomendation>" . $carro['nome'] . "</div>";
-                            // echo "<p>Estilo: " . $carro['estilo'] . "</p>";
-                            echo "<div class=price> R$ " . $carro['orcamento'] . "</div>";
+                            echo "<div class=title-card-recomendation>" . $_SESSION['nomeCarro'] . "</div>";
+                            // echo "<p>Estilo: " . $_SESSION['estilo'] . "</p>";
+                            echo "<div class=price> R$ " . $_SESSION['orcamento'] . "</div>";
                             echo "<div class=info>
-                    <p>" . $carro['combustivel'] . "</p>
-                    <p>" . $carro['capacidade'] . "</p>
-                    <p>" . $carro['tipoUso'] . "</p>
-                </div>";
-                            echo "<a href=>Saiba mais</a>";
+                            <p>" ."Combustível: " . $_SESSION['combustivel'] . "</p>
+                            <p>" ."Capacidade: ". $_SESSION['capacidade'] . "</p>
+                            <p>" ."Uso recomendado: ". $_SESSION['tipoUso'] . "</p>
+                            </div>";
                             echo "</div>";
                             echo "</div>";
-                        }
-                    }
-                    else {
-                        echo "<p>Nenhuma recomendação disponível.</p>";
-                    }
-                    ?>
-                </div>
-            </div>
+
+                            ?>
+                        
     </section>
 
     <footer>

@@ -42,7 +42,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="">Catálogo</a></li>
+                    <li><a href="assets/pages/catalog.php">Catálogo</a></li>
                     <li><a href="">Manutenções</a></li>
                     <li class="dropdown">
                         <div class="user-enter">
