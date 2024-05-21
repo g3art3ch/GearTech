@@ -86,12 +86,6 @@
 
 
         <div class="container">
-        <?php 
-        if(isset($_GET['error'])) {
-            // Exibe a mensagem de erro
-            echo "<p>Error: " . $_GET['error'] . "</p>";
-        }
-        ?>
             <div class="card-filter">
                 <form action="assets/pages/recommendation_process.php"  method="post"class="box-filter">
                     <div class="group-1">
