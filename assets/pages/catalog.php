@@ -69,6 +69,9 @@ include('protect.php');
                 <a href="filtered_catalog.php?Marca=Hyundai"> <img src="/GearTech/assets/logo_images/hyundai.png" alt=""></a>
                 <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/renault.png" alt=""></a>
                 <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/volksvagen.png" alt=""></a>
+                <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/volksvagen.png" alt=""></a>
+                <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/volksvagen.png" alt=""></a>
+                <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/volksvagen.png" alt=""></a>
             </div>
         </div>
     </section>
