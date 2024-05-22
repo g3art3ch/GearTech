@@ -106,7 +106,8 @@
                                 <img src="assets/icons/money.svg" alt="">
                                 <div class="title-headline">Orçamento disponível</div>
                             </div>
-                            <input type="number" name="orcamento" placeholder="R$ 00.000,00">
+                            <input type="range" id="preco" name="orcamento" min="0" max="999999" step="1" value="40000">
+                            <input type="number" id="preco_valor" name="orcamento" readonly>
                         </div>
                         <div class="itens-filter">
                             <div class="headline">
@@ -312,10 +313,23 @@
 
     <script src="assets/js/script.js"></script>
     <script>
-
 function exibirAlerta() {
     window.alert("Você precisa estar logado");
 }
+
+    const precoInput = document.getElementById('preco');
+    const precoValorInput = document.getElementById('preco_valor');
+
+    precoValorInput.value = precoInput.value;
+
+    precoInput.addEventListener('input', function() {
+        precoValorInput.value = precoInput.value;
+    });
+
+    precoValorInput.addEventListener('change', function() {
+        precoInput.value = precoValorInput.value;
+    });
+
     </script>
 </body>
 

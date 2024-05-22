@@ -61,9 +61,6 @@ include('protect.php');
     <section class="recomendation">
         <div class="container">
             <div class="logotypes">
-
-
-
                 <a href="filtered_catalog.php?Marca=Bmw"><img src="/GearTech/assets/logo_images/bmw.png" alt=""></a>
                 <a href="filtered_catalog.php?Marca=Chevrolet"><img src="/GearTech/assets/logo_images/chevrolet.png" alt=""></a>
                 <a href="filtered_catalog.php?Marca=Fiat"><img src="/GearTech/assets/logo_images/fiat.png" alt=""></a>

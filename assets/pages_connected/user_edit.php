@@ -58,30 +58,32 @@
     <section class="user">
         <div class="container">
                 <div class="title-user">
-                    <h2>Minha Conta</h2>
+                    <h2>Alteração de Dados</h2>
                 </div>
                 <div class="box-user">
+                    <form action="">
                 <div class="card-user">
-                    <h2>Informações Pessoais</h2>
+                    <h2>Alterar Informações Pessoais</h2>
                     <div class="user-data">
                         <label for="">Nome completo</label>
-                        <input type="text" value="<?php echo $_SESSION['nomeUsuario'];?>" readonly>
+                        <input type="text" value="<?php echo $_SESSION['nomeUsuario'];?>">
                         <label for="" id="email">Email</label>
-                        <input type="email" value="<?php echo $_SESSION['email'];?>" readonly>
+                        <input type="email" value="<?php echo $_SESSION['email'];?>" >
                     </div>
                 </div>
                 <div class="card-user">
-                    <h2>Senha</h2>
+                    <h2>Alterar Senha</h2>
                     <div class="user-data">
                         <label for="">Sua Senha</label>
                         <?php
                             $senha = $_SESSION['senha'];
                             $asterisks = str_repeat('*', strlen($senha));
-                            echo '<input type=text  value=' . $asterisks . ' readonly>';
+                            echo '<input type=text  value=' . $asterisks . '>';
                         ?>
-                        <a href="user_edit.php"><button>Alterar dados</button></a>
+                        <button type="submit" name="submit">Confirmar alteração</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </section>

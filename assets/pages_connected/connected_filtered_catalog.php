@@ -8,7 +8,6 @@ if (isset($_GET['pag'])) {
     $pagina = 1;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $width = isset($_POST['width']) ? intval($_POST['width']) : 0;
     if ($width < 480) {
@@ -66,20 +65,10 @@ WHERE Marca = '$marca'
         while ($result = $sql_query->fetch_assoc()) {
             $_SESSION['resultados'][] = $result;
         }
-
-        // $_SESSION['idIden'] = $result['idIden'];
-        // $_SESSION['urlCarro'] = $result['urlCarro'];
-        // $_SESSION['nomeCarro'] = $result['nomeCarro'];
-        // $_SESSION['estilo'] = $result['estilo'];
-        // $_SESSION['orcamento'] = $result['orcamento'];
-        // $_SESSION['combustivel'] = $result['combustivel'];
-        // $_SESSION['capacidade'] = $result['capacidade'];
-        // $_SESSION['tipoUso'] = $result['tipoUso'];
-
-
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,12 +103,14 @@ WHERE Marca = '$marca'
     </script>
 </head>
 
+
 <body>
     <header>
+
         <div class="container">
             <div class="area">
                 <div class="logo">
-                    <a href="../pages_connected/logout.php">
+                    <a href="/GearTech/assets/pages_connected/connected.php">
                         <img src="../images/logo.svg" alt="" />
                     </a>
                 </div>
@@ -137,13 +128,13 @@ WHERE Marca = '$marca'
             </div>
             <nav>
                 <ul>
-                    <li><a href="catalog.php">Catálogo</a></li>
+                    <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
                     <li><a href="">Manutenções</a></li>
                     <li>
                         <div class="user-enter">
-                            <a href="/GearTech/assets/pages/login.php">
-                                <img src="/GearTech/assets/icons/user.svg" alt="">
-                                <a href="/GearTech/assets/pages/login.php" class="red">Entre em sua conta</a>
+                            <a href="/Geartech/assets/pages_connected/connected.php">
+                                <img src="/Geartech/assets/icons/user.svg" alt="">
+                                <a href="user.php"><?php echo $_SESSION['nomeUsuario']; ?></a>
                             </a>
                         </div>
                     </li>
@@ -172,7 +163,7 @@ WHERE Marca = '$marca'
                                         echo $carro['urlCarro'] . $carro['idIden'];
                                         ?>.png" alt=>
 
-                    <?php
+                        <?php
                             echo '</div>';
                             echo '<div class=desc-recomendation>';
                             echo "<div class=title-card-recomendation>" . $carro['nome'] . "</div>";
@@ -188,18 +179,18 @@ WHERE Marca = '$marca'
                             echo "</div>";
                             echo "</div>";
                         }
-                    
-                    ?>
+
+                        ?>
                 </div>
-                <?php
-                } else
-            echo '
+            <?php
+                    } else
+                        echo '
                     <div class = NoCar>
                     <h1>Nenhum carro encontrado</h1>
                     </div>
                     ';
 
-                ?>
+            ?>
 
             </div>
     </section>
@@ -242,7 +233,7 @@ WHERE Marca = '$marca'
 
 
                 echo '</p>';
-            session_destroy();
+            unset($_SESSION['resultados']);
             ?>
         </div>
     </div>
