@@ -32,3 +32,17 @@
 .more-logotypes button:hover {
     opacity: 0.8;
 }
+
+@media (max-width: 480px) {
+    
+    .logotypes {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        row-gap: 50px;
+    }
+
+    .logotypes a {
+        place-self: center;
+    }
+}
