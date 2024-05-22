@@ -17,6 +17,7 @@ include('protect.php');
     <link rel="stylesheet" href="../css/main/header.css">
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="stylesheet" href="../css/recomendation.css">
+    <link rel="stylesheet" href="../css/catalog.css">
     <title>Seu carro ideal</title>
 </head>
 
@@ -60,18 +61,20 @@ include('protect.php');
 
     <section class="recomendation">
         <div class="container">
+            <div class="title-catalog">
+                <h1>Nosso catálogo</h1>
+            </div>
             <div class="logotypes">
-                <a href="filtered_catalog.php?Marca=Bmw"><img src="/GearTech/assets/logo_images/bmw.png" alt=""></a>
+                <a href="filtered_catalog.php?Marca=Bmw"><img src="/GearTech/assets/logo_images/bmw.png" alt=""></a><a href="filtered_catalog.php?Marca=Volkswagen "><img src="/GearTech/assets/logo_images/volkswagen.png" alt=""></a>
                 <a href="filtered_catalog.php?Marca=Chevrolet"><img src="/GearTech/assets/logo_images/chevrolet.png" alt=""></a>
                 <a href="filtered_catalog.php?Marca=Fiat"><img src="/GearTech/assets/logo_images/fiat.png" alt=""></a>
                 <a href="filtered_catalog.php?Marca=Ford"><img src="/GearTech/assets/logo_images/ford.png" alt=""></a>
                 <a href="filtered_catalog.php?Marca=Honda"><img src="/GearTech/assets/logo_images/honda.png" alt=""></a>
                 <a href="filtered_catalog.php?Marca=Hyundai"> <img src="/GearTech/assets/logo_images/hyundai.png" alt=""></a>
                 <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/renault.png" alt=""></a>
-                <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/volksvagen.png" alt=""></a>
-                <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/volksvagen.png" alt=""></a>
-                <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/volksvagen.png" alt=""></a>
-                <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/volksvagen.png" alt=""></a>
+            </div>
+            <div class="more-logotypes">
+                <button>Mais marcas</button>
             </div>
         </div>
     </section>
