@@ -2,19 +2,22 @@
     padding-top: 40px;
 }
 
-.title-catalog h1 {
-    font-size: 1.6rem;
+.title-catalog h2 {
+    padding-bottom: 30px;
 }
 
 .grid-logotypes {
     display: grid;
     grid-template-columns: repeat(6,1fr);
+    gap: 50px;
+    
 }
 
 .content-logotypes {
     text-decoration: none;
     width: 120px;
     height: 125px;
+    place-self: center;
 }
 
 .content-logotypes div{
@@ -56,6 +59,33 @@
 .more-logotypes button:hover {
     opacity: 0.8;
 }
+
+.more-brands {
+    padding-top: 50px;
+
+}
+
+@media (max-width: 480px) {
+
+    .grid-logotypes {
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+}
+
+@media (min-width:481px) and (max-width: 854px) {
+    .grid-logotypes {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+
+@media (min-width:854px) and (max-width: 1021px) {
+    .grid-logotypes {
+        grid-template-columns: repeat(5,1fr);
+    }
+}
+
 
 
 /* 
