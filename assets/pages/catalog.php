@@ -143,68 +143,65 @@ include('protect.php');
 
             <div class="grid-logotypes more-brands" style="display: none;">
 
-            <a href="filtered_catalog.php?Marca=Mitsubishi" class="content-logotypes">
-        <div>
-            <img src="/GearTech/assets/logo_images/mitsubishi.png" alt="">
-            <span>Mitsubishi</span>
-        </div>
-    </a>
-    <a href="filtered_catalog.php?Marca=Mercedes" class="content-logotypes">
-        <div>
-            <img src="/GearTech/assets/logo_images/mercedesbenz.png" alt="">
-            <span>Mercedes</span>
-        </div>
-    </a>
-    <a href="filtered_catalog.php?Marca=Nissan" class="content-logotypes">
-        <div>
-            <img src="/GearTech/assets/logo_images/nissan.png" alt="">
-            <span>Nissan</span>
-        </div>
-    </a>
-    <a href="filtered_catalog.php?Marca=Porsche" class="content-logotypes">
-        <div>
-            <img src="/GearTech/assets/logo_images/porsche.png" alt="">
-            <span>Porsche</span>
-        </div>
-    </a>
-    <a href="filtered_catalog.php?Marca=Peugeot" class="content-logotypes">
-        <div>
-            <img src="/GearTech/assets/logo_images/peugeot.png" alt="">
-            <span>Peugeot</span>
-        </div>
-    </a>
-    <a href="filtered_catalog.php?Marca=Renault" class="content-logotypes">
-        <div>
-            <img src="/GearTech/assets/logo_images/renault.png" alt="">
-            <span>Renault</span>
-        </div>
-    </a>
-    <a href="filtered_catalog.php?Marca=Toyota" class="content-logotypes">
-        <div>
-            <img src="/GearTech/assets/logo_images/toyota.png" alt="">
-            <span>Toyota</span>
-        </div>
-    </a>
-    <a href="filtered_catalog.php?Marca=Volkswagen" class="content-logotypes">
-        <div>
-            <img src="/GearTech/assets/logo_images/volkswagen.png" alt="">
-            <span>Volkswagen</span>
-        </div>
-    </a>
-    <a href="filtered_catalog.php?Marca=Volvo" class="content-logotypes">
-        <div>
-            <img src="/GearTech/assets/logo_images/volvo.png" alt="">
-            <span>Volvo</span>
-        </div>
-    </a>
+                <a href="filtered_catalog.php?Marca=Mitsubishi" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/mitsubishi.png" alt="">
+                        <span>Mitsubishi</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Mercedes" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/mercedesbenz.png" alt="">
+                        <span>Mercedes</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Nissan" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/nissan.png" alt="">
+                        <span>Nissan</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Porsche" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/porsche.png" alt="">
+                        <span>Porsche</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Peugeot" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/peugeot.png" alt="">
+                        <span>Peugeot</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Renault" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/renault.png" alt="">
+                        <span>Renault</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Toyota" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/toyota.png" alt="">
+                        <span>Toyota</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Volkswagen" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/volkswagen.png" alt="">
+                        <span>Volkswagen</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Volvo" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/volvo.png" alt="">
+                        <span>Volvo</span>
+                    </div>
+                </a>
 
             </div>
             <div class="more-logotypes">
                 <button id="toggleButton">Mais marcas</button>
             </div>
-
-
-
         </div>
     </section>
 
