@@ -18,6 +18,7 @@ include('protect.php');
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="stylesheet" href="../css/recomendation.css">
     <link rel="stylesheet" href="../css/catalog.css">
+    <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Seu carro ideal</title>
 </head>
 
@@ -62,22 +63,79 @@ include('protect.php');
     <section class="recomendation">
         <div class="container">
             <div class="title-catalog">
-                <h1>Nosso catálogo</h1>
+                <h2>Nosso catálogo</h2>
             </div>
-            <div class="logotypes">
-                <a href="filtered_catalog.php?Marca=Bmw"><img src="/GearTech/assets/logo_images/bmw.png" alt=""></a><a href="filtered_catalog.php?Marca=Volkswagen "><img src="/GearTech/assets/logo_images/volkswagen.png" alt=""></a>
-                <a href="filtered_catalog.php?Marca=Chevrolet"><img src="/GearTech/assets/logo_images/chevrolet.png" alt=""></a>
-                <a href="filtered_catalog.php?Marca=Fiat"><img src="/GearTech/assets/logo_images/fiat.png" alt=""></a>
-                <a href="filtered_catalog.php?Marca=Ford"><img src="/GearTech/assets/logo_images/ford.png" alt=""></a>
-                <a href="filtered_catalog.php?Marca=Honda"><img src="/GearTech/assets/logo_images/honda.png" alt=""></a>
-                <a href="filtered_catalog.php?Marca=Hyundai"> <img src="/GearTech/assets/logo_images/hyundai.png" alt=""></a>
-                <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/renault.png" alt=""></a>
+
+            <div class="grid-logotypes">
+                <a href="" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/bmw.png" alt="">
+                        <span>BMW</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Chevrolet" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/chevrolet.png" alt="">
+                        <span>Chevrolet</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Fiat" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/fiat.png" alt="">
+                        <span>Fiat</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Ford" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/ford.png" alt="">
+                        <span>Ford</span>
+                    </div>
+                </a>
+                <a href="filtered_catalog.php?Marca=Honda" class="content-logotypes">
+                    <div>
+                        <img src="/GearTech/assets/logo_images/honda.png" alt="">
+                        <span>Honda</span>
+                    </div>
+                </a>
+                    <a href="filtered_catalog.php?Marca=Hyundai" class="content-logotypes">
+                        <div>
+                            <img src="/GearTech/assets/logo_images/hyundai.png" alt="">
+                            <span>Hyundai</span>
+                        </div>
+                    </a>
+                    
             </div>
             <div class="more-logotypes">
                 <button>Mais marcas</button>
             </div>
         </div>
     </section>
+
+    <!-- <section class="recomendation">
+        <div class="container">
+            <div class="title-catalog">
+                <h1>Nosso catálogo</h1>
+            </div>
+            <div class="logotypes">
+                <a href="filtered_catalog.php?Marca=Bmw"><img src="/GearTech/assets/logo_images/bmw.png" alt=""></a><a href="filtered_catalog.php?Marca=Volkswagen "><img src="/GearTech/assets/logo_images/volkswagen.png" alt=""></a>
+                <a href="filtered_catalog.php?Marca=Chevrolet"><img src="v" alt=""></a>
+                <a href="filtered_catalog.php?Marca=Fiat"><img src="/GearTech/assets/logo_images/fiat.png" alt=""></a>
+                <a href="filtered_catalog.php?Marca=Ford"><img src="/GearTech/assets/logo_images/ford.png" alt=""></a>
+                <a href="filtered_catalog.php?Marca=Honda"><img src="/GearTech/assets/logo_images/honda.png" alt=""></a>
+                <a href="filtered_catalog.php?Marca=Hyundai"> <img src="/GearTech/assets/logo_images/hyundai.png" alt=""></a>
+                <a href="filtered_catalog.php?Marca=Renault"><img src="/GearTech/assets/logo_images/renault.png" alt=""></a>
+            </div>
+            <div class="logotypes more-brands" style="display: none;">
+            <a href="filtered_catalog.php?Marca=Toyota"><img src="/GearTech/assets/logo_images/toyota.png" alt="Toyota"></a>
+            <a href="filtered_catalog.php?Marca=Nissan"><img src="/GearTech/assets/logo_images/nissan.png" alt="Nissan"></a>
+            <a href="filtered_catalog.php?Marca=Mazda"><img src="/GearTech/assets/logo_images/mazda.png" alt="Mazda"></a>
+            <a href="filtered_catalog.php?Marca=Mercedes"><img src="/GearTech/assets/logo_images/mercedes.png" alt="Mercedes"></a>
+        </div>
+        <div class="more-logotypes">
+            <button id="toggleButton">Mais marcas</button>
+        </div>
+        </div>
+    </section> -->
 
 
 
@@ -113,6 +171,20 @@ include('protect.php');
         </div>
     </footer>
     <script src="../js/script.js"></script>
+
+    <script>
+document.getElementById('toggleButton').addEventListener('click', function() {
+    var moreBrands = document.querySelector('.more-brands');
+    if (moreBrands.style.display === 'none' || moreBrands.style.display === '') {
+        moreBrands.style.display = 'flex';
+        this.textContent = 'Mostrar menos marcas';
+    } else {
+        moreBrands.style.display = 'none';
+        this.textContent = 'Mais marcas';
+    }
+});
+</script>
+
 
 </body>
 

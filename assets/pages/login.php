@@ -57,6 +57,7 @@
     <link rel="stylesheet" href="../css/main/main.css">
     <link rel="stylesheet" href="../css/main/header.css">
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Faça seu login</title>
 </head>
 <body>
@@ -87,6 +88,7 @@
                     <li>
                         <div class="user-enter">
                             <a href="/GearTech/index.php">
+                                <img src="/GearTech/assets/icons/user.svg" alt="">
                                 <a href="/GearTech/index.php" class="red">Voltar à página inicial</a>
                             </a>
                         </div>

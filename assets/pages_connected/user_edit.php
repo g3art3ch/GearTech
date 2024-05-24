@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../css/main/main.css">
     <link rel="stylesheet" href="../css/main/header.css">
     <link rel="stylesheet" href="../css/user.css">
+    <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Minha conta</title>
 </head>
 <body>

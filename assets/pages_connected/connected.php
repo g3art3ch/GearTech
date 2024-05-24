@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/GearTech/assets/css/main/contact.css">
     <link rel="stylesheet" href="/GearTech/assets/css/main/footer.css">
     <link rel="stylesheet" href="/GearTech/assets/css/var.css">
+    <link rel="shortcut icon" href="/GearTech/assets/icons/logo.ico" type="image/x-icon">
     <title>GearTech</title>
 </head>
 

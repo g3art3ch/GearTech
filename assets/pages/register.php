@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/main/main.css">
     <link rel="stylesheet" href="../css/main/header.css">
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Crie sua conta</title>
 </head>
 <body>

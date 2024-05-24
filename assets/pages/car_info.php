@@ -62,6 +62,7 @@ INNER JOIN
     <link rel="stylesheet" href="../css/main/header.css">
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="stylesheet" href="../css/recomendation.css">
+    <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Seu carro ideal</title>
 </head>
 

@@ -2,12 +2,35 @@
     padding-top: 40px;
 }
 
-.title-catalog h1{
+.title-catalog h1 {
     font-size: 1.6rem;
 }
 
-.logotypes {
-    padding-top: 40px;
+.grid-logotypes {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+}
+
+.content-logotypes {
+    text-decoration: none;
+    width: 120px;
+    height: 125px;
+}
+
+.content-logotypes div{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    
+}
+
+.content-logotypes div span {
+    color: #000;
+    padding-top: 10px;
+}
+
+.content-logotypes img {
+    width: 80%;
 }
 
 .more-logotypes {
@@ -27,6 +50,50 @@
     max-width: 336px;
     width: 100%;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.more-logotypes button:hover {
+    opacity: 0.8;
+}
+
+
+/* 
+.logotypes {
+    padding-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.logotypes a {
+    margin: 10px;
+}
+
+.logotypes img {
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.more-logotypes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.more-logotypes button {
+    background-color: var(--secondary);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    padding: 14px;
+    font-size: 1rem;
+    max-width: 336px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .more-logotypes button:hover {
@@ -34,15 +101,14 @@
 }
 
 @media (max-width: 480px) {
-    
     .logotypes {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
         row-gap: 50px;
     }
 
     .logotypes a {
         place-self: center;
     }
-}
+} */

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/main/contact.css">
     <link rel="stylesheet" href="assets/css/main/footer.css">
     <link rel="stylesheet" href="assets/css/var.css">
+    <link rel="shortcut icon" href="assets/icons/logo.ico" type="image/x-icon">
     <title>GearTech</title>
 </head>
 
@@ -103,8 +104,8 @@
                                 <img src="assets/icons/money.svg" alt="">
                                 <div class="title-headline">Orçamento disponível</div>
                             </div>
-                            <input type="range" id="preco" name="orcamento" min="0" max="999999" step="1" value="40000">
-                            <input type="number" id="preco_valor" name="orcamento" readonly>
+                            
+                            <input type="number" id="preco_valor" name="orcamento" >
                         </div>
                         <div class="itens-filter">
                             <div class="headline">
@@ -272,7 +273,7 @@
                             <img src="assets/icons/instagram.svg" alt="">
                         </div>
                         <p>Email: suporte.geartech@gmail.com</p>
-                        <p>Instagram: @geartech</p>
+                        <p>Instagram: @g3artech</p>
                     </div>
                 </div>
             </div>
@@ -326,6 +327,8 @@ function exibirAlerta() {
     precoValorInput.addEventListener('change', function() {
         precoInput.value = precoValorInput.value;
     });
+
+
 
     </script>
 </body>
