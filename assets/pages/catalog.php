@@ -105,9 +105,28 @@ include('protect.php');
                     </a>
                     
             </div>
-            <div class="more-logotypes">
-                <button>Mais marcas</button>
-            </div>
+
+            <div class="grid-logotypes more-brands" style="display: none;">
+            <a href="filtered_catalog.php?Marca=Renault" class="content-logotypes">
+                        <div>
+                            <img src="/GearTech/assets/logo_images/renault.png" alt="">
+                            <span>Renault</span>
+                        </div>
+                    </a>
+                    <a href="filtered_catalog.php?Marca=Hyundai" class="content-logotypes">
+                        <div>
+                            <img src="/GearTech/assets/logo_images/volkswagen.png" alt="">
+                            <span>Volkswagen</span>
+                        </div>
+                    </a>
+              
+        </div>
+        <div class="more-logotypes">
+            <button id="toggleButton">Mais marcas</button>
+        </div>
+            
+            
+            
         </div>
     </section>
 
@@ -176,8 +195,8 @@ include('protect.php');
 document.getElementById('toggleButton').addEventListener('click', function() {
     var moreBrands = document.querySelector('.more-brands');
     if (moreBrands.style.display === 'none' || moreBrands.style.display === '') {
-        moreBrands.style.display = 'flex';
-        this.textContent = 'Mostrar menos marcas';
+        moreBrands.style.display = 'grid';
+        this.textContent = 'Menos marcas';
     } else {
         moreBrands.style.display = 'none';
         this.textContent = 'Mais marcas';
