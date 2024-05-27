@@ -65,27 +65,27 @@ $quantidade = $sql_query->num_rows;
 echo $quantidade;
 
 
-    // if ($quantidade > 0) {
-    //     // Inicia a sessão e armazena os resultados
-    //     session_start();
-    //     $_SESSION['resultados'] = array();
-    //     while ($result = $sql_query->fetch_assoc()) {
-    //         $_SESSION['resultados'][] = $result;
-    //     }
-    //     $_SESSION['idIden'] = $result['idIden'];
-    // $_SESSION['urlCarro'] = $result['urlCarro'];
-    // $_SESSION['nome'] = $result['nome'];
-    // $_SESSION['estilo'] = $result['estilo'];
-    // $_SESSION['orcamento'] = $result['orcamento'];
-    // $_SESSION['combustivel'] = $result['combustivel'];
-    // $_SESSION['capacidade'] = $result['capacidade'];
-    // $_SESSION['tipoUso'] = $result['tipoUso'];
+    if ($quantidade > 0) {
+        // Inicia a sessão e armazena os resultados
+        session_start();
+        $_SESSION['resultados'] = array();
+        while ($result = $sql_query->fetch_assoc()) {
+            $_SESSION['resultados'][] = $result;
+        }
+        $_SESSION['idIden'] = $result['idIden'];
+    $_SESSION['urlCarro'] = $result['urlCarro'];
+    $_SESSION['nome'] = $result['nome'];
+    $_SESSION['estilo'] = $result['estilo'];
+    $_SESSION['orcamento'] = $result['orcamento'];
+    $_SESSION['combustivel'] = $result['combustivel'];
+    $_SESSION['capacidade'] = $result['capacidade'];
+    $_SESSION['tipoUso'] = $result['tipoUso'];
 
-    // // header("Location: /GearTech/assets/pages/recommendation.php");
+    // header("Location: /GearTech/assets/pages/recommendation.php");
 
         
 
 
-    // }else
+    }else
     header("Location: /GearTech/assets/pages/recommendation.php?error=Nenhum resultado encontrado.");
 }
