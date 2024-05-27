@@ -3,26 +3,37 @@ include('connection_cars.php');
 if (isset($_POST["submit"])) {
 
     $estilo = $_POST["estilo"];
-    $no_format_orcamento = $_POST["orcamento"];
-    if($no_format_orcamento == null){
+    $orcamentoINI = $_POST["orcamento"];
+    if ($orcamentoINI == null) {
         header("Location: /GearTech/index.php?error=Preencha todos os campos.");
-    }else
-    $orcamento = number_format($no_format_orcamento, 0, ',', '.');
+    } else{
+    
+        $orcamentoF = substr($orcamentoINI, 0, -2);
+    // Remove todos os pontos
+    $numberWithoutDots = str_replace('.', '', $orcamentoF);
+
+    // Substitui a vírgula por um ponto
+    $normalizedNumber = str_replace(',', '.', $numberWithoutDots);
+
+    // Converte para float
+    $orcamentoFloat = floatval($normalizedNumber);
+    $orcamento = intval($orcamentoFloat);
+}
 
     $combustivel = $_POST["combustivel"];
     $capacidade = $_POST["capacidade"];
     $tipoUso = $_POST["tipoUso"];
 
-    
 
-    if (empty($estilo) || empty( $orcamento) || empty($combustivel) || empty($capacidade) || empty($tipoUso)) {
-        
+
+    if (empty($estilo) || empty($orcamento) || empty($combustivel) || empty($capacidade) || empty($tipoUso)) {
+
         header("Location: /GearTech/index.php?error=Preencha todos os campos.");
         exit();
     }
-    
 
-    
+
+
     $sql_code = "SELECT 
     nc.nome,
     fc.estilo,
@@ -46,35 +57,35 @@ INNER JOIN
     usoCarro uc ON nc.idNome = uc.idNome
 INNER JOIN 
     identificador iden ON nc.idNome = iden.idNome
-        WHERE estilo = '$estilo' AND orcamento <= '$orcamento' and combustivel = '$combustivel' and capacidade <= $capacidade and tipoUso='$tipoUso'";
+WHERE estilo = '$estilo' AND orcamento <= '$orcamento' and combustivel = '$combustivel' and capacidade <= $capacidade and tipoUso='$tipoUso'";
+
+$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+$quantidade = $sql_query->num_rows;
+
+echo $quantidade;
 
 
-    $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-    $quantidade = $sql_query->num_rows;
-    
+    // if ($quantidade > 0) {
+    //     // Inicia a sessão e armazena os resultados
+    //     session_start();
+    //     $_SESSION['resultados'] = array();
+    //     while ($result = $sql_query->fetch_assoc()) {
+    //         $_SESSION['resultados'][] = $result;
+    //     }
+    //     $_SESSION['idIden'] = $result['idIden'];
+    // $_SESSION['urlCarro'] = $result['urlCarro'];
+    // $_SESSION['nome'] = $result['nome'];
+    // $_SESSION['estilo'] = $result['estilo'];
+    // $_SESSION['orcamento'] = $result['orcamento'];
+    // $_SESSION['combustivel'] = $result['combustivel'];
+    // $_SESSION['capacidade'] = $result['capacidade'];
+    // $_SESSION['tipoUso'] = $result['tipoUso'];
 
-    if($quantidade > 0) {
-        if(!isset($_SESSION)) {
-            session_start();
-        }
+    // // header("Location: /GearTech/assets/pages/recommendation.php");
+
         
-        $_SESSION['resultados'] = array();
-        while ($result = $sql_query->fetch_assoc()) {
-            $_SESSION['resultados'][] = $result;
-        }
-    
-    $_SESSION['idIden'] = $result['idIden'];
-    $_SESSION['urlCarro'] = $result['urlCarro'];
-    $_SESSION['nomeCarro'] = $result['nomeCarro'];
-    $_SESSION['estilo'] = $result['estilo'];
-    $_SESSION['orcamento'] = $result['orcamento'];
-    $_SESSION['combustivel'] = $result['combustivel'];
-    $_SESSION['capacidade'] = $result['capacidade'];
-    $_SESSION['tipoUso'] = $result['tipoUso'];
 
-   
-    } 
 
-         header("Location: /GearTech/assets/pages/recommendation.php");
+    // }else
+    header("Location: /GearTech/assets/pages/recommendation.php?error=Nenhum resultado encontrado.");
 }
-

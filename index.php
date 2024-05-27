@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,7 +85,7 @@
         </div>
         <div class="container">
             <div class="card-filter">
-                <form action="assets/pages/recommendation_process.php"  method="post"class="box-filter">
+                <form action="assets/pages/recommendation_process.php" method="post" class="box-filter">
                     <div class="group-1">
                         <div class="itens-filter">
                             <div class="headline">
@@ -104,8 +104,7 @@
                                 <img src="assets/icons/money.svg" alt="">
                                 <div class="title-headline">Orçamento disponível</div>
                             </div>
-                            
-                            <input type="number" id="preco_valor" name="orcamento" >
+                            <input type="text" id="preco_input" name="orcamento">
                         </div>
                         <div class="itens-filter">
                             <div class="headline">
@@ -145,6 +144,30 @@
                             <button type="submit" name="submit">Procure agora</button>
                         </div>
                     </div>
+                    <script>
+                        function formatarNumero(valor) {
+                            valor = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
+                            if (valor === "") return "";
+
+                            valor = (parseInt(valor, 10) / 100).toFixed(2) + ''; // Converte para número e formata com duas casas decimais
+                            valor = valor.replace(".", ","); // Substitui ponto por vírgula
+                            valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona pontos a cada milhar
+                            return valor;
+                        }
+
+                        const inputPreco = document.getElementById('preco_input');
+
+                        inputPreco.addEventListener('input', function() {
+                            let cursorPosition = this.selectionStart;
+                            let valorAntigo = this.value;
+
+                            this.value = formatarNumero(this.value);
+
+                            // Recalcular posição do cursor
+                            cursorPosition = this.value.length - valorAntigo.length + cursorPosition;
+                            this.setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                    </script>
                 </form>
             </div>
     </section>
@@ -222,7 +245,7 @@
                     <img src="assets/images/honda.svg" alt="">
                     <img src="assets/images/volkswagen.svg" alt="">
                     <img src="assets/images/renault.svg" alt="">
-                    <img src="assets/images/fiat-logo.svg" alt="">   
+                    <img src="assets/images/fiat-logo.svg" alt="">
                     <img src="assets/images/hyundai-logo.svg" alt="">
                     <img src="assets/images/chevrolet-logo.svg" alt="">
                     <img src="assets/images/ford.svg" alt="">
@@ -311,25 +334,9 @@
 
     <script src="assets/js/script.js"></script>
     <script>
-function exibirAlerta() {
-    window.alert("Você precisa estar logado");
-}
-
-    const precoInput = document.getElementById('preco');
-    const precoValorInput = document.getElementById('preco_valor');
-
-    precoValorInput.value = precoInput.value;
-
-    precoInput.addEventListener('input', function() {
-        precoValorInput.value = precoInput.value;
-    });
-
-    precoValorInput.addEventListener('change', function() {
-        precoInput.value = precoValorInput.value;
-    });
-
-
-
+        function exibirAlerta() {
+            window.alert("Você precisa estar logado");
+        }
     </script>
 </body>
 

@@ -65,6 +65,7 @@ include('protect.php');
                 <div class=box-recomendation>
 
                     <?php
+                    
 
                      if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
                         // Loop através dos resultados e exibe as informações de cada carro
