@@ -81,7 +81,7 @@ echo $quantidade;
     $_SESSION['capacidade'] = $result['capacidade'];
     $_SESSION['tipoUso'] = $result['tipoUso'];
 
-    // header("Location: /GearTech/assets/pages/recommendation.php");
+    header("Location: /GearTech/assets/pages/recommendation.php");
 
         
 
