@@ -6,11 +6,18 @@
     padding-bottom: 30px;
 }
 
+.card-logotypes {
+    background-color: var(--cardBackground);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 20px 20px 40px;
+}
+
 .grid-logotypes {
     display: grid;
     grid-template-columns: repeat(6,1fr);
     gap: 50px;
-    
+   
 }
 
 .content-logotypes {

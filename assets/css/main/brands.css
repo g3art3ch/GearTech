@@ -21,6 +21,7 @@
 .logotipos img {
     max-width: 100%; 
     height: auto;
+    place-self: center;
 }
 
 @media (min-width: 481px) and (max-width: 768px) {

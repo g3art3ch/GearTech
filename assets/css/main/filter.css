@@ -1,13 +1,13 @@
 .filter {
     background-color: var(--foreground);
-    padding-bottom: 50px;
+    padding-bottom: 65px;
 }
 
 .title-filter {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 60px;
+    padding-top: 50px;
 }
 
 .title-filter h2 {

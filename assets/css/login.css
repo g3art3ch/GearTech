@@ -14,7 +14,7 @@
 section .box-login {
     display: flex;
     justify-content: center;
-    padding: 20px 0px;
+    margin: 35px 0px;
 }
 
 section .card {
