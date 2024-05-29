@@ -5,13 +5,23 @@ include('connection_cars.php');
 if (isset($_POST["submit"])) {
     // Obtém os dados do formulário
     $estilo = $_POST["estilo"];
-    $no_format_orcamento = $_POST["orcamento"];
+    $value = $_POST["orcamento"];
     // Validação dos dados do formulário
-    if ($no_format_orcamento == null) {
+    if ($value == null) {
         header("Location: /GearTech/assets/pages_connected/connected.php?error=Preencha todos os campos.");
         exit(); // Encerra o script após o redirecionamento
     } else {
-        $orcamento = number_format($no_format_orcamento, 0, ',', '.');
+        $textWithoutLastTwoChars = substr($value, 0, -2);
+        // Remove todos os pontos
+        $numberWithoutDots = str_replace('.', '', $textWithoutLastTwoChars);
+
+        // Substitui a vírgula por um ponto
+        $normalizedNumber = str_replace(',', '.', $numberWithoutDots);
+
+        // Converte para int
+        $finalNumber = intval($normalizedNumber);
+
+        $orcamento = number_format($finalNumber, 0, ',', '.');
     }
     $combustivel = $_POST["combustivel"];
     $capacidade = $_POST["capacidade"];

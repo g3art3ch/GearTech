@@ -3,6 +3,20 @@
     include('connection.php');
 
     if (isset($_POST["submit"])) {
+        $email = $_POST['email'];
+
+        //Verificar existencia de usuario
+   
+        $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+
+        $quantidade = $sql_query->num_rows;
+
+        if($quantidade == 1) {
+            
+            header("Location: register.php?error=Email já cadastrado");
+
+        }else{
 
         $nomeUsuario = $_POST['nomeUsuario'];
         $email = $_POST['email'];
@@ -33,38 +47,11 @@
             }
     
         } 
-
-        //Verificar existencia de usuario
-   
-            $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
-            $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-    
-            $quantidade = $sql_query->num_rows;
-    
-            if($quantidade == 1) {
-                
-                $usuario = $sql_query->fetch_assoc();
-    
-                if(!isset($_SESSION)) {
-                    session_start();
-                }   
-    
-                $_SESSION['id'] = $usuario['id'];
-                $_SESSION['nomeUsuario'] = $usuario['nomeUsuario'];
-                $_SESSION['email'] = $usuario['email'];
-                $_SESSION['senha'] = $usuario['senha'];
-    
-                header("Location: /GearTech/assets/pages_connected/connected.php");
-    
-            } else {
-                echo "Falha ao logar! E-mail ou senha incorretos";
-            }
-    
-        
-
+        header("Location: login.php");
+    }
 
     }
     
     
-    header("Location: login.php");
+ 
 

@@ -100,7 +100,7 @@
         }
         ?>
             <div class="card-filter">
-                <form action="connected_recommendation_process.php" method="post" class="box-filter">
+            <form action="connected_recommendation_process.php" method="post" class="box-filter">
                     <div class="group-1">
                         <div class="itens-filter">
                             <div class="headline">
@@ -119,7 +119,7 @@
                                 <img src="/GearTech/assets/icons/money.svg" alt="">
                                 <div class="title-headline">Orçamento disponível</div>
                             </div>
-                            <input type="number" name="orcamento" placeholder="R$ 00.000,00">
+                            <input type="text" id="preco_input" name="orcamento">
                         </div>
                         <div class="itens-filter">
                             <div class="headline">
@@ -159,6 +159,30 @@
                             <button type="submit" name="submit">Procure agora</button>
                         </div>
                     </div>
+                    <script>
+                        function formatarNumero(valor) {
+                            valor = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
+                            if (valor === "") return "";
+
+                            valor = (parseInt(valor, 10) / 100).toFixed(2) + ''; // Converte para número e formata com duas casas decimais
+                            valor = valor.replace(".", ","); // Substitui ponto por vírgula
+                            valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona pontos a cada milhar
+                            return valor;
+                        }
+
+                        const inputPreco = document.getElementById('preco_input');
+
+                        inputPreco.addEventListener('input', function() {
+                            let cursorPosition = this.selectionStart;
+                            let valorAntigo = this.value;
+
+                            this.value = formatarNumero(this.value);
+
+                            // Recalcular posição do cursor
+                            cursorPosition = this.value.length - valorAntigo.length + cursorPosition;
+                            this.setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                    </script>
                 </form>
             </div>
     </section>

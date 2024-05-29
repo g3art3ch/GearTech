@@ -44,7 +44,7 @@ include('protect.php');
             </div>
             <nav>
                 <ul>
-                    <li><a href="assets/pages/catalog.php">Catálogo</a></li>
+                    <li><a href="catalog.php">Catálogo</a></li>
                     <li><a href="">Manutenções</a></li>
                     <li>
                         <div class="user-enter">

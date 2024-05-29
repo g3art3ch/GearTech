@@ -3,21 +3,22 @@ include('connection_cars.php');
 if (isset($_POST["submit"])) {
 
     $estilo = $_POST["estilo"];
-    $orcamentoINI = $_POST["orcamento"];
-    if ($orcamentoINI == null) {
+    $value = $_POST["orcamento"];
+    if ($value == null) {
         header("Location: /GearTech/index.php?error=Preencha todos os campos.");
     } else{
     
-        $orcamentoF = substr($orcamentoINI, 0, -2);
-    // Remove todos os pontos
-    $numberWithoutDots = str_replace('.', '', $orcamentoF);
+        $textWithoutLastTwoChars = substr($value, 0, -2);
+                // Remove todos os pontos
+                $numberWithoutDots = str_replace('.', '', $textWithoutLastTwoChars);
 
-    // Substitui a vírgula por um ponto
-    $normalizedNumber = str_replace(',', '.', $numberWithoutDots);
+                // Substitui a vírgula por um ponto
+                $normalizedNumber = str_replace(',', '.', $numberWithoutDots);
 
-    // Converte para float
-    $orcamentoFloat = floatval($normalizedNumber);
-    $orcamento = intval($orcamentoFloat);
+                // Converte para int
+                $finalNumber = intval($normalizedNumber);
+
+                $orcamento = number_format($finalNumber, 0, ',', '.');
 }
 
     $combustivel = $_POST["combustivel"];
@@ -35,29 +36,29 @@ if (isset($_POST["submit"])) {
 
 
     $sql_code = "SELECT 
-    nc.nome,
-    fc.estilo,
-    oc.orcamento,
-    tc.combustivel,
-    cc.capacidade,
-    uc.tipoUso,
-    iden.idIden,
-    iden.urlCarro
-FROM 
-    nomeCarro nc
-INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
-INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
-INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
-INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
-INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
-INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome
-WHERE estilo = '$estilo' AND orcamento <= '$orcamento' and combustivel = '$combustivel' and capacidade <= $capacidade and tipoUso='$tipoUso'";
+        nc.nome,
+        fc.estilo,
+        oc.orcamento,
+        tc.combustivel,
+        cc.capacidade,
+        uc.tipoUso,
+        iden.idIden,
+        iden.urlCarro
+    FROM 
+        nomeCarro nc
+    INNER JOIN 
+        filtroCarros fc ON nc.idFiltro = fc.idFiltro
+    INNER JOIN 
+        orcamentoCarro oc ON nc.idNome = oc.idNome
+    INNER JOIN 
+        tipoCombustivel tc ON nc.idNome = tc.idNome
+    INNER JOIN 
+        capacidadeCarro cc ON nc.idNome = cc.idNome
+    INNER JOIN 
+        usoCarro uc ON nc.idNome = uc.idNome
+    INNER JOIN 
+        identificador iden ON nc.idNome = iden.idNome
+    WHERE estilo = '$estilo' AND orcamento <= '$orcamento' and combustivel = '$combustivel' and capacidade <= $capacidade and tipoUso='$tipoUso'";
 
 $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 $quantidade = $sql_query->num_rows;
