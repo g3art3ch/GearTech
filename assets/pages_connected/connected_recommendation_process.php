@@ -57,7 +57,7 @@ if (isset($_POST["submit"])) {
         usoCarro uc ON nc.idNome = uc.idNome
     INNER JOIN 
         identificador iden ON nc.idNome = iden.idNome
-    WHERE estilo = '$estilo' AND orcamento <= '$orcamento' and combustivel = '$combustivel' and capacidade <= $capacidade and tipoUso='$tipoUso'";
+    WHERE estilo = '$estilo' AND orcamento <= '$orcamento' and combustivel = '$combustivel' and capacidade >= $capacidade and tipoUso='$tipoUso'";
 
     $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
     $quantidade = $sql_query->num_rows;

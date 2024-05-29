@@ -86,9 +86,9 @@ include('protect.php');
                             // echo "<p>Estilo: " . $carro['estilo'] . "</p>";
                             echo "<div class=price> R$ " . $carro['orcamento'] . "</div>";
                             echo "<div class=info>
-                    <p>" . $carro['combustivel'] . "</p>
-                    <p>" . $carro['capacidade'] . "</p>
-                    <p>" . $carro['tipoUso'] . "</p>
+                            <p>Combusível: " . $carro['combustivel'] . "</p>
+                            <p>Passageiros: " . $carro['capacidade'] . "</p>
+                            <p>Uso: " . $carro['tipoUso'] . "</p>
                 </div>";
                             echo "<a href=>Saiba mais</a>";
                             echo "</div>";

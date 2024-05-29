@@ -97,9 +97,9 @@ if (!isset($_SESSION['nome'])) {
                     // echo "<p>Estilo: " . $carro['estilo'] . "</p>";
                     echo "<div class=price> R$ " . $carro['orcamento'] . "</div>";
                     echo "<div class=info>
-                    <p>" . $carro['combustivel'] . "</p>
-                    <p>" . $carro['capacidade'] . "</p>
-                    <p>" . $carro['tipoUso'] . "</p>
+                    <p>Combusível: " . $carro['combustivel'] . "</p>
+                    <p>Passageiros: " . $carro['capacidade'] . "</p>
+                    <p>Uso: " . $carro['tipoUso'] . "</p>
                 </div>";
 
 
