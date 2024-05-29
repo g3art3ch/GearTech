@@ -1,6 +1,6 @@
-<?php 
-    include ('connection.php');
-    include('protect.php');
+<?php
+include('connection.php');
+include('protect.php');
 ?>
 
 
@@ -61,7 +61,7 @@
                             </a>
                         </div>
                         <ul class="dropdown-menu">
-                            <div class="options-dropdowm">             
+                            <div class="options-dropdowm">
                                 <li><a href="user.php">Minha conta</a></li>
                                 <li><a href="logout.php">Sair</a></li>
                             </div>
@@ -93,98 +93,100 @@
             </div>
 
             <div class="container">
-            <?php 
-        if(isset($_GET['error'])) {
-            // Exibe a mensagem de erro
-            echo "<p>Error: " . $_GET['error'] . "</p>";
-        }
-        ?>
-            <div class="card-filter">
-            <form action="connected_recommendation_process.php" method="post" class="box-filter">
-                    <div class="group-1">
-                        <div class="itens-filter">
-                            <div class="headline">
-                                <img src="/GearTech/assets/icons/car.svg" alt="">
-                                <div class="title-headline">Seu estilo de carro</div>
+                <div class="card-filter">
+                    <form action="connected_recommendation_process.php" method="post" class="box-filter">
+
+                        <div class="error-register-index">
+                            <?php
+                            if (isset($_GET['error'])) {
+                                echo "<p  style='color:red;'>" . $_GET['error'] . "</p>";
+                            }
+                            ?>
+                        </div>
+                        <div class="group-1">
+                            <div class="itens-filter">
+                                <div class="headline">
+                                    <img src="/GearTech/assets/icons/car.svg" alt="">
+                                    <div class="title-headline">Seu estilo de carro</div>
+                                </div>
+                                <select name="estilo" id="">
+                                    <option value="">Selecione seu estilo de carro</option>
+                                    <option value="Hatch">Hatch</option>
+                                    <option value="Sedan">Sedan</option>
+                                    <option value="Suv">SUV</option>
+                                </select>
                             </div>
-                            <select name="estilo" id="">
-                                <option value="">Selecione seu estilo de carro</option>
-                                <option value="Hatch">Hatch</option>
-                                <option value="Sedan">Sedan</option>
-                                <option value="Suv">SUV</option>
-                            </select>
-                        </div>
-                        <div class="itens-filter">
-                            <div class="headline">
-                                <img src="/GearTech/assets/icons/money.svg" alt="">
-                                <div class="title-headline">Orçamento disponível</div>
+                            <div class="itens-filter">
+                                <div class="headline">
+                                    <img src="/GearTech/assets/icons/money.svg" alt="">
+                                    <div class="title-headline">Orçamento disponível</div>
+                                </div>
+                                <input type="text" id="preco_input" name="orcamento">
                             </div>
-                            <input type="text" id="preco_input" name="orcamento">
-                        </div>
-                        <div class="itens-filter">
-                            <div class="headline">
-                                <img src="/GearTech/assets/icons/fuel.svg" alt="">
-                                <div class="title-headline">Tipo de combustível</div>
+                            <div class="itens-filter">
+                                <div class="headline">
+                                    <img src="/GearTech/assets/icons/fuel.svg" alt="">
+                                    <div class="title-headline">Tipo de combustível</div>
+                                </div>
+                                <select name="combustivel" id="">
+                                    <option value="">Selecione o tipo de combustível</option>
+                                    <option value="Gasolina">Gasolina</option>
+                                    <option value="Flex">Flex (Álcool e gasolina)</option>
+                                    <option value="Elétrico">Elétrico</option>
+                                </select>
                             </div>
-                            <select name="combustivel" id="">
-                                <option value="">Selecione o tipo de combustível</option>
-                                <option value="Gasolina">Gasolina</option>
-                                <option value="Flex">Flex (Álcool e gasolina)</option>
-                                <option value="Elétrico">Elétrico</option>
-                            </select>
+
                         </div>
 
-                    </div>
-
-                    <div class="group-2">
-                        <div class="itens-filter">
-                            <div class="headline">
-                                <img src="/GearTech/assets/icons/people.svg" alt="">
-                                <div class="title-headline">Capacidade de passageiros</div>
+                        <div class="group-2">
+                            <div class="itens-filter">
+                                <div class="headline">
+                                    <img src="/GearTech/assets/icons/people.svg" alt="">
+                                    <div class="title-headline">Capacidade de passageiros</div>
+                                </div>
+                                <input type="number" name="capacidade" id="" placeholder="Selecione a quantidade de passageiros">
                             </div>
-                            <input type="number" name="capacidade" id="" placeholder="Selecione a quantidade de passageiros">
-                        </div>
-                        <div class="itens-filter">
-                            <div class="headline">
-                                <img src="/GearTech/assets/icons/volante.svg" alt="" width="20px">
-                                <div class="title-headline">Uso do veículo</div>
+                            <div class="itens-filter">
+                                <div class="headline">
+                                    <img src="/GearTech/assets/icons/volante.svg" alt="" width="20px">
+                                    <div class="title-headline">Uso do veículo</div>
+                                </div>
+                                <select name="tipoUso" id="">
+                                    <option value="">Selecione o uso do veículo</option>
+                                    <option value="diario">Diário</option>
+                                    <option value="passeio">Passeios</option>
+                                </select>
                             </div>
-                            <select name="tipoUso" id="">
-                                <option value="">Selecione o uso do veículo</option>
-                                <option value="diario">Diário</option>
-                                <option value="passeio">Passeios</option>
-                            </select>
+                            <div class="itens-filter">
+                                <button type="submit" name="submit">Procure agora</button>
+                            </div>
                         </div>
-                        <div class="itens-filter">
-                            <button type="submit" name="submit">Procure agora</button>
-                        </div>
-                    </div>
-                    <script>
-                        function formatarNumero(valor) {
-                            valor = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
-                            if (valor === "") return "";
+                        <script>
+                            function formatarNumero(valor) {
+                                valor = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
+                                if (valor === "") return "";
 
-                            valor = (parseInt(valor, 10) / 100).toFixed(2) + ''; // Converte para número e formata com duas casas decimais
-                            valor = valor.replace(".", ","); // Substitui ponto por vírgula
-                            valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona pontos a cada milhar
-                            return valor;
-                        }
+                                valor = (parseInt(valor, 10) / 100).toFixed(2) + ''; // Converte para número e formata com duas casas decimais
+                                valor = valor.replace(".", ","); // Substitui ponto por vírgula
+                                valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona pontos a cada milhar
+                                return valor;
+                            }
 
-                        const inputPreco = document.getElementById('preco_input');
+                            const inputPreco = document.getElementById('preco_input');
 
-                        inputPreco.addEventListener('input', function() {
-                            let cursorPosition = this.selectionStart;
-                            let valorAntigo = this.value;
+                            inputPreco.addEventListener('input', function() {
+                                let cursorPosition = this.selectionStart;
+                                let valorAntigo = this.value;
 
-                            this.value = formatarNumero(this.value);
+                                this.value = formatarNumero(this.value);
 
-                            // Recalcular posição do cursor
-                            cursorPosition = this.value.length - valorAntigo.length + cursorPosition;
-                            this.setSelectionRange(cursorPosition, cursorPosition);
-                        });
-                    </script>
-                </form>
-            </div>
+                                // Recalcular posição do cursor
+                                cursorPosition = this.value.length - valorAntigo.length + cursorPosition;
+                                this.setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                        </script>
+                    </form>
+                </div>
     </section>
 
     <section class="about-us">
@@ -260,7 +262,7 @@
                     <img src="/GearTech/assets/images/honda.svg" alt="">
                     <img src="/GearTech/assets/images/volkswagen.svg" alt="">
                     <img src="/GearTech/assets/images/renault.svg" alt="">
-                    <img src="/GearTech/assets/images/fiat-logo.svg" alt="">   
+                    <img src="/GearTech/assets/images/fiat-logo.svg" alt="">
                     <img src="/GearTech/assets/images/hyundai-logo.svg" alt="">
                     <img src="/GearTech/assets/images/chevrolet-logo.svg" alt="">
                     <img src="/GearTech/assets/images/ford.svg" alt="">

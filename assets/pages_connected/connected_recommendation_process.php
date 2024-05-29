@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
     $value = $_POST["orcamento"];
     // Validação dos dados do formulário
     if ($value == null) {
-        header("Location: /GearTech/assets/pages_connected/connected.php?error=Preencha todos os campos.");
+        header("Location: /GearTech/assets/pages_connected/connected.php?error=Preencha todos os campos");
         exit(); // Encerra o script após o redirecionamento
     } else {
         $textWithoutLastTwoChars = substr($value, 0, -2);
@@ -29,7 +29,7 @@ if (isset($_POST["submit"])) {
 
     // Validação dos dados do formulário
     if (empty($estilo) || empty($orcamento) || empty($combustivel) || empty($capacidade) || empty($tipoUso)) {
-        header("Location: /GearTech/assets/pages_connected/connected.php?error=Preencha todos os campos.");
+        header("Location: /GearTech/assets/pages_connected/connected.php?error=Preencha todos os campos");
         exit(); // Encerra o script após o redirecionamento
     }
 

@@ -86,6 +86,14 @@
         <div class="container">
             <div class="card-filter">
                 <form action="assets/pages/recommendation_process.php" method="post" class="box-filter">
+                    <div class="error-register-index">
+                    <?php 
+                        if (isset($_GET['error'])) {
+                            echo "<p  style='color:red;'>" . $_GET['error'] . "</p>";
+                        }
+                    ?>
+                    </div>
+
                     <div class="group-1">
                         <div class="itens-filter">
                             <div class="headline">

@@ -68,3 +68,14 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.error-register{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-bottom: 8px;
+}
+
+.error-register-index{
+    padding-bottom: 10px;
+}

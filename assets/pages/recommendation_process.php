@@ -5,7 +5,7 @@ if (isset($_POST["submit"])) {
     $estilo = $_POST["estilo"];
     $value = $_POST["orcamento"];
     if ($value == null) {
-        header("Location: /GearTech/index.php?error=Preencha todos os campos.");
+        header("Location: /GearTech/index.php?error=Preencha todos os campos");
     } else{
     
         $textWithoutLastTwoChars = substr($value, 0, -2);
@@ -29,7 +29,7 @@ if (isset($_POST["submit"])) {
 
     if (empty($estilo) || empty($orcamento) || empty($combustivel) || empty($capacidade) || empty($tipoUso)) {
 
-        header("Location: /GearTech/index.php?error=Preencha todos os campos.");
+        header("Location: /GearTech/index.php?error=Preencha todos os campos");
         exit();
     }
 

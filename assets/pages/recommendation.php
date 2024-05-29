@@ -98,6 +98,7 @@ include('protect.php');
                     else {
                         echo "<p>Nenhuma recomendação disponível.</p>";
                     }
+
                     ?>
                 </div>
             </div>

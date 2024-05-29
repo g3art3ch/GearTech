@@ -56,13 +56,18 @@
             <div class="box-login">
                 <div class="card">
                     <h2><span>Seja bem vindo!</span><br>Ainda não tem uma conta?</h2>
+                    
+                    <div class="error-register">
                     <?php
                     // Exibir mensagens de erro, se houver
                     if (isset($_GET['error'])) {
-                        //colocar dentro de alguma tag html para depois editar posição
+                        
                         echo "<p style='color:red;'>" . $_GET['error'] . "</p>";
                     }
                     ?>
+                    
+                    </div>
+
                     <form action="register_process.php" method="post">
                         <label for="">Nome completo</label>
                         <input type="text" name="nomeUsuario" placeholder="Digite seu nome completo">
