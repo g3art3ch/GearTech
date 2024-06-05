@@ -112,7 +112,7 @@
                                 <img src="assets/icons/money.svg" alt="">
                                 <div class="title-headline">Orçamento disponível</div>
                             </div>
-                            <input type="text" id="preco_input" name="orcamento">
+                            <input type="text" id="preco_input" name="orcamento" placeholder="R$ 000.000,00" maxlength="10">
                         </div>
                         <div class="itens-filter">
                             <div class="headline">

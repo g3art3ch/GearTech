@@ -41,8 +41,6 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
-                    <li><a href="">Manutenções</a></li>
                     <li>
                         <div class="user-enter">
                             <a href="/GearTech/index.php">                                
@@ -62,7 +60,7 @@
                     <h2>Minha Conta</h2>
                 </div>
                 <div class="box-user">
-                <div class="card-user">
+                <div class="card-user pessoal">
                     <h2>Informações Pessoais</h2>
                     <div class="user-data">
                         <label for="">Nome completo</label>
@@ -80,7 +78,9 @@
                             $asterisks = str_repeat('*', strlen($senha));
                             echo '<input type=text  value=' . $asterisks . ' readonly>';
                         ?>
-                        <a href="user_edit.php"><button>Alterar dados</button></a>
+                        <label for="">Edite sua senha</label>
+                        <input type="text" placeholder="Nova senha">
+                        <a href="user_edit.php"><button>Confirmar alteração</button></a>
                     </div>
                 </div>
             </div>

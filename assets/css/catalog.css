@@ -11,27 +11,33 @@
     border-radius: 15px;
     box-shadow: var(--shadow);
     padding: 20px 20px 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .grid-logotypes {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(6,1fr);
     gap: 50px;
-   
 }
 
 .content-logotypes {
     text-decoration: none;
-    width: 120px;
-    height: 125px;
     place-self: center;
+    max-width: 120px;
+    width: 100%;
 }
 
 .content-logotypes div{
     display: flex;
     flex-direction:column;
     align-items: center;
-    
+    text-align: center;
+    width: 100%;
 }
 
 .content-logotypes div span {
@@ -41,6 +47,7 @@
 
 .content-logotypes img {
     width: 80%;
+    height: auto; 
 }
 
 .more-logotypes {

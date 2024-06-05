@@ -155,7 +155,6 @@ WHERE Marca = '$marca'
 
     <section class="recomendation">
         <div class="container">
-            <div class="title-recomendation">
                 <div class=box-recomendation>
 
                     <?php
@@ -201,8 +200,6 @@ WHERE Marca = '$marca'
                     ';
 
                 ?>
-
-            </div>
     </section>
 
     <div class="pagination">

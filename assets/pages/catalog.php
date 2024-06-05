@@ -67,7 +67,6 @@ include('protect.php');
             </div>
 
             <div class="card-logotypes">
-
                 <div class="grid-logotypes">
                     <a href="filtered_catalog.php?Marca=Audi" class="content-logotypes">
                         <div>

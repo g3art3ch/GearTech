@@ -41,8 +41,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
-                    <li><a href="">Manutenções</a></li>
+
                     <li>
                         <div class="user-enter">
                             <a href="/GearTech/index.php">                                
