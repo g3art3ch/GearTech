@@ -21,6 +21,9 @@ if (isset($_POST["submit"])) {
         // Converte para int
         $finalNumber = intval($normalizedNumber);
 
+        if($finalNumber < 1000){
+            $orcamento = 0;
+        }else
         $orcamento = number_format($finalNumber, 0, ',', '.');
     }
     $combustivel = $_POST["combustivel"];

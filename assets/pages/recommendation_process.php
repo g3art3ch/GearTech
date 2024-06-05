@@ -1,13 +1,13 @@
 <?php
 include('connection_cars.php');
-if (isset($_POST["submit"])) {
 
+
+if (isset($_POST["submit"])) {
     $estilo = $_POST["estilo"];
     $value = $_POST["orcamento"];
     if ($value == null) {
         header("Location: /GearTech/index.php?error=Preencha todos os campos");
     } else{
-    
         $textWithoutLastTwoChars = substr($value, 0, -2);
                 // Remove todos os pontos
                 $numberWithoutDots = str_replace('.', '', $textWithoutLastTwoChars);
@@ -18,7 +18,11 @@ if (isset($_POST["submit"])) {
                 // Converte para int
                 $finalNumber = intval($normalizedNumber);
 
+                if($finalNumber < 1000){
+                    $orcamento = 0;
+                }else
                 $orcamento = number_format($finalNumber, 0, ',', '.');
+                
 }
 
     $combustivel = $_POST["combustivel"];
@@ -34,6 +38,8 @@ if (isset($_POST["submit"])) {
     }
 
 
+
+    
 
     $sql_code = "SELECT 
         nc.nome,
@@ -63,8 +69,6 @@ if (isset($_POST["submit"])) {
 $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 $quantidade = $sql_query->num_rows;
 
-echo $quantidade;
-
 
     if ($quantidade > 0) {
         // Inicia a sessão e armazena os resultados
@@ -82,10 +86,9 @@ echo $quantidade;
     $_SESSION['capacidade'] = $result['capacidade'];
     $_SESSION['tipoUso'] = $result['tipoUso'];
 
+
+
     header("Location: /GearTech/assets/pages/recommendation.php");
-
-        
-
 
     }else
     header("Location: /GearTech/index.php?error=Nenhum resultado encontrado.");
