@@ -29,8 +29,8 @@
 }
 
 .logotipos img {
-    width: 100px; /* Defina a largura desejada */
-    height: 100px; /* Defina a altura desejada */
-    object-fit: contain; /* Garante que a imagem se ajuste ao contêiner mantendo a proporção */
-    padding: 10px; /* Espaçamento opcional ao redor da imagem */
+    width: 100px;
+    height: 100px; 
+    object-fit: contain;
+    padding: 10px; 
 }
