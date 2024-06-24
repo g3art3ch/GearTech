@@ -1,3 +1,24 @@
+.logout-area {
+    border: none;
+    display: flex;
+    align-items: center;
+    color: var(--secondary);
+}
+
+.logout-area:hover {
+    background-color: transparent;
+    color: var(--secondary);
+}
+
+.logout-area img {
+    width: 30px;
+}
+
+.logout-area p {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
 .user {
     padding-top: 40px;
 }

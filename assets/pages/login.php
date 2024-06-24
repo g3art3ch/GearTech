@@ -1,45 +1,42 @@
-<?php 
+<?php
 
-    include('connection.php');
+include('connection.php');
 
-    if(isset($_POST['email']) || isset($_POST['senha'])) {
+if (isset($_POST['email']) || isset($_POST['senha'])) {
 
-        if(strlen($_POST['email']) == 0) {
-            echo "<script> window.alert('Preencha seu email!');</script>";
-        } else if(strlen($_POST['senha']) == 0) {
-            echo "<script> window.alert('Preencha sua senha!');</script>";
-        } else {
-    
-            $email = $mysqli->real_escape_string($_POST['email']);
-            $senha = $mysqli->real_escape_string($_POST['senha']);
-    
-            $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
-            $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-    
-            $quantidade = $sql_query->num_rows;
-    
-            if($quantidade == 1) {
-                
-                $usuario = $sql_query->fetch_assoc();
-    
-                if(!isset($_SESSION)) {
-                    session_start();
-                }   
-    
-                $_SESSION['id'] = $usuario['id'];
-                $_SESSION['nomeUsuario'] = $usuario['nomeUsuario'];
-                $_SESSION['email'] = $usuario['email'];
-                $_SESSION['senha'] = $usuario['senha'];
-    
-                header("Location: /GearTech/assets/pages_connected/connected.php");
-    
-            } else {
-                echo "Falha ao logar! E-mail ou senha incorretos";
+    if (strlen($_POST['email']) == 0) {
+        echo "<script> window.alert('Preencha seu email!');</script>";
+    } else if (strlen($_POST['senha']) == 0) {
+        echo "<script> window.alert('Preencha sua senha!');</script>";
+    } else {
+
+        $email = $mysqli->real_escape_string($_POST['email']);
+        $senha = $mysqli->real_escape_string($_POST['senha']);
+
+        $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+
+        $quantidade = $sql_query->num_rows;
+
+        if ($quantidade == 1) {
+
+            $usuario = $sql_query->fetch_assoc();
+
+            if (!isset($_SESSION)) {
+                session_start();
             }
-    
+
+            $_SESSION['id'] = $usuario['id'];
+            $_SESSION['nomeUsuario'] = $usuario['nomeUsuario'];
+            $_SESSION['email'] = $usuario['email'];
+            $_SESSION['senha'] = $usuario['senha'];
+
+            header("Location: /GearTech/assets/pages_connected/connected.php");
+        } else {
+            echo "Falha ao logar! E-mail ou senha incorretos";
         }
-    
     }
+}
 
 ?>
 
@@ -47,6 +44,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,12 +55,15 @@
     <link rel="stylesheet" href="../css/main/main.css">
     <link rel="stylesheet" href="../css/main/header.css">
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Faça seu login</title>
 </head>
+
 <body>
-    <header>
-        <div class="container">
+    <main>
+    <div class="container">
+        <header>
             <div class="area">
                 <div class="logo">
                     <a href="/GearTech/index.php">
@@ -89,21 +90,22 @@
                         <div class="user-enter">
                             <a href="/GearTech/index.php">
                                 <img src="/GearTech/assets/icons/user.svg" alt="">
-                                <a href="/GearTech/index.php" class="red">Voltar à página inicial</a>
+                                <a href="/GearTech/index.php" class="login-account">Voltar à página inicial</a>
                             </a>
                         </div>
-                        
+
                     </li>
                 </ul>
             </nav>
-        </div>
-    </header>
+        </header>
+    </div>
+
 
     <section class="login">
         <div class="container">
             <div class="box-login">
                 <div class="card">
-                   <h2><span>Seja bem vindo!</span><br>Acesse sua conta</h2>
+                    <h2><span>Seja bem vindo!</span><br>Acesse sua conta</h2>
                     <form action="" method="post">
                         <label for="">Email</label>
                         <input type="mail" name="email" placeholder="Digite seu email">
@@ -122,9 +124,37 @@
             </div>
         </div>
     </section>
-
-    
+    </main>
+    <footer>
+        <div class="container">
+            <div class="box-footer">
+                <div class="left-side-footer">
+                    <div class="links">
+                        <a href="">Termos de uso</a>
+                        <a href="">Catálogo</a>
+                        <a href="">Manutenções</a>
+                    </div>
+                    <div class="social-icons-footer">
+                        <a href=""><img src="/GearTech/assets/icons/instagram-footer.svg" alt=""></a>
+                        <a href=""><img src="/GearTech/assets/icons/email-footer.svg" alt=""></a>
+                    </div>
+                    <div class="mail-footer">
+                        Email: suporte.geartech@gmail.com
+                    </div>
+                </div>
+                <div class="right-side-footer">
+                    <h2>Sobre nós</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </p>
+                </div>
+            </div>
+            <div class="copy">
+                <a href="">© GearTech - Todos os direitos reservados</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="../js/script.js"></script>
 </body>
+
 </html>

@@ -1,69 +1,36 @@
 .brands {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
     background-color: var(--secondary);
-    margin-top: 150px;
+}
+
+.brands .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .flex-logo {
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
     align-items: center;
-    padding: 35px 0px;
 }
 
 .logotipos {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     align-items: center;
 }
 
-
 .logotipos img {
-    max-width: 100%; 
-    height: auto;
-    place-self: center;
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    .brands {
-        margin-top: 100px;
-    }
-
-    .flex-logo {
-        padding: 20px 0px;
-    }
-
-    .logotipos {
-        grid-template-columns: repeat(8, 1fr);
-        gap: 30px;
-    }
-
-    .logotipos img {
-        width: 70%;
-        place-self: center;
-        padding: 15px 0px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .brands {
-        margin-top: 70px;
-    }
-
-    .flex-logo {
-        padding: 5px 0px;
-    }
-
-   
-    .logotipos {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0;
-    }
-
-    .logotipos img {
-        width: 46%;
-        place-self: center;
-        padding: 10px 0px;
-    }
+    width: 100px; /* Defina a largura desejada */
+    height: 100px; /* Defina a altura desejada */
+    object-fit: contain; /* Garante que a imagem se ajuste ao contêiner mantendo a proporção */
+    padding: 10px; /* Espaçamento opcional ao redor da imagem */
 }

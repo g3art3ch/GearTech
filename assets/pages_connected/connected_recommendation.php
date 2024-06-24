@@ -26,9 +26,9 @@ if (!isset($_SESSION['nome'])) {
 
 
 <body>
-    <header>
-
+    <main>
         <div class="container">
+            <header>
             <div class="area">
                 <div class="logo">
                     <a href="/GearTech/assets/pages_connected/connected.php">
@@ -55,14 +55,15 @@ if (!isset($_SESSION['nome'])) {
                         <div class="user-enter">
                             <a href="/Geartech/assets/pages_connected/connected.php">
                                 <img src="/Geartech/assets/icons/user.svg" alt="">
-                                <a href="user.php"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
                             </a>
                         </div>
                     </li>
                 </ul>
             </nav>
+        </header>
         </div>
-    </header>
+    
 
     <section class="recomendation">
         <div class="container">
@@ -103,10 +104,12 @@ if (!isset($_SESSION['nome'])) {
                 </div>";
 
 
-                    echo "<a href=>Saiba mais</a>";
-                    echo "</div>";
-                    echo "</div>";
-                }
+                echo '<div class="box-saiba-mais">';
+                echo '<a href="#">Saiba mais</a>';
+                echo '</div>';  
+                echo "</div>";
+                echo "</div>";
+            }
             } else {
                 echo "<p>Nenhuma recomendação disponível.</p>";
             }
@@ -115,7 +118,7 @@ if (!isset($_SESSION['nome'])) {
         </div>
 
     </section>
-
+    </main>
     <footer>
         <div class="container">
             <div class="box-footer">

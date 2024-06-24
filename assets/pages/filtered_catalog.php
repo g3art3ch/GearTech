@@ -116,45 +116,46 @@ WHERE Marca = '$marca'
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="area">
-                <div class="logo">
-                    <a href="../pages_connected/logout.php">
-                        <img src="../images/logo.svg" alt="" />
-                    </a>
-                </div>
-                <div class="menu-opener">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+    <main>
+        <header>
+            <div class="container">
+                <div class="area">
+                    <div class="logo">
+                        <a href="../pages_connected/logout.php">
+                            <img src="../images/logo.svg" alt="" />
+                        </a>
                     </div>
-                    <div class="close-icon">
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="catalog.php">Catálogo</a></li>
-                    <li><a href="">Manutenções</a></li>
-                    <li>
-                        <div class="user-enter">
-                            <a href="/GearTech/assets/pages/login.php">
-                                <img src="/GearTech/assets/icons/user.svg" alt="">
-                                <a href="/GearTech/assets/pages/login.php" class="red">Entre em sua conta</a>
-                            </a>
+                    <div class="menu-opener">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+                        <div class="close-icon">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="catalog.php">Catálogo</a></li>
+                        <li><a href="">Manutenções</a></li>
+                        <li>
+                            <div class="user-enter">
+                                <a href="/GearTech/assets/pages/login.php">
+                                    <img src="/GearTech/assets/icons/user.svg" alt="">
+                                    <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua conta</a>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-    <section class="recomendation">
-        <div class="container">
+        <section class="recomendation">
+            <div class="container">
                 <div class=box-recomendation>
 
                     <?php
@@ -172,7 +173,7 @@ WHERE Marca = '$marca'
                                         echo $carro['urlCarro'] . $carro['idIden'];
                                         ?>.png" alt=>
 
-                    <?php
+                        <?php
                             echo '</div>';
                             echo '<div class=desc-recomendation>';
                             echo "<div class=title-card-recomendation>" . $carro['nome'] . "</div>";
@@ -184,99 +185,101 @@ WHERE Marca = '$marca'
                     <p>Uso: " . $carro['tipoUso'] . "</p>
                     
                 </div>";
+                            echo '<div class="box-saiba-mais">';
                             echo "<a href=car_info.php?id={$carro['idIden']}>Saiba mais</a>";
+                            echo '</div>';
                             echo "</div>";
                             echo "</div>";
                         }
-                    
-                    ?>
+
+                        ?>
                 </div>
-                <?php
-                } else
-            echo '
+            <?php
+                    } else
+                        echo '
                     <div class = NoCar>
                     <h1>Nenhum carro encontrado</h1>
                     </div>
                     ';
 
-                ?>
-    </section>
+            ?>
+        </section>
 
-    <div class="pagination">
-        <div class="box-pagination">
-            <?php
-            $lim_pag = 4;
-            $consulta = "SELECT * FROM identificador WHERE Marca = '$marca'";
-            $result = $mysqli->query($consulta);
-            $total_registros = $result->num_rows;
-            $total_paginas = Ceil($total_registros / $limite);
-            $inicio = ((($pagina - $lim_pag) > 1) ? $pagina - $lim_pag : 1);
-            $fim = ((($pagina + $lim_pag) < $total_paginas) ? $pagina + $lim_pag : $total_paginas);
+        <div class="pagination">
+            <div class="box-pagination">
+                <?php
+                $lim_pag = 4;
+                $consulta = "SELECT * FROM identificador WHERE Marca = '$marca'";
+                $result = $mysqli->query($consulta);
+                $total_registros = $result->num_rows;
+                $total_paginas = Ceil($total_registros / $limite);
+                $inicio = ((($pagina - $lim_pag) > 1) ? $pagina - $lim_pag : 1);
+                $fim = ((($pagina + $lim_pag) < $total_paginas) ? $pagina + $lim_pag : $total_paginas);
 
-            echo '<p align="center">';
+                echo '<p align="center">';
 
 
-            if ($total_registros >= $limite) {
-                if ($pagina > 1) {
-                    echo '<a href="filtered_catalog.php">Página Inicial</a> ';
-                    echo "\t";
-                }
-                if ($total_paginas > 1 && $pagina <= $total_paginas) {
-                    for ($i = $inicio; $i <= $fim; $i++) {
-                        if ($pagina == $i) {
-                            echo " " . $i . " ";
-                        } else {
-                            echo '<a href="filtered_catalog.php?pag=' . $i . '"> ' . $i . '</a>';
+                if ($total_registros >= $limite) {
+                    if ($pagina > 1) {
+                        echo '<a href="filtered_catalog.php">Página Inicial</a> ';
+                        echo "\t";
+                    }
+                    if ($total_paginas > 1 && $pagina <= $total_paginas) {
+                        for ($i = $inicio; $i <= $fim; $i++) {
+                            if ($pagina == $i) {
+                                echo " " . $i . " ";
+                            } else {
+                                echo '<a href="filtered_catalog.php?pag=' . $i . '"> ' . $i . '</a>';
+                            }
                         }
                     }
-                }
-                if ($pagina != $total_paginas) {
-                    echo "\t";
-                    echo '<a href="filtered_catalog.php?pag=' . $total_paginas . '"> Última página</a>';
-                }
-            } else
+                    if ($pagina != $total_paginas) {
+                        echo "\t";
+                        echo '<a href="filtered_catalog.php?pag=' . $total_paginas . '"> Última página</a>';
+                    }
+                } else
 
 
 
 
-                echo '</p>';
-            session_destroy();
-            ?>
-        </div>
-    </div>
-
-    <footer>
-        <div class="container">
-            <div class="box-footer">
-                <div class="left-side-footer">
-                    <div class="links">
-                        <a href="">Termos de uso</a>
-                        <a href="">Catálogo</a>
-                        <a href="">Manutenções</a>
-                    </div>
-                    <div class="social-icons-footer">
-                        <a href=""><img src="../icons/instagram-footer.svg" alt=""></a>
-                        <a href=""><img src="../icons/email-footer.svg" alt=""></a>
-                    </div>
-                    <div class="mail-footer">
-                        Email: suporte.geartech@gmail.com
-                    </div>
-                </div>
-                <div class="right-side-footer">
-                    <h2>Sobre nós</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.
-                    </p>
-                </div>
-            </div>
-            <div class="copy">
-                <a href="">© GearTech - Todos os direitos reservados</a>
+                    echo '</p>';
+                session_destroy();
+                ?>
             </div>
         </div>
-    </footer>
-    <script src="../js/script.js"></script>
-
+        </main>
+        <footer>
+            <div class="container">
+                <div class="box-footer">
+                    <div class="left-side-footer">
+                        <div class="links">
+                            <a href="">Termos de uso</a>
+                            <a href="">Catálogo</a>
+                            <a href="">Manutenções</a>
+                        </div>
+                        <div class="social-icons-footer">
+                            <a href=""><img src="../icons/instagram-footer.svg" alt=""></a>
+                            <a href=""><img src="../icons/email-footer.svg" alt=""></a>
+                        </div>
+                        <div class="mail-footer">
+                            Email: suporte.geartech@gmail.com
+                        </div>
+                    </div>
+                    <div class="right-side-footer">
+                        <h2>Sobre nós</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                            of type and scrambled it to make a type specimen book.
+                        </p>
+                    </div>
+                </div>
+                <div class="copy">
+                    <a href="">© GearTech - Todos os direitos reservados</a>
+                </div>
+            </div>
+        </footer>
+        <script src="../js/script.js"></script>
+    
 </body>
 
 </html>

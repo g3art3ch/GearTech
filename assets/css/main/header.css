@@ -60,7 +60,6 @@ header .close-icon span:last-child {
 }
 
 header nav {
-    background-color: var(--background);
     color: var(--third);
     overflow-y: hidden;
     max-height: 0;
@@ -88,45 +87,35 @@ header nav a {
     font-weight: 500;
 }
 
+.user-enter {
+    display: flex;
+    align-items: center;
+}
+
+.user-enter img  {
+    display: none;
+}
+
 header nav a:hover {
     opacity: 0.8;
 }
 
-.red {
-    font-weight: 700;
-    margin-right: 7px;
-}
-
-header .user-enter {
-    display: flex;
+.login-account {
+    color: var(--secondary);
+    font-weight: 600;
 }
 
 header .user-enter a {
     color: var(--secondary);
 }
 
-.dropdown-menu li {
-    padding: 2px 0px;
-    margin-top: 10px;
-}
-
-
-.dropdown-menu a {
-    padding: 0;
-    border: none;
-    color: var(--third);
-    font-weight: 500;
-    
-}
-
-.arrow-dowm {
-    width: 12px;
-}
 
 @media (width > 900px) {
 
     header {
         padding: 35px 0px 20px;
+        display: flex;
+        justify-content: space-between;
     }
 
     header .menu-opener {
@@ -137,59 +126,45 @@ header .user-enter a {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 100%;
     }
 
     header .area {
         padding: 0;
     }
 
-    header .logo img {
-        margin: 0;
-    }
-
     header nav {
         max-height: 100vh;
-        padding: 0;
     }
 
     header nav ul {
         align-items: center;
         flex-direction: row;
         padding-bottom: 0;
+        gap: 50px;
     }
 
-    header nav li {
-        padding: 16px 28px;
-    }
-
-    header nav a {
+    header ul a {
+        font-size: 15px;
         border: 1px solid var(--third);
         border-radius: 3px;
-        padding: 12px 40px;
-        font-size: 15px;
-        font-weight: 500;
+        padding: 12px 33px;
     }
 
-    header nav a:hover {
+    header ul a:hover {
         background-color: var(--third);
-        color: var(--white);
+        color: #fff;
         transition: 0.2s;
     }
 
-    header nav li img {
-        width: 31px;
-    }
-
-    .user-enter {
-        display: flex;
-        align-items: center;
+    .user-enter img {
+        display: block;
     }
 
     .user-enter a {
         border: none;
-        color: var(--secondary);
         padding: 0;
-        padding-left: 13px;
+        margin-left: 10px;
     }
 
     .user-enter a:hover {
@@ -197,41 +172,5 @@ header .user-enter a {
         color: var(--secondary);
     }
 
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        text-align: right;
-    }
-
-    .options-dropdowm {
-        width: 218px;
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-    }
-
-    .dropdown-menu li {
-        padding: 0px;
-    }
-
-    .dropdown-menu a {
-        padding: 0;
-        border: none;
-        color: var(--third);
-        font-weight: 500;
-    }
-
-    .dropdown-menu a:hover {
-        background-color: transparent;
-        color: var(--secondary);
-    }
-
-    .arrow-dowm {
-        width: 12px;
-    }
-
-    .arrow-dowm:hover {
-        cursor: pointer;
-    }
 
 }

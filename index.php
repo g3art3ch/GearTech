@@ -21,8 +21,9 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
+    <main>
+    <div class="container">
+        <header>
             <div class="area">
                 <div class="logo">
                     <a href="index.php">
@@ -47,23 +48,15 @@
                     <li><a href="">Manutenções</a></li>
                     <li class="dropdown">
                         <div class="user-enter">
-                            <a href="assets/pages/login.php">
-                                <img src="assets/icons/user.svg" alt="">
-                                <a href="assets/pages/login.php" class="red">Entre em sua conta</a>
-                                <img src="assets/icons/dowm-arrow.svg" alt="" class="arrow-dowm">
-                            </a>
+                            <img src="/GearTech/assets/icons/user.svg" alt="">
+                            <a href="assets/pages/login.php" class="login-account">Entre em sua conta</a>
                         </div>
-                        <ul class="dropdown-menu">
-                            <div class="options-dropdowm">
-                                <li><a href="#" onclick="exibirAlerta()">Minha conta</a></li>
-                                <li><a href="#" onclick="exibirAlerta()">Sair</a></li>
-                            </div>
-                        </ul>
                     </li>
                 </ul>
             </nav>
-        </div>
-    </header>
+        </header>
+    </div>
+
 
     <section class="banner">
         <div class="container">
@@ -87,11 +80,11 @@
             <div class="card-filter">
                 <form action="assets/pages/recommendation_process.php" method="post" class="box-filter">
                     <div class="error-register-index">
-                    <?php 
+                        <?php
                         if (isset($_GET['error'])) {
                             echo "<p  style='color:red;'>" . $_GET['error'] . "</p>";
                         }
-                    ?>
+                        ?>
                     </div>
 
                     <div class="group-1">
@@ -112,7 +105,7 @@
                                 <img src="assets/icons/money.svg" alt="">
                                 <div class="title-headline">Orçamento disponível</div>
                             </div>
-                            <input type="text" id="preco_input" name="orcamento" placeholder="R$ 000.000,00" maxlength="10">
+                            <input type="text" id="preco_input" name="orcamento" placeholder="R$ 000.000,00" maxlength="10" >
                         </div>
                         <div class="itens-filter">
                             <div class="headline">
@@ -260,7 +253,6 @@
                     <img src="assets/images/bmw-logo.svg" alt="">
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -310,7 +302,7 @@
             </div>
         </div>
     </section>
-
+    </main>
     <footer>
         <div class="container">
             <div class="box-footer">
@@ -341,11 +333,7 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
-    <script>
-        function exibirAlerta() {
-            window.alert("Você precisa estar logado");
-        }
-    </script>
-</body>
+    
+   </body>
 
 </html>

@@ -1,13 +1,12 @@
 .filter {
     background-color: var(--foreground);
-    padding-bottom: 65px;
+    padding: 65px 0px;
 }
 
 .title-filter {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
 }
 
 .title-filter h2 {
@@ -25,16 +24,15 @@
 }
 
 .box-filter {
-    padding: 65px;
+    padding: 58px;
 }
-
 
 .group-1,
 .group-2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
+    gap: 35px;
 }
 
 .group-2 {
@@ -43,6 +41,7 @@
 
 .headline {
     display: flex;
+    align-items: center;
     margin-bottom: 8px;
 }
 
@@ -87,17 +86,15 @@
     opacity: 0.8;
 }
 
-@media (max-width: 768px) {
-    .title-filter {
-        padding-top: 40px; 
-    }
+@media (max-width: 900px) {
+  
 
     .title-filter h2 {
         font-size: 28px;
     }
     
     .box-filter {
-        padding: 50px; 
+        padding: 40px; 
     }
 
     .group-1,
@@ -110,10 +107,6 @@
         margin-top: 40px; 
     }
 
-    .headline .title-headline {
-        margin-bottom: 8px; 
-    }
-
     .itens-filter {
         max-width: none; 
     }
@@ -122,7 +115,8 @@
 @media (max-width: 480px) {
 
     .filter {
-        padding: 10px;
+        padding-top: 10px;
+        padding-bottom: 45px;
     }
 
     .group-1,
@@ -132,7 +126,7 @@
 
     .group-2 {
         margin: 0;
-        padding-top: 40px;
+        padding-top: 30px;
     }
 
     .title-filter h2 {
@@ -140,7 +134,7 @@
     }
 
     .box-filter {
-        padding: 30px 16px;
+        padding: 25px;
     }
 
     .title-filter {

@@ -28,49 +28,45 @@ include('protect.php');
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="area">
-                <div class="logo">
-                    <a href="/GearTech/assets/pages_connected/connected.php">
-                        <img src="/GearTech/assets/images/logo.svg" alt="" />
-                    </a>
+    <main>
+    <div class="container">
+        <header>
+        <div class="area">
+            <div class="logo">
+                <a href="/GearTech/assets/pages_connected/connected.php">
+                    <img src="/GearTech/assets/images/logo.svg" alt="Logo" />
+                </a>
+            </div>
+            <div class="menu-opener">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="menu-opener">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div class="close-icon">
-                        <span></span>
-                        <span></span>
-                    </div>
+                <div class="close-icon">
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
-                    <li><a href="">Manutenções</a></li>
-                    <li class="dropdown">
-                        <div class="user-enter">
-                            <a href="user.php">
-                                <img src="/GearTech/assets/icons/user.svg" alt="">
-                                <a href="user.php"><?php echo $_SESSION['nomeUsuario']; ?></a>
-                                <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" class="arrow-dowm">
-                            </a>
-                        </div>
-                        <ul class="dropdown-menu">
-                            <div class="options-dropdowm">
-                                <li><a href="user.php">Minha conta</a></li>
-                                <li><a href="logout.php">Sair</a></li>
-                            </div>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
         </div>
+        <nav>
+            <ul>
+                <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
+                <li><a href="">Manutenções</a></li>
+                <li>
+                    <div class="user-enter">
+                        <a href="user.php">
+                            <img src="/GearTech/assets/icons/user.svg" alt="Usuário">
+                            <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                        </a>
+                    </div>
+    
+                </li>
+            </ul>
+        </nav>
     </header>
+    </div>
+
 
     <section class="banner">
         <div class="container">
@@ -319,7 +315,7 @@ include('protect.php');
             </div>
         </div>
     </section>
-
+    </main>
     <footer>
         <div class="container">
             <div class="box-footer">

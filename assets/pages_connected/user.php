@@ -1,10 +1,11 @@
-<?php 
-    include('connection.php');
-    include('protect.php');
+<?php
+include('connection.php');
+include('protect.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,12 +19,14 @@
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Minha conta</title>
 </head>
+
 <body>
-    <header>
-        <div class="container">
+    <main>
+    <div class="container">
+        <header>
             <div class="area">
                 <div class="logo">
-                <a href="/Geartech/assets/pages_connected/connected.php">
+                    <a href="/Geartech/assets/pages_connected/connected.php">
                         <img src="../images/logo.svg" alt="" />
                     </a>
                 </div>
@@ -42,31 +45,30 @@
             <nav>
                 <ul>
                     <li>
-                        <div class="user-enter">
-                            <a href="/GearTech/index.php">                                
-                                <img src="/GearTech/assets/icons/logout.svg" alt="">
-                                <a href="logout.php" class="red">Encerrar sessão</a>
-                            </a>
-                        </div>
+                        <a href="/GearTech/index.php" class="logout-area">
+                            <img src="../icons/logout.svg" alt="">
+                            <p>Encerrar sessão</p>
+                        </a>
                     </li>
                 </ul>
             </nav>
-        </div>
-    </header>
-    
+        </header>
+    </div>
+
+
     <section class="user">
         <div class="container">
-                <div class="title-user">
-                    <h2>Minha Conta</h2>
-                </div>
-                <div class="box-user">
+            <div class="title-user">
+                <h2>Minha Conta</h2>
+            </div>
+            <div class="box-user">
                 <div class="card-user pessoal">
                     <h2>Informações Pessoais</h2>
                     <div class="user-data">
                         <label for="">Nome completo</label>
-                        <input type="text" value="<?php echo $_SESSION['nomeUsuario'];?>" readonly>
+                        <input type="text" value="<?php echo $_SESSION['nomeUsuario']; ?>" readonly>
                         <label for="" id="email">Email</label>
-                        <input type="email" value="<?php echo $_SESSION['email'];?>" readonly>
+                        <input type="email" value="<?php echo $_SESSION['email']; ?>" readonly>
                     </div>
                 </div>
                 <div class="card-user">
@@ -74,20 +76,21 @@
                     <div class="user-data">
                         <label for="">Sua Senha</label>
                         <?php
-                            $senha = $_SESSION['senha'];
-                            $asterisks = str_repeat('*', strlen($senha));
-                            echo '<input type=text  value=' . $asterisks . ' readonly>';
+                        $senha = $_SESSION['senha'];
+                        $asterisks = str_repeat('*', strlen($senha));
+                        echo '<input type=text  value=' . $asterisks . ' readonly>';
                         ?>
                         <label for="">Edite sua senha</label>
                         <input type="text" placeholder="Nova senha">
-                        <a href="user_edit.php"><button>Confirmar alteração</button></a>
+                        <a href="#"><button>Confirmar alteração</button></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
-    
     <script src="../js/script.js"></script>
 </body>
+
 </html>

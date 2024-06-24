@@ -14,27 +14,3 @@ menuOpener.addEventListener('click', () => {
     }
 });
 
-// DROPDOWN
-document.addEventListener('DOMContentLoaded', function() {
-    var dropdown = document.querySelector('.arrow-dowm');
-    var dropdownMenu = document.querySelector('.dropdown-menu');
-
-    dropdown.addEventListener('click', function(event) {
-        event.stopPropagation(); // Impede que o evento seja propagado para o menu principal
-
-        if (dropdownMenu.style.display === 'block') {
-            dropdownMenu.style.display = 'none';
-        } else {
-            dropdownMenu.style.display = 'block';
-        }
-    });
-
-    document.addEventListener('click', function(event) {
-        if (!dropdownMenu.contains(event.target)) {
-            dropdownMenu.style.display = 'none';
-        }
-    });
-});
-
-
-

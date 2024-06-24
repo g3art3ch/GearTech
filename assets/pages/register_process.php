@@ -50,7 +50,7 @@
         header("Location: login.php");
     }
 
-    }
+}
     
     
  

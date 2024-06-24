@@ -25,9 +25,9 @@ include('protect.php');
 
 
 <body>
-    <header>
-
-        <div class="container">
+    <main>
+    <div class="container">
+        <header>
             <div class="area">
                 <div class="logo">
                     <a href="/GearTech/assets/pages_connected/connected.php">
@@ -54,14 +54,15 @@ include('protect.php');
                         <div class="user-enter">
                             <a href="/Geartech/assets/pages_connected/connected.php">
                                 <img src="/Geartech/assets/icons/user.svg" alt="">
-                                <a href="user.php"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
                             </a>
                         </div>
                     </li>
                 </ul>
             </nav>
-        </div>
-    </header>
+        </header>
+    </div>
+
 
     <section class="recomendation">
         <div class="container">
@@ -144,9 +145,9 @@ include('protect.php');
                         </div>
                     </a>
                 </div>
-    
+
                 <div class="grid-logotypes more-brands" style="display: none;">
-    
+
                     <a href="connected_filtered_catalog.php?Marca=Mitsubishi" class="content-logotypes">
                         <div>
                             <img src="/GearTech/assets/logo_images/mitsubishi.png" alt="">
@@ -201,7 +202,7 @@ include('protect.php');
                             <span>Volvo</span>
                         </div>
                     </a>
-    
+
                 </div>
             </div>
             <div class="more-logotypes">
@@ -209,7 +210,7 @@ include('protect.php');
             </div>
         </div>
     </section>
-
+    </main>
 
 
     <footer>

@@ -1,5 +1,5 @@
 .about-us {
-    padding-top: 67px;
+    padding: 60px 0px;
 }
 
 .box-about-us {
@@ -42,33 +42,30 @@
     padding-top: 17px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .box-about-us {
-        grid-template-columns: repeat(2, 1fr); /* Mudar para duas colunas */
-        gap: 40px; /* Reduzir o espaço entre os itens */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 40px;
     }
 
     .title-about-us h2 {
-        font-size: 28px; /* Reduzir o tamanho do título */
+        font-size: 28px; 
     }
 
     .about-us-group img {
-        width: 42px; /* Reduzir o tamanho da imagem */
+        width: 42px;
     }
 
     .title-about-us-group h2 {
-        font-size: 16px; /* Reduzir o tamanho do subtítulo */
+        font-size: 16px; 
     }
 
     .desc-about-us-group {
-        font-size: 14px; /* Reduzir o tamanho do texto */
+        font-size: 14px; 
     }
 }
 
 @media (max-width: 480px) {
-    .about-us {
-        padding: 10px;
-    }
 
     .box-about-us {
         grid-template-columns: 1fr;
@@ -76,10 +73,8 @@
     }
 
     .title-about-us h2 {
-        padding-top: 40px;
         font-size: 25px;
     }
-
 
     .desc-about-us-group {
         display: flex;
@@ -90,5 +85,4 @@
         width: 80%;
         font-size: 15px;
     }
-
 }

@@ -1,27 +1,30 @@
 footer {
     background-color: var(--secondary);
-    margin-top: 150px;
+    width: 100%;
+    position: relative;
+    margin-top: auto;
 }
 
 .box-footer {
     display: flex;
     justify-content: space-between;
-    padding: 55px 0px;
+    padding: 30px 0px;
+
 }
 
 .left-side-footer {
-    flex: 1;
-}
+    width: 100%;
+} 
 
 .right-side-footer {
-    flex: 1;
-}
+    width: 100%;
+} 
 
 .left-side-footer .links a {
     color: var(--white);
     text-decoration: none;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 17px;
     padding-right: 23px;
     text-align: center;
 }
@@ -34,28 +37,29 @@ footer {
 .social-icons-footer {
     display: flex;
     align-items: center;
-    padding-top: 49px;
+    padding-top: 30px;
 }
 
 .social-icons-footer img {
-    margin-right: 7px;
+    margin-right: 12px;
 }
 
 .mail-footer {
     color: var(--white);
-    font-size: 15.5px;
+    font-size: 15px;
     padding-top: 7px;
+    font-weight: 500;
 }
 
 .right-side-footer h2 {
     color: var(--white);
-    font-size: 20px;
+    font-size: 18px;
     padding-bottom: 15px;
 }
 
 .right-side-footer p {
     color: var(--white);
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
     font-weight: 400;
 }
@@ -69,20 +73,14 @@ footer {
     color: var(--white);
     text-decoration: none;
     font-weight: 600;
-    font-size: 18px;
-    padding-bottom: 10px;
+    font-size: 16px;
+    padding-bottom: 5px;
 }
 
-
 @media (max-width: 480px) {
-    footer {
-        padding: 10px;
-        margin-top: 90px;
-    }
-
     .box-footer {
         flex-direction: column;
-        padding: 40px 0px;
+        padding: 25px 0px;
     }
 
     .left-side-footer .links {
@@ -92,7 +90,7 @@ footer {
     }
 
     .left-side-footer .links a {
-        font-size: 17.5px;
+        font-size: 17px;
         padding: 0;
     }
 
@@ -105,7 +103,7 @@ footer {
     }
 
     .right-side-footer h2 {
-        font-size: 18px;
+        font-size: 17px;
     }
 
     .right-side-footer p {
@@ -116,18 +114,12 @@ footer {
     .copy a {
         font-size: 15px;
     }
-
-    
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-    footer {
-        margin-top: 100px;
-    }
-
     .box-footer {
         flex-direction: column;
-        padding: 30px 0px;
+        padding: 25px 0px;
     }
 
     .left-side-footer .links {
@@ -135,7 +127,7 @@ footer {
     }
 
     .left-side-footer .links a {
-        font-size: 17.5px;
+        font-size: 17px;
     }
 
     .right-side-footer {

@@ -22,8 +22,9 @@ include('protect.php');
 </head>
 
 <body>
-    <header>
-        <div class="container">
+    <main>
+    <div class="container">
+        <header>
             <div class="area">
                 <div class="logo">
                     <a href="../pages_connected/logout.php">
@@ -50,14 +51,15 @@ include('protect.php');
                         <div class="user-enter">
                             <a href="/GearTech/assets/pages/login.php">
                                 <img src="/GearTech/assets/icons/user.svg" alt="">
-                                <a href="/GearTech/assets/pages/login.php" class="red">Entre em sua conta</a>
+                                <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua conta</a>
                             </a>
                         </div>
                     </li>
                 </ul>
             </nav>
-        </div>
-    </header>
+        </header>
+    </div>
+
 
     <section class="recomendation">
         <div class="container">
@@ -65,9 +67,9 @@ include('protect.php');
                 <div class=box-recomendation>
 
                     <?php
-                    
 
-                     if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
+
+                    if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
                         // Loop através dos resultados e exibe as informações de cada carro
                         foreach ($_SESSION['resultados'] as $carro) {
 
@@ -90,12 +92,13 @@ include('protect.php');
                             <p>Passageiros: " . $carro['capacidade'] . "</p>
                             <p>Uso: " . $carro['tipoUso'] . "</p>
                 </div>";
-                            echo "<a href=>Saiba mais</a>";
+                            echo '<div class="box-saiba-mais">';
+                            echo '<a href="#">Saiba mais</a>';
+                            echo '</div>';  
                             echo "</div>";
                             echo "</div>";
                         }
-                    }
-                    else {
+                    } else {
                         echo "<p>Nenhuma recomendação disponível.</p>";
                     }
 
@@ -103,6 +106,8 @@ include('protect.php');
                 </div>
             </div>
     </section>
+    </main>
+
 
     <footer>
         <div class="container">

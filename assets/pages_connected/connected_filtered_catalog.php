@@ -106,9 +106,9 @@ WHERE Marca = '$marca'
 
 
 <body>
-    <header>
-
-        <div class="container">
+    <main>
+    <div class="container">
+        <header>
             <div class="area">
                 <div class="logo">
                     <a href="/GearTech/assets/pages_connected/connected.php">
@@ -135,64 +135,67 @@ WHERE Marca = '$marca'
                         <div class="user-enter">
                             <a href="/Geartech/assets/pages_connected/connected.php">
                                 <img src="/Geartech/assets/icons/user.svg" alt="">
-                                <a href="user.php"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
                             </a>
                         </div>
                     </li>
                 </ul>
             </nav>
-        </div>
-    </header>
+        </header>
+    </div>
+
 
     <section class="recomendation">
         <div class="container">
-                <div class=box-recomendation>
+            <div class=box-recomendation>
+
+                <?php
+
+
+                if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
+                    // Loop através dos resultados e exibe as informações de cada carro
+                    foreach ($_SESSION['resultados'] as $carro) {
+
+                        echo '<div class=card-recomentadion>';
+                        echo '<div class=box-image-card-recomendation>';
+                ?>
+
+                        <img src="<?php
+                                    echo $carro['urlCarro'] . $carro['idIden'];
+                                    ?>.png" alt=>
 
                     <?php
-
-
-                    if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
-                        // Loop através dos resultados e exibe as informações de cada carro
-                        foreach ($_SESSION['resultados'] as $carro) {
-
-                            echo '<div class=card-recomentadion>';
-                            echo '<div class=box-image-card-recomendation>';
-                    ?>
-
-                            <img src="<?php
-                                        echo $carro['urlCarro'] . $carro['idIden'];
-                                        ?>.png" alt=>
-
-                        <?php
-                            echo '</div>';
-                            echo '<div class=desc-recomendation>';
-                            echo "<div class=title-card-recomendation>" . $carro['nome'] . "</div>";
-                            // echo "<p>Estilo: " . $carro['estilo'] . "</p>";
-                            echo "<div class=price> R$ " . $carro['orcamento'] . "</div>";
-                            echo "<div class=info>
+                        echo '</div>';
+                        echo '<div class=desc-recomendation>';
+                        echo "<div class=title-card-recomendation>" . $carro['nome'] . "</div>";
+                        // echo "<p>Estilo: " . $carro['estilo'] . "</p>";
+                        echo "<div class=price> R$ " . $carro['orcamento'] . "</div>";
+                        echo "<div class=info>
                             <p>Combusível: " . $carro['combustivel'] . "</p>
                             <p>Passageiros: " . $carro['capacidade'] . "</p>
                             <p>Uso: " . $carro['tipoUso'] . "</p>
                     
                 </div>";
-                            echo "<a href=car_info.php?id={$carro['idIden']}>Saiba mais</a>";
+                         echo '<div class="box-saiba-mais">';
+                    echo "<a href=car_info.php?id={$carro['idIden']}>Saiba mais</a>";
+                    echo '</div>';  
                             echo "</div>";
                             echo "</div>";
                         }
 
-                        ?>
-                </div>
-            <?php
-                    } else
-                        echo '
+                    ?>
+            </div>
+        <?php
+                } else
+                    echo '
                     <div class = NoCar>
                     <h1>Nenhum carro encontrado</h1>
                     </div>
                     ';
 
-            ?>
+        ?>
 
-            
+
     </section>
 
     <div class="pagination">
@@ -237,7 +240,7 @@ WHERE Marca = '$marca'
             ?>
         </div>
     </div>
-
+    </main>
     <footer>
         <div class="container">
             <div class="box-footer">

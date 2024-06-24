@@ -1,7 +1,6 @@
-.title-recomendation {
-    padding-top: 95px;
+.recomendation {
+    padding: 50px 0px;
 }
-
 .title-recomendation h2 {
     font-weight: 800;
 }
@@ -26,37 +25,39 @@
     border-radius: 15px;
     box-shadow: var(--sombra);
     max-width: 360px;
-    max-height: 514px;
+    width: 100%; 
+    height: auto;
+    padding: 10px;
 }
 
 .desc-recomendation {
-    padding: 14px 17px 27px;
+    padding: 0px 8px;
 }
-
 .title-card-recomendation {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
 }
 
 .price {
     color: var(--secondary);
     font-weight: 700;
-    font-size: 19px;
-    padding-top: 13px;
-}
-
-.info {
-    padding-top: 17px;
-    padding-bottom: 31px;
+    font-size: 18px;
+    padding: 10px 0px;
 }
 
 .info p {
     color: var(--third);
     font-weight: 500;
     line-height: 1.4;
+    font-size: 15px;
 }
 
-.desc-recomendation a {
+.box-saiba-mais {
+    padding: 10px 0px;
+}
+
+.box-saiba-mais a{
+    display: inline-block;
     background-color: var(--secondary);
     text-decoration: none;
     color: #fff;
@@ -64,8 +65,9 @@
     font-weight: 700;
     border-radius: 5px;
     box-shadow: var(--sombra);
-    padding: 8px 27px;
+    padding: 8px 12px;
 }
+
 
 .desc-recomendation a:hover {
     opacity: 0.8;
@@ -81,7 +83,6 @@
         grid-template-columns: 1fr;
        
     }
-    
     
     .recomendation {
         padding: 20px;

@@ -19,8 +19,9 @@
     <title>Minha conta</title>
 </head>
 <body>
-    <header>
+    <main>
         <div class="container">
+            <header>
             <div class="area">
                 <div class="logo">
                 <a href="/Geartech/assets/pages_connected/connected.php">
@@ -52,8 +53,9 @@
                     </li>
                 </ul>
             </nav>
+        </header>
         </div>
-    </header>
+    
     
     <section class="user">
         <div class="container">
@@ -87,7 +89,7 @@
             </div>
         </div>
     </section>
-
+    </main>
     
     <script src="../js/script.js"></script>
 </body>

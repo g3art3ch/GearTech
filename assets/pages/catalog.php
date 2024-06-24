@@ -23,8 +23,9 @@ include('protect.php');
 </head>
 
 <body>
-    <header>
+    <main>
         <div class="container">
+            <header>
             <div class="area">
                 <div class="logo">
                     <a href="../pages_connected/logout.php">
@@ -51,14 +52,15 @@ include('protect.php');
                         <div class="user-enter">
                             <a href="/GearTech/assets/pages/login.php">
                                 <img src="/GearTech/assets/icons/user.svg" alt="">
-                                <a href="/GearTech/assets/pages/login.php" class="red">Entre em sua conta</a>
+                                <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua conta</a>
                             </a>
                         </div>
                     </li>
                 </ul>
             </nav>
+        </header>
         </div>
-    </header>
+    
 
     <section class="recomendation">
         <div class="container">
@@ -206,7 +208,7 @@ include('protect.php');
             </div>
         </div>
     </section>
-
+    </main>
     <footer>
         <div class="container">
             <div class="box-footer">
