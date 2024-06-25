@@ -57,7 +57,6 @@
         </header>
     </div>
 
-
     <section class="banner">
         <div class="container">
             <div class="area-banner">
