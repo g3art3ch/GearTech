@@ -88,12 +88,7 @@ include('protect.php');
                             <span>Byd</span>
                         </div>
                     </a>
-                    <a href="filtered_catalog.php?Marca=Caoachery" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/caoachery.png" alt="">
-                            <span>Caoa Cherry</span>
-                        </div>
-                    </a>
+                    
                     <a href="filtered_catalog.php?Marca=Chevrolet" class="content-logotypes">
                         <div>
                             <img src="/GearTech/assets/logo_images/chevrolet.png" alt="">
@@ -118,12 +113,6 @@ include('protect.php');
                             <span>Ford</span>
                         </div>
                     </a>
-                    <a href="filtered_catalog.php?Marca=Gwm" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/gwm.png" alt="">
-                            <span>GWM</span>
-                        </div>
-                    </a>
                     <a href="filtered_catalog.php?Marca=Honda" class="content-logotypes">
                         <div>
                             <img src="/GearTech/assets/logo_images/honda.png" alt="">
@@ -142,10 +131,6 @@ include('protect.php');
                             <span>Jeep</span>
                         </div>
                     </a>
-                </div>
-    
-                <div class="grid-logotypes more-brands" style="display: none;">
-    
                     <a href="filtered_catalog.php?Marca=Mitsubishi" class="content-logotypes">
                         <div>
                             <img src="/GearTech/assets/logo_images/mitsubishi.png" alt="">
@@ -158,6 +143,11 @@ include('protect.php');
                             <span>Mercedes</span>
                         </div>
                     </a>
+                </div>
+    
+                <div class="grid-logotypes more-brands" style="display: none;">
+    
+                    
                     <a href="filtered_catalog.php?Marca=Nissan" class="content-logotypes">
                         <div>
                             <img src="/GearTech/assets/logo_images/nissan.png" alt="">
@@ -194,13 +184,7 @@ include('protect.php');
                             <span>Volkswagen</span>
                         </div>
                     </a>
-                    <a href="filtered_catalog.php?Marca=Volvo" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/volvo.png" alt="">
-                            <span>Volvo</span>
-                        </div>
-                    </a>
-    
+                    
                 </div>
             </div>
             <div class="more-logotypes">
