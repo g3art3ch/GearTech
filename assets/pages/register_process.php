@@ -18,6 +18,7 @@
 
         }else{
 
+        $hash = sprintf('%07X', mt_rand(0,0xFFFFFFF));
         $nomeUsuario = $_POST['nomeUsuario'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
@@ -38,10 +39,12 @@
         }
     
         if ($nomeUsuario != null) {
-            $result = "INSERT INTO usuarios(nomeUsuario, email, senha) VALUES ('$nomeUsuario', '$email', '$senha')";
+            $result = "INSERT INTO usuarios(nomeUsuario, email, senha, status, hash, cadastro) 
+            VALUES ('$nomeUsuario', '$email', '$senha', '1', '$hash', now())";
     
             if ($mysqli->query($result) === TRUE) {
                 echo "Usuário cadastrado com sucesso.";
+                include('envia_email.php');
             } else {
                 echo "Erro ao cadastrar usuário: " . $mysqli->error;
             }

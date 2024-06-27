@@ -13,6 +13,3 @@ $mysqli = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 // } else {
 //     echo "Conectado";
 // }
-
-
-
