@@ -172,7 +172,7 @@ WHERE Marca = '$marca'
                         echo "<div class=price> R$ " . $carro['orcamento'] . "</div>";
                         echo "<div class=info>
                             <p>Combusível: " . $carro['combustivel'] . "</p>
-                            <p>Passageiros: " . $carro['capacidade'] . "</p>
+                            <p>Assentos: " . $carro['capacidade'] . "</p>
                             <p>Uso: " . $carro['tipoUso'] . "</p>
                     
                 </div>";
