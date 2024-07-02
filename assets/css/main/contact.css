@@ -16,31 +16,33 @@
 
 .area-contact {
     display: flex;
+    justify-content: space-around;
+    gap: 20px;
 }
 
 .area-contact form {
     display: flex;
     flex-direction: column;
+    
 }
 
 .left-side-contact {
-    max-width: 580px;
+    max-width: 387px;
     width: 100%;
 }
 
 .right-side-contact {
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
-    margin-left: 87px;
+    
+    margin: auto;
 }
-
 
 .card-form-contact {
     background-color: var(--cardBackground);
     border-radius: 15px;
     box-shadow: var(--shadow);
     padding: 40px;
-
 }
 
 .card-form-contact form label {
@@ -96,10 +98,9 @@
     background-color: var(--cardBackground);
     border-radius: 15px;
     box-shadow: var(--shadow);
-    max-width: 360px;
-    width: 100%;
-    padding: 40px 36px;
+    padding: 30px;
     margin-top: 50px;
+    max-width: 328px;
 }
 
 .card-channels h2 {
@@ -125,21 +126,23 @@
     display: none;
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 900px) {
 
     .area-contact {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .left-side-contact {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         max-width: unset;
     }
 
     .title-contact {
-        padding-bottom: 30px;
+        flex-direction: column;
+        display: flex;
+        padding: 0;
     }
 
     .title-contact h2 {
@@ -156,17 +159,35 @@
         width: 100%;
     }
 
+    .desc-contact {
+        display: none;
+    }
+
+    .desc-contact-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .desc-contact-mobile p {
+        text-align: center;
+        color: var(--third);
+        width: 90%;
+        padding: 15px 0px;
+    }
+
 }
 
 @media (max-width: 480px) {
 
     .area-contact {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .title-contact {
         padding-bottom: 18px;
+        flex-direction: column;
     }
 
     .title-contact h2 {
@@ -185,7 +206,7 @@
         text-align: center;
         color: var(--third);
         width: 90%;
-        padding-bottom: 30px;
+        padding: 15px 0px;
     }
 
     .card-form-contact form textarea {

@@ -19,6 +19,7 @@ include('protect.php');
     <link rel="stylesheet" href="/GearTech/assets/css/main/banner.css">
     <link rel="stylesheet" href="/GearTech/assets/css/main/filter.css">
     <link rel="stylesheet" href="/GearTech/assets/css/main/brands.css">
+    <link rel="stylesheet" href="/GearTech/assets/css/main/popular-cars.css">
     <link rel="stylesheet" href="/GearTech/assets/css/main/about-us.css">
     <link rel="stylesheet" href="/GearTech/assets/css/main/contact.css">
     <link rel="stylesheet" href="/GearTech/assets/css/main/footer.css">
@@ -185,135 +186,249 @@ include('protect.php');
                 </div>
     </section>
 
-    <section class="about-us">
-        <div class="container">
-            <div class="title-about-us">
-                <h2>Entenda o porquê a GearTech <br> foi feita para você</h2>
-            </div>
-            <div class="box-about-us">
-                <div class="about-us-group">
-                    <div class="box-about-us-image">
-                        <img src="/GearTech/assets/icons/globe.svg" alt="">
-                    </div>
-                    <div class="title-about-us-group">
-                        <h2>As melhores <br>marcas</h2>
-                    </div>
-                    <div class="desc-about-us-group">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
-                            accusamus,
-                            labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
-                            exercitationem placeat quibusdam maiores!</p>
-                    </div>
+    <section class="popular-cars">
+            <div class="container">
+                <div class="title-popular-cars">
+                    <h2>Carros mais vendidos <br>no ultimo semestre</h2>
+                    <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais veículos lideram as listas de mais vendidos.</p>
                 </div>
-                <div class="about-us-group">
-                    <div class="box-about-us-image">
-                        <img src="/GearTech/assets/icons/hand.svg" alt="">
-                    </div>
-                    <div class="title-about-us-group">
-                        <h2>Atenda a sua <br> necessidade</h2>
-                    </div>
-                    <div class="desc-about-us-group">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
-                            accusamus,
-                            labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
-                            exercitationem placeat quibusdam maiores!</p>
-                    </div>
-                </div>
-                <div class="about-us-group">
-                    <div class="box-about-us-image">
-                        <img src="/GearTech/assets/icons/phone.svg" alt="">
-                    </div>
-                    <div class="title-about-us-group">
-                        <h2>Prático, intuivo e <br> muito fácil</h2>
-                    </div>
-                    <div class="desc-about-us-group">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
-                            accusamus,
-                            labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
-                            exercitationem placeat quibusdam maiores!</p>
-                    </div>
-                </div>
-                <div class="about-us-group">
-                    <div class="box-about-us-image">
-                        <img src="/GearTech/assets/icons/brain.svg" alt="">
-                    </div>
-                    <div class="title-about-us-group">
-                        <h2>Facilita sua <br> decisão</h2>
-                    </div>
-                    <div class="desc-about-us-group">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
-                            accusamus,
-                            labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
-                            exercitationem placeat quibusdam maiores!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="brands">
-        <div class="container">
-            <div class="flex-logo">
-                <div class="logotipos">
-                    <img src="/GearTech/assets/images/honda.svg" alt="">
-                    <img src="/GearTech/assets/images/volkswagen.svg" alt="">
-                    <img src="/GearTech/assets/images/renault.svg" alt="">
-                    <img src="/GearTech/assets/images/fiat-logo.svg" alt="">
-                    <img src="/GearTech/assets/images/hyundai-logo.svg" alt="">
-                    <img src="/GearTech/assets/images/chevrolet-logo.svg" alt="">
-                    <img src="/GearTech/assets/images/ford.svg" alt="">
-                    <img src="/GearTech/assets/images/bmw-logo.svg" alt="">
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="contact">
-        <div class="title-contact">
-            <h2>Ficou com alguma dúvida?<br>Entre em contato conosco</h2>
-        </div>
-
-        <div class="container">
-            <div class="area-contact">
-                <div class="desc-contact-mobile">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ipsum, nemo in minima necessitatibus magnam nostrum, ipsam quod</p>
-                </div>
-
-                <div class="left-side-contact">
-                    <div class="card-form-contact">
-                        <form action="">
-                            <label for="">Nome completo</label>
-                            <input type="text">
-                            <label for="">Email</label>
-                            <input type="email" name="" id="">
-                            <label for="">Assunto</label>
-                            <input type="text">
-                            <label for="">Mensagem</label>
-                            <textarea name="" id="" cols="20" rows="10"></textarea>
-                            <button type="submit">Enviar</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="right-side-contact">
-                    <div class="desc-contact">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
-                    </div>
-
-                    <div class="card-channels">
-                        <h2>Nosos canais</h2>
-                        <div class="box-icons-channels">
-                            <img src="/GearTech/assets/icons/email.svg" alt="">
-                            <img src="/GearTech/assets/icons/instagram.svg" alt="">
+                <div class="grid-popular-cars">
+                    <div class="card-popular-cars">
+                        <div class="box-image-popular-cars">
+                            <img src="../car_images/Volkswagen_Nivus_1.0_200_TSI_Comfortline_2024.png" alt="">
                         </div>
-                        <p>Email: suporte.geartech@gmail.com</p>
-                        <p>Instagram: @geartech</p>
+                        <div class="box-description-popular-cars">
+                            <div class="title-card-popular-cars">
+                                <h2>Volkswagen Nivus 2024</h2>
+                            </div>
+                            <div class="group-popular-cars">
+                                <div class="info-popular-cars">
+                                    <img src="../icons/passager.svg" alt="">
+                                    <p>4 passageiros</p>
+                                </div>
+                                <div class="info-popular-cars">
+                                    <img src="../icons/cambio.svg" alt="">
+                                    <p>Automático</p>
+                                </div>
+                                <div class="info-popular-cars">
+                                    <img src="../icons/car-door.svg" alt="">
+                                    <p>2 passageiros</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="price-popular-cars">
+                                <p>Preço</p>
+                                <span>R$ 175.000</span>
+                            </div>
+                            <div class="more-info-popular-cars">
+                                <a href="">Saiba mais</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="card-popular-cars">
+                        <div class="box-image-popular-cars">
+                            <img src="../car_images/Hyundai_Creta_1.6_Action_(Aut)_2024.png" alt="">
+                        </div>
+                        <div class="box-description-popular-cars">
+                            <div class="title-card-popular-cars">
+                                <h2>Hyundai Creta 2024</h2>
+                            </div>
+                            <div class="group-popular-cars">
+                                <div class="info-popular-cars">
+                                    <img src="../icons/passager.svg" alt="">
+                                    <p>4 passageiros</p>
+                                </div>
+                                <div class="info-popular-cars">
+                                    <img src="../icons/cambio.svg" alt="">
+                                    <p>Automático</p>
+                                </div>
+                                <div class="info-popular-cars">
+                                    <img src="../icons/car-door.svg" alt="">
+                                    <p>2 passageiros</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="price-popular-cars">
+                                <p>Preço</p>
+                                <span>R$ 175.000</span>
+                            </div>
+                            <div class="more-info-popular-cars">
+                                <a href="">Saiba mais</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="card-popular-cars">
+                        <div class="box-image-popular-cars">
+                            <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
+                        </div>
+                        <div class="box-description-popular-cars">
+                            <div class="title-card-popular-cars">
+                                <h2>Volkswagen Nivus 2024</h2>
+                            </div>
+                            <div class="group-popular-cars">
+                                <div class="info-popular-cars">
+                                    <img src="../icons/passager.svg" alt="">
+                                    <p>4 passageiros</p>
+                                </div>
+                                <div class="info-popular-cars">
+                                    <img src="../icons/cambio.svg" alt="">
+                                    <p>Automático</p>
+                                </div>
+                                <div class="info-popular-cars">
+                                    <img src="../icons/car-door.svg" alt="">
+                                    <p>2 passageiros</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="price-popular-cars">
+                                <p>Preço</p>
+                                <span>R$ 175.000</span>
+                            </div>
+                            <div class="more-info-popular-cars">
+                                <a href="">Saiba mais</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>  
+        </section>
+
+
+
+        <section class="about-us">
+            <div class="container">
+                <div class="title-about-us">
+                    <h2>Entenda o porquê a GearTech <br> foi feita para você</h2>
+                </div>
+                <div class="box-about-us">
+                    <div class="about-us-group">
+                        <div class="box-about-us-image">
+                            <img src="../icons/globe.svg" alt="">
+                        </div>
+                        <div class="title-about-us-group">
+                            <h2>As melhores <br>marcas</h2>
+                        </div>
+                        <div class="desc-about-us-group">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
+                                accusamus,
+                                labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
+                                exercitationem placeat quibusdam maiores!</p>
+                        </div>
+                    </div>
+                    <div class="about-us-group">
+                        <div class="box-about-us-image">
+                            <img src="../icons/hand.svg" alt="">
+                        </div>
+                        <div class="title-about-us-group">
+                            <h2>Atenda a sua <br> necessidade</h2>
+                        </div>
+                        <div class="desc-about-us-group">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
+                                accusamus,
+                                labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
+                                exercitationem placeat quibusdam maiores!</p>
+                        </div>
+                    </div>
+                    <div class="about-us-group">
+                        <div class="box-about-us-image">
+                            <img src="../icons/phone.svg" alt="">
+                        </div>
+                        <div class="title-about-us-group">
+                            <h2>Prático, intuivo e <br> muito fácil</h2>
+                        </div>
+                        <div class="desc-about-us-group">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
+                                accusamus,
+                                labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
+                                exercitationem placeat quibusdam maiores!</p>
+                        </div>
+                    </div>
+                    <div class="about-us-group">
+                        <div class="box-about-us-image">
+                            <img src="../icons/brain.svg" alt="">
+                        </div>
+                        <div class="title-about-us-group">
+                            <h2>Facilita sua <br> decisão</h2>
+                        </div>
+                        <div class="desc-about-us-group">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
+                                accusamus,
+                                labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
+                                exercitationem placeat quibusdam maiores!</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="brands">
+            <div class="container">
+                <div class="flex-logo">
+                    <div class="logotipos">
+                        <img src="../images/honda.svg" alt="">
+                        <img src="../images/volkswagen.svg" alt="">
+                        <img src="../images/bmw-logo.svg" alt="">
+                        <img src="../images/fiat-logo.svg" alt="">
+                        <img src="../images/mitsubishi.svg" alt="">
+                        <img src="../images/hyundai-logo.svg" alt="">
+                        <img src="../images/ford.svg" alt="">
+                        <img src="../images/chevrolet-logo.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="contact">
+            <div class="title-contact">
+                <h2>Ficou com alguma dúvida?<br>Entre em contato conosco</h2>
+                <div class="desc-contact-mobile">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ipsum, nemo in minima necessitatibus magnam nostrum, ipsam quod</p>
+                    </div>
+
+            </div>
+
+            <div class="container">
+                <div class="area-contact">
+                    
+                    <div class="left-side-contact">
+                    <div class="desc-contact">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </p>
+                        </div>
+
+                        <div class="card-channels">
+                            <h2>Nosos canais</h2>
+                            <div class="box-icons-channels">
+                                <img src="../icons/email.svg" alt="">
+                                <img src="../icons/instagram.svg" alt="">
+                            </div>
+                            <p>Email: suporte.geartech@gmail.com</p>
+                            <p>Instagram: @g3artech</p>
+                        </div>
+                    </div>
+
+                    <div class="right-side-contact">
+                    <div class="card-form-contact">
+                            <form action="">
+                                <label for="">Nome completo</label>
+                                <input type="text">
+                                <label for="">Email</label>
+                                <input type="email" name="" id="">
+                                <label for="">Assunto</label>
+                                <input type="text">
+                                <label for="">Mensagem</label>
+                                <textarea name="" id="" cols="20" rows="10"></textarea>
+                                <button type="submit">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
     </main>
     <footer>

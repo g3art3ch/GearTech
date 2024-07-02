@@ -1,6 +1,6 @@
 .filter {
-    background-color: var(--foreground);
     padding: 65px 0px;
+    background-color: var(--foreground);
 }
 
 .title-filter {
@@ -17,14 +17,14 @@
 .card-filter {
     background-color: var(--cardBackground);
     border-radius: 15px;
-    box-shadow: var(--shadow);
+    box-shadow:0 4px 6px rgba(100, 100, 100, 0.1);
     max-width: 1240px;
     width: 100%;
     margin-top: 34px;
 }
 
 .box-filter {
-    padding: 58px;
+    padding: 40px;
 }
 
 .group-1,

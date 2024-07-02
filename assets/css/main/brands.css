@@ -1,36 +1,41 @@
 .brands {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
     background-color: var(--secondary);
-}
-
-.brands .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .flex-logo {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
     align-items: center;
+    padding: 20px 0px;
 }
 
 .logotipos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 40px;
     align-items: center;
 }
 
+
 .logotipos img {
-    width: 100px;
-    height: 100px; 
-    object-fit: contain;
-    padding: 10px; 
+    max-width: 90%; 
+    height: auto;
+}
+
+@media (max-width: 668px) {
+
+    .flex-logo {
+        padding: 5px 0px;
+    }
+
+    .logotipos {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+    }
+
+    .logotipos img {
+        width: 46%;
+        place-self: center;
+        padding: 10px 0px;
+    }
 }

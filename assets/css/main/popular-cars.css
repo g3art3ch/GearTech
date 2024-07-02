@@ -1,0 +1,144 @@
+.popular-cars {
+    padding: 30px 0px 50px;
+}
+
+.box-image-popular-cars img{
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.title-popular-cars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title-popular-cars h2 {
+    font-size: 32px;
+    text-align: center;
+}
+
+.title-popular-cars p {
+    max-width: 520px;   
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    color: var(--third);
+    font-size: 16px;
+}
+
+.grid-popular-cars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 40px;
+    padding-top: 40px;
+    width: 100%;
+}
+
+.card-popular-cars {
+    background-color: var(--cardBackground);
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%; 
+    max-width: 360px; 
+    margin: auto; 
+}
+
+.title-card-popular-cars h2{
+    font-size: 20px;
+    padding-bottom: 6px;
+}
+
+.info-popular-cars {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.group-popular-cars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.info-popular-cars p {
+    color: var(--third);
+    padding-left: 8px;
+}
+
+.card-popular-cars hr {
+    margin: 15px 0px;
+}
+
+.price-popular-cars {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 25px;;
+}
+
+.price-popular-cars p {
+    font-size: 17px;
+    color: var(--third);
+    font-weight: 500;
+}
+
+.price-popular-cars span {
+    color: var(--secondary);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.more-info-popular-cars a{
+    display: block;
+    text-align: center;
+    background-color: var(--secondary);
+    color: #fff;
+    padding: 10px 0px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 15px;
+}
+
+.more-info-popular-cars a:hover {
+    opacity: 0.8;
+}
+
+.popular-cars-catalog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.popular-cars-catalog a {
+    text-decoration: none;
+    border: 1px solid #000;
+    padding: 12px;
+    border-radius: 5px;
+    color: #000;
+    font-weight: 500;
+}
+
+.popular-cars-catalog a:hover {
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+}
+
+@media (max-width:576px) {
+
+    .grid-popular-cars {
+        grid-template-columns: 1fr;
+    }
+
+    .title-popular-cars h2{
+        font-size: 25px;
+    }
+
+    .title-popular-cars p {
+        font-size: 15px;
+    }
+}
