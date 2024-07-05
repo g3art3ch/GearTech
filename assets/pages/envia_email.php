@@ -1,5 +1,4 @@
 <?php
-
 // require __DIR__.'/../PHPMailer/PHPMailerAutoload.php';
         
 
@@ -87,18 +86,18 @@ require __DIR__.'/../PHPMailer/PHPMailerAutoload.php';
 
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
-
+$email = 'xbenettix@gmail.com';
 try {
 
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-    $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'g3art3ch@gmail.com';                     // SMTP username
-    $mail->Password   = 'GFBPTlxQJ2chL2d';                               // SMTP password
-    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-    $mail->Port       = '587';                                    // TCP port to connect to
+    $mail->isSMTP();
+$mail->Host = 'smtp.gmail.com';
+$mail->SMTPAuth = true;
+$mail->Username = 'g3art3ch@gmail.com';
+$mail->Password = 'hbho wlln srug gpha'; // Use App Password if 2FA is enabled
+$mail->SMTPSecure = 'tls'; // or PHPMailer::ENCRYPTION_SMTPS for SSL
+$mail->Port = 587; // or 465 for SSL                                  // TCP port to connect to
 
     //Recipients
     $mail->setFrom('g3art3ch@gmail.com', 'GearTech');
