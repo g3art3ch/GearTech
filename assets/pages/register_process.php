@@ -44,7 +44,7 @@
     
             if ($mysqli->query($result) === TRUE) {
                 echo "Usuário cadastrado com sucesso.";
-                include('envia_email.php');
+                require('envia_email.php');
             } else {
                 echo "Erro ao cadastrar usuário: " . $mysqli->error;
             }
