@@ -1,28 +1,4 @@
 <?php
-// require __DIR__.'/../PHPMailer/PHPMailerAutoload.php';
-        
-
-
-// $mail = new PHPMailer;
-// $mail ->isSMTP();
-// $mail ->charset = "UTF-8";
-
-
-// //Configurações do servidor de email
-
-// $mail ->Host = "smtp.gmail.com"; //Servidor SMTP do gmail
-// $mail ->Port = "587"; //Porta padrão para segurança TLS
-// $mail ->SMTPSecure = "tls"; //Método de segurança SMTP
-// $mail ->SMTPAuth = "true"; //Para login ser efetivado
-// $mail ->Username = "g3art3ch@gmail.com"; //email
-// $mail ->Password = "GFBPTlxQJ2chL2d"; //senha
-
-// //Configuração da mensagem
-
-// $mail ->setFrom($mail->Username, 'GearTech'); //Geartech remetente
-// $mail->addAdress($email); //Usuário destinatario
-// $mail->Subject = $nomeUsuario . ", ativação de cadastro"; //Assunto do email
-
 // $conteudo_email = "
 
 // <style>
@@ -81,38 +57,43 @@
 // These must be at the top of your script, not inside a function
 
 
-// Load Composer's autoloader
+// Carrega o Composer's autoloader
 require __DIR__.'/../PHPMailer/PHPMailerAutoload.php';
 
-// Instantiation and passing `true` enables exceptions
+// Instantiation and passing `true` enables exceptions 
 $mail = new PHPMailer(true);
-$email = 'xbenettix@gmail.com';
+
 try {
 
-    //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-    $mail->isSMTP();
+    //Configurações de servidor
+
+$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+$mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
 $mail->Username = 'g3art3ch@gmail.com';
-$mail->Password = 'hbho wlln srug gpha'; // Use App Password if 2FA is enabled
-$mail->SMTPSecure = 'tls'; // or PHPMailer::ENCRYPTION_SMTPS for SSL
-$mail->Port = 587; // or 465 for SSL                                  // TCP port to connect to
+$mail->Password = 'hbho wlln srug gpha'; 
+$mail->SMTPSecure = 'tls'; 
+$mail->Port = 587;                                  
 
-    //Recipients
-    $mail->setFrom('g3art3ch@gmail.com', 'GearTech');
-    $mail->addAddress($email);     // Add a recipient
+    $mail->setFrom('g3art3ch@gmail.com', 'GearTech'); //Enviador
+    $mail->addAddress($email);     //Destinatário
 
-    // Content
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    //Conteúdo
+    $mail->isHTML(true);                                  //Seta formato do email para HTML
+    $mail->Subject = 'Confrime seu e-mail';
+    $mail->Body    = 
+    
+    'Confirme esse e-mail para ativar seu cadastro em nosso site.<br><br>
+
+    Clique no Link abaixo: <br><br>
+    
+    http://localhost/GearTech/ativacao.php?hash=$hash';
 
     $mail->send();
-    echo 'Message has been sent';
+    echo 'O link de ativação de cadastro foi enviado para seu e-mail. Favor verificar sua caixa de entrada.';
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Falha ao enviar o link de ativação! Error: {$mail->ErrorInfo}";
 }
 
 
