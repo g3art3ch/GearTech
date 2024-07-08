@@ -26,173 +26,203 @@ include('protect.php');
     <main>
         <div class="container">
             <header>
-            <div class="area">
-                <div class="logo">
-                    <a href="../pages_connected/logout.php">
-                        <img src="../images/logo.svg" alt="" />
-                    </a>
-                </div>
-                <div class="menu-opener">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                <div class="area">
+                    <div class="logo">
+                        <a href="../pages_connected/logout.php">
+                            <img src="../images/logo.svg" alt="" />
+                        </a>
                     </div>
-                    <div class="close-icon">
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="">Catálogo</a></li>
-                    <li><a href="">Manutenções</a></li>
-                    <li>
-                        <div class="user-enter">
-                            <a href="/GearTech/assets/pages/login.php">
-                                <img src="/GearTech/assets/icons/user.svg" alt="">
-                                <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua conta</a>
-                            </a>
+                    <div class="menu-opener">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+                        <div class="close-icon">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="">Catálogo</a></li>
+                        <li><a href="">Manutenções</a></li>
+                        <li>
+                            <div class="user-enter">
+                                <a href="/GearTech/assets/pages/login.php">
+                                    <img src="/GearTech/assets/icons/user.svg" alt="">
+                                    <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua conta</a>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
         </div>
-    
 
-    <section class="recomendation">
-        <div class="container">
-            <div class="title-catalog">
-                <h2>Nosso catálogo</h2>
-            </div>
 
-            <div class="card-logotypes">
+        <section class="recomendation">
+            <div class="container">
+                <div class="title-catalog">
+                    <h2>Escolha a marca</h2>
+                </div>
                 <div class="grid-logotypes">
-                    <a href="filtered_catalog.php?Marca=Audi" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/audi.png" alt="">
-                            <span>Audi</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=BMW" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/bmw.png" alt="">
-                            <span>BMW</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Byd" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/byd.png" alt="">
-                            <span>Byd</span>
-                        </div>
-                    </a>
-                    
-                    <a href="filtered_catalog.php?Marca=Chevrolet" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/chevrolet.png" alt="">
-                            <span>Chevrolet</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Citroen" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/citroen.png" alt="">
-                            <span>Citroen</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Fiat" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/fiat.png" alt="">
-                            <span>Fiat</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Ford" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/ford.png" alt="">
-                            <span>Ford</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Honda" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/honda.png" alt="">
-                            <span>Honda</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Hyundai" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/hyundai.png" alt="">
-                            <span>Hyundai</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Jeep" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/jeep.png" alt="">
-                            <span>Jeep</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Mitsubishi" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/mitsubishi.png" alt="">
-                            <span>Mitsubishi</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Mercedes" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/mercedesbenz.png" alt="">
-                            <span>Mercedes</span>
-                        </div>
-                    </a>
+                    <div class="item-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=Audi" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/audi.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Audi" class="name-logotype">Audi</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/bmw.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=BMW" class="name-logotype">BMW</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Byd" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/byd.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Byd" class="name-logotype">Byd</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Chevrolet" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/chevrolet.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Chevrolet" class="name-logotype">Chevrolet</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Citroen" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/citroen.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Citroen" class="name-logotype">Citroen</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Fiat" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/fiat.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Fiat" class="name-logotype">Fiat</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Ford" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/ford.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Ford" class="name-logotype">Ford</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Honda" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/honda.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Honda" class="name-logotype">Honda</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Hyundai" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/hyundai.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Hyundai" class="name-logotype">Hyundai</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Jeep" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/jeep.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Jeep" class="name-logotype">Jeep</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Mitsubishi" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/mitsubishi.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Mitsubishi" class="name-logotype">Mitsubishi</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Mercedes" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/mercedesbenz.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Mercedes" class="name-logotype">Mercedes Benz</a>
+                    </div>
                 </div>
-    
-                <div class="grid-logotypes more-brands" style="display: none;">
-    
-                    
-                    <a href="filtered_catalog.php?Marca=Nissan" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/nissan.png" alt="">
-                            <span>Nissan</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Porsche" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/porsche.png" alt="">
-                            <span>Porsche</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Peugeot" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/peugeot.png" alt="">
-                            <span>Peugeot</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Renault" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/renault.png" alt="">
-                            <span>Renault</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Toyota" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/toyota.png" alt="">
-                            <span>Toyota</span>
-                        </div>
-                    </a>
-                    <a href="filtered_catalog.php?Marca=Volkswagen" class="content-logotypes">
-                        <div>
-                            <img src="/GearTech/assets/logo_images/volkswagen.png" alt="">
-                            <span>Volkswagen</span>
-                        </div>
-                    </a>
-                    
+
+                <div class="grid-logotypes" style="display:none">
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Nissan" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/nissan.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Nissan" class="name-logotype">Nissan</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Porsche" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/porsche.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Porsche" class="name-logotype">Porsche</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Peugeot" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/peugeot.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Peugeot" class="name-logotype">Peugeot</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Renault" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/renault.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Renault" class="name-logotype">Renault</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Toyota" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/toyota.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Toyota" class="name-logotype">Toyota</a>
+                    </div>
+                    <div class="item-logotype">
+                        <a href="filtered_catalog.php?Marca=Volkswagen" class="card-logotype">
+                            <div class="box-image-logotype">
+                                <img src="../logo_images/volkswagen.png" alt="">
+                            </div>
+                        </a>
+                        <a href="filtered_catalog.php?Marca=Volkswagen" class="name-logotype">Volkswagen</a>
+                    </div>
+                </div>
+                <div class="more-logotypes">
+                    <button id="toggleButton">Mais marcas</button>
                 </div>
             </div>
-            <div class="more-logotypes">
-                <button id="toggleButton">Mais marcas</button>
-            </div>
-        </div>
-    </section>
+        </section>
     </main>
+
     <footer>
         <div class="container">
             <div class="box-footer">
@@ -224,17 +254,15 @@ include('protect.php');
         </div>
     </footer>
     <script src="../js/script.js"></script>
-
     <script>
         document.getElementById('toggleButton').addEventListener('click', function() {
-            var moreBrands = document.querySelector('.more-brands');
+            var moreBrands = document.querySelectorAll('.grid-logotypes')[1];
             if (moreBrands.style.display === 'none' || moreBrands.style.display === '') {
                 moreBrands.style.display = 'grid';
-                this.textContent = 'Menos marcas';
             } else {
                 moreBrands.style.display = 'none';
-                this.textContent = 'Mais marcas';
             }
+            this.style.display = 'none';
         });
     </script>
 
