@@ -1,95 +1,112 @@
 .recomendation {
-    padding: 50px 0px;
+    padding: 60px 0px;
 }
+
 .title-recomendation h2 {
     font-weight: 800;
+    padding-bottom: 28px;
 }
 
-.box-recomendation {
+.grid-recomendation {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 54px;
-    padding-top: 43px;
+    gap: 50px;
     width: 100%;
+    
 }
 
-.card-recomentadion img {
+.box-image img {
     width: 100%;
     height: auto;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 
-.card-recomentadion {
+.card-recomendation {
     background-color: var(--cardBackground);
     border-radius: 15px;
-    box-shadow: var(--sombra);
+    box-shadow: var(--shadow);
     max-width: 360px;
-    width: 100%; 
+    width: 100%;
     height: auto;
     padding: 10px;
 }
 
-.desc-recomendation {
-    padding: 0px 8px;
-}
 .title-card-recomendation {
     font-size: 20px;
     font-weight: 700;
+    padding: 0px 8px;
 }
 
 .price {
     color: var(--secondary);
     font-weight: 700;
-    font-size: 18px;
-    padding: 10px 0px;
+    font-size: 19px;
+    padding: 10px 8px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    padding: 8px;
 }
 
 .info p {
     color: var(--third);
-    font-weight: 500;
-    line-height: 1.4;
     font-size: 15px;
+    font-weight: 500;
+    margin-left: 10px;
 }
 
-.box-saiba-mais {
-    padding: 10px 0px;
+.saiba-mais-recomendation {
+    padding: 15px 0px 5px;
 }
 
-.box-saiba-mais a{
+.saiba-mais-recomendation a {
     display: inline-block;
     background-color: var(--secondary);
     text-decoration: none;
     color: #fff;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
-    border-radius: 5px;
-    box-shadow: var(--sombra);
-    padding: 8px 12px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 8px 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.saiba-mais-recomendation a:hover {
+    opacity: 0.8;
 }
 
 
-.desc-recomendation a:hover {
-    opacity: 0.8;
+@media (min-width:577px) and (max-width: 868px) {
+    .grid-recomendation {
+        grid-template-columns: repeat(2,1fr);
+    }
 }
 
 @media (max-width: 576px) {
 
     .recomendation {
-        padding: 10px;
+        padding: 40px 10px;
     }
 
-    .box-recomendation {
+    .grid-recomendation {
         grid-template-columns: 1fr;
-       
     }
-    
-       .title-recomendation {
+
+    .card-recomendation {
+        margin: auto;
+    }
+
+    .title-recomendation {
         padding-top: 20px;
     }
 
     .title-recomendation h2 {
         text-align: center;
     }
-    
+
 }

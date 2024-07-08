@@ -217,7 +217,7 @@ include('protect.php');
                             </div>
                             <hr>
                             <div class="price-popular-cars">
-                                <p>Preço</p>
+                                <p>Preço:</p>
                                 <span>R$ 175.000</span>
                             </div>
                             <div class="more-info-popular-cars">
@@ -250,7 +250,7 @@ include('protect.php');
                             </div>
                             <hr>
                             <div class="price-popular-cars">
-                                <p>Preço</p>
+                                <p>Preço:</p>
                                 <span>R$ 175.000</span>
                             </div>
                             <div class="more-info-popular-cars">
@@ -283,7 +283,7 @@ include('protect.php');
                             </div>
                             <hr>
                             <div class="price-popular-cars">
-                                <p>Preço</p>
+                                <p>Preço:</p>
                                 <span>R$ 175.000</span>
                             </div>
                             <div class="more-info-popular-cars">

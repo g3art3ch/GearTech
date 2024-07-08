@@ -40,6 +40,7 @@
 
 .card-popular-cars {
     background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
     padding: 20px;
     border-radius: 15px;
     width: 100%; 
@@ -69,6 +70,13 @@
     padding-left: 8px;
 }
 
+
+.info-popular-cars img {
+    width: 17px;
+    height: 17px;
+}
+
+
 .card-popular-cars hr {
     margin: 15px 0px;
 }
@@ -81,7 +89,7 @@
 }
 
 .price-popular-cars p {
-    font-size: 17px;
+    font-size: 18px;
     color: var(--third);
     font-weight: 500;
 }
@@ -130,6 +138,10 @@
 
 @media (max-width:576px) {
 
+    .popular-cars {
+        padding: 40px 0px;
+    }
+
     .grid-popular-cars {
         grid-template-columns: 1fr;
     }
@@ -139,6 +151,7 @@
     }
 
     .title-popular-cars p {
-        font-size: 15px;
+        font-size: 16px;
+        line-height: 1.4;
     }
 }

@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 65px;
-    padding-top: 76px;
+    padding: 70px 0px 10px;
 }
 
 .title-about-us {
@@ -35,19 +35,21 @@
 }
 
 .desc-about-us-group {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--third);
-    padding-top: 13px;
-    text-align: justify;
+    text-align: center;
     padding-top: 17px;
+    line-height: 1.4;
 }
 
 @media (max-width: 900px) {
     .box-about-us {
         grid-template-columns: repeat(2, 1fr); 
         gap: 40px;
+        padding: 35px 0px 10px;
     }
 
+   
     .title-about-us h2 {
         font-size: 28px; 
     }
@@ -57,20 +59,30 @@
     }
 
     .title-about-us-group h2 {
-        font-size: 16px; 
+        font-size: 18px; 
     }
 
     .desc-about-us-group {
-        font-size: 14px; 
+        font-size: 17px; 
     }
 }
 
 @media (max-width: 480px) {
 
+    .about-us {
+        padding: 40px 0px;  
+    }
+
     .box-about-us {
         grid-template-columns: 1fr;
         gap: 20px;
+
     }
+
+    .about-us-group {
+        padding: 10px 0px;
+    }
+
 
     .title-about-us h2 {
         font-size: 25px;
@@ -83,6 +95,6 @@
 
     .desc-about-us-group p {
         width: 80%;
-        font-size: 15px;
+        font-size: 16px;
     }
 }

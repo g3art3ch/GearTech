@@ -178,7 +178,7 @@
             <div class="container">
                 <div class="title-popular-cars">
                     <h2>Carros mais vendidos <br>no ultimo semestre</h2>
-                    <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais veículos lideram as listas de mais vendidos.</p>
+                    <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais veículos lideram a listas de mais vendidos.</p>
                 </div>
                 <div class="grid-popular-cars">
                     <div class="card-popular-cars">
@@ -303,10 +303,7 @@
                             <h2>As melhores <br>marcas</h2>
                         </div>
                         <div class="desc-about-us-group">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
-                                accusamus,
-                                labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
-                                exercitationem placeat quibusdam maiores!</p>
+                            <p>Selecionamos as marcas mais confiáveis para garantir qualidade e segurança, proporcionando uma compra satisfatória.</p>
                         </div>
                     </div>
                     <div class="about-us-group">
@@ -317,10 +314,7 @@
                             <h2>Atenda a sua <br> necessidade</h2>
                         </div>
                         <div class="desc-about-us-group">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
-                                accusamus,
-                                labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
-                                exercitationem placeat quibusdam maiores!</p>
+                            <p>Desenvolvemos um filtro personalizado que se adapta ao seu estilo e preferências, para facilitar a busca do veículo. </p>
                         </div>
                     </div>
                     <div class="about-us-group">
@@ -331,10 +325,7 @@
                             <h2>Prático, intuivo e <br> muito fácil</h2>
                         </div>
                         <div class="desc-about-us-group">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
-                                accusamus,
-                                labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
-                                exercitationem placeat quibusdam maiores!</p>
+                            <p>Oferecemos uma navegação simples e com uma interface intuitiva, que torna a busca pelo carro perfeito mais rápida.</p>
                         </div>
                     </div>
                     <div class="about-us-group">
@@ -345,10 +336,7 @@
                             <h2>Facilita sua <br> decisão</h2>
                         </div>
                         <div class="desc-about-us-group">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam et amet, nostrum cumque
-                                accusamus,
-                                labore ipsum fuga suscipit, ipsam totam modi consequuntur tempore. Nihil consequatur eum
-                                exercitationem placeat quibusdam maiores!</p>
+                            <p>Através das recomendações personalizadas e comparações detalhadas, tomar decisões informadas nunca foi tão simples.</p>
                         </div>
                     </div>
                 </div>
@@ -377,7 +365,7 @@
             <div class="title-contact">
                 <h2>Ficou com alguma dúvida?<br>Entre em contato conosco</h2>
                 <div class="desc-contact-mobile">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ipsum, nemo in minima necessitatibus magnam nostrum, ipsam quod</p>
+                        <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários, se enfrentar problemas ou dificuldades utilize nossos meios de contato.</p>
                     </div>
 
             </div>
@@ -387,7 +375,7 @@
                     
                     <div class="left-side-contact">
                     <div class="desc-contact">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários, se enfrentar problemas ou dificuldades utilize nossos meios de contato.
                             </p>
                         </div>
 
@@ -417,37 +405,7 @@
                             </form>
                         </div>
                     </div>
-                    <!-- <div class="right-side-contact">
-                        <div class="desc-contact">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            </p>
-                        </div>
-
-                        <div class="card-channels">
-                            <h2>Nosos canais</h2>
-                            <div class="box-icons-channels">
-                                <img src="assets/icons/email.svg" alt="">
-                                <img src="assets/icons/instagram.svg" alt="">
-                            </div>
-                            <p>Email: suporte.geartech@gmail.com</p>
-                            <p>Instagram: @g3artech</p>
-                        </div>
-                    </div>
-                    <div class="left-side-contact">
-                        <div class="card-form-contact">
-                            <form action="">
-                                <label for="">Nome completo</label>
-                                <input type="text">
-                                <label for="">Email</label>
-                                <input type="email" name="" id="">
-                                <label for="">Assunto</label>
-                                <input type="text">
-                                <label for="">Mensagem</label>
-                                <textarea name="" id="" cols="20" rows="10"></textarea>
-                                <button type="submit">Enviar</button>
-                            </form>
-                        </div>
-                    </div> -->
+                    
 
                 </div>
             </div>
@@ -473,12 +431,12 @@
                 </div>
                 <div class="right-side-footer">
                     <h2>Sobre nós</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
                     </p>
                 </div>
             </div>
             <div class="copy">
-                <a href="">© GearTech - Todos os direitos reservados</a>
+                <a href="">© GearTech - Todos os direitos reservados.</a>
             </div>
         </div>
     </footer>

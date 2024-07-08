@@ -63,7 +63,11 @@ include('protect.php');
             </div>
             <div class="box-user">
                 <div class="card-user pessoal">
-                    <h2>Informações Pessoais</h2>
+                    <div class="title-card-user">
+                        <img src="../icons/user.svg" alt="">
+                        <h2>Informações Pessoais</h2>
+                    </div>
+                    
                     <div class="user-data">
                         <label for="">Nome completo</label>
                         <input type="text" value="<?php echo $_SESSION['nomeUsuario']; ?>" readonly>
@@ -72,7 +76,11 @@ include('protect.php');
                     </div>
                 </div>
                 <div class="card-user">
-                    <h2>Senha</h2>
+                    <div class="title-card-user">
+                        <img src="../icons/key.svg" alt="">
+                        <h2>Senha</h2>
+                    </div>
+                    
                     <div class="user-data">
                         <label for="">Sua Senha</label>
                         <?php

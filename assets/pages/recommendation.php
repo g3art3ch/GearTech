@@ -62,50 +62,47 @@ include('protect.php');
 
 
     <section class="recomendation">
-        <div class="container">
-            <div class="title-recomendation">
-                <div class=box-recomendation>
+    <div class="container">
+        <div class="grid-recomendation">
 
-                    <?php
+            <?php
+            if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
+                // Loop através dos resultados e exibe as informações de cada carro
+                foreach ($_SESSION['resultados'] as $carro) {
+                    echo '<div class="card-recomendation">';
+                    echo '<div class="box-image">';
+                    echo '<img src="' . $carro['urlCarro'] . $carro['idIden'] . '.png" alt="">';
+                    echo '</div>';
+                    echo '<div class="title-card-recomendation">' . $carro['nome'] . '</div>';
+                    echo '<div class="price">R$ ' . $carro['orcamento'] . '</div>';
+                    echo '<div class="box-info">';
+                    echo '<div class="info">';
+                    echo '<img src="../icons/fuel-recomendation.svg" alt="">';
+                    echo '<p>' . $carro['combustivel'] . '</p>';
+                    echo '</div>';
+                    echo '<div class="info">';
+                    echo '<img src="../icons/passenger-recomendation.svg" alt="">';
+                    echo '<p>' . $carro['capacidade'] . ' Passageiros</p>';
+                    echo '</div>';
+                    echo '<div class="info">';
+                    echo '<img src="../icons/use-recomendation.svg" alt="">';
+                    echo '<p>' . $carro['tipoUso'] . '</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="saiba-mais-recomendation">';
+                    echo '<a href="#">Saiba mais</a>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                echo '<p>Nenhuma recomendação disponível.</p>';
+            }
+            ?>
+            
+        </div>
+    </div>
+</section>
 
-
-                    if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
-                        // Loop através dos resultados e exibe as informações de cada carro
-                        foreach ($_SESSION['resultados'] as $carro) {
-
-                            echo '<div class=card-recomentadion>';
-                            echo '<div class=box-image-card-recomendation>';
-                    ?>
-
-                            <img src="<?php
-                                        echo $carro['urlCarro'] . $carro['idIden'];
-                                        ?>.png" alt=>
-
-                    <?php
-                            echo '</div>';
-                            echo '<div class=desc-recomendation>';
-                            echo "<div class=title-card-recomendation>" . $carro['nome'] . "</div>";
-                            // echo "<p>Estilo: " . $carro['estilo'] . "</p>";
-                            echo "<div class=price> R$ " . $carro['orcamento'] . "</div>";
-                            echo "<div class=info>
-                            <p>Combusível: " . $carro['combustivel'] . "</p>
-                            <p>Passageiros: " . $carro['capacidade'] . "</p>
-                            <p>Uso: " . $carro['tipoUso'] . "</p>
-                </div>";
-                            echo '<div class="box-saiba-mais">';
-                            echo '<a href="#">Saiba mais</a>';
-                            echo '</div>';  
-                            echo "</div>";
-                            echo "</div>";
-                        }
-                    } else {
-                        echo "<p>Nenhuma recomendação disponível.</p>";
-                    }
-
-                    ?>
-                </div>
-            </div>
-    </section>
     </main>
 
 
