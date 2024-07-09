@@ -88,6 +88,8 @@ include('protect.php');
                         $asterisks = str_repeat('*', strlen($senha));
                         echo '<input type=text  value=' . $asterisks . ' readonly>';
                         ?>
+                        <label for="">Confirme sua senha</label>
+                        <input type="text" placeholder="Insira sua senha">
                         <label for="">Edite sua senha</label>
                         <input type="text" placeholder="Nova senha">
                         <a href="#"><button>Confirmar alteração</button></a>

@@ -77,7 +77,7 @@ include('protect.php');
                         <a href="filtered_catalog.php?Marca=Audi" class="name-logotype">Audi</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="" class="card-logotype">
+                        <a href="filtered_catalog.php?Marca=BMW" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/bmw.png" alt="">
                             </div>
