@@ -50,7 +50,6 @@
             }
     
         } 
-        header("Location: login.php");
     }
 
 }

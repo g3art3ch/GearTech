@@ -10,16 +10,16 @@ if(isset($_GET['hash'])){
     //verifica se a hash resgatada ba url existe no banco de dados
     $sqlVerificaHash = "select hash from usuarios where hash = '$hash'";
 
-    if($resultadoVerificaHash = mysqli_query($conn, $sqlVerificaHash)){
+    if($resultadoVerificaHash = mysqli_query($mysqli, $sqlVerificaHash)){
 
         $qtdLinhas = mysqli_num_rows($resultadoVerificaHash);
 
-        if(qtdLinhas > 0){ 
+        if($qtdLinhas > 0){ 
 
             $sqlAlteraStatus = "update usuarios set status='2', hash='', ativacao=now()
             where hash = '$hash'";
 
-            if(mysqli_query($conn, $sqlAlteraStatus)){
+            if(mysqli_query($mysqli, $sqlAlteraStatus)){
                 echo"<div class='alert alert-sucess' role = 'alert'>
 
                 Cadastro ativado com sucesso! <a href='login.php'> Clique aqui </a> para fazer o login
@@ -28,7 +28,7 @@ if(isset($_GET['hash'])){
             }else{
                 echo"<div class='alert alert-danger' role = 'alert'>
 
-                Erro ao alterar o status: ".mysqli_error($conn). "</div>";
+                Erro ao alterar o status: ".mysqli_error($mysqli). "</div>";
 
             }
 
