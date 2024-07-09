@@ -100,6 +100,15 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
         </header>
     </div>
 
+    
+        <div>
+            <?php 
+            if (isset($_GET['message'])) {
+                $message = $_GET['message'];
+                echo "<script type='text/javascript'>alert('$message');</script>";
+            }?>
+        </div>
+
 
     <section class="login">
         <div class="container">
