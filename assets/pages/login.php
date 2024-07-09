@@ -8,7 +8,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
         echo "<script> window.alert('Preencha seu email!');</script>";
     } else if (strlen($_POST['senha']) == 0) {
         echo "<script> window.alert('Preencha sua senha!');</script>";
-    } else {
+    }else {
 
         $email = $mysqli->real_escape_string($_POST['email']);
         $senha = $mysqli->real_escape_string($_POST['senha']);
@@ -25,13 +25,16 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             if (!isset($_SESSION)) {
                 session_start();
             }
-
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nomeUsuario'] = $usuario['nomeUsuario'];
             $_SESSION['email'] = $usuario['email'];
             $_SESSION['senha'] = $usuario['senha'];
-
+            $_SESSION['status'] = $usuario['status'];
+            if($_SESSION['status'] == 2){
             header("Location: /GearTech/assets/pages_connected/connected.php");
+            }else{
+                echo 'Confirme seu email!';
+            }
         } else {
             echo "Falha ao logar! E-mail ou senha incorretos";
         }
