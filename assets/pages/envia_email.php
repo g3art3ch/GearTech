@@ -1,28 +1,4 @@
 <?php
-
-// $mail->IsHTML(true);
-// $mail->Body = $conteudo_email;
-
-// if($mail->send()){
-
-// echo "<style>#carregando{display:none;}</style>
-// <div class='alert alert-primary' role='alert'>
-
-// O link de ativação de cadastro foi enviado para seu e-mail. Favor verificar sua caixa de entrada.
-
-// </div>";
-
-// } else{
-
-//     echo "<style>#carregando{display:none;}</style>
-//     <div class='alert alert-danger' role='alert'>
-    
-//     Falha ao enviar o link de ativação!
-    
-//     </div>";
-
-// }
-
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
 
@@ -64,7 +40,7 @@ $mail->Port = 587;
     
     Clique no Botão abaixo: <br><br>
     
-    <a href='http://localhost/GearTech/ativacao.php?hash' style = '
+    <a href='http://localhost:8080/GearTech/assets/pages/ativacao.php?hash=$hash' style = '
     
     background-color: #007bff;
     border: none;
