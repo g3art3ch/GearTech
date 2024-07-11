@@ -40,7 +40,7 @@ $mail->Port = 587;
     
     Clique no Botão abaixo: <br><br>
     
-    <a href='http://localhost:8080/GearTech/assets/pages/ativacao.php?hash=$hash' style = '
+    <a href='http://localhost:80/GearTech/assets/pages/ativacao.php?hash=$hash' style = '
     
     background-color: #007bff;
     border: none;
