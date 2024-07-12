@@ -212,7 +212,7 @@
                                 <a href="">Saiba mais</a>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="card-popular-cars">
                         <div class="box-image-popular-cars">
@@ -245,7 +245,7 @@
                                 <a href="">Saiba mais</a>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="card-popular-cars">
                         <div class="box-image-popular-cars">
@@ -278,13 +278,13 @@
                                 <a href="">Saiba mais</a>
                             </div>
                         </div>
-                        
+
                     </div>
-                    
+
 
                 </div>
-               
-            </div>  
+
+            </div>
         </section>
 
 
@@ -365,16 +365,16 @@
             <div class="title-contact">
                 <h2>Ficou com alguma dúvida?<br>Entre em contato conosco</h2>
                 <div class="desc-contact-mobile">
-                        <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários, se enfrentar problemas ou dificuldades utilize nossos meios de contato.</p>
-                    </div>
+                    <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários, se enfrentar problemas ou dificuldades utilize nossos meios de contato.</p>
+                </div>
 
             </div>
 
             <div class="container">
                 <div class="area-contact">
-                    
+
                     <div class="left-side-contact">
-                    <div class="desc-contact">
+                        <div class="desc-contact">
                             <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários, se enfrentar problemas ou dificuldades utilize nossos meios de contato.
                             </p>
                         </div>
@@ -391,27 +391,34 @@
                     </div>
 
                     <div class="right-side-contact">
-                    <div class="card-form-contact">
+                        <div class="card-form-contact">
                             <form action="">
                                 <label for="">Nome completo</label>
-                                <input type="text">
+                                <input type="text" id="CompName">
                                 <label for="">Email</label>
-                                <input type="email" name="" id="">
+                                <input type="email" id="DEmail">
                                 <label for="">Assunto</label>
-                                <input type="text">
+                                <input type="text" id="Subject">
                                 <label for="">Mensagem</label>
-                                <textarea name="" id="" cols="20" rows="10"></textarea>
-                                <button type="submit">Enviar</button>
+                                <textarea name="" id="Message" cols="20" rows="10"></textarea>
+                                <button type="button" onclick=LogAlert() type="submit">Enviar</button>
+                                <script>
+                                    function LogAlert() {
+                                        window.alert('Entre em sua conta para fazer o envio!');
+                                        location.reload()
+                                    }
+                                </script>
                             </form>
                         </div>
                     </div>
-                    
+
+
 
                 </div>
             </div>
         </section>
     </main>
-    
+
     <footer>
         <div class="container">
             <div class="box-footer">

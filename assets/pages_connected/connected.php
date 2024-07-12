@@ -401,16 +401,16 @@ include('protect.php');
 
                     <div class="right-side-contact">
                     <div class="card-form-contact">
-                            <form action="">
+                            <form action="../pages/envia_duvida.php" method="post">
                                 <label for="">Nome completo</label>
-                                <input type="text">
+                                <input type="text" value="<?php echo $_SESSION['nomeUsuario']; ?>" name="CompName">
                                 <label for="">Email</label>
-                                <input type="email" name="" id="">
+                                <input type="email" value="<?php echo $_SESSION['email']; ?>" name="DEmail" id="">
                                 <label for="">Assunto</label>
-                                <input type="text">
+                                <input type="text" name="Subject">
                                 <label for="">Mensagem</label>
-                                <textarea name="" id="" cols="20" rows="10"></textarea>
-                                <button type="submit">Enviar</button>
+                                <textarea name="Message" id="" cols="20" rows="10"></textarea>
+                                <button type="submit" name="submit">Enviar</button>
                             </form>
                         </div>
                     </div>
