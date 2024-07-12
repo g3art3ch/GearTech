@@ -200,7 +200,7 @@
                                 </div>
                                 <div class="info-popular-cars">
                                     <img src="./assets/icons/car-door.svg" alt="">
-                                    <p>2 passageiros</p>
+                                    <p>4 Portas</p>
                                 </div>
                             </div>
                             <hr>
@@ -233,7 +233,7 @@
                                 </div>
                                 <div class="info-popular-cars">
                                     <img src="./assets/icons/car-door.svg" alt="">
-                                    <p>2 passageiros</p>
+                                    <p>4 Portas</p>
                                 </div>
                             </div>
                             <hr>
@@ -266,7 +266,7 @@
                                 </div>
                                 <div class="info-popular-cars">
                                     <img src="./assets/icons/car-door.svg" alt="">
-                                    <p>2 passageiros</p>
+                                    <p>4 Portas</p>
                                 </div>
                             </div>
                             <hr>

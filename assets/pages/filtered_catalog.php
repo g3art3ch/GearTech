@@ -183,7 +183,7 @@ WHERE Marca = '$marca'
                     echo '</div>';
                     echo '</div>';
                     echo '<div class="saiba-mais-recomendation">';
-                    echo '<a href="car_info.php?id=' . $carro['idIden'] . '">Saiba mais</a>';
+                    echo '<a href="/Geartech/assets/pages/car-specification.php ">Saiba mais</a>';
                     echo '</div>';
                     echo '</div>';
                 }
