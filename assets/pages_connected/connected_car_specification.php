@@ -1,3 +1,51 @@
+<?php 
+include('connection.php');
+include('connection_cars.php');
+include('protect.php');
+if (isset($_GET['IdCar'])) {
+    $idCarURL = $_GET['IdCar'];
+    $idCar = str_replace('_', ' ', $idCarURL);
+}
+
+$sql_code = "SELECT 
+    nc.nome,
+    fc.estilo,
+    oc.orcamento,
+    tc.combustivel,
+    cc.capacidade,
+    uc.tipoUso,
+    iden.idIden,
+    iden.urlCarro,
+    iden.Marca
+FROM 
+    nomeCarro nc
+INNER JOIN 
+    filtroCarros fc ON nc.idFiltro = fc.idFiltro
+INNER JOIN 
+    orcamentoCarro oc ON nc.idNome = oc.idNome
+INNER JOIN 
+    tipoCombustivel tc ON nc.idNome = tc.idNome
+INNER JOIN 
+    capacidadeCarro cc ON nc.idNome = cc.idNome
+INNER JOIN 
+    usoCarro uc ON nc.idNome = uc.idNome
+INNER JOIN 
+    identificador iden ON nc.idNome = iden.idNome  
+WHERE nome = '$idCar'";
+
+$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+$quantidade = $sql_query->num_rows;
+if ($quantidade > 0) {
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+}
+$_SESSION['resultados'] = array();
+while ($result = $sql_query->fetch_assoc()) {
+    $_SESSION['resultados'][] = $result;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +96,7 @@
                             <div class="user-enter">
                                 <a href="../pages/login.php">
                                     <img src="../icons/user.svg" alt="">
-                                    <a href="../pages/login.php" class="login-account">Entre em sua conta</a>
+                                    <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
                                 </a>
                             </div>
                         </li>
@@ -60,13 +108,19 @@
         <section class="car-specification">
             <div class="container">
                 <div class="title-car-title-specification">
-                    <h2>Mais informações sobre - Volkswagem Nivus</h2>
+                    <h2>Mais informações sobre - <?php
+                    foreach ($_SESSION['resultados'] as $carro) { 
+                        echo $carro['nome'];
+                    };?>
+                        </h2>
                 </div>
                 <div class="box-car-specification">
                     <div class="left-side-specification">
                         <div class="card-car-specification">
-                            <h2>Volkswagen Nivus 1.0 TSI Comfortline</h2>
-                            <img src="../car_images/Volkswagen_Nivus_1.0_200_TSI_Comfortline_2024.png" alt="">
+                            <h2><?php echo $carro['nome'];?></h2>
+                            <?php 
+                            echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
+                            ?>
                         </div>
                         <div class="card-technology-specification none-mobile">
                             <h2>Conforto e tecnologia</h2>
@@ -116,19 +170,19 @@
                             <table>
                                 <tr>
                                     <td>Marca</td>
-                                    <td><p>Volkswagen</p></td>
+                                    <td><p><?php echo $carro['Marca']?></p></td>
                                 </tr>
                                 <tr>
                                     <td>Modelo</td>
-                                    <td><p>...</p></td>
+                                    <td><p><?php echo $carro['nome']?></p></td>
                                 </tr>
                                 <tr>
                                     <td>Tipo de Carroceria</td>
-                                    <td><p>...</p></td>
+                                    <td><p><?php echo $carro['estilo']?></p></td>
                                 </tr>
                                 <tr>
                                     <td>Capacidade de passageiros</td>
-                                    <td><p>...</p></td>
+                                    <td><p><?php echo $carro['capacidade']-1?></p></td>
                                 </tr>
                                 
                                 <tr>

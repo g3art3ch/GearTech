@@ -261,7 +261,7 @@ $quantidade = $sql_query->num_rows;
                         echo '        <span>R$' . $carro['orcamento'] . '</span>';
                         echo '    </div>';
                         echo '    <div class="more-info-popular-cars">';
-                        echo '        <a href="">Saiba mais</a>';
+                        echo '<a href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar='. $carro['nome'] .' ">Saiba mais</a>';
                         echo '    </div>';
                         echo '</div>';
 
