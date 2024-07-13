@@ -190,7 +190,6 @@ $quantidade = $sql_query->num_rows;
                     <h2>Carros mais vendidos <br>no ultimo semestre</h2>
                     <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais veículos lideram a listas de mais vendidos.</p>
                 </div>
-<<<<<<< HEAD
                 <?php
 
                 if ($quantidade > 0) {
@@ -239,113 +238,6 @@ $quantidade = $sql_query->num_rows;
                 };
                 echo "</div>"
                 ?>
-=======
-                <div class="grid-popular-cars">
-                    <div class="card-popular-cars">
-                        <div class="box-image-popular-cars">
-                            <img src="./assets/car_images/Volkswagen_Nivus_1.0_200_TSI_Comfortline_2024.png" alt="">
-                        </div>
-                        <div class="box-description-popular-cars">
-                            <div class="title-card-popular-cars">
-                                <h2>Volkswagen Nivus 2024</h2>
-                            </div>
-                            <div class="group-popular-cars">
-                                <div class="info-popular-cars">
-                                    <img src="./assets/icons/passager.svg" alt="">
-                                    <p>4 passageiros</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="./assets/icons/cambio.svg" alt="">
-                                    <p>Automático</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="./assets/icons/car-door.svg" alt="">
-                                    <p>4 Portas</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="price-popular-cars">
-                                <p>Preço</p>
-                                <span>R$ 175.000</span>
-                            </div>
-                            <div class="more-info-popular-cars">
-                                <a href="">Saiba mais</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="card-popular-cars">
-                        <div class="box-image-popular-cars">
-                            <img src="./assets/car_images/Hyundai_Creta_1.6_Action_(Aut)_2024.png" alt="">
-                        </div>
-                        <div class="box-description-popular-cars">
-                            <div class="title-card-popular-cars">
-                                <h2>Hyundai Creta 2024</h2>
-                            </div>
-                            <div class="group-popular-cars">
-                                <div class="info-popular-cars">
-                                    <img src="./assets/icons/passager.svg" alt="">
-                                    <p>4 passageiros</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="./assets/icons/cambio.svg" alt="">
-                                    <p>Automático</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="./assets/icons/car-door.svg" alt="">
-                                    <p>4 Portas</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="price-popular-cars">
-                                <p>Preço</p>
-                                <span>R$ 175.000</span>
-                            </div>
-                            <div class="more-info-popular-cars">
-                                <a href="">Saiba mais</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="card-popular-cars">
-                        <div class="box-image-popular-cars">
-                            <img src="./assets/car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
-                        </div>
-                        <div class="box-description-popular-cars">
-                            <div class="title-card-popular-cars">
-                                <h2>Volkswagen Nivus 2024</h2>
-                            </div>
-                            <div class="group-popular-cars">
-                                <div class="info-popular-cars">
-                                    <img src="./assets/icons/passager.svg" alt="">
-                                    <p>4 passageiros</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="./assets/icons/cambio.svg" alt="">
-                                    <p>Automático</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="./assets/icons/car-door.svg" alt="">
-                                    <p>4 Portas</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="price-popular-cars">
-                                <p>Preço</p>
-                                <span>R$ 175.000</span>
-                            </div>
-                            <div class="more-info-popular-cars">
-                                <a href="">Saiba mais</a>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
->>>>>>> b53273bb34e6032bf0cf1b7253f415092f4b0669
         </section>
 
 
