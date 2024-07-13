@@ -90,7 +90,7 @@ include('protect.php');
                     echo '</div>';
                     echo '</div>';
                     echo '<div class="saiba-mais-recomendation">';
-                    echo '<a href="#">Saiba mais</a>';
+                    echo '<a href="/Geartech/assets/pages/car-specification.php">Saiba mais</a>';
                     echo '</div>';
                     echo '</div>';
                 }

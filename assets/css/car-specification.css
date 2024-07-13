@@ -1,0 +1,195 @@
+.car-specification {
+    padding: 30px 0px;
+}
+
+.box-car-specification {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.title-car-title-specification {
+    padding-bottom: 30px;
+}
+
+.left-side-specification {
+    max-width: 429px;
+    width: 100%;
+}
+
+.car-specification h2 {
+    font-size: 25px;
+}
+
+.card-car-specification {
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.card-car-specification h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.card-car-specification img {
+    width: 100%;
+}
+
+.card-technology-specification {
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    max-width: 429px;
+    margin-top: 34px;
+    padding: 22px;
+}
+
+.right-side-specification {
+    max-width: 720px;
+    width: 100%;
+}
+
+.card-mecanic-specification {
+    max-width: 700px;
+    width: 100%;
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    padding: 22px;
+}
+
+
+.card-mecanic-specification h2,
+.card-technology-specification h2 {
+    font-size: 22px;
+    color: var(--secondary);
+}
+
+.card-technology-specification table,
+.card-mecanic-specification table {
+    padding-top: 20px;
+    width: 100%;
+    table-layout: auto;
+}
+
+
+.card-mecanic-specification td,
+.card-technology-specification td {
+    padding: 10px 0px;
+    width: auto;
+}
+
+.card-mecanic-specification td:nth-child(1),
+.card-technology-specification td:nth-child(1) {
+    font-size: 17px;
+    width: 40%;
+    font-weight: 600;
+}
+
+.card-mecanic-specification p,
+.card-technology-specification p {
+    background-color: #ECEDF2;
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.card-mecanic-specification td:nth-child(1) {
+    table-layout: auto;
+}
+
+.card-technology-specification td:nth-child(1) {
+    table-layout: auto;
+}
+
+.flex-mobile {
+    display: none;
+}
+
+@media (min-width:531px) and (max-width:900px) {
+
+    .car-specification h2 {
+        text-align: center;
+    }
+
+    .box-car-specification {
+        flex-direction: column;
+    }
+
+    .none-mobile {
+        display: none;
+    }
+
+    .flex-mobile {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .card-car-specification {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .card-car-specification h2 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .card-car-specification img {
+        width: 70%;
+    }
+
+    .left-side-specification,
+    .right-side-specification,
+    .card-technology-specification,
+    .card-car-specification,
+    .card-mecanic-specification {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .card-technology-specification table,
+    .card-mecanic-specification table {
+        table-layout: fixed;
+    }
+}
+
+@media (max-width:530px) {
+    .box-car-specification {
+        flex-direction: column;
+    }
+
+    .car-specification h2 {
+        text-align: center;
+    }
+
+    .none-mobile {
+        display: none;
+    }
+
+    .flex-mobile {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .card-car-specification {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+
+    .left-side-specification,
+    .right-side-specification,
+    .card-technology-specification,
+    .card-car-specification,
+    .card-mecanic-specification {
+        width: 100%;
+        max-width: 100%;
+    }
+}
