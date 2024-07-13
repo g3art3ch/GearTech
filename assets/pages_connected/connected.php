@@ -401,16 +401,17 @@ include('protect.php');
 
                     <div class="right-side-contact">
                     <div class="card-form-contact">
-                            <form action="../pages/envia_duvida.php" method="post">
+                            <form action="https://api.web3forms.com/submit" method="POST" method="post">
+                                <input type="hidden" name="access_key" value="b92d6b10-0fe4-4d01-a034-23dbefe8e98e">
                                 <label for="">Nome completo</label>
-                                <input type="text" value="<?php echo $_SESSION['nomeUsuario']; ?>" name="CompName">
+                                <input type="text" value="<?php echo $_SESSION['nomeUsuario']; ?>" name="Nome" readonly>
                                 <label for="">Email</label>
-                                <input type="email" value="<?php echo $_SESSION['email']; ?>" name="DEmail" id="">
+                                <input type="email" value="<?php echo $_SESSION['email']; ?>" name="E-mail" id="" readonly>
                                 <label for="">Assunto</label>
                                 <input type="text" name="Subject">
                                 <label for="">Mensagem</label>
                                 <textarea name="Message" id="" cols="20" rows="10"></textarea>
-                                <button type="submit" name="submit">Enviar</button>
+                                <button type="submit" >Enviar</button>
                             </form>
                         </div>
                     </div>

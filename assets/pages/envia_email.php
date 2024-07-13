@@ -8,7 +8,7 @@ require __DIR__.'/../PHPMailer/PHPMailerAutoload.php';
 
 // Instantiation and passing `true` enables exceptions 
 $mail = new PHPMailer(true);
-
+$mail ->CharSet="UTF-8";
 try {
 
     //Configurações de servidor
