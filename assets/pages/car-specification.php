@@ -24,7 +24,7 @@
             <header>
                 <div class="area">
                     <div class="logo">
-                        <a href="/Geartech/assets/pages_connected/connected.php">
+                        <a href="/GearTech/index.php">
                             <img src="../images/logo.svg" alt="" />
                         </a>
                     </div>

@@ -128,7 +128,7 @@
                                     <img src="assets/icons/people.svg" alt="">
                                     <div class="title-headline">Capacidade de passageiros</div>
                                 </div>
-                                <input type="number" name="capacidade" id="" placeholder="Selecione a quantidade de passageiros">
+                                <input type="number" name="capacidade" id="" placeholder="Selecione a quantidade de passageiros" min="0" max="4">
                             </div>
                             <div class="itens-filter">
                                 <div class="headline">
@@ -145,30 +145,7 @@
                                 <button type="submit" name="submit">Procure agora</button>
                             </div>
                         </div>
-                        <script>
-                            function formatarNumero(valor) {
-                                valor = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
-                                if (valor === "") return "";
 
-                                valor = (parseInt(valor, 10) / 100).toFixed(2) + ''; // Converte para número e formata com duas casas decimais
-                                valor = valor.replace(".", ","); // Substitui ponto por vírgula
-                                valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona pontos a cada milhar
-                                return valor;
-                            }
-
-                            const inputPreco = document.getElementById('preco_input');
-
-                            inputPreco.addEventListener('input', function() {
-                                let cursorPosition = this.selectionStart;
-                                let valorAntigo = this.value;
-
-                                this.value = formatarNumero(this.value);
-
-                                // Recalcular posição do cursor
-                                cursorPosition = this.value.length - valorAntigo.length + cursorPosition;
-                                this.setSelectionRange(cursorPosition, cursorPosition);
-                            });
-                        </script>
                     </form>
                 </div>
         </section>
@@ -411,9 +388,6 @@
                             </form>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
         </section>
@@ -449,6 +423,36 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script>
+        function validarInput (input){
+            if (input.value < 0) input.value = 0;
+        if (input.value > 4) input.value = 4;
+        }
+        
+
+        function formatarNumero(valor) {
+            valor = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
+            if (valor === "") return "";
+
+            valor = (parseInt(valor, 10) / 100).toFixed(2) + ''; // Converte para número e formata com duas casas decimais
+            valor = valor.replace(".", ","); // Substitui ponto por vírgula
+            valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona pontos a cada milhar
+            return valor;
+        }
+
+        const inputPreco = document.getElementById('preco_input');
+
+        inputPreco.addEventListener('input', function() {
+            let cursorPosition = this.selectionStart;
+            let valorAntigo = this.value;
+
+            this.value = formatarNumero(this.value);
+
+            // Recalcular posição do cursor
+            cursorPosition = this.value.length - valorAntigo.length + cursorPosition;
+            this.setSelectionRange(cursorPosition, cursorPosition);
+        });
+    </script>
 
 </body>
 
