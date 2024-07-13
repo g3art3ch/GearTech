@@ -1,6 +1,36 @@
 <?php
 include('connection.php');
+include('connection_cars.php');
 include('protect.php');
+$sql_code = "SELECT 
+    nc.nome,
+    fc.estilo,
+    oc.orcamento,
+    tc.combustivel,
+    cc.capacidade,
+    uc.tipoUso,
+    iden.idIden,
+    iden.urlCarro,
+    iden.Marca
+FROM 
+    nomeCarro nc
+INNER JOIN 
+    filtroCarros fc ON nc.idFiltro = fc.idFiltro
+INNER JOIN 
+    orcamentoCarro oc ON nc.idNome = oc.idNome
+INNER JOIN 
+    tipoCombustivel tc ON nc.idNome = tc.idNome
+INNER JOIN 
+    capacidadeCarro cc ON nc.idNome = cc.idNome
+INNER JOIN 
+    usoCarro uc ON nc.idNome = uc.idNome
+INNER JOIN 
+    identificador iden ON nc.idNome = iden.idNome  
+WHERE nome in ('Volkswagen Nivus 1.0 200 TSI C', 'Hyundai Creta 1.6 Action (Aut)', 'Chevrolet Tracker 1.0 Turbo (A')";
+
+$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+$quantidade = $sql_query->num_rows;
+
 ?>
 
 
@@ -192,107 +222,54 @@ include('protect.php');
                     <h2>Carros mais vendidos <br>no ultimo semestre</h2>
                     <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais veículos lideram as listas de mais vendidos.</p>
                 </div>
-                <div class="grid-popular-cars">
-                    <div class="card-popular-cars">
-                        <div class="box-image-popular-cars">
-                            <img src="../car_images/Volkswagen_Nivus_1.0_200_TSI_Comfortline_2024.png" alt="">
-                        </div>
-                        <div class="box-description-popular-cars">
-                            <div class="title-card-popular-cars">
-                                <h2>Volkswagen Nivus 2024</h2>
-                            </div>
-                            <div class="group-popular-cars">
-                                <div class="info-popular-cars">
-                                    <img src="../icons/passager.svg" alt="">
-                                    <p>4 passageiros</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="../icons/cambio.svg" alt="">
-                                    <p>Automático</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="../icons/car-door.svg" alt="">
-                                    <p>2 passageiros</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="price-popular-cars">
-                                <p>Preço:</p>
-                                <span>R$ 175.000</span>
-                            </div>
-                            <div class="more-info-popular-cars">
-                                <a href="">Saiba mais</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="card-popular-cars">
-                        <div class="box-image-popular-cars">
-                            <img src="../car_images/Hyundai_Creta_1.6_Action_(Aut)_2024.png" alt="">
-                        </div>
-                        <div class="box-description-popular-cars">
-                            <div class="title-card-popular-cars">
-                                <h2>Hyundai Creta 2024</h2>
-                            </div>
-                            <div class="group-popular-cars">
-                                <div class="info-popular-cars">
-                                    <img src="../icons/passager.svg" alt="">
-                                    <p>4 passageiros</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="../icons/cambio.svg" alt="">
-                                    <p>Automático</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="../icons/car-door.svg" alt="">
-                                    <p>2 passageiros</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="price-popular-cars">
-                                <p>Preço:</p>
-                                <span>R$ 175.000</span>
-                            </div>
-                            <div class="more-info-popular-cars">
-                                <a href="">Saiba mais</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="card-popular-cars">
-                        <div class="box-image-popular-cars">
-                            <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
-                        </div>
-                        <div class="box-description-popular-cars">
-                            <div class="title-card-popular-cars">
-                                <h2>Volkswagen Nivus 2024</h2>
-                            </div>
-                            <div class="group-popular-cars">
-                                <div class="info-popular-cars">
-                                    <img src="../icons/passager.svg" alt="">
-                                    <p>4 passageiros</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="../icons/cambio.svg" alt="">
-                                    <p>Automático</p>
-                                </div>
-                                <div class="info-popular-cars">
-                                    <img src="../icons/car-door.svg" alt="">
-                                    <p>2 passageiros</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="price-popular-cars">
-                                <p>Preço:</p>
-                                <span>R$ 175.000</span>
-                            </div>
-                            <div class="more-info-popular-cars">
-                                <a href="">Saiba mais</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
+                <?php
+
+                if ($quantidade > 0) {
+                    $_SESSION['resultados'] = array();
+                    while ($result = $sql_query->fetch_assoc()) {
+                        $_SESSION['resultados'][] = $result;
+                    };
+                };
+                echo "<div class=grid-popular-cars>";
+                if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
+                    foreach ($_SESSION['resultados'] as $carro) {
+                        echo '<div class="card-popular-cars">';
+                        echo '<div class="box-image-popular-cars">';
+                        echo '<img src="/GearTech/assets/car_images/' . $carro['idIden'] . '.png" alt="">';
+                        echo '</div>';
+                        echo '<div class="box-description-popular-cars">';
+                        echo '    <div class="title-card-popular-cars">';
+                        echo '        <h2>'. $carro['nome'] .'</h2>';
+                        echo '    </div>';
+                        echo '    <div class="group-popular-cars">';
+                        echo '        <div class="info-popular-cars">';
+                        echo '            <img src="/GearTech/assets/icons/passager.svg" alt="">';
+                        echo '            <p>' . ($carro['capacidade'])-1 . ' passageiros</p>';
+                        echo '        </div>';
+                        echo '        <div class="info-popular-cars">';
+                        echo '            <img src="/GearTech/assets/icons/cambio.svg" alt="">';
+                        echo '            <p>Automático</p>';
+                        echo '        </div>';
+                        echo '        <div class="info-popular-cars">';
+                        echo '            <img src="/GearTech/assets/icons/car-door.svg" alt="">';
+                        echo '            <p>' . $carro['capacidade'] -1 . ' portas</p>';
+                        echo '        </div>';
+                        echo '    </div>';
+                        echo '    <hr>';
+                        echo '    <div class="price-popular-cars">';
+                        echo '        <p>Preço</p>';
+                        echo '        <span>R$' . $carro['orcamento'] . '</span>';
+                        echo '    </div>';
+                        echo '    <div class="more-info-popular-cars">';
+                        echo '        <a href="">Saiba mais</a>';
+                        echo '    </div>';
+                        echo '</div>';
+
+                        echo '</div>';
+                    };
+                };
+                echo "</div>"
+                ?>
             </div>  
         </section>
 
