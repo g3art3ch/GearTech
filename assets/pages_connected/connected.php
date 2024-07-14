@@ -378,17 +378,30 @@ $quantidade = $sql_query->num_rows;
 
                     <div class="right-side-contact">
                     <div class="card-form-contact">
-                            <form action="https://api.web3forms.com/submit" method="POST" method="post">
+                            <form action="https://api.web3forms.com/submit" method="post" id="ContForm">
                                 <input type="hidden" name="access_key" value="b92d6b10-0fe4-4d01-a034-23dbefe8e98e">
                                 <label for="">Nome completo</label>
                                 <input type="text" value="<?php echo $_SESSION['nomeUsuario']; ?>" name="Nome" readonly>
                                 <label for="">Email</label>
                                 <input type="email" value="<?php echo $_SESSION['email']; ?>" name="E-mail" id="" readonly>
                                 <label for="">Assunto</label>
-                                <input type="text" name="Subject">
+                                <input type="text" name="Subject" id="subject">
                                 <label for="">Mensagem</label>
-                                <textarea name="Message" id="" cols="20" rows="10"></textarea>
-                                <button type="submit" >Enviar</button>
+                                <textarea name="Message" id="message" cols="20" rows="10"></textarea>
+                                <button onclick=check() type="submit" >Enviar</button>
+                                <!-- <script>
+                                    function check(){
+                                        var sub = document.getElementById("subject").value;
+                                        var mes =document.getElementById("message").value;
+
+                                        if(sub === "" || mes === "" ){
+                                            window.alert('Preencha os campos de assunto e mensagem!');
+                                        }else{
+                                            var fm = document.getElementById('ContForm');
+                                            fm.action = "https://api.web3forms.com/submit";
+                                        }
+                                    }
+                                </script> -->
                             </form>
                         </div>
                     </div>
