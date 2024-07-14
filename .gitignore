@@ -1,5 +1,9 @@
 # Exibir apenas o primeiro nome na tela inicial logado
 
+
+
+
+
 B.O a serem resolvidos:
 
 -função esqueci minha senha
@@ -7,8 +11,10 @@ B.O a serem resolvidos:
 -popup alert de erro padrão pro site todo
 
 
-
-
+-igualar distancia dos botoes(catalogo e manutencoes) do index.php e login.php as outras paginas. 
+texto ao lado do icone de usuario muda de acordo com a pagina, o tamanho afeta a distancia dos botoes
+-arrumar posição dos inputs na alteração de senha, está funcionando, mas precisei colocar os dois ultimos inputs
+dentro de um form, fudeo a formatação
 
 -upar carros no bdd
 
