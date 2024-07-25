@@ -65,11 +65,11 @@
 .card-technology-specification h2 {
     font-size: 22px;
     color: var(--secondary);
+    margin-bottom: 20px;
 }
 
 .card-technology-specification table,
 .card-mecanic-specification table {
-    padding-top: 20px;
     width: 100%;
     table-layout: auto;
 }
@@ -77,15 +77,17 @@
 
 .card-mecanic-specification td,
 .card-technology-specification td {
-    padding: 10px 0px;
+    padding: 8px 5px;
     width: auto;
 }
 
 .card-mecanic-specification td:nth-child(1),
 .card-technology-specification td:nth-child(1) {
-    font-size: 17px;
-    width: 40%;
-    font-weight: 600;
+    font-size: 18px;
+    width: 30%;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    
 }
 
 .card-mecanic-specification p,

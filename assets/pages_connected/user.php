@@ -91,9 +91,9 @@ include('protect.php');
                             ?>
                             <form action="" method="post">
                                 <label for="">Confirme sua senha</label>
-                                <input type="text" placeholder="Insira sua senha" name="ConfSenha">
+                                <input type="password" placeholder="Insira sua senha" name="ConfSenha">
                                 <label for="">Edite sua senha</label>
-                                <input type="text" placeholder="Nova senha" name="EditSenha">
+                                <input type="password" placeholder="Nova senha" name="EditSenha">
                                 <button type="submit" name="submit">Confirmar alteração</button>
                             </form>
 

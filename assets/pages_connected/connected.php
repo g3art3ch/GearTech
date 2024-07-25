@@ -171,7 +171,7 @@ $quantidade = $sql_query->num_rows;
                                     <img src="/GearTech/assets/icons/people.svg" alt="">
                                     <div class="title-headline">Capacidade de passageiros</div>
                                 </div>
-                                <input type="number" name="capacidade" id="" placeholder="Selecione a quantidade de passageiros">
+                                <input type="number" name="capacidade" id="" placeholder="Selecione a quantidade de passageiros" min="0" max="4">
                             </div>
                             <div class="itens-filter">
                                 <div class="headline">
@@ -440,6 +440,13 @@ $quantidade = $sql_query->num_rows;
     </footer>
 
     <script src="/GearTech/assets/js/script.js"></script>
+    <script>
+         function validarInput (input){
+            if (input.value < 0) input.value = 0;
+        if (input.value > 4) input.value = 4;
+        }
+        
+    </script>
 </body>
 
 </html>
