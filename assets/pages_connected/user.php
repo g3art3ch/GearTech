@@ -107,7 +107,7 @@ include('protect.php');
                                     
                                     $sql_code = "
                                     UPDATE usuarios 
-                                    SET senha = ' $EditSenha'
+                                    SET senha = '$EditSenha'
                                     WHERE email = '$_SESSION[email]';
                                     ";
     
