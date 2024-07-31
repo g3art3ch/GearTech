@@ -22,7 +22,7 @@ section .box-login {
 
 section .card {
     width: 100%;
-    max-width: 480px;
+    max-width: 550px;
     background-color: var(--cardBackground);
     border-radius: 15px;
     box-shadow: var(--shadow);
@@ -122,6 +122,10 @@ section .create-an-account a {
 
 section .create-an-account a:hover {
     text-decoration: underline;
+}
+
+.error-mensage {
+
 }
 
 

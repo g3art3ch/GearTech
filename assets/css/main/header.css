@@ -11,8 +11,19 @@ header .area {
     padding: 20px 10px;
 }
 
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo h1 {
+    color: var(--secondary);
+    font-size: 1.6rem;
+    margin-left: 10px;
+}
+
 header .logo img {
-    width: 62px;
+    width: 60px;
 }
 
 header .menu-opener {
