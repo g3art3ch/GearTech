@@ -163,7 +163,7 @@ while ($result = $sql_query->fetch_assoc()) {
                     </div>
                     <div class="right-side-specification">
                         <div class="card-mecanic-specification">
-                            <h2>Componentes mecânicos</h2>
+                            <h2>Especificações Gerais</h2>
                             <table>
                                 <tr>
                                     <td>Marca</td>

@@ -69,7 +69,7 @@ include('protect.php');
                 </div>
                 <div class="grid-logotypes">
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Audi" class="card-logotype">
+                        <a href="filtered_catalog.php?Marca=Audi" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/audi.png" alt="">
                             </div>

@@ -115,9 +115,6 @@ include('protect.php');
                                     echo '<p>Senha alterada com sucesso!</p>';
                                 } else {
                                     echo '<p>Senha de confirmação incorreta.</p>';
-                                    echo $_SESSION['senha'] . "\n";
-                                    echo $ConfSenha . "\n";
-                                    echo $EditSenha;
                                 }
                             }
                             ?>
