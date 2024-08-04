@@ -1,36 +1,5 @@
-<?php
-include('./assets/pages/connection_cars.php');
 
-$sql_code = "SELECT 
-    nc.nome,
-    fc.estilo,
-    oc.orcamento,
-    tc.combustivel,
-    cc.capacidade,
-    uc.tipoUso,
-    iden.idIden,
-    iden.urlCarro,
-    iden.Marca
-FROM 
-    nomeCarro nc
-INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
-INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
-INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
-INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
-INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
-INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome  
-WHERE nome in ('Volkswagen Nivus 1.0 200 TSI C', 'Hyundai Creta 1.6 Action (Aut)', 'Chevrolet Tracker 1.0 Turbo (A')";
 
-$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-$quantidade = $sql_query->num_rows;
-
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 

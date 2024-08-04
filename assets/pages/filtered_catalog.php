@@ -1,82 +1,33 @@
 <?php
-include('connection_cars.php');
-include('protect.php');
+require("../fipeIN/vendor/autoload.php");
 
-if (isset($_GET['pag'])) {
-    $pagina = $_GET['pag'];
-} else {
-    $pagina = 1;
-}
+use DeividFortuna\Fipe\FipeCarros;
 
+session_start();
+
+$pagina = isset($_GET['pag']) ? intval($_GET['pag']) : 1;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $width = isset($_POST['width']) ? intval($_POST['width']) : 0;
-    if ($width < 480) {
-        $_SESSION['limite'] = 4;
-    } else if ($width < 770) {
-        $_SESSION['limite'] = 6;
-    } else
-        $_SESSION['limite'] = 9;
+    $_SESSION['limite'] = ($width < 480) ? 4 : (($width < 770) ? 6 : 9);
 }
 
-$limite = isset($_SESSION['limite']) ? $_SESSION['limite'] : 9; // Se Session não está setado, o valor atribuido a ele será 9
-
+$limite = isset($_SESSION['limite']) ? $_SESSION['limite'] : 9;
 $inicio = ($pagina * $limite) - $limite;
 
 if (isset($_GET["Marca"])) {
-    $marca = $_GET["Marca"];
-    $sql_code = "SELECT 
-    nc.nome,
-    fc.estilo,
-    oc.orcamento,
-    tc.combustivel,
-    cc.capacidade,
-    uc.tipoUso,
-    iden.idIden,
-    iden.urlCarro,
-    iden.Marca
-FROM 
-    nomeCarro nc
-INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
-INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
-INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
-INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
-INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
-INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome  
-WHERE Marca = '$marca'
-    LIMIT $inicio, $limite";
+    $marcaURL = $_GET["Marca"];
+    $modelos = FipeCarros::getModelos($marcaURL);
 
 
-    $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-    $quantidade = $sql_query->num_rows;
-
-
-    if ($quantidade > 0) {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-
-        $_SESSION['resultados'] = array();
-        while ($result = $sql_query->fetch_assoc()) {
-            $_SESSION['resultados'][] = $result;
-        }
-
-        // $_SESSION['idIden'] = $result['idIden'];
-        // $_SESSION['urlCarro'] = $result['urlCarro'];
-        // $_SESSION['nomeCarro'] = $result['nomeCarro'];
-        // $_SESSION['estilo'] = $result['estilo'];
-        // $_SESSION['orcamento'] = $result['orcamento'];
-        // $_SESSION['combustivel'] = $result['combustivel'];
-        // $_SESSION['capacidade'] = $result['capacidade'];
-        // $_SESSION['tipoUso'] = $result['tipoUso'];
-
-
+    if (is_array($modelos) && isset($modelos['modelos'])) {
+        $modelos = $modelos['modelos'];
+    } else {
+        // Defina $modelos como um array vazio ou trate o erro conforme necessário
+        $modelos = [];
+        echo '<br>';
+        echo 'Erro ao obter modelos. Tente novamente mais tarde.';
+        echo  '<br>';
     }
 }
 ?>
@@ -155,124 +106,82 @@ WHERE Marca = '$marca'
         </header>
 
         <section class="recomendation">
-    <div class="container">
-        
-        <div class="grid-recomendation">
-            <?php
-            if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
-                // Loop através dos resultados e exibe as informações de cada carro
-                foreach ($_SESSION['resultados'] as $carro) {
-                    echo '<div class="card-recomendation">';
-                    echo '<div class="box-image">';
-                    echo '<img src="' . $carro['urlCarro'] . $carro['idIden'] . '.png" alt="">';
-                    echo '</div>';
-                    echo '<div class="title-card-recomendation">' . $carro['nome'] . '</div>';
-                    echo '<div class="price">R$ ' . $carro['orcamento'] . '</div>';
-                    echo '<div class="box-info">';
-                    echo '<div class="info">';
-                    echo '<img src="../icons/fuel-recomendation.svg" alt="">';
-                    echo '<p>' . $carro['combustivel'] . '</p>';
-                    echo '</div>';
-                    echo '<div class="info">';
-                    echo '<img src="../icons/passenger-recomendation.svg" alt="">';
-                    echo '<p>' . $carro['capacidade'] . ' Passageiros</p>';
-                    echo '</div>';
-                    echo '<div class="info">';
-                    echo '<img src="../icons/use-recomendation.svg" alt="">';
-                    echo '<p>' . $carro['tipoUso'] . '</p>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '<div class="saiba-mais-recomendation">';
-                    echo '<a href="/GearTech/assets/pages/car-specification.php?IdCar='. $carro['nome'] .' ">Saiba mais</a>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-            } else {
-                echo '
-                <div class="NoCar">
-                    <h1>Nenhum carro encontrado</h1>
-                </div>
-                ';
-            }
-            ?>
-        </div>
-    </div>
-</section>
+            <div class="container">
+                <div class="grid-recomendation">
+                    <?php
+                    foreach ($modelos as $modelo) {
+                        echo '<div class="card-recomendation">';
+                        echo '<form action="car-specification.php" method="get">';
+                        echo '<div class="box-image">';
+                        echo '<img src=".png" alt="">';
+                        echo '</div>';
 
+                        echo '<div class="title-card-recomendation">';
+                        echo $modelo['nome'] . '<br>';
+                        echo '</div>';
+
+                        echo '<div class="title-card-recomendation">' . $modelo['codigo'] . '</div>';
+
+                        echo '<div class="saiba-mais-recomendation">';
+                        echo '<label for="options">Escolha uma opção:</label>';
+                        echo '<select name="Ano" id="options">';
+
+                        $years = FipeCarros::getAnos($marcaURL, $modelo['codigo']);
+                        foreach ($years as $year) {
+                            echo '<option value="' . $year['codigo'] . '">' . $year['codigo'] . '</option>';
+                        }
+
+                        echo '</select>';
+                        echo '<br><br>';
+                        echo '<input type="hidden" name="Marca" value="' . $marcaURL . '">';
+                        echo '<input type="hidden" name="Modelo" value="' . $modelo['codigo'] . '">';
+                        echo '<button type="submit">Enviar</button>';
+                        echo '</div>';
+
+                        echo '</form>';
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </section>
 
         <div class="pagination">
             <div class="box-pagination">
-                <?php
-                $lim_pag = 4;
-                $consulta = "SELECT * FROM identificador WHERE Marca = '$marca'";
-                $result = $mysqli->query($consulta);
-                $total_registros = $result->num_rows;
-                $total_paginas = Ceil($total_registros / $limite);
-                $inicio = ((($pagina - $lim_pag) > 1) ? $pagina - $lim_pag : 1);
-                $fim = ((($pagina + $lim_pag) < $total_paginas) ? $pagina + $lim_pag : $total_paginas);
 
-                echo '<p align="center">';
-
-
-                if ($total_registros >= $limite) {
-                    if ($pagina > 1) {
-                        echo '<a href="filtered_catalog.php">Página Inicial</a> ';
-                        echo "\t";
-                    }
-                    if ($total_paginas > 1 && $pagina <= $total_paginas) {
-                        for ($i = $inicio; $i <= $fim; $i++) {
-                            if ($pagina == $i) {
-                                echo " " . $i . " ";
-                            } else {
-                                echo '<a href="filtered_catalog.php?pag=' . $i . '"> ' . $i . '</a>';
-                            }
-                        }
-                    }
-                    if ($pagina != $total_paginas) {
-                        echo "\t";
-                        echo '<a href="filtered_catalog.php?pag=' . $total_paginas . '"> Última página</a>';
-                    }
-                } else
-
-
-
-
-                    echo '</p>';
-                session_destroy();
-                ?>
             </div>
         </div>
-        </main>
-        <footer>
-            <div class="container">
-                <div class="box-footer">
-                    <div class="left-side-footer">
-                        <div class="links">
-                            <a href="">Termos de uso</a>
-                            <a href="">Catálogo</a>
-                            <a href="">Manutenções</a>
-                        </div>
-                        <div class="social-icons-footer">
-                            <a href=""><img src="../icons/instagram-footer.svg" alt=""></a>
-                            <a href=""><img src="../icons/email-footer.svg" alt=""></a>
-                        </div>
-                        <div class="mail-footer">
-                            Email: suporte.geartech@gmail.com
-                        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="box-footer">
+                <div class="left-side-footer">
+                    <div class="links">
+                        <a href="">Termos de uso</a>
+                        <a href="">Catálogo</a>
+                        <a href="">Manutenções</a>
                     </div>
-                    <div class="right-side-footer">
-                        <h2>Sobre nós</h2>
-                        <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
-                        </p>
+                    <div class="social-icons-footer">
+                        <a href=""><img src="../icons/instagram-footer.svg" alt=""></a>
+                        <a href=""><img src="../icons/email-footer.svg" alt=""></a>
+                    </div>
+                    <div class="mail-footer">
+                        Email: suporte.geartech@gmail.com
                     </div>
                 </div>
-                <div class="copy">
-                    <a href="">© GearTech - Todos os direitos reservados</a>
+                <div class="right-side-footer">
+                    <h2>Sobre nós</h2>
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
+                    </p>
                 </div>
             </div>
-        </footer>
-        <script src="../js/script.js"></script>
-    
+            <div class="copy">
+                <a href="">© GearTech - Todos os direitos reservados</a>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/script.js"></script>
+
 </body>
 
 </html>

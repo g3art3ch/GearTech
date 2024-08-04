@@ -1,47 +1,16 @@
 <?php
-include('connection_cars.php');
-if (isset($_GET['IdCar'])) {
-    $idCarURL = $_GET['IdCar'];
-    $idCar = str_replace('_', ' ', $idCarURL);
+require("../fipeIN/vendor/autoload.php");
+
+use DeividFortuna\Fipe\FipeCarros;
+
+if (isset($_GET['Ano']) && isset( $_GET['Marca']) && isset($_GET['Modelo'])) {
+    $AnoCar = $_GET['Ano'];
+    $MarcaCar = $_GET['Marca'];
+    $ModeloCar = $_GET['Modelo'];
 }
 
-$sql_code = "SELECT 
-    nc.nome,
-    fc.estilo,
-    oc.orcamento,
-    tc.combustivel,
-    cc.capacidade,
-    uc.tipoUso,
-    iden.idIden,
-    iden.urlCarro,
-    iden.Marca
-FROM 
-    nomeCarro nc
-INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
-INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
-INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
-INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
-INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
-INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome  
-WHERE nome = '$idCar'";
 
-$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-$quantidade = $sql_query->num_rows;
-if ($quantidade > 0) {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-}
-$_SESSION['resultados'] = array();
-while ($result = $sql_query->fetch_assoc()) {
-    $_SESSION['resultados'][] = $result;
-}
+$vehicle = FipeCarros:: getVeiculo($MarcaCar, $ModeloCar, $AnoCar);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,17 +75,16 @@ while ($result = $sql_query->fetch_assoc()) {
             <div class="container">
                 <div class="title-car-title-specification">
                     <h2>Mais informações sobre - <?php
-                    foreach ($_SESSION['resultados'] as $carro) { 
-                        echo $carro['nome'];
-                    };?>
+                        echo $vehicle['Modelo'];
+                ?>
                         </h2>
                 </div>
                 <div class="box-car-specification">
                     <div class="left-side-specification">
                         <div class="card-car-specification">
-                            <h2><?php echo $carro['nome'];?></h2>
+                            <h2><?php echo $vehicle['Modelo'];?></h2>
                             <?php 
-                            echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
+                            // echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
                             ?>
                         </div>
                         <div class="card-technology-specification none-mobile">
@@ -167,19 +135,19 @@ while ($result = $sql_query->fetch_assoc()) {
                             <table>
                                 <tr>
                                     <td>Marca</td>
-                                    <td><p><?php echo $carro['Marca']?></p></td>
+                                    <td><p><?php echo $vehicle['Marca']?></p></td>
                                 </tr>
                                 <tr>
                                     <td>Modelo</td>
-                                    <td><p><?php echo $carro['nome']?></p></td>
+                                    <td><p><?php echo $vehicle['Modelo']?></p></td>
                                 </tr>
                                 <tr>
                                     <td>Tipo de Carroceria</td>
-                                    <td><p><?php echo $carro['estilo']?></p></td>
+                                    <td><p>...</p></td>
                                 </tr>
                                 <tr>
                                     <td>Capacidade de passageiros</td>
-                                    <td><p><?php echo $carro['capacidade']-1?></p></td>
+                                    <td><p>...</p></td>
                                 </tr>
                                 
                                 <tr>
