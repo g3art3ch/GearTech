@@ -62,17 +62,7 @@
                 <div class="card">
                     <h2><span>Seja bem vindo!</span><br>Ainda não tem uma conta?</h2>
 
-                    <div class="error-register">
-                        <?php
-                        // Exibir mensagens de erro, se houver
-                        if (isset($_GET['error'])) {
-
-                            echo "<p style='color:red;'>" . $_GET['error'] . "</p>";
-                        }
-                        ?>
-
-                    </div>
-
+                    
                     <form action="register_process.php" method="post">
                         <label for="">Nome completo</label>
                         <input type="text" name="nomeUsuario" placeholder="Digite seu nome completo">
@@ -81,7 +71,17 @@
                         <label for="">Senha</label>
                         <input type="password" name="senha" id="password" placeholder="Digite sua senha">
                         <label for="">Confirme a senha</label>
-                        <input type="password" name="senhaC" id="password" placeholder="Digite sua senha novamente">
+                        <input type="password" name="senhaC" id="password" placeholder="Digite sua senha novamente"><div class="error-register">
+                        <?php
+                        // Exibir mensagens de erro, se houver
+                        if (isset($_GET['error'])) {
+                            
+                            echo '<p class="error-message">' . ($_GET['error']) . '</p>';
+                        }
+                        ?>
+
+                    </div>
+
                         <button type="submit" name="submit" class="account btn-register">Entrar</button>
                     </form>
                 </div>

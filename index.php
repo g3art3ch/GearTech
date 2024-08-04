@@ -32,6 +32,7 @@
                         <a href="index.php">
                             <img src="./assets/images/logo.svg" alt="" />
                         </a>
+                        <h1>Geartech</h1>
                     </div>
                     <div class="menu-opener">
                         <div class="hamburger-icon">
@@ -233,7 +234,7 @@
                             <img src="assets/icons/hand.svg" alt="">
                         </div>
                         <div class="title-about-us-group">
-                            <h2>Atenda a sua <br> necessidade</h2>
+                            <h2>Atende a sua <br> necessidade</h2>
                         </div>
                         <div class="desc-about-us-group">
                             <p>Desenvolvemos um filtro personalizado que se adapta ao seu estilo e preferências, para facilitar a busca do veículo. </p>
