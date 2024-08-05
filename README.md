@@ -2,7 +2,7 @@
 
 # **GearTech**
 
-**Para rodar o bglh, precisa baixar o php menos atual, a api que consome os dados da fipe, não roda na versão mais atual.**
+**Para rodar o bglh, precisa baixar uma versão mais antiga do php, a api que consome os dados da fipe, não roda na versão mais atual.**
 
 ## Detalhe importante sobre a api
 *Pelo que parece a api não tanka tantas requisições, não sei se requisições individuais, ou se de todos os usuários no planeta terra que estão consumindo dados ao mesmo tempo que nosotros.*
