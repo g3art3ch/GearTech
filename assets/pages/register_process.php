@@ -1,40 +1,40 @@
 <?php 
 include('connection.php');
 
-function validarSenha($senha) {
-    $erros = [];
+                                                                                                    function validarSenha($senha) {
+                                                                                                        $erros = [];
 
-    // Verifica o comprimento mínimo da senha
-    if (strlen($senha) < 8) {
-        $erros[] = "A senha deve ter pelo menos 8 caracteres.";
-    }
+                                                                                                        // Verifica o comprimento mínimo da senha
+                                                                                                        if (strlen($senha) < 8) {
+                                                                                                            $erros[] = "A senha deve ter pelo menos 8 caracteres.";
+                                                                                                        }
 
-    // Verifica se a senha contém pelo menos uma letra maiúscula
-    if (!preg_match('/[A-Z]/', $senha)) {
-        $erros[] = "A senha deve conter pelo menos uma letra maiúscula.";
-    }
+                                                                                                        // Verifica se a senha contém pelo menos uma letra maiúscula
+                                                                                                        if (!preg_match('/[A-Z]/', $senha)) {
+                                                                                                            $erros[] = "A senha deve conter pelo menos uma letra maiúscula.";
+                                                                                                        }
 
-    // Verifica se a senha contém pelo menos uma letra minúscula
-    if (!preg_match('/[a-z]/', $senha)) {
-        $erros[] = "A senha deve conter pelo menos uma letra minúscula.";
-    }
+                                                                                                        // Verifica se a senha contém pelo menos uma letra minúscula
+                                                                                                        if (!preg_match('/[a-z]/', $senha)) {
+                                                                                                            $erros[] = "A senha deve conter pelo menos uma letra minúscula.";
+                                                                                                        }
 
-    // Verifica se a senha contém pelo menos um número
-    if (!preg_match('/[0-9]/', $senha)) {
-        $erros[] = "A senha deve conter pelo menos um número.";
-    }
+                                                                                                        // Verifica se a senha contém pelo menos um número
+                                                                                                        if (!preg_match('/[0-9]/', $senha)) {
+                                                                                                            $erros[] = "A senha deve conter pelo menos um número.";
+                                                                                                        }
 
-    // Verifica se a senha contém pelo menos um caractere especial
-    if (!preg_match('/[\W_]/', $senha)) {
-        $erros[] = "A senha deve conter pelo menos um caractere especial.";
-    }
+                                                                                                        // Verifica se a senha contém pelo menos um caractere especial
+                                                                                                        if (!preg_match('/[\W_]/', $senha)) {
+                                                                                                            $erros[] = "A senha deve conter pelo menos um caractere especial.";
+                                                                                                        }
 
-    if (empty($erros)) {
-        return true; // Senha válida
-    } else {
-        return $erros; // Retorna os erros encontrados
-    }
-}
+                                                                                                        if (empty($erros)) {
+                                                                                                            return true; // Senha válida
+                                                                                                        } else {
+                                                                                                            return $erros; // Retorna os erros encontrados
+                                                                                                        }
+                                                                                                    }
 
 if (isset($_POST["submit"])) {
     $email = $_POST['email'];

@@ -18,76 +18,80 @@
 
 <body>
     <main>
-    <div class="container">
-        <header>
-            <div class="area">
-                <div class="logo">
-                    <a href="/GearTech/index.php">
-                        <img src="../images/logo.svg" alt="" />
-                    </a>
-                </div>
-                <div class="menu-opener">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div class="close-icon">
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="./catalog.php">Catálogo</a></li>
-                    <li><a href="">Manutenções</a></li>
-                    <li>
-                        <div class="user-enter">
-                            <a href="/GearTech/assets/pages/login.php">
-                                <img src="/GearTech/assets/icons/user.svg" alt="">
-                                <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua conta</a>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-    </div>
-
-
-    <section class="register">
         <div class="container">
-            <div class="box-login">
-                <div class="card">
-                    <h2><span>Seja bem vindo!</span><br>Ainda não tem uma conta?</h2>
-
-                    
-                    <form action="register_process.php" method="post">
-                        <label for="">Nome completo</label>
-                        <input type="text" name="nomeUsuario" placeholder="Digite seu nome completo">
-                        <label for="">Email</label>
-                        <input type="mail" name="email" placeholder="Digite seu email">
-                        <label for="">Senha</label>
-                        <input type="password" name="senha" id="password" placeholder="Digite sua senha">
-                        <label for="">Confirme a senha</label>
-                        <input type="password" name="senhaC" id="password" placeholder="Digite sua senha novamente"><div class="error-register">
-                        <?php
-                        // Exibir mensagens de erro, se houver
-                        if (isset($_GET['error'])) {
-                            
-                            echo '<p class="error-message">' . ($_GET['error']) . '</p>';
-                        }
-                        ?>
-
+            <header>
+                <div class="area">
+                    <div class="logo">
+                        <a href="/GearTech/index.php">
+                            <img src="../images/logo.svg" alt="" />
+                        </a>
                     </div>
+                    <div class="menu-opener">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="close-icon">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="./catalog.php">Catálogo</a></li>
+                        <li><a href="">Manutenções</a></li>
+                        <li>
+                            <div class="user-enter">
+                                <a href="/GearTech/assets/pages/login.php">
+                                    <img src="/GearTech/assets/icons/user.svg" alt="">
+                                    <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua conta</a>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
 
-                        <button type="submit" name="submit" class="account btn-register">Entrar</button>
-                    </form>
+
+        <section class="register">
+            <div class="container">
+                <div class="box-login">
+                    <div class="card">
+                        <h2><span>Seja bem vindo!</span><br>Ainda não tem uma conta?</h2>
+
+
+                        <form action="register_process.php" method="post">
+                            <label for="">Nome completo</label>
+                            <input type="text" name="nomeUsuario" placeholder="Digite seu nome completo">
+                            <label for="">Email</label>
+                            <input type="mail" name="email" placeholder="Digite seu email">
+                            <label for="">Senha</label>
+                            <input type="password" name="senha" id="password" placeholder="Digite sua senha">
+                            <label for="">Confirme a senha</label>
+                            <input type="password" name="senhaC" id="password" placeholder="Digite sua senha novamente">
+                            <div class="error-register">
+                                <?php
+                                // Exibir mensagens de erro, se houver
+                                if (isset($_GET['error'])) {
+
+                                    echo '<div class="error-message">';
+                                    echo '<img src="/GearTech/assets/icons/check-register-none.svg"> </img>';
+                                    echo '<p>' . ($_GET['error']) . '</p>';
+                                    echo '</div>';
+                                }
+                                ?>
+
+                            </div>
+
+                            <button type="submit" name="submit" class="account btn-register">Entrar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     </main>
     <footer>
         <div class="container">
@@ -119,7 +123,7 @@
     </footer>
 
     <script src="../js/script.js"></script>
-    
+
 </body>
 
 </html>

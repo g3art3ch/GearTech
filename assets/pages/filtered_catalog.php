@@ -108,8 +108,11 @@ if (isset($_GET["Marca"])) {
         <section class="recomendation">
             <div class="container">
                 <div class="grid-recomendation">
-                    <?php
+                <?php
                     foreach ($modelos as $modelo) {
+                    $years = FipeCarros::getAnos($marcaURL, $modelo['codigo']);
+                    foreach ($years as $year) {
+                        if ($year['codigo'] >=   2019  ) {
                         echo '<div class="card-recomendation">';
                         echo '<form action="car-specification.php" method="get">';
                         echo '<div class="box-image">';
@@ -126,10 +129,9 @@ if (isset($_GET["Marca"])) {
                         echo '<label for="options">Escolha uma opção:</label>';
                         echo '<select name="Ano" id="options">';
 
-                        $years = FipeCarros::getAnos($marcaURL, $modelo['codigo']);
-                        foreach ($years as $year) {
+                        
                             echo '<option value="' . $year['codigo'] . '">' . $year['codigo'] . '</option>';
-                        }
+                       
 
                         echo '</select>';
                         echo '<br><br>';
@@ -141,6 +143,8 @@ if (isset($_GET["Marca"])) {
                         echo '</form>';
                         echo '</div>';
                     }
+                }
+            }
                     ?>
                 </div>
             </div>
