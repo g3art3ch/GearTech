@@ -87,11 +87,22 @@
                             </div>
 
                             <button type="submit" name="submit" class="account btn-register">Entrar</button>
+
+
+
                         </form>
+
+
+
+
+
                     </div>
                 </div>
             </div>
         </section>
+
+        <button onclick="popup()">teste</button>
+
     </main>
     <footer>
         <div class="container">
@@ -123,6 +134,21 @@
     </footer>
 
     <script src="../js/script.js"></script>
+    <script type='text/javascript'>
+        function popup() {
+            Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "Verifique sua caixa de entrada",
+                text: " o link de ativação de cadastro foi enviado para seu e-mail.",
+                showConfirmButton: false,
+                width: "30rem",
+                showCloseButton: true,
+                background: "#fafafa",
+            });
+
+        }
+    </script>
 
 </body>
 

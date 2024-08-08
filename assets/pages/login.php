@@ -61,6 +61,18 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Faça seu login</title>
+    <style>
+        .swal2-popup {
+            border-radius: 15px;
+            
+        }
+
+        .custom-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -103,13 +115,20 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             </header>
         </div>
 
+        <div style="display: flex; flex-direction:column; width:180px;gap: 10px;" >
+            <button onclick="popup()">Verificação</button>
+            <button onclick="errorLogin()">Falha ao logar</button>
+            <button onclick="senhasNaoCoincidem()">Email Cadastrado</button>
+            <button onclick="senhaAtualIncorreta()">Senha atual incorreta</button>
+        </div>
+      
 
         <div>
-            <?php 
+            <?php
             if (isset($_GET['message'])) {
                 $message = $_GET['message'];
-                echo "<script type='text/javascript'>popup('$message');</script>";
-            }?>
+                echo "<script type='text/javascript'>alert('$message');</script>";
+            } ?>
         </div>
 
 
@@ -169,18 +188,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     <script src="../js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type='text/javascript'>
-        function popup() {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Verifique sua caixa de entrada",
-                text: " o link de ativação de cadastro foi enviado para seu e-mail.",
-                showConfirmButton: false,
-                width:"30rem",
-
-            });
-
-        }
+        
     </script>
 
 </body>

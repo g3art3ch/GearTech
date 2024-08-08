@@ -81,7 +81,10 @@ if (!isset($_SESSION['nome'])) {
                     echo '<img src="' . $carro['urlCarro'] . $carro['idIden'] . '.png" alt="">';
                     echo '</div>';
                     echo '<div class="title-card-recomendation">' . $carro['nome'] . '</div>';
+                    echo '<div class="box-price">';
                     echo '<div class="price">R$ ' . $carro['orcamento'] . '</div>';
+                    echo '<img src="../icons/saved-icon-recomendation.svg"></img>';
+                    echo '</div>';
                     echo '<div class="box-info">';
                     echo '<div class="info">';
                     echo '<img src="../icons/fuel-recomendation.svg" alt="">';
