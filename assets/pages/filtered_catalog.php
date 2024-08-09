@@ -112,7 +112,7 @@ if (isset($_GET["Marca"])) {
                     foreach ($modelos as $modelo) {
                     $years = FipeCarros::getAnos($marcaURL, $modelo['codigo']);
                     foreach ($years as $year) {
-                        if ($year['codigo'] >=   2019   ) {
+                        if ($year['codigo'] >=   2019  ) {
                         echo '<div class="card-recomendation">';
                         echo '<form action="car-specification.php" method="get">';
                         echo '<div class="box-image">';
