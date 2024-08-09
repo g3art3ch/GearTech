@@ -55,6 +55,7 @@ function senhasNaoCoincidem(){
     Swal.fire({
         position: "top",
         icon: "success",
+        iconColor: "#23A669",
         title: "Você já possui uma conta!",
             showConfirmButton: false,
         width: "27rem",
