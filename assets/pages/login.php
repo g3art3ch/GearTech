@@ -8,7 +8,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
         echo "<script> window.alert('Preencha seu email!');</script>";
     } else if (strlen($_POST['senha']) == 0) {
         echo "<script> window.alert('Preencha sua senha!');</script>";
-    }else {
+    } else {
 
         $email = $mysqli->real_escape_string($_POST['email']);
         $senha = $mysqli->real_escape_string($_POST['senha']);
@@ -30,9 +30,9 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             $_SESSION['email'] = $usuario['email'];
             $_SESSION['senha'] = $usuario['senha'];
             $_SESSION['status'] = $usuario['status'];
-            if($_SESSION['status'] == 2){
-            header("Location: /GearTech/assets/pages_connected/connected.php");
-            }else{
+            if ($_SESSION['status'] == 2) {
+                header("Location: /GearTech/assets/pages_connected/connected.php");
+            } else {
                 echo 'Confirme seu email!';
             }
         } else {
@@ -61,81 +61,100 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Faça seu login</title>
+    <style>
+        .swal2-popup {
+            border-radius: 15px;
+            
+        }
+
+        .custom-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+    </style>
 </head>
 
 <body>
     <main>
-    <div class="container">
-        <header>
-            <div class="area">
-                <div class="logo">
-                    <a href="/GearTech/index.php">
-                        <img src="../images/logo.svg" alt="" />
-                    </a>
-                </div>
-                <div class="menu-opener">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+        <div class="container">
+            <header>
+                <div class="area">
+                    <div class="logo">
+                        <a href="/GearTech/index.php">
+                            <img src="../images/logo.svg" alt="" />
+                        </a>
                     </div>
-                    <div class="close-icon">
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="catalog.php">Catálogo</a></li>
-                    <li><a href="">Manutenções</a></li>
-                    <li>
-                        <div class="user-enter">
-                            <a href="/GearTech/index.php">
-                                <img src="/GearTech/assets/icons/user.svg" alt="">
-                                <a href="/GearTech/index.php" class="login-account">Voltar à página inicial</a>
-                            </a>
+                    <div class="menu-opener">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
+                        <div class="close-icon">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="catalog.php">Catálogo</a></li>
+                        <li><a href="">Manutenções</a></li>
+                        <li>
+                            <div class="user-enter">
+                                <a href="/GearTech/index.php">
+                                    <img src="/GearTech/assets/icons/user.svg" alt="">
+                                    <a href="/GearTech/index.php" class="login-account">Voltar à página inicial</a>
+                                </a>
+                            </div>
 
-                    </li>
-                </ul>
-            </nav>
-        </header>
-    </div>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
 
-    
+        <div style="display: flex; flex-direction:column; width:180px;gap: 10px;" >
+            <button onclick="popup()">Verificação</button>
+            <button onclick="errorLogin()">Falha ao logar</button>
+            <button onclick="senhasNaoCoincidem()">Email Cadastrado</button>
+            <button onclick="senhaAtualIncorreta()">Senha atual incorreta</button>
+        </div>
+      
+
         <div>
-            <?php 
+            <?php
             if (isset($_GET['message'])) {
                 $message = $_GET['message'];
                 echo "<script type='text/javascript'>alert('$message');</script>";
-            }?>
+            } ?>
         </div>
 
 
-    <section class="login">
-        <div class="container">
-            <div class="box-login">
-                <div class="card">
-                    <h2><span>Seja bem vindo!</span><br>Acesse sua conta</h2>
-                    <form action="" method="post">
-                        <label for="">Email</label>
-                        <input type="mail" name="email" placeholder="Digite seu email">
-                        <label for="">Senha</label>
-                        <input type="password" name="senha" id="password" placeholder="Digite sua senha">
-                        <div class="forgot-password">
-                            <img src="../icons/lock.svg" alt="">
-                            <a href="">Esqueceu sua senha</a>
-                        </div>
-                        <button type="submit" class="account">Entrar</button>
-                        <div class="create-an-account">
-                            <p>Ainda não tem uma conta?<a href="register.php">Crie uma</a></p>
-                        </div>
-                    </form>
+        <section class="login">
+            <div class="container">
+                <div class="box-login">
+                    <div class="card">
+                        <h2><span>Seja bem vindo!</span><br>Acesse sua conta</h2>
+                        <form action="" method="post">
+                            <label for="">Email</label>
+                            <input type="mail" name="email" placeholder="Digite seu email">
+                            <label for="">Senha</label>
+                            <input type="password" name="senha" id="password" placeholder="Digite sua senha">
+                            <div class="forgot-password">
+                                <img src="../icons/lock.svg" alt="">
+                                <a href="">Esqueceu sua senha</a>
+                            </div>
+                            <button type="submit" class="account">Entrar</button>
+                            <div class="create-an-account">
+                                <p>Ainda não tem uma conta?<a href="register.php">Crie uma</a></p>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     </main>
     <footer>
         <div class="container">
@@ -167,6 +186,11 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     </footer>
 
     <script src="../js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type='text/javascript'>
+        
+    </script>
+
 </body>
 
 </html>

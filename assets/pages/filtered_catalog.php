@@ -108,7 +108,7 @@ if (isset($_GET["Marca"])) {
         <section class="recomendation">
             <div class="container">
                 <div class="grid-recomendation">
-                    <?php
+                <?php
                     foreach ($modelos as $modelo) {
                     $years = FipeCarros::getAnos($marcaURL, $modelo['codigo']);
                     foreach ($years as $year) {

@@ -124,10 +124,21 @@ section .create-an-account a:hover {
     text-decoration: underline;
 }
 
-.error-mensage {
-
+.error-message {
+    display: flex;
+    width: 100%;
 }
 
+.error-message p {
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+
+.popup-verificacao {
+    background-color: #f00;
+}
 
 @media (max-width: 900px) {
 
