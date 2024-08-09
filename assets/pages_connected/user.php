@@ -174,7 +174,7 @@ include('protect.php');
                 </div>
             </div>
         </section>
-
+    </main>
         <footer>
         <div class="container">
             <div class="box-footer">
@@ -204,7 +204,7 @@ include('protect.php');
         </div>
     </footer>
 
-    </main>
+
 
     <script src="../js/script.js"></script>
 </body>
