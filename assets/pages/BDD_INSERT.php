@@ -54,13 +54,7 @@ if (isset($_GET["Marca"])) {
             foreach ($years as $year) {
                 if ($year['codigo'] >=   2019) {
                     echo $modelo['nome'] . '<br>';
-                    echo '<div class="title-card-recomendation">' . $modelo['codigo'] . '</div>';
-                    echo '<option value="' . $year['codigo'] . '">' . $year['codigo'] . '</option>';
-                    echo '<input type="hidden" name="Marca" value="' . $marcaURL . '">';
-                    echo '<input type="hidden" name="Modelo" value="' . $modelo['codigo'] . '">';
-                }
-            }
-            $codModelo = $modelo['codigo'];
+                    $codModelo = $modelo['codigo'];
             $codAno = $year['codigo'];
             $nomeModelo = $modelo['nome'];
 
@@ -68,6 +62,10 @@ if (isset($_GET["Marca"])) {
             VALUES ($codModelo, '$nomeModelo', $codAno, $marcaURL)";
 $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 $quantidade = $sql_query->num_rows;
+                }else
+                echo 'Not inserted, year smaller than 2019';
+            }
+            
         }
         ?>
 
