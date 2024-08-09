@@ -1,0 +1,99 @@
+.result-comparative {
+    padding: 20px 0px;
+}
+
+.title-result-comparative {
+    padding-bottom: 20px;
+}
+
+.title-result-comparative h2 {
+    font-size: 26px;
+}
+
+.box-result-comparative {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.grid-result-comparative {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+    width: 100%;
+}
+
+.item-result-comparative {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image-result-comparative {
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-image-result-comparative {
+    max-width: 400px;
+    width: 100%;
+}
+
+.box-image-result-comparative img {
+    width: 100%;
+}
+
+.card-table-result-comparative {
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 12px;
+}
+
+.card-table-result-comparative h2 {
+    color: var(--secondary);
+    font-size: 19px;
+    text-align: center;
+    padding-bottom: 19px;
+}
+
+.componentes-table-result-comparative {
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+}
+
+.componentes-table-result-comparative label {
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.componentes-table-result-comparative input{
+    background-color: var(--background);
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 8px;
+    outline: none;
+    text-align: center;
+}
+
+
+@media (max-width:900px) {
+    .grid-result-comparative {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width:480px) {
+    .grid-result-comparative {
+        grid-template-columns: 1fr;
+    }
+}

@@ -125,10 +125,16 @@ include('protect.php');
 
                     <div class="right-side-user">
                         <div class="card-user-saved-vehicle">
-                            <div class="title-card-save-vehicle">
-                                <img src="../icons/saved.svg" alt="">
-                                <h2>Veículos salvos</h2>
+                            <div class="headline-saved-vehicle">
+                                <div class="title-card-save-vehicle">
+                                    <img src="../icons/saved.svg" alt="">
+                                    <h2>Veículos salvos</h2>
+                                </div>
+                                <div class="comparative">
+                                    <a href="./comparative.php">Comparativo</a>
+                                </div>
                             </div>
+
                             <div class="slider-container"></div>
                             <div class="area-save-vehicle">
                                 <div class="box-image-save-vehicle">
@@ -175,7 +181,7 @@ include('protect.php');
             </div>
         </section>
     </main>
-        <footer>
+    <footer>
         <div class="container">
             <div class="box-footer">
                 <div class="left-side-footer">

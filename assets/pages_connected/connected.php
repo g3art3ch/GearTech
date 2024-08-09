@@ -390,19 +390,7 @@ $quantidade = $sql_query->num_rows;
                                 <label for="">Mensagem</label>
                                 <textarea name="Message" id="message" cols="20" rows="10"></textarea>
                                 <button onclick=check() type="submit" >Enviar</button>
-                                <!-- <script>
-                                    function check(){
-                                        var sub = document.getElementById("subject").value;
-                                        var mes =document.getElementById("message").value;
-
-                                        if(sub === "" || mes === "" ){
-                                            window.alert('Preencha os campos de assunto e mensagem!');
-                                        }else{
-                                            var fm = document.getElementById('ContForm');
-                                            fm.action = "https://api.web3forms.com/submit";
-                                        }
-                                    }
-                                </script> -->
+                             
                             </form>
                         </div>
                     </div>
