@@ -1,3 +1,37 @@
+<?php
+include('assets/pages/connection_cars.php');
+
+$sql_code = "SELECT 
+    nc.nome,
+    fc.estilo,
+    oc.orcamento,
+    tc.combustivel,
+    cc.capacidade,
+    uc.tipoUso,
+    iden.idIden,
+    iden.urlCarro,
+    iden.Marca
+FROM 
+    nomeCarro nc
+INNER JOIN 
+    filtroCarros fc ON nc.idFiltro = fc.idFiltro
+INNER JOIN 
+    orcamentoCarro oc ON nc.idNome = oc.idNome
+INNER JOIN 
+    tipoCombustivel tc ON nc.idNome = tc.idNome
+INNER JOIN 
+    capacidadeCarro cc ON nc.idNome = cc.idNome
+INNER JOIN 
+    usoCarro uc ON nc.idNome = uc.idNome
+INNER JOIN 
+    identificador iden ON nc.idNome = iden.idNome  
+WHERE nome in ('Chevrolet Onix 1.0 SPE/4 2024', 'Hyundai HB20 1.0 Comfort Plus ', 'Chevrolet Tracker 1.0 Turbo (A')";
+
+$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+$quantidade = $sql_query->num_rows;
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -180,7 +214,7 @@
                         echo '    <div class="group-popular-cars">';
                         echo '        <div class="info-popular-cars">';
                         echo '            <img src="./assets/icons/passager.svg" alt="">';
-                        echo '            <p>' . ($carro['capacidade'])-1 . ' passageiros</p>';
+                        echo '            <p>' . ($carro['capacidade']-1) . ' passageiros</p>';
                         echo '        </div>';
                         echo '        <div class="info-popular-cars">';
                         echo '            <img src="./assets/icons/cambio.svg" alt="">';
@@ -188,7 +222,7 @@
                         echo '        </div>';
                         echo '        <div class="info-popular-cars">';
                         echo '            <img src="./assets/icons/car-door.svg" alt="">';
-                        echo '            <p>' . $carro['capacidade'] -1 . ' portas</p>';
+                        echo '            <p>' . ($carro['capacidade']-1) . ' portas</p>';
                         echo '        </div>';
                         echo '    </div>';
                         echo '    <hr>';
@@ -313,7 +347,7 @@
 
                     <div class="right-side-contact">
                         <div class="card-form-contact">
-                            <form action="">
+                        <form action="https://api.web3forms.com/submit" method="post" id="ContForm">
                                 <label for="">Nome completo</label>
                                 <input type="text" id="CompName">
                                 <label for="">Email</label>
@@ -322,13 +356,8 @@
                                 <input type="text" id="Subject">
                                 <label for="">Mensagem</label>
                                 <textarea name="" id="Message" cols="20" rows="10"></textarea>
-                                <button type="button" onclick=LogAlert() type="submit">Enviar</button>
-                                <script>
-                                    function LogAlert() {
-                                        window.alert('Entre em sua conta para fazer o envio!');
-                                        location.reload()
-                                    }
-                                </script>
+                                <button type="button" type="submit">Enviar</button>
+                                
                             </form>
                         </div>
                     </div>
