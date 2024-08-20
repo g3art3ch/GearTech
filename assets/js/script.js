@@ -84,3 +84,20 @@ function senhaAtualIncorreta(){
         }
     });
 }
+
+function toggleDropdown() {
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Fecha o menu se clicar fora dele
+window.onclick = function(event) {
+    if (!event.target.matches('.user-enter img')) {
+        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+        dropdownMenus.forEach(menu => {
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            }
+        });
+    }
+}

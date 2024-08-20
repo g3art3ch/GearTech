@@ -194,6 +194,44 @@ button:hover {
     justify-content: center;
 }
 
+.box-questionnaire {
+    background-color: var(--cardBackground);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 20px;
+}
+
+.box-questionnaire h2 {
+    font-size: 28px;
+    padding-bottom: 10px;
+}
+
+.box-questionnaire p {
+    line-height: 1.2;
+    font-size: 18px;
+}
+
+.btn-questionnaire {
+    display: flex;
+    padding-top: 15px;
+}
+
+.btn-questionnaire a{
+    background-color: var(--secondary);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+
+
+
+
 @media (max-width: 768px) {
 
     .left-side-user,

@@ -50,7 +50,7 @@
                         <li><a href="">Manutenções</a></li>
                         <li class="dropdown">
                             <div class="user-enter">
-                                <img src="/GearTech/assets/icons/user.svg" alt="">
+                                <img src="/GearTech/assets/icons/user.svg" alt="" >
                                 <a href="assets/pages/login.php" class="login-account">Entre em sua conta</a>
                             </div>
                         </li>
@@ -79,7 +79,7 @@
             </div>
             <div class="container">
                 <div class="card-filter">
-                    <form action="assets/pages/recommendation_process.php" method="post" class="box-filter">
+                    <form action="assets/pages/recommendation_process.php" method="post">
                         <div class="error-register-index">
                             <?php
                             if (isset($_GET['error'])) {
@@ -148,7 +148,13 @@
                         </div>
 
                     </form>
+                        
+                    <!-- <div class="advanced-search">
+                        <a href="">Busca avançada</a>
+                    </div> -->
+                    
                 </div>
+            </div>
         </section>
 
 
@@ -367,6 +373,8 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js.map"></script>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script>
         function validarInput (input){
             if (input.value < 0) input.value = 0;

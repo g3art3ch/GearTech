@@ -78,47 +78,11 @@ include('protect.php');
                             </div>
                         </div>
 
-                        <div class="card-user-password">
-                            <div class="title-card-user">
-                                <img src="../icons/key.svg" alt="">
-                                <h2>Senha</h2>
-                            </div>
-                            <div class="user-data">
-                                <label for="">Sua Senha</label>
-                                <?php
-                                $senha = $_SESSION['senha'];
-                                $asterisks = str_repeat('*', strlen($senha));
-                                echo '<input type=text  value=' . $asterisks . ' readonly>';
-                                ?>
-                                <form action="" method="post">
-                                    <label for="">Confirme sua senha</label>
-                                    <input type="password" placeholder="Insira sua senha" name="ConfSenha">
-                                    <label for="">Edite sua senha</label>
-                                    <input type="password" placeholder="Nova senha" name="EditSenha">
-                                    <button type="submit" name="submit">Confirmar alteração</button>
-                                </form>
-
-                                <?php
-                                if (isset($_POST['submit'])) {
-                                    $ConfSenha = $_POST['ConfSenha'];
-                                    $EditSenha = $_POST['EditSenha'];
-
-                                    if ($ConfSenha === $senha) {
-                                        $_SESSION['senha'] = $EditSenha;
-
-                                        $sql_code = "
-                                UPDATE usuarios 
-                                SET senha = '$EditSenha'
-                                WHERE email = '$_SESSION[email]';
-                                ";
-
-                                        $sql_query = $mysqli->query($sql_code);
-                                        echo '<p>Senha alterada com sucesso!</p>';
-                                    } else {
-                                        echo '<p>Senha de confirmação incorreta.</p>';
-                                    }
-                                }
-                                ?>
+                        <div class="box-questionnaire">
+                            <h2>Descubra seu perfil automotivo</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque porro velit, unde excepturi eum earum rem tempora, molestias nisi animis</p>
+                            <div class="btn-questionnaire">
+                                <a href="">Responda</a>
                             </div>
                         </div>
                     </div>

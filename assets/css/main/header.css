@@ -103,7 +103,7 @@ header nav a {
     align-items: center;
 }
 
-.user-enter img  {
+.user-photo img{
     display: none;
 }
 
@@ -118,6 +118,38 @@ header nav a:hover {
 
 header .user-enter a {
     color: var(--secondary);
+    padding-right: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+   
+}
+
+.dropdown-menu li {
+    text-align: right;
+    padding: 8px 0px;
+    
+    /* text-align: center; */
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: var(--third);
+    border: 0;
+}
+
+.dropdown-menu li a:hover {
+    background-color: transparent;
+    color: var(--secondary);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 
@@ -184,4 +216,20 @@ header .user-enter a {
     }
 
 
+
+}
+
+
+@media (max-width:900px) {
+    .dropdown-menu {
+        position: relative;
+    }
+
+    .dropdown-menu li {
+        text-align: left;
+    }
+
+    .user-photo {
+        display: none;
+    }
 }

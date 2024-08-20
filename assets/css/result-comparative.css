@@ -10,6 +10,10 @@
     font-size: 26px;
 }
 
+.s {
+    padding-top: 40px;
+}
+
 .box-result-comparative {
     display: flex;
     justify-content: center;
