@@ -1,7 +1,8 @@
 <?php
-
 include('connection.php');
-
+if (!isset($_SESSION)) {
+    session_start();
+}
 if (isset($_POST['email']) || isset($_POST['senha'])) {
 
     if (strlen($_POST['email']) == 0) {
@@ -18,32 +19,44 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
 
         $quantidade = $sql_query->num_rows;
 
-        if ($quantidade == 1) {
 
-            $usuario = $sql_query->fetch_assoc();
-
-            if (!isset($_SESSION)) {
-                session_start();
-            }
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nomeUsuario'] = $usuario['nomeUsuario'];
-            $_SESSION['email'] = $usuario['email'];
-            $_SESSION['senha'] = $usuario['senha'];
-            $_SESSION['status'] = $usuario['status'];
-            if ($_SESSION['status'] == 2) {
-                header("Location: /GearTech/assets/pages_connected/connected.php");
-            } else {
-                echo 'Confirme seu email!';
-            }
-        } else {
-            echo "Falha ao logar! E-mail ou senha incorretos";
+        if ($quantidade != 1) {
+            echo "<script type='text/javascript'>
+        Swal.fire({
+             position: 'top',
+        icon: 'error',
+        iconColor: '#C23A42',
+        title: 'Falha no login',
+        html: `<p style='font-size: 17px; margin='0px''>Seu email ou senha estão incorretos.</p>`,
+            showConfirmButton: false,
+        width: '27rem',
+        showCloseButton: true,
+        background: '#fafafa',
+        color: '#000',
+        customClass: {
+            title: 'custom-title',
         }
+        });
+    </script>";
+        } 
+        else {
+        $usuario = $sql_query->fetch_assoc();
+        
+        $_SESSION['id'] = $usuario['id'];
+        $_SESSION['nomeUsuario'] = $usuario['nomeUsuario'];
+        $_SESSION['email'] = $usuario['email'];
+        $_SESSION['senha'] = $usuario['senha'];
+        $_SESSION['status'] = $usuario['status'];
+        if ($_SESSION['status'] == 2) {
+            header("Location: /GearTech/assets/pages_connected/connected.php");
+        } else {
+            echo 'Confirme seu email!';
+        }
+    }
     }
 }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +73,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Faça seu login</title>
     <style>
         .swal2-popup {
@@ -186,7 +200,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     </footer>
 
     <script src="../js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script type='text/javascript'>
         
     </script>

@@ -52,21 +52,24 @@ if (isset($_GET["Marca"])) {
         foreach ($modelos as $modelo) {
             $years = FipeCarros::getAnos($marcaURL, $modelo['codigo']);
             foreach ($years as $year) {
-                if ($year['codigo'] >=   2019) {
-                    echo $modelo['nome'] . '<br>';
-                    $codModelo = $modelo['codigo'];
+                
+            $codModelo = $modelo['codigo'];
             $codAno = $year['codigo'];
             $nomeModelo = $modelo['nome'];
+            echo $nomeModelo . $codModelo . 'Inserido <br>';
 
             $sql_code = "INSERT INTO carros(codigoModelo, nome, ano, codigoMarca) 
             VALUES ($codModelo, '$nomeModelo', $codAno, $marcaURL)";
 $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 $quantidade = $sql_query->num_rows;
-                }else
-                echo 'Not inserted, year smaller than 2019';
+
+               
+                
             }
-            
         }
+        $sql_code2 = "DELETE FROM carros WHERE ano < 2019 OR ano = 31999";
+$mysqli->query($sql_code2) or die("Falha na execução do código SQL: " . $mysqli->error);
+
         ?>
 
 
