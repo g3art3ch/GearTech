@@ -88,12 +88,13 @@ $quantidade = $sql_query->num_rows;
                         <li class="dropdown">
                             <div class="user-enter">
                                 <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
-                                <a href="#" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <a href="#" class="login-account" onclick="toggleDropdown()"><?php echo $_SESSION['nomeUsuario']; ?></a>
                                 <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
                             </div>
                             <ul class="dropdown-menu">
                                 <li><a href="./user.php">Dados pessoais</a></li>
-                                <li><a href="#">Seus salvos</a></li>
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="/index.php">Sair</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -219,7 +220,7 @@ $quantidade = $sql_query->num_rows;
                     </div>
         </section>
 
-         <section class="popular-cars">
+         <!-- <section class="popular-cars">
             <div class="container">
                 <div class="title-popular-cars">
                     <h2>Carros mais vendidos <br>no ultimo semestre</h2>
@@ -274,7 +275,7 @@ $quantidade = $sql_query->num_rows;
                 echo "</div>"
                 ?>
             </div>
-        </section>
+        </section> -->
 
 
         <section class="about-us">

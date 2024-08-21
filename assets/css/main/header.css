@@ -114,11 +114,13 @@ header nav a:hover {
 .login-account {
     color: var(--secondary);
     font-weight: 600;
+    cursor: pointer;
 }
 
 header .user-enter a {
     color: var(--secondary);
     padding-right: 5px;
+   
 }
 
 .dropdown-menu {
@@ -133,8 +135,6 @@ header .user-enter a {
 .dropdown-menu li {
     text-align: right;
     padding: 8px 0px;
-    
-    /* text-align: center; */
 }
 
 .dropdown-menu li a {
@@ -215,18 +215,22 @@ header .user-enter a {
         color: var(--secondary);
     }
 
-
-
 }
 
 
 @media (max-width:900px) {
     .dropdown-menu {
         position: relative;
+
+        padding-top: 6px;
     }
 
     .dropdown-menu li {
         text-align: left;
+    }
+
+    .dropdown-menu li a {
+        font-size: 19px;
     }
 
     .user-photo {

@@ -15,7 +15,7 @@ include('protect.php');
     <link rel="stylesheet" href="../css/var.css">
     <link rel="stylesheet" href="../css/main/main.css">
     <link rel="stylesheet" href="../css/main/header.css">
-    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/saved-vehicle.css">
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Minha conta</title>
@@ -54,7 +54,7 @@ include('protect.php');
                                 <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
                             </div>
                             <ul class="dropdown-menu">
-                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="./user.php">Dados pessoais</a></li>
                                 <li><a href="/GearTech/index.php">Sair</a></li>
                             </ul>
                         </li>
@@ -71,70 +71,73 @@ include('protect.php');
             </header>
         </div>
 
-        <section class="user">
+        
+        <section class="saved-vehicle">
             <div class="container">
-                <div class="title-user">
-                    <h2>Minha conta</h2>
+                <div class="title-saved-vehicle">
+                    <h2>Seus salvos</h2>
                 </div>
 
-                <div class="box-user">
-                    <div class="person-info">
-                        <div class="card-person-info">
-                            <div class="title-person-info">
-                                <img src="../icons/user.svg" alt="">
-                                <h2>Informações Pessoais</h2>
+                <div class="box-saved">
+                    <div class="left-side-saved">
+                        <div class="card-saved-vehicle">
+                            <div class="title-card-saved">
+                                <img src="../icons/saved.svg" alt="">
+                                <h2>Veículos salvos</h2>
                             </div>
+                                <div class="item-saved">
+                                    <div class="box-image-saved">
+                                        <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
+                                    </div>
+                                    <div class="info-saved-vehicle">
+                                        <h2>Chevrolet Tracker 1.0 Turbo (Aut)</h2>
+                                        <div class="price">R$ 121.000,00</div>
+                                        <div class="desc-saved-vehicle">
+                                            <p>Gasolina</p>
+                                            <p>4 passageiros</p>
+                                            <p>Consumo baixo</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-saved">
+                                    <div class="box-image-saved">
+                                        <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
+                                    </div>
+                                    <div class="info-saved-vehicle">
+                                        <h2>Chevrolet Tracker 1.0 Turbo (Aut)</h2>
+                                        <div class="price">R$ 121.000,00</div>
+                                        <div class="desc-saved-vehicle">
+                                            <p>Gasolina</p>
+                                            <p>4 passageiros</p>
+                                            <p>Consumo baixo</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-saved">
+                                    <div class="box-image-saved">
+                                        <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
+                                    </div>
+                                    <div class="info-saved-vehicle">
+                                        <h2>Chevrolet Tracker 1.0 Turbo (Aut)</h2>
+                                        <div class="price">R$ 121.000,00</div>
+                                        <div class="desc-saved-vehicle">
+                                            <p>Gasolina</p>
+                                            <p>4 passageiros</p>
+                                            <p>Consumo baixo</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div class="user-info">
-                                <label for="">Nome completo</label>
-                                <input type="text" value="<?php echo $_SESSION['nomeUsuario']; ?>" readonly>
-                                <label for="" id="email">Email</label>
-                                <input type="email" value="<?php echo $_SESSION['email']; ?>" readonly>
-                            </div>
+                                <div class="scroll-slide">
+                                    <img src="../icons/slider.svg" alt="">
+                                </div>
                         </div>
                     </div>
-
-                    <div class="password-info">
-                        <div class="card-password-info">
-                            <div class="title-password-info">
-                                <img src="../icons/key.svg" alt="">
-                                <h2>Informações Confidenciais</h2> 
-                            </div>
-
-                                <div class="password-info">
-                                    <label for="">Sua Senha</label>
-                                    <?php
-                                    $senha = $_SESSION['senha'];
-                                    $asterisks = str_repeat('*', strlen($senha));
-                                    echo '<input type=text  value=' . $asterisks . ' readonly>';
-                                    ?>
-                                    <form action="" method="post">
-                                        <label for="">Confirme sua senha</label>
-                                        <input type="password" placeholder="Insira sua senha" name="ConfSenha">
-                                        <label for="">Edite sua senha</label>
-                                        <input type="password" placeholder="Nova senha" name="EditSenha">
-                                        <button type="submit" name="submit">Confirmar alteração</button>
-                                    </form>
-                                    <?php
-                                    if (isset($_POST['submit'])) {
-                                        $ConfSenha = $_POST['ConfSenha'];
-                                        $EditSenha = $_POST['EditSenha'];
-                                        if ($ConfSenha === $senha) {
-                                            $_SESSION['senha'] = $EditSenha;
-                                            $sql_code = "
-                                        UPDATE usuarios 
-                                        SET senha = '$EditSenha'
-                                        WHERE email = '$_SESSION[email]';
-                                        ";
-                                            $sql_query = $mysqli->query($sql_code);
-                                            echo '<p>Senha alterada com sucesso!</p>';
-                                        } else {
-                                            echo '<p>Senha de confirmação incorreta.</p>';
-                                        }
-                                    }
-                                    ?>
-                                </div>
-                           
+                    <div class="right-side-saved">
+                        <div class="card-questionnaire">
+                            <h2>Continua incerto para tomar sua decisão?</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus pariatur, assumenda odit quasi impedit non necessitatibus </p>
+                            <button type="submit">Compare</button>
                         </div>
                     </div>
                 </div>

@@ -86,8 +86,11 @@ function senhaAtualIncorreta(){
 }
 
 function toggleDropdown() {
+    event.preventDefault();
     const dropdownMenu = document.querySelector('.dropdown-menu');
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+
+    
 }
 
 // Fecha o menu se clicar fora dele
