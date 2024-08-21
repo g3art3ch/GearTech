@@ -94,7 +94,7 @@ $quantidade = $sql_query->num_rows;
                             <ul class="dropdown-menu">
                                 <li><a href="./user.php">Dados pessoais</a></li>
                                 <li><a href="./saved-vehicle.php">Seus salvos</a></li>
-                                <li><a href="/index.php">Sair</a></li>
+                                <li><a href="/GearTech/index.php">Sair</a></li>
                             </ul>
                         </li>
                     </ul>
