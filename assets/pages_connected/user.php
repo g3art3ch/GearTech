@@ -54,14 +54,29 @@ $quantidade = $sql_query2->num_rows;
                     </div>
                 </div>
                 <nav>
-                    <ul>
+                <ul>
+                        <li><a href="./connected_catalog.php">Catálogo</a></li>
+                        <li><a href="">Manutenções</a></li>
+                        <li class="dropdown">
+                            <div class="user-enter">
+                                <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
+                                <a href="#" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="/GearTech/index.php">Sair</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- <ul>
                         <li>
                             <a href="/GearTech/index.php" class="logout-area">
                                 <img src="../icons/logout.svg" alt="">
                                 <p>Encerrar sessão</p>
                             </a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </nav>
             </header>
         </div>
@@ -73,158 +88,63 @@ $quantidade = $sql_query2->num_rows;
                 </div>
 
                 <div class="box-user">
-                    <div class="left-side-user">
-                        <div class="card-user-pessoal">
-                            <div class="title-card-user">
+                    <div class="person-info">
+                        <div class="card-person-info">
+                            <div class="title-person-info">
                                 <img src="../icons/user.svg" alt="">
                                 <h2>Informações Pessoais</h2>
                             </div>
 
-                            <div class="user-data">
+                            <div class="user-info">
                                 <label for="">Nome completo</label>
                                 <input type="text" value="<?php echo $_SESSION['nomeUsuario']; ?>" readonly>
                                 <label for="" id="email">Email</label>
                                 <input type="email" value="<?php echo $_SESSION['email']; ?>" readonly>
                             </div>
                         </div>
-
-                        <div class="card-user-password">
-                            <div class="title-card-user">
-                                <img src="../icons/key.svg" alt="">
-                                <h2>Senha</h2>
-                            </div>
-                            <div class="user-data">
-                                <label for="">Sua Senha</label>
-                                <?php
-                                $senha = $_SESSION['senha'];
-                                $asterisks = str_repeat('*', strlen($senha));
-                                echo '<input type=text  value=' . $asterisks . ' readonly>';
-                                ?>
-                                <form action="" method="post">
-                                    <label for="">Confirme sua senha</label>
-                                    <input type="password" placeholder="Insira sua senha" name="ConfSenha">
-                                    <label for="">Edite sua senha</label>
-                                    <input type="password" placeholder="Nova senha" name="EditSenha">
-                                    <button type="submit" name="submit">Confirmar alteração</button>
-                                </form>
-
-                                <?php
-                                if (isset($_POST['submit'])) {
-                                    $ConfSenha = $_POST['ConfSenha'];
-                                    $EditSenha = $_POST['EditSenha'];
-
-                                    if ($ConfSenha === $senha) {
-                                        $_SESSION['senha'] = $EditSenha;
-
-                                        $sql_code = "
-                                UPDATE usuarios 
-                                SET senha = '$EditSenha'
-                                WHERE email = '$_SESSION[email]';
-                                ";
-
-                                        $sql_query = $userDATA->query($sql_code);
-                                        echo '<p>Senha alterada com sucesso!</p>';
-                                    } else {
-                                        echo '<p>Senha de confirmação incorreta.</p>';
-                                    }
-                                }
-                                ?>
-                            </div>
-                        </div>
                     </div>
 
-                    <div class="right-side-user">
-                        <div class="card-user-saved-vehicle">
-                            <div class="headline-saved-vehicle">
-                                <div class="title-card-save-vehicle">
-                                    <img src="../icons/saved.svg" alt="">
-                                    <h2>Veículos salvos</h2>
-                                </div>
-                                <div class="comparative">
-                                    <a href="./comparative.php">Comparativo</a>
-                                </div>
+                    <div class="password-info">
+                        <div class="card-password-info">
+                            <div class="title-password-info">
+                                <img src="../icons/key.svg" alt="">
+                                <h2>Informações Confidenciais</h2> 
                             </div>
 
-                            <div class="slider-container"></div>
-
-                            <?php
-
-                            if ($quantidade > 0) {
-                                if (!isset($_SESSION)) {
-                                    session_start();
-                                }
-                                $_SESSION['resultados'] = array();
-                                while ($result = $sql_query2->fetch_assoc()) {
-                                    $_SESSION['resultados'][] = $result;
-                                }
-
-
-                            
-
-                                foreach ($_SESSION['resultados'] as $results) {
-                                    echo '<h2>' . $results['favoriteNAME'] . '</h2>';
-                                    $consultNAME = $results['favoriteNAME'];
-
-
-                                    $sql_code = "SELECT 
-    nc.nome,
-    fc.estilo,
-    oc.orcamento,
-    tc.combustivel,
-    cc.capacidade,
-    uc.tipoUso,
-    iden.idIden,
-    iden.urlCarro,
-    iden.Marca
-FROM 
-    nomeCarro nc
-INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
-INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
-INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
-INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
-INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
-INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome  
-WHERE nome = '$consultNAME'";
-
-$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-$quantidade1 = $sql_query->num_rows;
-$_SESSION['FAVORITES'] = array();
-while ($resultFAVORITES = $sql_query->fetch_assoc()) {
-    $_SESSION['FAVORITES'][] = $resultFAVORITES;
-}
-
-                foreach ($_SESSION['FAVORITES'] as $fav) {
-
-
-
-                                    echo '<div class="area-save-vehicle">
-                                    <div class="box-image-save-vehicle">';
-                                    echo '<img src="../car_images/' . $fav['idIden'] .'.png" alt="">
-                                    </div>';
-                                    echo '<div class="info-save-vehicle">';
-                                    echo '<h2>' . $fav['nome'] . '</h2>';
-                                    echo    '<p class="price-save-vehicle">' . $fav['orcamento'] . '</p>';
-                                    echo '<p class="desc-save-vehicle">' . $fav['combustivel'] . '</p>';
-                                    echo '<p class="desc-save-vehicle">' . $fav['capacidade'] . '</p>';
-                                    echo '<p class="desc-save-vehicle">' . $fav['tipoUso'] . '</p>';
-                                    echo '</div>';
-                                    echo '</div>';
-                                }
-                            }
-
-                        }
-
-                            ?>
-
-                            <div class="icon-slider">
-                                <img id="toggleSlider" src="../icons/slider.svg" alt="">
-                            </div>
+                                <div class="password-info">
+                                    <label for="">Sua Senha</label>
+                                    <?php
+                                    $senha = $_SESSION['senha'];
+                                    $asterisks = str_repeat('*', strlen($senha));
+                                    echo '<input type=text  value=' . $asterisks . ' readonly>';
+                                    ?>
+                                    <form action="" method="post">
+                                        <label for="">Confirme sua senha</label>
+                                        <input type="password" placeholder="Insira sua senha" name="ConfSenha">
+                                        <label for="">Edite sua senha</label>
+                                        <input type="password" placeholder="Nova senha" name="EditSenha">
+                                        <button type="submit" name="submit">Confirmar alteração</button>
+                                    </form>
+                                    <?php
+                                    if (isset($_POST['submit'])) {
+                                        $ConfSenha = $_POST['ConfSenha'];
+                                        $EditSenha = $_POST['EditSenha'];
+                                        if ($ConfSenha === $senha) {
+                                            $_SESSION['senha'] = $EditSenha;
+                                            $sql_code = "
+                                        UPDATE usuarios 
+                                        SET senha = '$EditSenha'
+                                        WHERE email = '$_SESSION[email]';
+                                        ";
+                                            $sql_query = $mysqli->query($sql_code);
+                                            echo '<p>Senha alterada com sucesso!</p>';
+                                        } else {
+                                            echo '<p>Senha de confirmação incorreta.</p>';
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                           
                         </div>
                     </div>
                 </div>
