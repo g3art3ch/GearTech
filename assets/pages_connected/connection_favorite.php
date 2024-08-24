@@ -3,10 +3,9 @@
 $dbHost = 'localhost';
 $dbUsername = 'root';
 $dbPassword = '';
-$dbName = 'users';
+$dbName = 'favorite_cars';
 
-$userDATA = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-
+$favoriteDATA = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 
 // if ($mysqli->connect_error) {
 //     echo "erro";

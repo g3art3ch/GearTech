@@ -58,7 +58,7 @@ WHERE Marca = '$marca'
 
     if ($quantidade > 0) {
         if (!isset($_SESSION)) {
-            session_start();
+            session_start();    
         }
 
         $_SESSION['resultados'] = array();

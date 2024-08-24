@@ -26,7 +26,7 @@ INNER JOIN
     usoCarro uc ON nc.idNome = uc.idNome
 INNER JOIN 
     identificador iden ON nc.idNome = iden.idNome  
-WHERE nome in ('Volkswagen Nivus 1.0 200 TSI C', 'Hyundai Creta 1.6 Action (Aut)', 'Chevrolet Tracker 1.0 Turbo (A')";
+WHERE nome in ('Chevrolet Onix 1.0 SPE/4 2024', 'Hyundai HB20 1.0 Comfort Plus ', 'Chevrolet Tracker 1.0 Turbo (A')";
 
 $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 $quantidade = $sql_query->num_rows;
@@ -245,7 +245,7 @@ $quantidade = $sql_query->num_rows;
                         echo '    <div class="group-popular-cars">';
                         echo '        <div class="info-popular-cars">';
                         echo '            <img src="/GearTech/assets/icons/passager.svg" alt="">';
-                        echo '            <p>' . ($carro['capacidade'])-1 . ' passageiros</p>';
+                        echo '            <p>' . ($carro['capacidade']-1) . ' passageiros</p>';
                         echo '        </div>';
                         echo '        <div class="info-popular-cars">';
                         echo '            <img src="/GearTech/assets/icons/cambio.svg" alt="">';
@@ -253,7 +253,7 @@ $quantidade = $sql_query->num_rows;
                         echo '        </div>';
                         echo '        <div class="info-popular-cars">';
                         echo '            <img src="/GearTech/assets/icons/car-door.svg" alt="">';
-                        echo '            <p>' . $carro['capacidade'] -1 . ' portas</p>';
+                        echo '            <p>' . ($carro['capacidade'] -1) . ' portas</p>';
                         echo '        </div>';
                         echo '    </div>';
                         echo '    <hr>';

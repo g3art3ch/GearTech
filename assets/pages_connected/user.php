@@ -1,6 +1,16 @@
 <?php
 include('connection.php');
 include('protect.php');
+include('connection_favorite.php');
+include('connection_cars.php');
+
+$sql_code1 = "SELECT * FROM favorites";
+$sql_query2 = $favoriteDATA->query($sql_code1);
+$quantidade = $sql_query2->num_rows;
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +122,7 @@ include('protect.php');
                                 WHERE email = '$_SESSION[email]';
                                 ";
 
-                                        $sql_query = $mysqli->query($sql_code);
+                                        $sql_query = $userDATA->query($sql_code);
                                         echo '<p>Senha alterada com sucesso!</p>';
                                     } else {
                                         echo '<p>Senha de confirmação incorreta.</p>';
@@ -136,42 +146,82 @@ include('protect.php');
                             </div>
 
                             <div class="slider-container"></div>
-                            <div class="area-save-vehicle">
-                                <div class="box-image-save-vehicle">
-                                    <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
-                                </div>
-                                <div class="info-save-vehicle">
-                                    <h2>Chevrolet Tracker 1.0 Turbo (Aut)</h2>
-                                    <p class="price-save-vehicle">R$ 119.900</p>
-                                    <p class="desc-save-vehicle">Flex</p>
-                                    <p class="desc-save-vehicle">5 Passageiros</p>
-                                    <p class="desc-save-vehicle">Diário</p>
-                                </div>
-                            </div>
-                            <div class="area-save-vehicle">
-                                <div class="box-image-save-vehicle">
-                                    <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
-                                </div>
-                                <div class="info-save-vehicle">
-                                    <h2>Chevrolet Tracker 1.0 Turbo (Aut)</h2>
-                                    <p class="price-save-vehicle">R$ 119.900</p>
-                                    <p class="desc-save-vehicle">Flex</p>
-                                    <p class="desc-save-vehicle">5 Passageiros</p>
-                                    <p class="desc-save-vehicle">Diário</p>
-                                </div>
-                            </div>
-                            <div class="area-save-vehicle">
-                                <div class="box-image-save-vehicle">
-                                    <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
-                                </div>
-                                <div class="info-save-vehicle">
-                                    <h2>Chevrolet Tracker 1.0 Turbo (Aut)</h2>
-                                    <p class="price-save-vehicle">R$ 119.900</p>
-                                    <p class="desc-save-vehicle">Flex</p>
-                                    <p class="desc-save-vehicle">5 Passageiros</p>
-                                    <p class="desc-save-vehicle">Diário</p>
-                                </div>
-                            </div>
+
+                            <?php
+
+                            if ($quantidade > 0) {
+                                if (!isset($_SESSION)) {
+                                    session_start();
+                                }
+                                $_SESSION['resultados'] = array();
+                                while ($result = $sql_query2->fetch_assoc()) {
+                                    $_SESSION['resultados'][] = $result;
+                                }
+
+
+                            
+
+                                foreach ($_SESSION['resultados'] as $results) {
+                                    echo '<h2>' . $results['favoriteNAME'] . '</h2>';
+                                    $consultNAME = $results['favoriteNAME'];
+
+
+                                    $sql_code = "SELECT 
+    nc.nome,
+    fc.estilo,
+    oc.orcamento,
+    tc.combustivel,
+    cc.capacidade,
+    uc.tipoUso,
+    iden.idIden,
+    iden.urlCarro,
+    iden.Marca
+FROM 
+    nomeCarro nc
+INNER JOIN 
+    filtroCarros fc ON nc.idFiltro = fc.idFiltro
+INNER JOIN 
+    orcamentoCarro oc ON nc.idNome = oc.idNome
+INNER JOIN 
+    tipoCombustivel tc ON nc.idNome = tc.idNome
+INNER JOIN 
+    capacidadeCarro cc ON nc.idNome = cc.idNome
+INNER JOIN 
+    usoCarro uc ON nc.idNome = uc.idNome
+INNER JOIN 
+    identificador iden ON nc.idNome = iden.idNome  
+WHERE nome = '$consultNAME'";
+
+$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+$quantidade1 = $sql_query->num_rows;
+$_SESSION['FAVORITES'] = array();
+while ($resultFAVORITES = $sql_query->fetch_assoc()) {
+    $_SESSION['FAVORITES'][] = $resultFAVORITES;
+}
+
+                foreach ($_SESSION['FAVORITES'] as $fav) {
+
+
+
+                                    echo '<div class="area-save-vehicle">
+                                    <div class="box-image-save-vehicle">';
+                                    echo '<img src="../car_images/' . $fav['idIden'] .'.png" alt="">
+                                    </div>';
+                                    echo '<div class="info-save-vehicle">';
+                                    echo '<h2>' . $fav['nome'] . '</h2>';
+                                    echo    '<p class="price-save-vehicle">' . $fav['orcamento'] . '</p>';
+                                    echo '<p class="desc-save-vehicle">' . $fav['combustivel'] . '</p>';
+                                    echo '<p class="desc-save-vehicle">' . $fav['capacidade'] . '</p>';
+                                    echo '<p class="desc-save-vehicle">' . $fav['tipoUso'] . '</p>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
+                            }
+
+                        }
+
+                            ?>
+
                             <div class="icon-slider">
                                 <img id="toggleSlider" src="../icons/slider.svg" alt="">
                             </div>

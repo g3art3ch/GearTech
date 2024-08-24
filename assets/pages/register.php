@@ -76,7 +76,6 @@
                                 <?php
                                 // Exibir mensagens de erro, se houver
                                 if (isset($_GET['error'])) {
-
                                     echo '<div class="error-message">';
                                     echo '<img src="/GearTech/assets/icons/check-register-none.svg"> </img>';
                                     echo '<p>' . ($_GET['error']) . '</p>';

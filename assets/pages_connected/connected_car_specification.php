@@ -1,12 +1,47 @@
-<?php 
+<?php
 include('connection.php');
 include('connection_cars.php');
 include('protect.php');
+
+// Obtém o ID do carro a partir da URL
 if (isset($_GET['IdCar'])) {
     $idCarURL = $_GET['IdCar'];
     $idCar = str_replace('_', ' ', $idCarURL);
 }
 
+// Inicia a sessão se ainda não estiver iniciada
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+// Função para adicionar o carro aos favoritos
+function FavFunction($idCar) {
+    include('connection_favorite.php');
+    $FavInsert = "INSERT INTO favorites (favoriteNAME) VALUES('$idCar')";
+    $sql_query = $favoriteDATA->query($FavInsert) or die("Falha na execução do código SQL: " . $mysqli->error);
+}
+
+// Função para remover o carro dos favoritos
+function DesfavFunction($idCar) {
+    include('connection_favorite.php');
+    $UnfavDelete = "DELETE FROM favorites WHERE favoriteNAME = '$idCar'";
+    $sql_query = $favoriteDATA->query($UnfavDelete) or die("Falha na execução do código SQL: " . $mysqli->error);
+}
+
+// Processa as ações de favoritar ou desfavoritar
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
+    $idCar = $_POST['IdCar'];
+    if (isset($_POST['FavButton'])) {
+        FavFunction($idCar);
+    } elseif (isset($_POST['UnfavButton'])) {
+        DesfavFunction($idCar);
+    }
+    // Após a ação, recarregue a página para atualizar o botão
+    header("Location: ".$_SERVER['REQUEST_URI']);
+    exit();
+}
+
+// Consulta as informações do carro
 $sql_code = "SELECT 
     nc.nome,
     fc.estilo,
@@ -35,11 +70,6 @@ WHERE nome = '$idCar'";
 
 $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 $quantidade = $sql_query->num_rows;
-if ($quantidade > 0) {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-}
 $_SESSION['resultados'] = array();
 while ($result = $sql_query->fetch_assoc()) {
     $_SESSION['resultados'][] = $result;
@@ -48,13 +78,9 @@ while ($result = $sql_query->fetch_assoc()) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/var.css">
     <link rel="stylesheet" href="../css/main/main.css">
     <link rel="stylesheet" href="../css/main/header.css">
@@ -65,7 +91,6 @@ while ($result = $sql_query->fetch_assoc()) {
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Seu carro ideal</title>
 </head>
-
 <body>
     <main>
         <div class="container">
@@ -112,8 +137,20 @@ while ($result = $sql_query->fetch_assoc()) {
                     foreach ($_SESSION['resultados'] as $carro) { 
                         echo $carro['nome'];
                     };?>
-                        </h2>
+                    </h2>
                 </div>
+
+                <div class="FAVORITE_BUTTON">
+                    <form method="post">
+                        <input type="hidden" name="IdCar" value="<?php echo htmlspecialchars($_GET['IdCar']); ?>">
+                        
+                            <button type="submit" name="UnfavButton">DESFAVORITAR</button>
+                        
+                            <button type="submit" name="FavButton">FAVORITAR</button>
+                        
+                    </form>
+                </div>
+
                 <div class="box-car-specification">
                     <div class="left-side-specification">
                         <div class="card-car-specification">
@@ -262,8 +299,6 @@ while ($result = $sql_query->fetch_assoc()) {
         </section>
     </main>
 
-
-
     <footer>
         <div class="container">
             <div class="box-footer">
@@ -295,8 +330,5 @@ while ($result = $sql_query->fetch_assoc()) {
         </div>
     </footer>
     <script src="../js/script.js"></script>
-
-
 </body>
-
 </html>

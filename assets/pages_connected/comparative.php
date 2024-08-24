@@ -1,3 +1,14 @@
+<?php 
+include('protect.php');
+include('connection_favorite.php');
+include('connection_cars.php');
+
+$sql_code1 = "SELECT * FROM favorites";
+$sql_query2 = $favoriteDATA->query($sql_code1);
+$quantidade = $sql_query2->num_rows;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +56,7 @@
                     <div class="user-enter">
                         <a href="user.php">
                             <img src="/GearTech/assets/icons/user.svg" alt="Usuário">
-                            <a href="user.php" class="login-account">Danilo Silva</a>
+                            <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
                         </a>
                     </div>
     
@@ -63,67 +74,108 @@
 
             <div class="card-comparative">
                 <div class="grid-comparative">
-                    <div class="item-comparative">
-                        <h2>Carro 1</h2>
-                        <label for="">Marca</label>
-                        <select name="" id="">
-                            <option value=""></option>
-                            <option value="">...</option>
-                        </select>
-                        <label for="">Modelo</label>
-                        <select name="" id="">
-                            <option value=""></option>
-                        </select>
-                        <label for="">Ano</label>
-                        <select name="" id=""></select>
-                    </div>
+                    <?php
                     
-                    <div class="item-comparative">
-                        <h2>Carro 2</h2>
-                        <label for="">Marca</label>
-                        <select name="" id="">
-                            <option value=""></option>
-                        </select>
-                        <label for="">Modelo</label>
-                        <select name="" id="">
-                            <option value=""></option>
-                        </select>
-                        <label for="">Ano</label>
-                        <select name="" id=""></select>
-                    </div>
+                if ($quantidade > 1) {
+                                if (!isset($_SESSION)) {
+                                    session_start();
+                                }
+                                $_SESSION['resultados'] = array();
+                                while ($result = $sql_query2->fetch_assoc()) {
+                                    $_SESSION['resultados'][] = $result;
+                                }
 
-                    <div class="item-comparative">
-                        <h2>Carro 3</h2>
-                        <label for="">Marca</label>
-                        <select name="" id="">
-                            <option value=""></option>
-                        </select>
-                        <label for="">Modelo</label>
-                        <select name="" id="">
-                            <option value=""></option>
-                        </select>
-                        <label for="">Ano</label>
-                        <select name="" id=""></select>
-                    </div>
 
-                    <div class="item-comparative">
-                        <h2>Carro 4</h2>
-                        <label for="">Marca</label>
-                        <select name="" id="">
-                            <option value=""></option>
-                        </select>
-                        <label for="">Modelo</label>
-                        <select name="" id="">
-                            <option value=""></option>
-                        </select>
-                        <label for="">Ano</label>
-                        <select name="" id=""></select>
-                    </div>
-                </div>
+                                $carCOUNT = 1;
 
+                                foreach ($_SESSION['resultados'] as $results) {
+                                    $consultNAME = $results['favoriteNAME'];
+
+
+                                    $sql_code = "SELECT 
+    nc.nome,
+    fc.estilo,
+    oc.orcamento,
+    tc.combustivel,
+    cc.capacidade,
+    uc.tipoUso,
+    iden.idIden,
+    iden.urlCarro,
+    iden.Marca
+FROM 
+    nomeCarro nc
+INNER JOIN 
+    filtroCarros fc ON nc.idFiltro = fc.idFiltro
+INNER JOIN 
+    orcamentoCarro oc ON nc.idNome = oc.idNome
+INNER JOIN 
+    tipoCombustivel tc ON nc.idNome = tc.idNome
+INNER JOIN 
+    capacidadeCarro cc ON nc.idNome = cc.idNome
+INNER JOIN 
+    usoCarro uc ON nc.idNome = uc.idNome
+INNER JOIN 
+    identificador iden ON nc.idNome = iden.idNome  
+WHERE nome = '$consultNAME'";
+
+$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+$quantidade1 = $sql_query->num_rows;
+$_SESSION['FAVORITES'] = array();
+while ($resultFAVORITES = $sql_query->fetch_assoc()) {
+    $_SESSION['FAVORITES'][] = $resultFAVORITES;
+}
+
+
+echo '<div class="item-comparative">';
+                foreach ($_SESSION['FAVORITES'] as $fav) {
+                    
+                    echo '    <h2>'. $carCOUNT .'</h2>';
+                    $carCOUNT++;
+
+                    //add foreach com opcoes de marca
+                    echo '    <label for="">Marca</label>';
+                    foreach($_SESSION['resultados'] as $resultados){
+                    echo '    <select name="" id="">';
+                    echo '        <option value="">'. $resultados['marca'] .'</option>';
+                    echo '    </select>';
+                    }
+
+                    //add foreach com opcoes de modelo
+                    echo '    <label for="">Modelo</label>';
+                //     foreach(){
+                //     echo '    <select name="" id="">';
+                //     echo '        <option value=""></option>';
+                //     echo '    </select>';
+                // }
+
+
+                    //add foreach com opcoes de ano
+                    // foreach(){
+                    // echo '    <label for="">Ano</label>';
+                    // echo '    <select name="" id="">';
+                    // echo '    <option value=""></option>';
+                    // echo '</select>';
+                    // }
+
+                    echo '</div>';
+                                }
+                            }
+
+                        }else
+
+
+                        //formatar a informação abaixo com os padroes ZNfront
+                        echo 'adicione pelo menos mais um carro';
+
+                            ?>
+                    
+                        
+                    <!--formar de forma que o botão tenha a posição fixa embaixo, ou fixa em outro lugar, se a qtd de carros < 4, a disposicao do botao fica perereca feia -->
                 <div class="button-comparative">
                     <a href="./result_comparative.php"><button>Comparar</button></a>
                 </div>
+
+
             </div>
         </div>
     </section>
