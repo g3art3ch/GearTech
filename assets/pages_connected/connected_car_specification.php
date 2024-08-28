@@ -8,39 +8,10 @@ if (isset($_GET['IdCar'])) {
     $idCarURL = $_GET['IdCar'];
     $idCar = str_replace('_', ' ', $idCarURL);
 }
-
 // Inicia a sessão se ainda não estiver iniciada
 if (!isset($_SESSION)) {
     session_start();
 }
-
-// Função para adicionar o carro aos favoritos
-function FavFunction($idCar) {
-    include('connection_favorite.php');
-    $FavInsert = "INSERT INTO favorites (favoriteNAME) VALUES('$idCar')";
-    $sql_query = $favoriteDATA->query($FavInsert) or die("Falha na execução do código SQL: " . $mysqli->error);
-}
-
-// Função para remover o carro dos favoritos
-function DesfavFunction($idCar) {
-    include('connection_favorite.php');
-    $UnfavDelete = "DELETE FROM favorites WHERE favoriteNAME = '$idCar'";
-    $sql_query = $favoriteDATA->query($UnfavDelete) or die("Falha na execução do código SQL: " . $mysqli->error);
-}
-
-// Processa as ações de favoritar ou desfavoritar
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
-    $idCar = $_POST['IdCar'];
-    if (isset($_POST['FavButton'])) {
-        FavFunction($idCar);
-    } elseif (isset($_POST['UnfavButton'])) {
-        DesfavFunction($idCar);
-    }
-    // Após a ação, recarregue a página para atualizar o botão
-    header("Location: ".$_SERVER['REQUEST_URI']);
-    exit();
-}
-
 // Consulta as informações do carro
 $sql_code = "SELECT 
     nc.nome,
@@ -74,6 +45,39 @@ $_SESSION['resultados'] = array();
 while ($result = $sql_query->fetch_assoc()) {
     $_SESSION['resultados'][] = $result;
 }
+foreach ($_SESSION['resultados'] as $carro) { 
+    $favoriteMARCA = $carro['Marca'];
+};
+
+$nomeUSER = $_SESSION['nomeUsuario'];
+// Função para adicionar o carro aos favoritos
+function FavFunction($idCar, $favoriteMARCA, $nomeUSER) {
+    include('connection_favorite.php');
+    $FavInsert = "INSERT INTO favorites (favoriteNAME, favoriteMARCA, favoriteUSER ) VALUES('$idCar', '$favoriteMARCA', '$nomeUSER')";
+    $sql_query = $favoriteDATA->query($FavInsert) or die("Falha na execução do código SQL: " . $mysqli->error);
+}
+
+// Função para remover o carro dos favoritos
+function DesfavFunction($idCar) {
+    include('connection_favorite.php');
+    $UnfavDelete = "DELETE FROM favorites WHERE favoriteNAME = '$idCar'";
+    $sql_query = $favoriteDATA->query($UnfavDelete);
+}
+
+// Processa as ações de favoritar ou desfavoritar
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
+    $idCar = $_POST['IdCar'];
+    if (isset($_POST['FavButton'])) {
+        FavFunction($idCar, $favoriteMARCA, $nomeUSER);
+    } elseif (isset($_POST['UnfavButton'])) {
+        DesfavFunction($idCar);
+    }
+    // Após a ação, recarregue a página para atualizar o botão
+    header("Location: ".$_SERVER['REQUEST_URI']);
+    exit();
+}
+
+
 ?>
 
 <!DOCTYPE html>

@@ -65,7 +65,26 @@ $quantidade = $sql_query2->num_rows;
         </nav>
     </header>
     </div>
+    <script>
+        function enviarMarca(marca, carCOUNT) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "process_brand.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('marcaSelecionadaDisplay-' + carCOUNT).innerHTML = "<p>Marca selecionada: " + marca + "</p>";
+                }
+            };
+            xhr.send("marca=" + marca + "&carCOUNT=" + carCOUNT);
 
+            // Armazene o valor da marca no localStorage
+            localStorage.setItem('selectedBrand', marca);
+
+            // Recarregue a página
+            location.reload();
+        }
+        
+        </script>
     <section class="comparative">
         <div class="container">
             <div class="title-comparative">
@@ -129,24 +148,39 @@ while ($resultFAVORITES = $sql_query->fetch_assoc()) {
 echo '<div class="item-comparative">';
                 foreach ($_SESSION['FAVORITES'] as $fav) {
                     
-                    echo '    <h2>'. $carCOUNT .'</h2>';
-                    $carCOUNT++;
+                    echo '<h2>' . $carCOUNT . '</h2>';
+    $carCOUNT++;
 
-                    //add foreach com opcoes de marca
-                    echo '    <label for="">Marca</label>';
-                    foreach($_SESSION['resultados'] as $resultados){
-                    echo '    <select name="" id="">';
-                    echo '        <option value="">'. $resultados['marca'] .'</option>';
-                    echo '    </select>';
-                    }
+    // Select de marca com ID único
+    echo '<label>Marca</label>';
+    echo '<select name="marcaSelecionada[]" id="marcaSelect-' . $carCOUNT . '" onchange="enviarMarca(this.value, ' . $carCOUNT . ')">'; 
+    foreach($_SESSION['resultados'] as $resultados){
+        echo '<option value="' . $resultados['favoriteMARCA'] . '">' . $resultados['favoriteMARCA'] . '</option>';
+    }
+    echo '</select>';
+                    
+    echo '<div id="marcaSelecionadaDisplay-' . $carCOUNT . '">';
+    if (isset($_SESSION['marcaSelecionada'][$carCOUNT])) {
+        $marcaSelecionada = $_SESSION['marcaSelecionada'][$carCOUNT];
+        $searchBRAND = "SELECT * FROM favorites WHERE favoriteMARCA = '$marcaSelecionada'";
+        $queryBRAND = $favoriteDATA->query($searchBRAND);
+        $_SESSION['FILTEREDfav'] = array();
+        while ($resultBRAND = $queryBRAND->fetch_assoc()) {
+        $_SESSION['FILTEREDfav'][] = $resultBRAND;
+}
 
-                    //add foreach com opcoes de modelo
+    }
+    echo '</div>';
+
+                    // add foreach com opcoes de modelo
                     echo '    <label for="">Modelo</label>';
-                //     foreach(){
-                //     echo '    <select name="" id="">';
-                //     echo '        <option value=""></option>';
-                //     echo '    </select>';
-                // }
+                    echo '    <select name="" id="">';
+                    
+                    foreach($_SESSION['FILTEREDfav'] as $Ffav){
+                    echo '        <option value="">'. $Ffav['favoriteNAME'] .'</option>';
+                }
+                     echo '    </select>';
+                
 
 
                     //add foreach com opcoes de ano
@@ -158,22 +192,31 @@ echo '<div class="item-comparative">';
                     // }
 
                     echo '</div>';
-                                }
-                            }
 
-                        }else
+                                }
+
+                            }
+                            echo '<!--formar de forma que o botão tenha a posição fixa embaixo, ou fixa em outro lugar, se a qtd de carros < 4, a disposicao do botao fica perereca feia -->
+                <div class="button-comparative">
+                    <a href="./result_comparative.php"><button>Comparar</button></a>
+                </div>';
+
+                        }else if($quantidade < 1) {
 
 
                         //formatar a informação abaixo com os padroes ZNfront
                         echo 'adicione pelo menos mais um carro';
+                        echo '<div class="button-comparative">
+                    <a href="./user.php"><button>Voltar</button></a>
+                </div>';
 
+                        echo '<div class="button-comparative">
+                    <a href="./connected_catalog.php"><button>Adicionar mais</button></a>
+                </div>';
+                        }
                             ?>
-                    
-                        
-                    <!--formar de forma que o botão tenha a posição fixa embaixo, ou fixa em outro lugar, se a qtd de carros < 4, a disposicao do botao fica perereca feia -->
-                <div class="button-comparative">
-                    <a href="./result_comparative.php"><button>Comparar</button></a>
-                </div>
+
+                            
 
 
             </div>
