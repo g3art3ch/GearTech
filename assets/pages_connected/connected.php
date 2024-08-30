@@ -219,8 +219,8 @@ $quantidade = $sql_query->num_rows;
                         </form>
                     </div>
         </section>
-
-         <!-- <section class="popular-cars">
+ 
+         <section class="popular-cars">
             <div class="container">
                 <div class="title-popular-cars">
                     <h2>Carros mais vendidos <br>no ultimo semestre</h2>
@@ -275,7 +275,7 @@ $quantidade = $sql_query->num_rows;
                 echo "</div>"
                 ?>
             </div>
-        </section> -->
+        </section> 
 
 
         <section class="about-us">
