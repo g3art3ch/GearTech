@@ -1,0 +1,147 @@
+
+.saved-vehicle   {
+    padding: 30px 0px;
+}
+
+.title-saved-vehicle {
+    padding-bottom: 20px;
+}
+
+.box-saved {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.left-side-saved {
+    max-width: 555px;
+    width: 100%;
+}
+
+.card-saved-vehicle {
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.title-card-saved {
+    display: flex;
+    align-items: center;
+}
+
+.title-card-saved h2 {
+    padding-left: 12px;
+    font-size: 20px;
+    color: var(--secondary);
+}
+
+.item-saved {
+    border: 1px solid #555;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    margin: 20px 0px;
+    padding: 0px 8px;
+}
+
+.item-saved h2 {
+    font-size: 18px;
+}
+
+.info-saved-vehicle {
+    padding: 0px 5px;
+}
+
+.price {
+    color: var(--secondary);
+    font-weight: 700;
+    padding-top: 5px;
+}
+
+.scroll-slide {
+    display: flex;
+    justify-content: center;
+}
+
+.box-image-saved img{
+    max-width: 180px;
+    width: 100%;
+}
+
+.desc-saved-vehicle {
+    padding-top: 8px;
+}
+
+.desc-saved-vehicle p{
+    color: var(--third);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.right-side-saved {
+    max-width: 562px;
+    width: 100%;
+}
+
+.card-questionnaire {
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.card-questionnaire p {
+    color: var(--third);
+    padding: 18px 0px;
+}
+
+.card-questionnaire button {
+    background-color: var(--secondary);
+    color: #fff;
+    border-radius: 15px;
+    border: none;
+    font-weight: 700;
+    padding: 8px;
+    max-width: 129px;
+    width: 100%;
+    font-size: 16px;
+    box-shadow: var(--shadow);
+}
+
+.card-questionnaire button:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+    .box-saved {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .left-side-saved,
+    .right-side-saved {
+        max-width: unset;
+        width: 100%;
+    }
+
+    .item-saved {
+        justify-content: space-around;
+    }
+    
+}
+
+
+@media (max-width: 480px) {
+    .item-saved {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .desc-saved-vehicle {
+        padding: 8px 0px;
+    }
+}

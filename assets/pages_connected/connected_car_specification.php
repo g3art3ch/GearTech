@@ -53,8 +53,18 @@ $nomeUSER = $_SESSION['nomeUsuario'];
 // Função para adicionar o carro aos favoritos
 function FavFunction($idCar, $favoriteMARCA, $nomeUSER) {
     include('connection_favorite.php');
-    $FavInsert = "INSERT INTO favorites (favoriteNAME, favoriteMARCA, favoriteUSER ) VALUES('$idCar', '$favoriteMARCA', '$nomeUSER')";
-    $sql_query = $favoriteDATA->query($FavInsert) or die("Falha na execução do código SQL: " . $mysqli->error);
+
+$chkFAV = "SELECT * FROM favorites WHERE favoriteNAME = $idCar";
+$execCHK = $favoriteDATA->query($chkFAV);
+$qtd = $execCHK->num_rows;
+
+
+if($qtd == 0){
+    $FavInsert = "INSERT INTO favorites (favoriteNAME, favoriteMARCA, favoriteUSER) VALUES ('$idCar', '$favoriteMARCA', '$nomeUSER')";
+    $favoriteDATA->query($FavInsert);
+}else if($qtd != 0){
+echo   'CARRO JÁ INSERIDO';
+}
 }
 
 // Função para remover o carro dos favoritos
