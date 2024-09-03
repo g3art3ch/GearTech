@@ -28,8 +28,11 @@ $quantidade = $sql_query2->num_rows;
     <link rel="stylesheet" href="../css/main/header.css">
     <link rel="stylesheet" href="../css/saved-vehicle.css">
     <link rel="stylesheet" href="../css/main/footer.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="../js/slick/slick.css">
+    <link rel="stylesheet" href="../js/slick/slick-theme.css">
+    <script src="../js/script.js"></script>
+
+
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Minha conta</title>
 </head>
@@ -98,28 +101,28 @@ $quantidade = $sql_query2->num_rows;
                                 <img src="../icons/saved.svg" alt="">
                                 <h2>Veículos salvos</h2>
                             </div>
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <?php
-                                    if ($quantidade > 0) {
-                                        if (!isset($_SESSION)) {
-                                            session_start();
-                                        }
-                                        $_SESSION['resultados'] = array();
-                                        while ($result = $sql_query2->fetch_assoc()) {
-                                            $_SESSION['resultados'][] = $result;
-                                        }
 
-                                        // Defina o limite de carros a serem exibidos
-                                        $limite = 10;
-                                        $contador = 0;
+                            <?php
+                            echo '<div class="save-slides">';
+                            if ($quantidade > 0) {
+                                if (!isset($_SESSION)) {
+                                    session_start();
+                                }
+                                $_SESSION['resultados'] = array();
+                                while ($result = $sql_query2->fetch_assoc()) {
+                                    $_SESSION['resultados'][] = $result;
+                                }
 
-                                        foreach ($_SESSION['resultados'] as $results) {
-                                            if ($contador >= $limite)
-                                                break;
+                                // Defina o limite de carros a serem exibidos
+                                $limite = 10;
+                                $contador = 0;
 
-                                            $consultNAME = $results['favoriteNAME'];
-                                            $sql_code = "SELECT 
+                                foreach ($_SESSION['resultados'] as $results) {
+                                    if ($contador >= $limite)
+                                        break;
+
+                                    $consultNAME = $results['favoriteNAME'];
+                                    $sql_code = "SELECT 
                                         nc.nome,
                                         fc.estilo,
                                         oc.orcamento,
@@ -145,119 +148,62 @@ $quantidade = $sql_query2->num_rows;
                                         identificador iden ON nc.idNome = iden.idNome  
                                         WHERE nome = '$consultNAME'";
 
-                                            $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-                                            $_SESSION['FAVORITES'] = array();
-                                            while ($resultFAVORITES = $sql_query->fetch_assoc()) {
-                                                $_SESSION['FAVORITES'][] = $resultFAVORITES;
-                                            }
-                                            foreach ($_SESSION['FAVORITES'] as $fav) {
-                                                echo '<div class="swiper-slide">';
-                                                echo '    <div class="item-saved">';
-                                                echo '        <div class="box-image-saved">';
-                                                echo '            <img src="../car_images/' . $fav['idIden'] . '.png" alt="">';
-                                                echo '        </div>';
-                                                echo '        <div class="info-saved-vehicle">';
-                                                echo '            <h2>' . $fav['idIden'] . '</h2>';
-                                                echo '            <div class="price">' . $fav['orcamento'] . '</div>';
-                                                echo '            <div class="desc-saved-vehicle">';
-                                                echo '                <p>' . $fav['combustivel'] . '</p>';
-                                                echo '                <p>' . $fav['capacidade'] . '</p>';
-                                                echo '                <p>' . $fav['tipoUso'] . '</p>';
-                                                echo '            </div>';
-                                                echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar=' . $fav['nome'] . '">Ver Detalhes</a>';
-                                                echo '        </div>';
-                                                echo '    </div>';
-                                                echo '</div>';
-                                            }
-                                        }
+                                    $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+                                    $_SESSION['FAVORITES'] = array();
+                                    while ($resultFAVORITES = $sql_query->fetch_assoc()) {
+                                        $_SESSION['FAVORITES'][] = $resultFAVORITES;
                                     }
-                                    ?>
-                                </div>
-                                <div class="swiper-pagination"></div>
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                            </div>
 
-                            <style>
-                                .swiper-slide {
-                                    display: block;
+
+                                    foreach ($_SESSION['FAVORITES'] as $fav) {
+
+                                        echo '<div class="swiper-slide">';
+                                        echo '    <div class="item-saved">';
+                                        echo '        <div class="box-image-saved">';
+                                        echo '            <img src="../car_images/' . $fav['idIden'] . '.png" alt="">';
+                                        echo '        </div>';
+                                        echo '        <div class="info-saved-vehicle">';
+                                        echo '            <h2>' . $fav['nome'] . '</h2>';
+                                        echo '            <div class="price">' . $fav['orcamento'] . '</div>';
+                                        echo '            <div class="desc-saved-vehicle">';
+                                        echo '                <p>' . $fav['combustivel'] . '</p>';
+                                        echo '                <p>' . $fav['capacidade'] . '</p>';
+                                        echo '                <p>' . $fav['tipoUso'] . '</p>';
+                                        echo '            </div>';
+                                        echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar=' . $fav['nome'] . '">Ver Detalhes</a>';
+                                        echo '        </div>';
+                                        echo '    </div>';
+                                        echo '</div>';
+                                    }
+
+
                                 }
 
-                                .swiper-slide-active {
-                                    display: block;
-                                }
-                            </style>
+                            }
+                            echo '</div>';
+                            ?>
 
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    var swiper = new Swiper('.swiper-container', {
-                                        slidesPerView: 1,
-                                        spaceBetween: 30,
-                                        pagination: {
-                                            el: '.swiper-pagination',
-                                            clickable: true,
-                                        },
-                                        navigation: {
-                                            nextEl: '.swiper-button-next',
-                                            prevEl: '.swiper-button-prev',
-                                        },
-                                        autoplay: false,
-                                    });
-                                });
-                            </script>
+                            <button type="button" class="slick-prev"></button>
+                            <button type="button" class="slick-next"></button>
+
+
+
                         </div>
                     </div>
                 </div>
             </div>
             </div>
-        </section>
-        <section class="saved-vehicle">
-       <div class="container">
-       <div class="left-side-saved">
-                        <div class="card-questionnaire">
-                            <h2>Continua incerto para tomar sua decisão?</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus pariatur, assumenda odit quasi impedit non necessitatibus </p>
-                            <button type="submit">Compare</button>
-                        </div>
-            </div>
-       </div>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <div class="box-footer">
-                <div class="left-side-footer">
-                    <div class="links">
-                        <a href="">Termos de uso</a>
-                        <a href="">Catálogo</a>
-                        <a href="">Manutenções</a>
-                    </div>
-                    <div class="social-icons-footer">
-                        <a href=""><img src="/GearTech/assets/icons/instagram-footer.svg" alt=""></a>
-                        <a href=""><img src="/GearTech/assets/icons/email-footer.svg" alt=""></a>
-                    </div>
-                    <div class="mail-footer">
-                        Email: suporte.geartech@gmail.com
+
+            <div class="container">
+                <div class="left-side-saved">
+                    <div class="card-questionnaire">
+                        <h2>Continua incerto para tomar sua decisão?</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus pariatur, assumenda odit
+                            quasi impedit non necessitatibus </p>
+                        <button type="submit">Compare</button>
                     </div>
                 </div>
-                <div class="right-side-footer">
-                    <h2>Sobre nós</h2>
-                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
-                    </p>
-                </div>
             </div>
-            <div class="copy">
-                <a href="">© GearTech - Todos os direitos reservados</a>
-            </div>
-        </div>
-    </footer>
-
-
-
-    <script src="../js/script.js"></script>
-</body>
-
-</html>
         </section>
     </main>
     <footer>
@@ -293,7 +239,30 @@ $quantidade = $sql_query2->num_rows;
 
 
 
-    <script src="../js/script.js"></script>
-</body>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/slick/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.save-slides').slick({
+                vertical: true,
+                verticalSwiping: true,
+                prevArrow: '<button type="button" class="custom-prev">Previous</button>',
+                nextArrow: '<button type="button" class="custom-next">Next</button>'
 
-</html>
+            });
+        });
+    </script>
+    <style>
+        .custom-prev, .custom-next {
+    background: #ccc;
+    border: none;
+    color: #000;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+    </style>
+</body>
