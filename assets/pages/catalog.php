@@ -43,8 +43,8 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="">Catálogo</a></li>
-                        <li><a href="">Manutenções</a></li>
+                        <li><a href="./catalog.php">Catálogo</a></li>
+                        <li><a href="./maintenance.php">Manutenções</a></li>
                         <li>
                             <div class="user-enter">
                                 <a href="/GearTech/assets/pages/login.php">
@@ -59,7 +59,7 @@
         </div>
 
 
-        <section class="recomendation">
+        <section class="catalog">
             <div class="container">
                 <div class="title-catalog">
                     <h2>Escolha a marca</h2>

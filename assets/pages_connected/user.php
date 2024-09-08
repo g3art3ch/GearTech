@@ -58,7 +58,7 @@ $quantidade = $sql_query2->num_rows;
                 <nav>
                 <ul>
                         <li><a href="./connected_catalog.php">Catálogo</a></li>
-                        <li><a href="">Manutenções</a></li>
+                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
                         <li class="dropdown">
                             <div class="user-enter">
                                 <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
@@ -71,14 +71,6 @@ $quantidade = $sql_query2->num_rows;
                             </ul>
                         </li>
                     </ul>
-                    <!-- <ul>
-                        <li>
-                            <a href="/GearTech/index.php" class="logout-area">
-                                <img src="../icons/logout.svg" alt="">
-                                <p>Encerrar sessão</p>
-                            </a>
-                        </li>
-                    </ul> -->
                 </nav>
             </header>
         </div>

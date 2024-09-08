@@ -8,8 +8,39 @@
     gap: 20px;
 }
 
-.title-car-title-specification {
-    padding-bottom: 30px;
+.FAVORITE_BUTTON {
+    padding: 30px 0px;
+}
+
+
+.UnfavButton {
+    border: 1px solid var(--third);
+    background-color: var(--background);
+    color: var(--third);
+    border-radius: 15px;
+    padding: 13px 20px;
+    font-size: 16px;
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+.UnfavButton:hover {
+    color: #fff;
+    background-color: #555;
+    transition: all 0.1s ease;
+}
+
+.FavButton {
+    background-color: var(--secondary);
+    border-radius: 15px;
+    color: #fff;
+    font-size: 16px;
+    padding: 13px 20px;
+    border: none;
+}
+
+.FavButton:hover {
+    opacity: 0.8;
 }
 
 .left-side-specification {
@@ -193,5 +224,37 @@
     .card-mecanic-specification {
         width: 100%;
         max-width: 100%;
+    }
+
+    .FAVORITE_BUTTON {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .UnfavButton {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width:340px) {
+    .FAVORITE_BUTTON {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+    }
+
+   .FavButton {
+        width: 100%;
+   }
+
+    .UnfavButton {
+        margin-left: 0px;
+        margin-top: 10px;
+        width: 100%;
     }
 }
