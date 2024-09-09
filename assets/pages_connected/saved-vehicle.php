@@ -179,7 +179,7 @@ $quantidade = $sql_query2->num_rows;
                             <button type="button" class="slick-next"></button>
                             
 
-
+                            
 
                         </div>
                     </div>
@@ -189,7 +189,8 @@ $quantidade = $sql_query2->num_rows;
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus pariatur, assumenda odit
                             quasi impedit non necessitatibus </p>
                         <button type="submit"><a href="comparative.php">Compare</a></button>
-                    </div>
+                      
+                    </div>  <a href="./questionary.php">Questionario de perfil</a>
                 </div>
                 </div>
             </div>
