@@ -34,7 +34,7 @@ function popup() {
 }
 
 function xx(){
-    window.alert(errorLogin())
+    document.getElementsById(logAlet)
 }
 function errorLogin() {
     Swal.fire({

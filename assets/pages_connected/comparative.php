@@ -172,7 +172,7 @@ echo '<div class="item-comparative">';
     }
     echo '</div>';
 
-                    // add foreach com opcoes de modelo
+                    echo '<form action="result_comparative.php">';
                     echo '    <label for="">Modelo</label>';
                     echo '    <select name="" id="">';
                     
@@ -196,10 +196,11 @@ echo '<div class="item-comparative">';
                                 }
 
                             }
-                            echo '<!--formar de forma que o botão tenha a posição fixa embaixo, ou fixa em outro lugar, se a qtd de carros < 4, a disposicao do botao fica perereca feia -->
+                            echo '
                 <div class="button-comparative">
-                    <a href="./result_comparative.php"><button>Comparar</button></a>
+                    <button type="submit">Comparar</button>
                 </div>';
+                echo '</form>';
 
                         }else if($quantidade < 1) {
 
@@ -223,6 +224,8 @@ echo '<div class="item-comparative">';
         </div>
     </section>
 </main>
+
+
 
 <footer>
         <div class="container">

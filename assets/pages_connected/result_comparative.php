@@ -1,3 +1,12 @@
+<?php
+include('connection.php');
+include('protect.php');
+include('connection_favorite.php');
+include('connection_cars.php');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -177,6 +177,7 @@ $quantidade = $sql_query2->num_rows;
 
                             <button type="button" class="slick-prev"></button>
                             <button type="button" class="slick-next"></button>
+                            
 
 
 
@@ -238,6 +239,7 @@ $quantidade = $sql_query2->num_rows;
             $('.save-slides').slick({
                 vertical: true,
                 verticalSwiping: true,
+                slidesToShow: 3,
                 prevArrow: '<button type="button" class="custom-prev">Previous</button>',
                 nextArrow: '<button type="button" class="custom-next">Next</button>'
 
