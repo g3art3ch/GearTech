@@ -128,19 +128,23 @@ WHERE Marca = '$marca'
                 </div>
             </div>
             <nav>
-                <ul>
-                    <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
-                    <li><a href="">Manutenções</a></li>
-                    <li>
-                        <div class="user-enter">
-                            <a href="/Geartech/assets/pages_connected/connected.php">
-                                <img src="/Geartech/assets/icons/user.svg" alt="">
-                                <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+                    <ul>
+                        <li><a href="./connected_catalog.php">Catálogo</a></li>
+                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
+                        <li class="dropdown">
+                            <div class="user-enter">
+                                <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
+                                <a href="#" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="./user.php">Dados pessoais</a></li>
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="/GearTech/index.php">Sair</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
         </header>
     </div>
 

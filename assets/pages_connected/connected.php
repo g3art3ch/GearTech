@@ -60,141 +60,147 @@ $quantidade = $sql_query->num_rows;
 
 <body>
     <main>
-    <div class="container">
-        <header>
-        <div class="area">
-            <div class="logo">
-                <a href="/GearTech/assets/pages_connected/connected.php">
-                    <img src="/GearTech/assets/images/logo.svg" alt="Logo" />    
-                </a>
-                <h1>Geartech</h1>
-            </div>
-            <div class="menu-opener">
-                <div class="hamburger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="close-icon">
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
-                <li><a href="">Manutenções</a></li>
-                <li>
-                    <div class="user-enter">
-                        <a href="user.php">
-                            <img src="/GearTech/assets/icons/user.svg" alt="Usuário">
-                            <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
-                        </a>
-                    </div>
-    
-                </li>
-            </ul>
-        </nav>
-    </header>
-    </div>
-
-
-    <section class="banner">
         <div class="container">
-            <div class="area-banner">
-                <div class="left-side">
-                    <h2>Somos o melhor lugar para você <span>encontrar seu carro ideal</span></h2>
-                    <p>Descubra o carro ideal para você! Com opções sob medida para seu estilo de vida!</p>
+            <header>
+                <div class="area">
+                    <div class="logo">
+                        <a href="/GearTech/assets/pages_connected/connected.php">
+                            <img src="/GearTech/assets/images/logo.svg" alt="Logo" />
+                        </a>
+                        <h1>Geartech</h1>
+                    </div>
+                    <div class="menu-opener">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="close-icon">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="right-side">
-                    <img src="/GearTech/assets/images/onix.png" alt="">
-                </div>
-            </div>
+                <nav>
+                    <ul>
+                        <li><a href="./connected_catalog.php">Catálogo</a></li>
+                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
+                        <li class="dropdown">
+                            <div class="user-enter">
+                                <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
+                                <a href="#" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="./user.php">Dados pessoais</a></li>
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="/GearTech/index.php">Sair</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
         </div>
-    </section>
 
-    <section class="filter">
-        <div class="background-filter">
-            <div class="title-filter">
-                <h2>Comece a sua busca agora</h2>
-            </div>
 
+        <section class="banner">
             <div class="container">
-                <div class="card-filter">
-                    <form action="connected_recommendation_process.php" method="post" class="box-filter">
+                <div class="area-banner">
+                    <div class="left-side">
+                        <h2>Somos o melhor lugar para você <span>encontrar seu carro ideal</span></h2>
+                        <p>Descubra o carro ideal para você! Com opções sob medida para seu estilo de vida!</p>
+                    </div>
+                    <div class="right-side">
+                        <img src="/GearTech/assets/images/onix.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <div class="error-register-index">
-                            <?php
+        <section class="filter">
+            <div class="background-filter">
+                <div class="title-filter">
+                    <h2>Comece a sua busca agora</h2>
+                </div>
+
+                <div class="container">
+                    <div class="card-filter">
+                        <form action="connected_recommendation_process.php" method="post" class="box-filter">
+
+                            <div class="error-register-index">
+                                <?php
                             if (isset($_GET['error'])) {
                                 echo "<p  style='color:red;'>" . $_GET['error'] . "</p>";
                             }
                             ?>
-                        </div>
-                        <div class="group-1">
-                            <div class="itens-filter">
-                                <div class="headline">
-                                    <img src="/GearTech/assets/icons/car.svg" alt="">
-                                    <div class="title-headline">Seu estilo de carro</div>
-                                </div>
-                                <select name="estilo" id="">
-                                    <option value="">Selecione seu estilo de carro</option>
-                                    <option value="Hatch">Hatch</option>
-                                    <option value="Sedan">Sedan</option>
-                                    <option value="Suv">SUV</option>
-                                </select>
                             </div>
-                            <div class="itens-filter">
-                                <div class="headline">
-                                    <img src="/GearTech/assets/icons/money.svg" alt="">
-                                    <div class="title-headline">Orçamento disponível</div>
+                            <div class="group-1">
+                                <div class="itens-filter">
+                                    <div class="headline">
+                                        <img src="/GearTech/assets/icons/car.svg" alt="">
+                                        <div class="title-headline">Seu estilo de carro</div>
+                                    </div>
+                                    <select name="estilo" id="">
+                                        <option value="">Selecione seu estilo de carro</option>
+                                        <option value="Hatch">Hatch</option>
+                                        <option value="Sedan">Sedan</option>
+                                        <option value="Suv">SUV</option>
+                                    </select>
                                 </div>
-                                <input type="text" id="preco_input" name="orcamento" placeholder="R$ 000.000,00" maxlength="10">
-                            </div>
-                            <div class="itens-filter">
-                                <div class="headline">
-                                    <img src="/GearTech/assets/icons/fuel.svg" alt="">
-                                    <div class="title-headline">Tipo de combustível</div>
+                                <div class="itens-filter">
+                                    <div class="headline">
+                                        <img src="/GearTech/assets/icons/money.svg" alt="">
+                                        <div class="title-headline">Orçamento disponível</div>
+                                    </div>
+                                    <input type="text" id="preco_input" name="orcamento" placeholder="R$ 000.000,00"
+                                        maxlength="10">
                                 </div>
-                                <select name="combustivel" id="">
-                                    <option value="">Selecione o tipo de combustível</option>
-                                    <option value="Gasolina">Gasolina</option>
-                                    <option value="Flex">Flex (Álcool e gasolina)</option>
-                                    <option value="Elétrico">Elétrico</option>
-                                </select>
+                                <div class="itens-filter">
+                                    <div class="headline">
+                                        <img src="/GearTech/assets/icons/fuel.svg" alt="">
+                                        <div class="title-headline">Tipo de combustível</div>
+                                    </div>
+                                    <select name="combustivel" id="">
+                                        <option value="">Selecione o tipo de combustível</option>
+                                        <option value="Gasolina">Gasolina</option>
+                                        <option value="Flex">Flex (Álcool e gasolina)</option>
+                                        <option value="Elétrico">Elétrico</option>
+                                    </select>
+                                </div>
+
                             </div>
 
-                        </div>
-
-                        <div class="group-2">
-                            <div class="itens-filter">
-                                <div class="headline">
-                                    <img src="/GearTech/assets/icons/people.svg" alt="">
-                                    <div class="title-headline">Capacidade de passageiros</div>
+                            <div class="group-2">
+                                <div class="itens-filter">
+                                    <div class="headline">
+                                        <img src="/GearTech/assets/icons/people.svg" alt="">
+                                        <div class="title-headline">Capacidade de passageiros</div>
+                                    </div>
+                                    <input type="number" name="capacidade" id=""
+                                        placeholder="Selecione a quantidade de passageiros" min="0" max="4">
                                 </div>
-                                <input type="number" name="capacidade" id="" placeholder="Selecione a quantidade de passageiros" min="0" max="4">
-                            </div>
-                            <div class="itens-filter">
-                                <div class="headline">
-                                    <img src="/GearTech/assets/icons/volante.svg" alt="" width="20px">
-                                    <div class="title-headline">Uso do veículo</div>
+                                <div class="itens-filter">
+                                    <div class="headline">
+                                        <img src="/GearTech/assets/icons/volante.svg" alt="" width="20px">
+                                        <div class="title-headline">Uso do veículo</div>
+                                    </div>
+                                    <select name="tipoUso" id="">
+                                        <option value="">Selecione o uso do veículo</option>
+                                        <option value="diario">Diário</option>
+                                        <option value="passeio">Passeios</option>
+                                    </select>
                                 </div>
-                                <select name="tipoUso" id="">
-                                    <option value="">Selecione o uso do veículo</option>
-                                    <option value="diario">Diário</option>
-                                    <option value="passeio">Passeios</option>
-                                </select>
+                                <div class="itens-filter">
+                                    <button type="submit" name="submit">Procure agora</button>
+                                </div>
                             </div>
-                            <div class="itens-filter">
-                                <button type="submit" name="submit">Procure agora</button>
-                            </div>
-                        </div>
-                        <script>
+                            <script>
                             function formatarNumero(valor) {
                                 valor = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
                                 if (valor === "") return "";
 
-                                valor = (parseInt(valor, 10) / 100).toFixed(2) + ''; // Converte para número e formata com duas casas decimais
+                                valor = (parseInt(valor, 10) / 100).toFixed(2) +
+                                ''; // Converte para número e formata com duas casas decimais
                                 valor = valor.replace(".", ","); // Substitui ponto por vírgula
                                 valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona pontos a cada milhar
                                 return valor;
@@ -212,16 +218,17 @@ $quantidade = $sql_query->num_rows;
                                 cursorPosition = this.value.length - valorAntigo.length + cursorPosition;
                                 this.setSelectionRange(cursorPosition, cursorPosition);
                             });
-                        </script>
-                    </form>
-                </div>
-    </section>
+                            </script>
+                        </form>
+                    </div>
+        </section>
 
-    <section class="popular-cars">
+        <section class="popular-cars">
             <div class="container">
                 <div class="title-popular-cars">
                     <h2>Carros mais vendidos <br>no ultimo semestre</h2>
-                    <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais veículos lideram as listas de mais vendidos.</p>
+                    <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais veículos lideram as listas de
+                        mais vendidos.</p>
                 </div>
                 <?php
 
@@ -271,7 +278,7 @@ $quantidade = $sql_query->num_rows;
                 };
                 echo "</div>"
                 ?>
-            </div>  
+            </div>
         </section>
 
 
@@ -290,7 +297,8 @@ $quantidade = $sql_query->num_rows;
                             <h2>As melhores <br>marcas</h2>
                         </div>
                         <div class="desc-about-us-group">
-                            <p>Selecionamos as marcas mais confiáveis para garantir qualidade e segurança, proporcionando uma compra satisfatória.</p>
+                            <p>Selecionamos as marcas mais confiáveis para garantir qualidade e segurança,
+                                proporcionando uma compra satisfatória.</p>
                         </div>
                     </div>
                     <div class="about-us-group">
@@ -301,7 +309,8 @@ $quantidade = $sql_query->num_rows;
                             <h2>Atende a sua <br> necessidade</h2>
                         </div>
                         <div class="desc-about-us-group">
-                            <p>Desenvolvemos um filtro personalizado que se adapta ao seu estilo e preferências, para facilitar a busca do veículo. </p>
+                            <p>Desenvolvemos um filtro personalizado que se adapta ao seu estilo e preferências, para
+                                facilitar a busca do veículo. </p>
                         </div>
                     </div>
                     <div class="about-us-group">
@@ -312,7 +321,8 @@ $quantidade = $sql_query->num_rows;
                             <h2>Prático, intuivo e <br> muito fácil</h2>
                         </div>
                         <div class="desc-about-us-group">
-                            <p>Oferecemos uma navegação simples e com uma interface intuitiva, que torna a busca pelo carro perfeito mais rápida.</p>
+                            <p>Oferecemos uma navegação simples e com uma interface intuitiva, que torna a busca pelo
+                                carro perfeito mais rápida.</p>
                         </div>
                     </div>
                     <div class="about-us-group">
@@ -323,7 +333,8 @@ $quantidade = $sql_query->num_rows;
                             <h2>Facilita sua <br> decisão</h2>
                         </div>
                         <div class="desc-about-us-group">
-                            <p>Através das recomendações personalizadas e comparações detalhadas, tomar decisões informadas nunca foi tão simples.</p>
+                            <p>Através das recomendações personalizadas e comparações detalhadas, tomar decisões
+                                informadas nunca foi tão simples.</p>
                         </div>
                     </div>
                 </div>
@@ -352,17 +363,19 @@ $quantidade = $sql_query->num_rows;
             <div class="title-contact">
                 <h2>Ficou com alguma dúvida?<br>Entre em contato conosco</h2>
                 <div class="desc-contact-mobile">
-                        <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários, se enfrentar problemas ou dificuldades utilize nossos meios de contato.</p>
-                    </div>
+                    <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários, se
+                        enfrentar problemas ou dificuldades utilize nossos meios de contato.</p>
+                </div>
 
             </div>
 
             <div class="container">
                 <div class="area-contact">
-                    
+
                     <div class="left-side-contact">
-                    <div class="desc-contact">
-                            <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários, se enfrentar problemas ou dificuldades utilize nossos meios de contato.
+                        <div class="desc-contact">
+                            <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários,
+                                se enfrentar problemas ou dificuldades utilize nossos meios de contato.
                             </p>
                         </div>
 
@@ -378,26 +391,27 @@ $quantidade = $sql_query->num_rows;
                     </div>
 
                     <div class="right-side-contact">
-                    <div class="card-form-contact">
+                        <div class="card-form-contact">
                             <form action="https://api.web3forms.com/submit" method="post" id="ContForm">
                                 <input type="hidden" name="access_key" value="b92d6b10-0fe4-4d01-a034-23dbefe8e98e">
                                 <label for="">Nome completo</label>
                                 <input type="text" value="<?php echo $_SESSION['nomeUsuario']; ?>" name="Nome" readonly>
                                 <label for="">Email</label>
-                                <input type="email" value="<?php echo $_SESSION['email']; ?>" name="E-mail" id="" readonly>
+                                <input type="email" value="<?php echo $_SESSION['email']; ?>" name="E-mail" id=""
+                                    readonly>
                                 <label for="">Assunto</label>
                                 <input type="text" name="Subject" id="subject">
                                 <label for="">Mensagem</label>
                                 <textarea name="Message" id="message" cols="20" rows="10"></textarea>
-                                <button onclick=check() type="submit" >Enviar</button>
-                             
+                                <button onclick=check() type="submit">Enviar</button>
+
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </section>
+        </section>
     </main>
     <footer>
         <div class="container">
@@ -418,7 +432,9 @@ $quantidade = $sql_query->num_rows;
                 </div>
                 <div class="right-side-footer">
                     <h2>Sobre nós</h2>
-                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada
+                        de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor
+                        escolha da sua vida.
                     </p>
                 </div>
             </div>
@@ -430,11 +446,10 @@ $quantidade = $sql_query->num_rows;
 
     <script src="/GearTech/assets/js/script.js"></script>
     <script>
-         function validarInput (input){
-            if (input.value < 0) input.value = 0;
+    function validarInput(input) {
+        if (input.value < 0) input.value = 0;
         if (input.value > 4) input.value = 4;
-        }
-        
+    }
     </script>
 </body>
 

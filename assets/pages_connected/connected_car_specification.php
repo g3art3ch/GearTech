@@ -128,15 +128,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
-                        <li><a href="">Manutenções</a></li>
-                        <li>
+                        <li><a href="./connected_catalog.php">Catálogo</a></li>
+                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
+                        <li class="dropdown">
                             <div class="user-enter">
-                                <a href="../pages/login.php">
-                                    <img src="../icons/user.svg" alt="">
-                                    <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
-                                </a>
+                                <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
+                                <a href="#" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
                             </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="./user.php">Dados pessoais</a></li>
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="/GearTech/index.php">Sair</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -157,9 +161,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                     <form method="post">
                         <input type="hidden" name="IdCar" value="<?php echo htmlspecialchars($_GET['IdCar']); ?>">
                         
-                            <button type="submit" name="UnfavButton">DESFAVORITAR</button>
-                        
-                            <button type="submit" name="FavButton">FAVORITAR</button>
+                            <button type="submit" name="FavButton" class="FavButton">Salvar veículo</button>
+
+                            <button type="submit" name="UnfavButton" class="UnfavButton">Remover veículo</button>
                         
                     </form>
                 </div>

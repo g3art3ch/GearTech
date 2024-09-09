@@ -62,7 +62,7 @@ $quantidade = $sql_query2->num_rows;
                 <nav>
                     <ul>
                         <li><a href="./connected_catalog.php">Catálogo</a></li>
-                        <li><a href="">Manutenções</a></li>
+                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
                         <li class="dropdown">
                             <div class="user-enter">
                                 <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
@@ -75,14 +75,6 @@ $quantidade = $sql_query2->num_rows;
                             </ul>
                         </li>
                     </ul>
-                    <!-- <ul>
-                        <li>
-                            <a href="/GearTech/index.php" class="logout-area">
-                                <img src="../icons/logout.svg" alt="">
-                                <p>Encerrar sessão</p>
-                            </a>
-                        </li>
-                    </ul> -->
                 </nav>
             </header>
         </div>
@@ -115,6 +107,7 @@ $quantidade = $sql_query2->num_rows;
 
                                 // Defina o limite de carros a serem exibidos
                                 $limite = 10;
+                                $minimo = 3;
                                 $contador = 0;
 
                                 foreach ($_SESSION['resultados'] as $results) {
@@ -154,6 +147,7 @@ $quantidade = $sql_query2->num_rows;
                                         $_SESSION['FAVORITES'][] = $resultFAVORITES;
                                     }
 
+                                    
 
                                     foreach ($_SESSION['FAVORITES'] as $fav) {
 
@@ -166,14 +160,12 @@ $quantidade = $sql_query2->num_rows;
                                         echo '            <h2>' . $fav['nome'] . '</h2>';
                                         echo '            <div class="price">' . $fav['orcamento'] . '</div>';
                                         echo '            <div class="desc-saved-vehicle">';
-                                        echo '                <p>' . $fav['combustivel'] . '</p>';
-                                        echo '                <p>' . $fav['capacidade'] . '</p>';
-                                        echo '                <p>' . $fav['tipoUso'] . '</p>';
                                         echo '            </div>';
-                                        echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar=' . $fav['nome'] . '">Ver Detalhes</a>';
+                                        echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar=' . $fav['nome'] . '">Ver detalhes</a>';
                                         echo '        </div>';
                                         echo '    </div>';
                                         echo '</div>';
+                                        
                                     }
 
 
@@ -190,21 +182,19 @@ $quantidade = $sql_query2->num_rows;
 
                         </div>
                     </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="container">
-                <div class="left-side-saved">
+                    <div class="right-side-saved">
                     <div class="card-questionnaire">
                         <h2>Continua incerto para tomar sua decisão?</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus pariatur, assumenda odit
                             quasi impedit non necessitatibus </p>
-                        <button type="submit" href=""><a href="comparative.php">Compare</a></button>
-                        
+                        <button type="submit"><a href="comparative.php">Compare</a></button>
                     </div>
                 </div>
+                </div>
             </div>
+            </div>
+
+           
         </section>
     </main>
     <footer>
