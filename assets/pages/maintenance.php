@@ -47,7 +47,7 @@
                         <li class="dropdown">
                             <div class="user-enter">
                                 <img src="/GearTech/assets/icons/user.svg" alt="" >
-                                <a href="assets/pages/login.php" class="login-account">Entre em sua conta</a>
+                                <a href="./login.php" class="login-account">Entre em sua conta</a>
                             </div>
                         </li>
                     </ul>
