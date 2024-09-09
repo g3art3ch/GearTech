@@ -33,6 +33,9 @@ function popup() {
 
 }
 
+function xx(){
+    window.alert(errorLogin())
+}
 function errorLogin() {
     Swal.fire({
         position: "top",
@@ -84,3 +87,5 @@ function senhaAtualIncorreta(){
         }
     });
 }
+
+

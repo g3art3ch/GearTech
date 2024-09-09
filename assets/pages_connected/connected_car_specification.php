@@ -54,16 +54,15 @@ $nomeUSER = $_SESSION['nomeUsuario'];
 function FavFunction($idCar, $favoriteMARCA, $nomeUSER) {
     include('connection_favorite.php');
 
-$chkFAV = "SELECT * FROM favorites WHERE favoriteNAME = $idCar";
+$chkFAV = "SELECT * FROM favorites WHERE favoriteNAME = '$idCar'";
 $execCHK = $favoriteDATA->query($chkFAV);
 $qtd = $execCHK->num_rows;
-
 
 if($qtd == 0){
     $FavInsert = "INSERT INTO favorites (favoriteNAME, favoriteMARCA, favoriteUSER) VALUES ('$idCar', '$favoriteMARCA', '$nomeUSER')";
     $favoriteDATA->query($FavInsert);
-}else if($qtd != 0){
-echo   'CARRO JÁ INSERIDO';
+}else if($qtd == 1){
+    echo "<script>alert('CARRO JÁ INSERIDO');</script>";
 }
 }
 

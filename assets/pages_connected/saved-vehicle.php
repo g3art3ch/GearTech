@@ -200,7 +200,8 @@ $quantidade = $sql_query2->num_rows;
                         <h2>Continua incerto para tomar sua decisão?</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus pariatur, assumenda odit
                             quasi impedit non necessitatibus </p>
-                        <button type="submit">Compare</button>
+                        <button type="submit" href=""><a href="comparative.php">Compare</a></button>
+                        
                     </div>
                 </div>
             </div>
