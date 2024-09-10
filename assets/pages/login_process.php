@@ -28,18 +28,12 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             echo 'Confirme seu email!';
         }
 
-        ?>
-
-<head>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-
-<?php
     } else {
-        
+
         echo '
+<script src="sweetalert2.all.min.js"></script>
+
         <script>
-        $(document).ready(function(){
         Swal.fire({
         position: "top",
         icon: "error",
@@ -55,7 +49,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             title: "custom-title",
         }
     });
-    }
+
         window.location.replace("login.php");
         </script>';
 
@@ -66,4 +60,3 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
 }
 
 ?>
-

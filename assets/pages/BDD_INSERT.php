@@ -58,8 +58,15 @@ if (isset($_GET["Marca"])) {
             $nomeModelo = $modelo['nome'];
             echo $nomeModelo . $codModelo . 'Inserido <br>';
 
-            $sql_code = "INSERT INTO carros(codigoModelo, nome, ano, codigoMarca) 
-            VALUES ($codModelo, '$nomeModelo', $codAno, $marcaURL)";
+            $sql_code = "INSERT INTO carros (codigoModelo, nome, ano, codigoMarca)
+SELECT $codModelo, '$nomeModelo', $codAno, $marcaURL
+WHERE NOT EXISTS (
+    SELECT 1 FROM carros 
+    WHERE codigoModelo = $codModelo 
+    AND nome = '$nomeModelo' 
+    AND ano = $codAno 
+    AND codigoMarca = $marcaURL
+);";
 $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 $quantidade = $sql_query->num_rows;
 

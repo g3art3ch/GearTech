@@ -1,35 +1,16 @@
 <?php
-require("../fipeIN/vendor/autoload.php");
+include('connection_temp.php');
+include('connection_carsgt.php');
 
-use DeividFortuna\Fipe\FipeCarros;
-
-session_start();
-
-$pagina = isset($_GET['pag']) ? intval($_GET['pag']) : 1;
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $width = isset($_POST['width']) ? intval($_POST['width']) : 0;
-    $_SESSION['limite'] = ($width < 480) ? 4 : (($width < 770) ? 6 : 9);
+if (isset($_GET['Marca'])) {
+    $MarcaALL = $_GET['Marca'];
 }
 
-$limite = isset($_SESSION['limite']) ? $_SESSION['limite'] : 9;
-$inicio = ($pagina * $limite) - $limite;
 
-if (isset($_GET["Marca"])) {
-    $marcaURL = $_GET["Marca"];
-    $modelos = FipeCarros::getModelos($marcaURL);
+$allCars = "SELECT * FROM carros WHERE codigoMarca = $MarcaALL";
+$searchALL = $tempDATA->query($allCars);
+$qtdALL = $searchALL->num_rows;
 
-
-    if (is_array($modelos) && isset($modelos['modelos'])) {
-        $modelos = $modelos['modelos'];
-    } else {
-        // Defina $modelos como um array vazio ou trate o erro conforme necessário
-        $modelos = [];
-        echo '<br>';
-        echo 'Erro ao obter modelos. Tente novamente mais tarde.';
-        echo  '<br>';
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +36,7 @@ if (isset($_GET["Marca"])) {
             xhttp.open("POST", "", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("width=" + width);
-            xhttp.onreadystatechange = function() {
+            xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("result").innerHTML = this.responseText;
                 }
@@ -96,7 +77,8 @@ if (isset($_GET["Marca"])) {
                             <div class="user-enter">
                                 <a href="/GearTech/assets/pages/login.php">
                                     <img src="/GearTech/assets/icons/user.svg" alt="">
-                                    <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua conta</a>
+                                    <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua
+                                        conta</a>
                                 </a>
                             </div>
                         </li>
@@ -108,43 +90,67 @@ if (isset($_GET["Marca"])) {
         <section class="recomendation">
             <div class="container">
                 <div class="grid-recomendation">
-                <?php
-                    foreach ($modelos as $modelo) {
-                    $years = FipeCarros::getAnos($marcaURL, $modelo['codigo']);
-                    foreach ($years as $year) {
-                        if ($year['codigo'] >=   2019  ) {
-                        echo '<div class="card-recomendation">';
-                        echo '<form action="car-specification.php" method="get">';
-                        echo '<div class="box-image">';
-                        echo '<img src=".png" alt="">';
-                        echo '</div>';
+                    <?php
+                    if ($qtdALL > 0) {
+                        if (!isset($_SESSION)) {
+                            session_start();
+                        }
+                        $_SESSION['searchALL'] = array();
+                        while ($search = $searchALL->fetch_assoc()) {
+                            $_SESSION['searchALL'][] = $search;
+                        }
+                        foreach ($_SESSION['searchALL'] as $modelo) {
 
-                        echo '<div class="title-card-recomendation">';
-                        echo $modelo['nome'] . '<br>';
-                        echo '</div>';
+                            echo '<div class="card-recomendation">';
+                            echo '<form action="car-specification.php" method="get">';
+                            echo '<div class="box-image">';
+                            echo '<img src=".png" alt="">';
+                            echo '</div>';
 
-                        echo '<div class="title-card-recomendation">' . $modelo['codigo'] . '</div>';
+                            echo '<div class="title-card-recomendation">';
+                            echo $modelo['nome'] . '<br>';
+                            echo '</div>';
 
-                        echo '<div class="saiba-mais-recomendation">';
-                        echo '<label for="options">Escolha uma opção:</label>';
-                        echo '<select name="Ano" id="options">';
+                            $brand = "SELECT marca FROM marca WHERE idMarca = $MarcaALL";
+                            $brand = $finalDATA->query($brand);
+                            $_SESSION['brand'] = array();
+                            while ($brandspec = $brand->fetch_assoc()) {
+                                $_SESSION['brand'][] = $brandspec;
+                            }
+
+
+                            foreach($_SESSION['brand'] as $test){
+                            echo '<br><div class="title-card-recomendation">' .  $test['marca'] . '</div>';
 
                         
-                            echo '<option value="' . $year['codigo'] . '">' . $year['codigo'] . '</option>';
-                       
+                            echo '<div class="saiba-mais-recomendation">';
 
-                        echo '</select>';
-                        echo '<br><br>';
-                        echo '<input type="hidden" name="Marca" value="' . $marcaURL . '">';
-                        echo '<input type="hidden" name="Modelo" value="' . $modelo['codigo'] . '">';
-                        echo '<button type="submit">Enviar</button>';
-                        echo '</div>';
 
-                        echo '</form>';
-                        echo '</div>';
+
+                            echo 'Ano: ' . $modelo['ano'];
+
+
+                            echo '<br><br>';
+                            echo '<input type="hidden" name="Marca" value="' . $test['marca'] . '">';
+                            echo '<input type="hidden" name="Modelo" value="' . $modelo['codigoModelo'] . '">';
+                            echo '<button type="submit">Enviar</button>';
+                            echo '</div>';
+
+                            echo '</form>';
+                            echo '</div>';
+                        }
+
+
+                            // $codModelo = $modelo['codigoModelo'];
+                            // $idMarca = $modelo['codigoMarca'];
+                            // $nomeCarro = $modelo['nome'];
+                            // $idModelo = $modelo['Id'];
+                            // $sql_code3 = "INSERT INTO modelo (idModelo, codModelo, idMarca, nomeCarro) VALUES ('$idModelo','$codModelo','$idMarca', '$nomeCarro')";
+                            // $sql_query4 = $finalDATA->query($sql_code3) or die("Falha na execução do código SQL: " . $finalDATA->error);
+                    
+
+                        }
                     }
-                }
-            }
                     ?>
                 </div>
             </div>
@@ -175,7 +181,9 @@ if (isset($_GET["Marca"])) {
                 </div>
                 <div class="right-side-footer">
                     <h2>Sobre nós</h2>
-                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada
+                        de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor
+                        escolha da sua vida.
                     </p>
                 </div>
             </div>
