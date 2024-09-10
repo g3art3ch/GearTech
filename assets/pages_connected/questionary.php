@@ -125,7 +125,7 @@ $quantidade = $sql_query2->num_rows;
                     </div>
                     
                     <div class="second-form">
-                         <form id="form-step-2" style="display: none;">
+                         <form id="form-step-2" style="display: none;" action="./profile_result.php" method="POST">
                         <label for="">Qual é a sua expectativa em relação à garantia do veículo?</label>
                         <select name="pagamento" id="">
                             <option value=""></option>

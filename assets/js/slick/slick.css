@@ -117,3 +117,22 @@
 .slick-arrow.slick-hidden {
     display: none;
 }
+
+button.custom-prev {
+    display: none;
+    
+}
+
+.custom-next {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.center-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

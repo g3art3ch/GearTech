@@ -74,7 +74,7 @@ include('protect.php');
                 </div>
                 <div class="grid-maintenance">
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Audi" class="card-maintenance">
+                        <a href="https://www.startmycar.com/audi/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/audi.png" alt="">
                             </div>
@@ -82,7 +82,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=BMW" class="card-maintenance">
+                        <a href="https://www.startmycar.com/bmw/pickmodel" class="card-maintenance">
                             <div class="box-maintenance">
                                 <img src="../logo_images/bmw.png" alt="">
                             </div>
@@ -90,7 +90,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Byd" class="card-maintenance">
+                        <a href="#" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/byd.png" alt="">
                             </div>
@@ -98,7 +98,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Chevrolet" class="card-maintenance">
+                        <a href="https://www.startmycar.com/chevrolet/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/chevrolet.png" alt="">
                             </div>
@@ -106,7 +106,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Citroen" class="card-maintenance">
+                        <a href="https://www.startmycar.com/citroen/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/citroen.png" alt="">
                             </div>
@@ -114,7 +114,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Fiat" class="card-maintenance">
+                        <a href="https://www.startmycar.com/fiat/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/fiat.png" alt="">
                             </div>
@@ -122,7 +122,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Ford" class="card-maintenance">
+                        <a href="https://www.startmycar.com/ford/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/ford.png" alt="">
                             </div>
@@ -130,7 +130,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Honda" class="card-maintenance">
+                        <a href="https://www.startmycar.com/honda/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/honda.png" alt="">
                             </div>
@@ -138,7 +138,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Citroen" class="card-maintenance">
+                        <a href="https://www.startmycar.com/hyundai/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/hyundai.png" alt="">
                             </div>
@@ -146,7 +146,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Citroen" class="card-maintenance">
+                        <a href="https://www.startmycar.com/mitsubishi/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/mitsubishi.png" alt="">
                             </div>
@@ -154,7 +154,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Citroen" class="card-maintenance">
+                        <a href="https://www.startmycar.com/mercedes-benz/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/mercedesbenz.png" alt="">
                             </div>
@@ -162,7 +162,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Nissan" class="card-maintenance">
+                        <a href="https://www.startmycar.com/nissan/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/nissan.png" alt="">
                             </div>
@@ -170,7 +170,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Porsche" class="card-maintenance">
+                        <a href="https://www.startmycar.com/porsche/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/porsche.png" alt="">
                             </div>
@@ -178,7 +178,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Peugeot" class="card-maintenance">
+                        <a href="https://www.startmycar.com/peugeot/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/peugeot.png" alt="">
                             </div>
@@ -186,7 +186,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Renault" class="card-maintenance">
+                        <a href="https://www.startmycar.com/renault/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/renault.png" alt="">
                             </div>
@@ -194,7 +194,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Toyota" class="card-maintenance">
+                        <a href="https://www.startmycar.com/toyota/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/toyota.png" alt="">
                             </div>
@@ -202,7 +202,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="connected_filtered_catalog.php?Marca=Volkswagen" class="card-maintenance">
+                        <a href="https://www.startmycar.com/volkswagen/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/volkswagen.png" alt="">
                             </div>

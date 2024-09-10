@@ -130,6 +130,10 @@
 
 @media (max-width: 480px) {
 
+    .card-filter form {
+        padding: 25px;
+    }
+
     .filter {
         padding-top: 10px;
         padding-bottom: 45px;
@@ -159,6 +163,10 @@
     
     .itens-filter button {
         margin-top: 10px;
+    }
+
+    .user-enter img {
+        margin-right: 7px;
     }
     
 

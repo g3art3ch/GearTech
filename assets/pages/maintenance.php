@@ -62,7 +62,7 @@
                 </div>
                 <div class="grid-maintenance">
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/audi/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/audi.png" alt="">
                             </div>
@@ -70,7 +70,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/bmw/pickmodel" class="card-maintenance">
                             <div class="box-maintenance">
                                 <img src="../logo_images/bmw.png" alt="">
                             </div>
@@ -78,7 +78,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="#" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/byd.png" alt="">
                             </div>
@@ -86,7 +86,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#rolet" class="card-maintenance">
+                        <a href="https://www.startmycar.com/chevrolet/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/chevrolet.png" alt="">
                             </div>
@@ -94,7 +94,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/citroen/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/citroen.png" alt="">
                             </div>
@@ -102,7 +102,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/fiat/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/fiat.png" alt="">
                             </div>
@@ -110,7 +110,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/ford/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/ford.png" alt="">
                             </div>
@@ -118,7 +118,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/honda/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/honda.png" alt="">
                             </div>
@@ -126,7 +126,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/hyundai/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/hyundai.png" alt="">
                             </div>
@@ -134,7 +134,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/mitsubishi/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/mitsubishi.png" alt="">
                             </div>
@@ -142,7 +142,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/mercedes-benz/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/mercedesbenz.png" alt="">
                             </div>
@@ -150,7 +150,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/nissan/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/nissan.png" alt="">
                             </div>
@@ -158,7 +158,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/porsche/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/porsche.png" alt="">
                             </div>
@@ -166,7 +166,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/peugeot/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/peugeot.png" alt="">
                             </div>
@@ -174,7 +174,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/renault/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/renault.png" alt="">
                             </div>
@@ -182,7 +182,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/toyota/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/toyota.png" alt="">
                             </div>
@@ -190,7 +190,7 @@
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance">
+                        <a href="https://www.startmycar.com/volkswagen/pickmodel" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/volkswagen.png" alt="">
                             </div>

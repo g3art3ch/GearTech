@@ -119,8 +119,7 @@ header nav a:hover {
 
 header .user-enter a {
     color: var(--secondary);
-    padding-right: 5px;
-   
+    padding-right: 5px;  
 }
 
 .dropdown-menu {
@@ -221,7 +220,6 @@ header .user-enter a {
 @media (max-width:900px) {
     .dropdown-menu {
         position: relative;
-
         padding-top: 6px;
     }
 
