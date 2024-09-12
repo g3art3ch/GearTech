@@ -13,6 +13,7 @@ $allCars = "SELECT
     marca.idMarca,
     modelo.nomeCarro,
     modelo.CodModelo,
+    modelo.idModelo,
     modelo.codigoAno,
     versao.nomeVersao,
     versao.ano
@@ -146,8 +147,10 @@ $qtdALL = $searchALL->num_rows;
 
                             echo '<br><br>';
                             echo '<input type="hidden" name="Marca" value="' . $modelo['idMarca'] . '">';
-                            echo '<input type="hidden" name="Modelo" value="' . $modelo['CodModelo'] . '">';
-                            echo '<input type="hidden" name="Ano" value="' . $modelo['codigoAno'] . '">';
+                            echo '<input type="hidden" name="Modelo" value="' . $modelo['idModelo'] . '">';
+                            echo '<input type="hidden" name="CodModelo" value="' . $modelo['CodModelo'] . '">';
+                            echo '<input type="hidden" name="Ano" value="' . $modelo['ano'] . '">';
+                            echo '<input type="hidden" name="codAno" value="' . $modelo['codigoAno'] . '">';
                             echo '<button type="submit">Enviar</button>';
                             echo '</div>';
                     

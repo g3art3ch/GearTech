@@ -2,27 +2,30 @@
 include('connection_temp.php');
 include('connection_carsgt.php');
 
-if (isset($_GET['Marca']) || isset($_GET['Modelo'])) {
+if (isset($_GET['Marca'])) {
     $Marca = $_GET['Marca'];
     $Modelo = $_GET['Modelo'];
+    $Ano = $_GET['Ano'];
 }
-
-echo $Marca;
-echo $Modelo;
 
 $carSpecConsult = "SELECT 
     marca.marca,
     marca.idMarca,
     modelo.nomeCarro,
-    modelo.idModelo
-    
+    modelo.CodModelo,
+    modelo.codigoAno,
+    modelo.idModelo,
+    versao.ano
 FROM 
     marca
 INNER JOIN 
     modelo ON marca.idMarca = modelo.idMarca
-    Where marca.idMarca = ";
+INNER JOIN 
+    versao ON modelo.idModelo = versao.idVersao
+WHERE marca.idMarca = $Marca and modelo.idModelo = $Modelo and versao.ano = $Ano";
     
 $carSpec = $finalDATA->query($carSpecConsult);
+
 
 if (!isset($_SESSION)) {
     session_start();
@@ -98,7 +101,7 @@ while ($searchf = $carSpec->fetch_assoc()) {
                 <div class="title-car-title-specification">
                     <h2>Mais informações sobre - <?php
                     foreach ($_SESSION['carSpec'] as $final) {
-                        echo $final['nomeCarro'];
+                        echo $final['marca'] . "&nbsp;&nbsp;&nbsp;&nbsp;" . $final['nomeCarro']. "<br><br>";
 
                         ?>
                         </h2>
@@ -106,7 +109,7 @@ while ($searchf = $carSpec->fetch_assoc()) {
                     <div class="box-car-specification">
                         <div class="left-side-specification">
                             <div class="card-car-specification">
-                                <h2><?php echo $final['marca'] . '  ' . $final['nomeCarro']; ?></h2>
+                                <h2><?php echo  $final['nomeCarro']; ?></h2>
                                 <?php
                                 // echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
                                 ?>
