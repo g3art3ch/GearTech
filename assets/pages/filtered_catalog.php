@@ -7,8 +7,23 @@ if (isset($_GET['Marca'])) {
 }
 
 
-$allCars = "SELECT * FROM carros WHERE codigoMarca = $MarcaALL";
-$searchALL = $tempDATA->query($allCars);
+
+$allCars = "SELECT 
+    marca.marca,
+    marca.idMarca,
+    modelo.nomeCarro,
+    modelo.CodModelo,
+    modelo.codigoAno,
+    versao.nomeVersao,
+    versao.ano
+FROM 
+    marca
+INNER JOIN 
+    modelo ON marca.idMarca = modelo.idMarca
+INNER JOIN 
+    versao ON modelo.idModelo = versao.idVersao
+WHERE marca.idMarca = $MarcaALL";
+$searchALL = $finalDATA->query($allCars);
 $qtdALL = $searchALL->num_rows;
 
 ?>
@@ -106,48 +121,52 @@ $qtdALL = $searchALL->num_rows;
                             echo '<div class="box-image">';
                             echo '<img src=".png" alt="">';
                             echo '</div>';
-
+                    
                             echo '<div class="title-card-recomendation">';
-                            echo $modelo['nome'] . '<br>';
+                            echo $modelo['nomeCarro'] . '<br>';
                             echo '</div>';
-
+                    
                             $brand = "SELECT marca FROM marca WHERE idMarca = $MarcaALL";
                             $brand = $finalDATA->query($brand);
                             $_SESSION['brand'] = array();
                             while ($brandspec = $brand->fetch_assoc()) {
                                 $_SESSION['brand'][] = $brandspec;
                             }
+                    
 
+                            echo '<br><div class="title-card-recomendation">' .  $modelo['marca'] . '</div>';
+                    
 
-                            foreach($_SESSION['brand'] as $test){
-                            echo '<br><div class="title-card-recomendation">' .  $test['marca'] . '</div>';
-
-                        
                             echo '<div class="saiba-mais-recomendation">';
+                    
 
 
-
-                            echo 'Ano: ' . $modelo['ano'];
-
+                            echo 'Ano: ' . $modelo['ano'];  
+                    
 
                             echo '<br><br>';
-                            echo '<input type="hidden" name="Marca" value="' . $test['marca'] . '">';
-                            echo '<input type="hidden" name="Modelo" value="' . $modelo['codigoModelo'] . '">';
+                            echo '<input type="hidden" name="Marca" value="' . $modelo['idMarca'] . '">';
+                            echo '<input type="hidden" name="Modelo" value="' . $modelo['CodModelo'] . '">';
+                            echo '<input type="hidden" name="Ano" value="' . $modelo['codigoAno'] . '">';
                             echo '<button type="submit">Enviar</button>';
                             echo '</div>';
-
+                    
                             echo '</form>';
                             echo '</div>';
-                        }
-
-
-                            // $codModelo = $modelo['codigoModelo'];
+                            
+                    
+                            // $idModelo = $modelo['Id'];
                             // $idMarca = $modelo['codigoMarca'];
                             // $nomeCarro = $modelo['nome'];
-                            // $idModelo = $modelo['Id'];
-                            // $sql_code3 = "INSERT INTO modelo (idModelo, codModelo, idMarca, nomeCarro) VALUES ('$idModelo','$codModelo','$idMarca', '$nomeCarro')";
+                            // $codModelo = $modelo['codigoModelo'];
+                            // $codAno  = $modelo['codigoAno'];
+                            // $access = "
+                            // SET FOREIGN_KEY_CHECKS=1;";
+                            //                             $accessQr = $finalDATA->query($access);
+                            
+                            // $sql_code3 = "INSERT INTO versao (idVersao, idModelo, nomeVersao, ano) VALUES ('$idModelo',$codModelo,'$nomeCarro',$codAno)";
                             // $sql_query4 = $finalDATA->query($sql_code3) or die("Falha na execução do código SQL: " . $finalDATA->error);
-                    
+
 
                         }
                     }

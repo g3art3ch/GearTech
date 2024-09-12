@@ -1,16 +1,38 @@
 <?php
-require("../fipeIN/vendor/autoload.php");
+include('connection_temp.php');
+include('connection_carsgt.php');
 
-use DeividFortuna\Fipe\FipeCarros;
+if (isset($_GET['Marca']) || isset($_GET['Modelo'])) {
+    $Marca = $_GET['Marca'];
+    $Modelo = $_GET['Modelo'];
+}
 
-if (isset($_GET['Ano']) && isset( $_GET['Marca']) && isset($_GET['Modelo'])) {
-    $AnoCar = $_GET['Ano'];
-    $MarcaCar = $_GET['Marca'];
-    $ModeloCar = $_GET['Modelo'];
+echo $Marca;
+echo $Modelo;
+
+$carSpecConsult = "SELECT 
+    marca.marca,
+    marca.idMarca,
+    modelo.nomeCarro,
+    modelo.idModelo
+    
+FROM 
+    marca
+INNER JOIN 
+    modelo ON marca.idMarca = modelo.idMarca
+    Where marca.idMarca = ";
+    
+$carSpec = $finalDATA->query($carSpecConsult);
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+$_SESSION['carSpec'] = array();
+while ($searchf = $carSpec->fetch_assoc()) {
+    $_SESSION['carSpec'][] = $searchf;
 }
 
 
-$vehicle = FipeCarros:: getVeiculo($MarcaCar, $ModeloCar, $AnoCar);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,157 +97,221 @@ $vehicle = FipeCarros:: getVeiculo($MarcaCar, $ModeloCar, $AnoCar);
             <div class="container">
                 <div class="title-car-title-specification">
                     <h2>Mais informações sobre - <?php
-                        echo $vehicle['Modelo'];
-                ?>
+                    foreach ($_SESSION['carSpec'] as $final) {
+                        echo $final['nomeCarro'];
+
+                        ?>
                         </h2>
-                </div>
-                <div class="box-car-specification">
-                    <div class="left-side-specification">
-                        <div class="card-car-specification">
-                            <h2><?php echo $vehicle['Modelo'];?></h2>
-                            <?php 
-                            // echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
-                            ?>
+                    </div>
+                    <div class="box-car-specification">
+                        <div class="left-side-specification">
+                            <div class="card-car-specification">
+                                <h2><?php echo $final['marca'] . '  ' . $final['nomeCarro']; ?></h2>
+                                <?php
+                                // echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
+                                ?>
+                            </div>
+                            <div class="card-technology-specification none-mobile">
+                                <h2>Conforto e tecnologia</h2>
+                                <table>
+                                    <tr>
+                                        <td>Ar condicionado</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Travas Elétricas</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Freio ABS</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Multimídia</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Câmeras de estacionamento</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Airbags frontais</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apoio de braço</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Retrovisores elétricos</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Teto Solar</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
-                        <div class="card-technology-specification none-mobile">
+                        <div class="right-side-specification">
+                            <div class="card-mecanic-specification">
+                                <h2>Especificações Gerais</h2>
+                                <table>
+                                    <tr>
+                                        <td>Marca</td>
+                                        <td>
+                                            <p><?php echo $final['marca'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Modelo</td>
+                                        <td>
+                                            <p><?php echo $final['nomeCarro'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tipo de Carroceria</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Capacidade de passageiros</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Consumo</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Motorização</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Transmissão</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tração</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quantidade de portas</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Capacidade de Carga</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Estilo de Direção</td>
+                                        <td>
+                                            <p>...</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-technology-specification flex-mobile">
                             <h2>Conforto e tecnologia</h2>
                             <table>
                                 <tr>
                                     <td>Ar condicionado</td>
-                                    <td><p>...</p></td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Travas Elétricas</td>
-                                    <td><p>...</p></td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Freio ABS</td>
-                                    <td><p>...</p></td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Multimídia</td>
-                                    <td><p>...</p></td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Câmeras de estacionamento</td>
-                                    <td><p>...</p></td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Airbags frontais</td>
-                                    <td><p>...</p></td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Apoio de braço</td>
-                                    <td><p>...</p></td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Retrovisores elétricos</td>
-                                    <td><p>...</p></td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Teto Solar</td>
-                                    <td><p>...</p></td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
-                    </div>
-                    <div class="right-side-specification">
-                        <div class="card-mecanic-specification">
-                            <h2>Especificações Gerais</h2>
-                            <table>
-                                <tr>
-                                    <td>Marca</td>
-                                    <td><p><?php echo $vehicle['Marca']?></p></td>
-                                </tr>
-                                <tr>
-                                    <td>Modelo</td>
-                                    <td><p><?php echo $vehicle['Modelo']?></p></td>
-                                </tr>
-                                <tr>
-                                    <td>Tipo de Carroceria</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Capacidade de passageiros</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                
-                                <tr>
-                                    <td>Consumo</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Motorização</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Transmissão</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Tração</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Quantidade de portas</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Capacidade de Carga</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Estilo de Direção</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card-technology-specification flex-mobile">
-                        <h2>Conforto e tecnologia</h2>
-                        <table>
-                            <tr>
-                                <td>Ar condicionado</td>
-                                <td><p>...</p></td>
-                            </tr>
-                            <tr>
-                                <td>Travas Elétricas</td>
-                                <td><p>...</p></td>
-                            </tr>
-                            <tr>
-                                <td>Freio ABS</td>
-                                <td><p>...</p></td>
-                            </tr>
-                            <tr>
-                                <td>Multimídia</td>
-                                <td><p>...</p></td>
-                            </tr>
-                            <tr>
-                                <td>Câmeras de estacionamento</td>
-                                <td><p>...</p></td>
-                            </tr>
-                            <tr>
-                                <td>Airbags frontais</td>
-                                <td><p>...</p></td>
-                            </tr>
-                            <tr>
-                                <td>Apoio de braço</td>
-                                <td><p>...</p></td>
-                            </tr>
-                            <tr>
-                                <td>Retrovisores elétricos</td>
-                                <td><p>...</p></td>
-                            </tr>
-                            <tr>
-                                <td>Teto Solar</td>
-                                <td><p>...</p></td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
+
+    <?php
+                    }
+                    ?>
 
 
 

@@ -5,7 +5,7 @@ namespace DeividFortuna\Fipe;
 abstract class IFipe
 {
     const URL = 'https://parallelum.com.br/fipe/api/v1/';
-    const apiKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyNzYyYzhkYi04NDVlLTQxMzUtOTMzYy01NTZhY2I0YTRlMDYiLCJlbWFpbCI6ImJlbmV0dGltb3RvZzRAZ21haWwuY29tIiwiaWF0IjoxNzI0MTEyNDA1fQ.KIbLU1zrPZ99LXoTljV1Mz5Gfvefd4a22SOoZE5r2XM';
+    const apiKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyNzYyYzhkYi04NDVlLTQxMzUtOTMzYy01NTZhY2I0YTRlMDYiLCJlbWFpbCI6ImJlbmV0dGltb3RvZzRAZ21haWwuY29tIiwic3RyaXBlU3Vic2NyaXB0aW9uSWQiOiJzdWJfMVB4czZ0Q1N2SXMwOHRJRTJ5ckd3S0I0IiwiaWF0IjoxNzI2MDc2OTE3fQ.FAtd_MrXTz19S7SQspQBk3AMb500xgPtOXCTu-02Vr4';
 
     /**
      * @var string

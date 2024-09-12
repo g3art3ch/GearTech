@@ -58,24 +58,16 @@ if (isset($_GET["Marca"])) {
             $nomeModelo = $modelo['nome'];
             echo $nomeModelo . $codModelo . 'Inserido <br>';
 
-            $sql_code = "INSERT INTO carros (codigoModelo, nome, ano, codigoMarca)
-SELECT $codModelo, '$nomeModelo', $codAno, $marcaURL
-WHERE NOT EXISTS (
-    SELECT 1 FROM carros 
-    WHERE codigoModelo = $codModelo 
-    AND nome = '$nomeModelo' 
-    AND ano = $codAno 
-    AND codigoMarca = $marcaURL
-);";
-$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-$quantidade = $sql_query->num_rows;
+            $sql_code = "INSERT INTO carros(codigoModelo, nome, codigoAno, codigoMarca) 
+            VALUES ($codModelo, '$nomeModelo', '$codAno', $marcaURL)";
+$sql_query = $tempDATA->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 
                
                 
             }
         }
-        $sql_code2 = "DELETE FROM carros WHERE ano < 2019 OR ano = 31999";
-$mysqli->query($sql_code2) or die("Falha na execução do código SQL: " . $mysqli->error);
+        $sql_code2 = "DELETE FROM carros WHERE codigoAno < 2019 OR codigoAno = 31999";
+$tempDATA->query($sql_code2) or die("Falha na execução do código SQL: " . $mysqli->error);
 
         ?>
 

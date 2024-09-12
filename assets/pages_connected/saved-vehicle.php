@@ -175,10 +175,6 @@ $quantidade = $sql_query2->num_rows;
                             echo '</div>';
                             ?>
 
-                            <button type="button" class="slick-prev"></button>
-                            <button type="button" class="slick-next"></button>
-                            
-
                             
 
                         </div>
