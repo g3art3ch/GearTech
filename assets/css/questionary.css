@@ -160,6 +160,7 @@
 
     .ilustrative-questionary img {
         width: 80%;
+        display: none;
     }
 
     .card-questionary button {
@@ -168,3 +169,4 @@
         font-size: 16px;
     }
 }
+

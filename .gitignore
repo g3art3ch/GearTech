@@ -23,3 +23,110 @@ dentro de um form, fudeo a formatação
 
 -hospedar o site
 
+
+ <div class="box-saved">
+                    <div class="left-side-saved">
+                        <div class="card-saved-vehicle">
+                            <div class="title-card-saved">
+                                <img src="../icons/saved.svg" alt="">
+                                <h2>Veículos salvos</h2>
+                            </div>
+
+                            <?php
+                            echo '<div class="save-slides">';
+                            if ($quantidade > 0) {
+                                if (!isset($_SESSION)) {
+                                    session_start();
+                                }
+                                $_SESSION['resultados'] = array();
+                                while ($result = $sql_query2->fetch_assoc()) {
+                                    $_SESSION['resultados'][] = $result;
+                                }
+
+                                // Defina o limite de carros a serem exibidos
+                                $limite = 10;
+                                $minimo = 3;
+                                $contador = 0;
+
+                                foreach ($_SESSION['resultados'] as $results) {
+                                    if ($contador >= $limite)
+                                        break;
+
+                                    $consultNAME = $results['favoriteNAME'];
+                                    $sql_code = "SELECT 
+                                        nc.nome,
+                                        fc.estilo,
+                                        oc.orcamento,
+                                        tc.combustivel,
+                                        cc.capacidade,
+                                        uc.tipoUso,
+                                        iden.idIden,
+                                        iden.urlCarro,
+                                        iden.Marca
+                                        FROM 
+                                        nomeCarro nc
+                                        INNER JOIN 
+                                        filtroCarros fc ON nc.idFiltro = fc.idFiltro
+                                        INNER JOIN 
+                                        orcamentoCarro oc ON nc.idNome = oc.idNome
+                                        INNER JOIN 
+                                        tipoCombustivel tc ON nc.idNome = tc.idNome
+                                        INNER JOIN 
+                                        capacidadeCarro cc ON nc.idNome = cc.idNome
+                                        INNER JOIN 
+                                        usoCarro uc ON nc.idNome = uc.idNome
+                                        INNER JOIN 
+                                        identificador iden ON nc.idNome = iden.idNome  
+                                        WHERE nome = '$consultNAME'";
+
+                                    $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+                                    $_SESSION['FAVORITES'] = array();
+                                    while ($resultFAVORITES = $sql_query->fetch_assoc()) {
+                                        $_SESSION['FAVORITES'][] = $resultFAVORITES;
+                                    }
+
+                                    
+
+                                    foreach ($_SESSION['FAVORITES'] as $fav) {
+
+                                        echo '<div class="swiper-slide">';
+                                        echo '    <div class="item-saved">';
+                                        echo '        <div class="box-image-saved">';
+                                        echo '            <img src="../car_images/' . $fav['idIden'] . '.png" alt="">';
+                                        echo '        </div>';
+                                        echo '        <div class="info-saved-vehicle">';
+                                        echo '            <h2>' . $fav['nome'] . '</h2>';
+                                        echo '            <div class="price">' . $fav['orcamento'] . '</div>';
+                                        echo '            <div class="desc-saved-vehicle">';
+                                        echo '            </div>';
+                                        echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar=' . $fav['nome'] . '">Ver detalhes</a>';
+                                        echo '        </div>';
+                                        echo '    </div>';
+                                        echo '</div>';
+                                        
+                                    }
+
+
+                                }
+
+                            }
+                            echo '</div>';
+                            ?>
+
+                            <button type="button" class="slick-prev"></button>
+                            <button type="button" class="slick-next"></button>
+                            
+
+                            
+
+                        </div>
+                    </div>
+                    <div class="right-side-saved">
+                    <div class="card-questionnaire">
+                        <h2>Continua incerto para tomar sua decisão?</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus pariatur, assumenda odit
+                            quasi impedit non necessitatibus </p>
+                        <button type="submit"><a href="comparative.php">Compare</a></button>
+                      
+                    </div>  <a href="./questionary.php">Questionario de perfil</a>
+                </div>

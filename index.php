@@ -182,10 +182,6 @@ $quantidade = $sql_query->num_rows;
                         </div>
 
                     </form>
-                        
-                    <!-- <div class="advanced-search">
-                        <a href="">Busca avançada</a>
-                    </div> -->
                     
                 </div>
             </div>

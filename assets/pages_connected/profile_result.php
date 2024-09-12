@@ -27,6 +27,7 @@ $quantidade = $sql_query2->num_rows;
     <link rel="stylesheet" href="../css/main/main.css">
     <link rel="stylesheet" href="../css/main/header.css">
     <link rel="stylesheet" href="../css/saved-vehicle.css">
+    <link rel="stylesheet" href="../css/profile-result.css">
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="stylesheet" href="../js/slick/slick.css">
     <link rel="stylesheet" href="../js/slick/slick-theme.css">
@@ -83,7 +84,7 @@ $quantidade = $sql_query2->num_rows;
         <section class="saved-vehicle">
             <div class="container">
                 <div class="title-saved-vehicle">
-                    <h2>Seus salvos</h2>
+                    <h2>Carro perfeito para seu perfil</h2>
                 </div>
 
                 <div class="box-saved">
@@ -175,18 +176,39 @@ $quantidade = $sql_query2->num_rows;
                             echo '</div>';
                             ?>
 
+                            <button type="button" class="slick-prev"></button>
+                            <button type="button" class="slick-next"></button>
+                            
+
                             
 
                         </div>
                     </div>
-                    <div class="right-side-saved">
-                    <div class="card-questionnaire">
-                        <h2>Continua incerto para tomar sua decisão?</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus pariatur, assumenda odit
-                            quasi impedit non necessitatibus </p>
-                        <button type="submit"><a href="comparative.php">Compare</a></button>
-                      
-                    </div>  <a href="./questionary.php">Questionario de perfil</a>
+                    <div class="profile-result">
+                        <div class="card-profile-result">
+                            <div class="headline-profile-result">
+                                <div class="category-profile">
+                                    <img src="../icons/icon-family.svg" alt="">
+                                    <p>Família</p>
+                                </div>
+                                <a href="./questionary.php">Editar perfil</a>
+                            </div>
+                            <div class="fixed-text-profile-result">
+                                <p>Identificamos que você possui um perifl família! <br>
+                                Esses são os veículos que mais combiam com você</p>
+                            </div>
+                            <div class="area-car-result-profile">
+                                <div class="box-image-result-profile">
+                                    <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
+                                </div>
+                                <div class="desc-car-result-profile">
+                                    <h2>Chevrolet Tracker 1.0 Turbo (A</h2>
+                                    <div class="price">R$ 128.000</div>
+                                    <a href="">Ver detalhes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -227,7 +249,7 @@ $quantidade = $sql_query2->num_rows;
     </footer>
 
 
-    <script src="/GearTech/assets/js/script.js"></script>
+  
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="../js/slick/slick.min.js"></script>
@@ -242,5 +264,5 @@ $quantidade = $sql_query2->num_rows;
             });
         });
     </script>
-   
+    
 </body>
