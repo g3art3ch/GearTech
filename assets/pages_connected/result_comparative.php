@@ -4,6 +4,13 @@ include('protect.php');
 include('connection_favorite.php');
 include('connection_cars.php');
 
+$nomeUSER = $_SESSION['nomeUsuario'];
+
+$sql_code1 = "SELECT * FROM favorites WHERE favoriteUSER = '$nomeUSER'";
+$sql_query2 = $favoriteDATA->query($sql_code1);
+$quantidade = $sql_query2->num_rows;
+
+
 
 ?>
 

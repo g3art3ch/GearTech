@@ -81,7 +81,7 @@ $quantidade = $sql_query2->num_rows;
                 <div class="card-questionary">
                     <h2>Questionario de perfil</h2>
                     <div class="first-form">
-                        <form id="form-step-1">
+                        <form id="form-step-1" action="process_questionary.php">
                         <label for="">Qual é o seu principal objetivo ao comprar um carro?</label>
                         <select name="objetivo" id="">
                             <option value=""></option>
@@ -118,7 +118,7 @@ $quantidade = $sql_query2->num_rows;
                             <option value="Não é uma preocupação">Não é uma preocupação</option>
                         </select>
                         <div class="next-button">
-                            <button type="button" id="next-step">Próximo</button>
+                            <button type="submit" id="next-step">Próximo</button>
                         </div>
                     </form>
 

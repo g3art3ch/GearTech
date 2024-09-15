@@ -1,5 +1,5 @@
 <?php
-include('connection_temp.php');
+include('connection_carsgt.php');
 require("../fipeIN/vendor/autoload.php");
 
 use DeividFortuna\Fipe\FipeCarros;
@@ -55,12 +55,14 @@ if (isset($_GET["Marca"])) {
                 
             $codModelo = $modelo['codigo'];
             $codAno = $year['codigo'];
+            $setVeiculo = FipeCarros::getVeiculo($marcaURL, $modelo['codigo'], $codAno);
+            $carroceria = $setVeiculo['TipoVeiculo'];
             $nomeModelo = $modelo['nome'];
-            echo $nomeModelo . $codModelo . 'Inserido <br>';
+            echo $nomeModelo . $codModelo . $codAno . $marcaURL .  $carroceria . "<br>";
 
-            $sql_code = "INSERT INTO carros(codigoModelo, nome, codigoAno, codigoMarca) 
-            VALUES ($codModelo, '$nomeModelo', '$codAno', $marcaURL)";
-$sql_query = $tempDATA->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+//             $sql_code = "INSERT INTO modelo(codigoModelo, nome, codigoAno, codigoMarca) 
+//             VALUES ($codModelo, '$nomeModelo', '$codAno', $marcaURL)";
+// $sql_query = $finalDATA->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 
                
                 

@@ -1,5 +1,5 @@
 <?php
-include('connection_cars.php');
+include('connection_carsgt.php');
 include('protect.php');
 
 if (isset($_GET['pag'])) {
@@ -22,51 +22,34 @@ $limite = isset($_SESSION['limite']) ? $_SESSION['limite'] : 9; // Se Session n�
 
 $inicio = ($pagina * $limite) - $limite;
 
-if (isset($_GET["Marca"])) {
-    $marca = $_GET["Marca"];
-    $sql_code = "SELECT 
-    nc.nome,
-    fc.estilo,
-    oc.orcamento,
-    tc.combustivel,
-    cc.capacidade,
-    uc.tipoUso,
-    iden.idIden,
-    iden.urlCarro,
-    iden.Marca
-FROM 
-    nomeCarro nc
-INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
-INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
-INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
-INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
-INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
-INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome  
-WHERE Marca = '$marca'
-    LIMIT $inicio, $limite";
-
-
-    $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-    $quantidade = $sql_query->num_rows;
-
-
-    if ($quantidade > 0) {
-        if (!isset($_SESSION)) {
-            session_start();    
-        }
-
-        $_SESSION['resultados'] = array();
-        while ($result = $sql_query->fetch_assoc()) {
-            $_SESSION['resultados'][] = $result;
-        }
-    }
+if (isset($_GET['Marca'])) {
+    $MarcaALL = $_GET['Marca'];
 }
+
+
+
+$allCars = "SELECT 
+    marca.marca,
+    marca.idMarca,
+    modelo.nomeCarro,
+    modelo.CodModelo,
+    modelo.idModelo,
+    modelo.codigoAno,
+    versao.nomeVersao,
+    versao.ano
+FROM 
+    marca
+INNER JOIN 
+    modelo ON marca.idMarca = modelo.idMarca
+INNER JOIN 
+    versao ON modelo.idModelo = versao.idVersao
+WHERE marca.idMarca = $MarcaALL";
+$searchALL = $finalDATA->query($allCars);
+$qtdALL = $searchALL->num_rows;
+
+
+
+    
 ?>
 
 
@@ -152,43 +135,74 @@ WHERE Marca = '$marca'
     <div class="container">
         
         <div class="grid-recomendation">
-            <?php
-            if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
-                // Loop através dos resultados e exibe as informações de cada carro
-                foreach ($_SESSION['resultados'] as $carro) {
-                    echo '<div class="card-recomendation">';
-                    echo '<div class="box-image">';
-                    echo '<img src="' . $carro['urlCarro'] . $carro['idIden'] . '.png" alt="">';
-                    echo '</div>';
-                    echo '<div class="title-card-recomendation">' . $carro['nome'] . '</div>';
-                    echo '<div class="price">R$ ' . $carro['orcamento'] . '</div>';
-                    echo '<div class="box-info">';
-                    echo '<div class="info">';
-                    echo '<img src="../icons/fuel-recomendation.svg" alt="">';
-                    echo '<p>' . $carro['combustivel'] . '</p>';
-                    echo '</div>';
-                    echo '<div class="info">';
-                    echo '<img src="../icons/passenger-recomendation.svg" alt="">';
-                    echo '<p>' . $carro['capacidade'] . ' Passageiros</p>';
-                    echo '</div>';
-                    echo '<div class="info">';
-                    echo '<img src="../icons/use-recomendation.svg" alt="">';
-                    echo '<p>' . $carro['tipoUso'] . '</p>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '<div class="saiba-mais-recomendation">';
-                    echo '<a href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar='. $carro['nome'] .' ">Saiba mais</a>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-            } else {
-                echo '
-                <div class="NoCar">
-                    <h1>Nenhum carro encontrado</h1>
-                </div>
-                ';
-            }
-            ?>
+        <?php
+                    if ($qtdALL > 0) {
+                        if (!isset($_SESSION)) {
+                            session_start();
+                        }
+                        $_SESSION['searchALL'] = array();
+                        while ($search = $searchALL->fetch_assoc()) {
+                            $_SESSION['searchALL'][] = $search;
+                        }
+                        foreach ($_SESSION['searchALL'] as $modelo) {
+
+                            echo '<div class="card-recomendation">';
+                            echo '<form action="connected_car_specification.php" method="get">';
+                            echo '<div class="box-image">';
+                            echo '<img src=".png" alt="">';
+                            echo '</div>';
+                    
+                            echo '<div class="title-card-recomendation">';
+                            echo $modelo['nomeCarro'] . '<br>';
+                            echo '</div>';
+                    
+                            $brand = "SELECT marca FROM marca WHERE idMarca = $MarcaALL";
+                            $brand = $finalDATA->query($brand);
+                            $_SESSION['brand'] = array();
+                            while ($brandspec = $brand->fetch_assoc()) {
+                                $_SESSION['brand'][] = $brandspec;
+                            }
+                    
+
+                            echo '<br><div class="title-card-recomendation">' .  $modelo['marca'] . '</div>';
+                    
+
+                            echo '<div class="saiba-mais-recomendation">';
+                    
+
+
+                            echo 'Ano: ' . $modelo['ano'];  
+                    
+
+                            echo '<br><br>';
+                            echo '<input type="hidden" name="Marca" value="' . $modelo['idMarca'] . '">';
+                            echo '<input type="hidden" name="Modelo" value="' . $modelo['idModelo'] . '">';
+                            echo '<input type="hidden" name="CodModelo" value="' . $modelo['CodModelo'] . '">';
+                            echo '<input type="hidden" name="Ano" value="' . $modelo['ano'] . '">';
+                            echo '<input type="hidden" name="codAno" value="' . $modelo['codigoAno'] . '">';
+                            echo '<button type="submit">Enviar</button>';
+                            echo '</div>';
+                    
+                            echo '</form>';
+                            echo '</div>';
+                            
+                    
+                            // $idModelo = $modelo['Id'];
+                            // $idMarca = $modelo['codigoMarca'];
+                            // $nomeCarro = $modelo['nome'];
+                            // $codModelo = $modelo['codigoModelo'];
+                            // $codAno  = $modelo['codigoAno'];
+                            // $access = "
+                            // SET FOREIGN_KEY_CHECKS=1;";
+                            //                             $accessQr = $finalDATA->query($access);
+                            
+                            // $sql_code3 = "INSERT INTO versao (idVersao, idModelo, nomeVersao, ano) VALUES ('$idModelo',$codModelo,'$nomeCarro',$codAno)";
+                            // $sql_query4 = $finalDATA->query($sql_code3) or die("Falha na execução do código SQL: " . $finalDATA->error);
+
+
+                        }
+                    }
+                    ?>
         </div>
     </div>
 </section>

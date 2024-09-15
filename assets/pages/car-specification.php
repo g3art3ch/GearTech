@@ -1,12 +1,21 @@
 <?php
 include('connection_temp.php');
 include('connection_carsgt.php');
+require("../fipeIN/vendor/autoload.php");
+
+use DeividFortuna\Fipe\FipeCarros;
+session_start();
 
 if (isset($_GET['Marca'])) {
     $Marca = $_GET['Marca'];
     $Modelo = $_GET['Modelo'];
     $Ano = $_GET['Ano'];
+    $CodModelo = $_GET['CodModelo'];
+    $CodAno = $_GET['codAno'];
 }
+$setVehicle = FipeCarros::getVeiculo($Marca, $CodModelo, $CodAno);
+
+
 
 $carSpecConsult = "SELECT 
     marca.marca,
@@ -109,7 +118,7 @@ while ($searchf = $carSpec->fetch_assoc()) {
                     <div class="box-car-specification">
                         <div class="left-side-specification">
                             <div class="card-car-specification">
-                                <h2><?php echo  $final['nomeCarro']; ?></h2>
+                                <h2><?php echo  $setVehicle['Valor']; ?></h2>
                                 <?php
                                 // echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
                                 ?>
