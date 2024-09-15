@@ -3,7 +3,7 @@ include('connection.php');
 if (!isset($_SESSION)) {
     session_start();
 }
-if (isset($_POST['email']) || isset($_POST['senha'])) {
+if (!empty($_POST['email']) && !empty($_POST['senha'])) {
 
     $email = $mysqli->real_escape_string($_POST['email']);
     $senha = $mysqli->real_escape_string($_POST['senha']);
@@ -30,32 +30,14 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
 
     } else {
 
-        echo '
-<script src="sweetalert2.all.min.js"></script>
-
-        <script>
-        Swal.fire({
-        position: "top",
-        icon: "error",
-        iconColor: "#C23A42",
-        title: "Falha no login",
-        html: `<p style="font-size: 17px; margin="0px"">Seu email ou senha estão incorretos.</p>`,
-            showConfirmButton: false,
-        width: "27rem",
-        showCloseButton: true,
-        background: "#fafafa",
-        color: "#000",
-        customClass: {
-            title: "custom-title",
-        }
-    });
-
-        window.location.replace("login.php");
-        </script>';
-
-
+        header("Location: /GearTech/assets/pages/login.php?error=log");
 
     }
+
+}
+else {
+
+    header("Location: /GearTech/assets/pages/login.php?errorempty=empty");
 
 }
 

@@ -18,7 +18,7 @@
     <title>Faça seu login</title>
     <style>
         .swal2-popup {
-            border-radius: 15px;
+            border-radius: 15x;
 
         }
 
@@ -71,21 +71,78 @@
 
 
 
-        <div style="display: flex; flex-direction:column; width:180px;gap: 10px;">
+        <!-- <div style="display: flex; flex-direction:column; width:180px;gap: 10px;">
             <button onclick="popup()">Verificação</button>
             <button onclick="errorLogin()">Falha ao logar</button>
             <button onclick="senhasNaoCoincidem()">Email Cadastrado</button>
             <button onclick="senhaAtualIncorreta()">Senha atual incorreta</button>
-        </div>
+        </div> -->
 
+        <?php 
+        if(isset($_GET['error'])){
+        echo '<script type="text/javascript">
+         
+    Swal.fire({
+        position: "top",
+        icon: "error",
+        iconColor: "#C23A42",
+        title: "Falha no login",
+        html: `<p style="font-size: 17px; margin="0px"">Seu email ou senha estão incorretos.</p>`,
+            showConfirmButton: false,
+        width: "27rem",
+        showCloseButton: true,
+        background: "#fafafa",
+        color: "#000",
+        customClass: {
+            title: "custom-title",
+        }
+    });
 
-        <div>
-            <?php
-            if (isset($_GET['message'])) {
-                $message = $_GET['message'];
-                echo "<script type='text/javascript'>alert('$message');</script>";
-            } ?>
-        </div>
+    </script>';
+}
+if(isset($_GET['errorempty'])){
+    echo '<script type="text/javascript">
+     
+Swal.fire({
+    position: "top",
+    icon: "error",
+    iconColor: "#C23A42",
+    title: "Falha no login",
+    html: `<p style="font-size: 17px; margin="0px"">Preencha seus dados</p>`,
+        showConfirmButton: false,
+    width: "27rem",
+    showCloseButton: true,
+    background: "#fafafa",
+    color: "#000",
+    customClass: {
+        title: "custom-title",
+    }
+});
+
+</script>';
+}
+if(isset($_GET['message'])){
+    echo '
+    <script>
+    Swal.fire({
+        position: "top",
+        icon: "success",
+        iconColor: "#23A669",
+        title: "Verifique sua caixa de entrada",
+        html: `<p style="font-size: 17px; margin="0px"">o link de ativação de cadastro foi enviado para seu e-mail.</p>`,
+            showConfirmButton: false,
+        width: "27rem",
+        showCloseButton: true,
+        background: "#fafafa",
+        color: "#000",
+        customClass: {
+            title: "custom-title",
+        }
+    });
+
+</script>';
+}
+    ?>
 
 
         <section class="login">
@@ -93,7 +150,7 @@
                 <div class="box-login">
                     <div class="card">
                         <h2><span>Seja bem vindo!</span><br>Acesse sua conta</h2>
-                        <form action="login_process.php" method="post" id="loginForm">
+                        <form action="login_process.php" method="POST" id="loginForm">
                             <label for="">Email</label>
                             <input type="mail" name="email" placeholder="Digite seu email">
                             <label for="">Senha</label>
@@ -102,7 +159,7 @@
                                 <img src="../icons/lock.svg" alt="">
                                 <a href="">Esqueceu sua senha</a>
                             </div>
-                            <button type="submit" class="account">Entrar</button>
+                            <button type="submit" class="account" >Entrar</button>
                             <div class="create-an-account">
                                 <p>Ainda não tem uma conta?<a href="register.php">Crie uma</a></p>
                             </div>
