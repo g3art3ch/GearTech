@@ -1,0 +1,125 @@
+.title-financing {
+    padding: 30px 0px;
+}
+
+.card-financing {
+    background-color: var(--cardBackground);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 32px;
+}
+
+
+.grid-financing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.item-financing div {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-financing span {
+    font-size: 18px;
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+
+.item-financing input {
+    outline: none;
+    padding: 12px 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.button-financing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.button-financing button {
+    background-color: var(--secondary);
+    border: 1px solid var(--secondary);
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 15px;
+    padding: 10px 0px;
+    color: #fff;
+    max-width: 215px;
+    width: 100%;
+}
+
+#resultado {
+    background-color: var(--cardBackground);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 30px;
+    margin: 50px 0px;
+}
+
+.parcelas-sac {
+    height: 180px;
+    overflow-y: auto;
+    margin: 20px 0px;
+    line-height: 1.4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#resultado .parcelas-sac h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+}
+
+#resultado h2 {
+    font-size: 20px;
+    color: var(--secondary);
+}
+
+
+#resultado p {
+    display: flex;
+    font-size: 16px;
+    padding: 10px 0px;
+}
+
+#resultado .column-p {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.valor-prestacao,
+.valor-total-pago,
+.valor-total-juros,
+.valor-total-pago-sac,
+.valor-total-juros-sac {
+    background-color: var(--background);
+    padding: 10px 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 8px ;
+    margin-bottom: 22px;
+}
+
+
+@media (max-width:1000px) {
+    .grid-financing {
+        grid-template-columns: 1fr;
+    }
+
+    #resultado h2 {
+        text-align: center;
+    }
+}

@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="stylesheet" href="../css/recomendation.css">
     <link rel="stylesheet" href="../css/catalog.css">
+    <link rel="stylesheet" href="../css/financing.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
-    <title>Seu carro ideal</title>
+    <title>Financiamento</title>
 </head>
 
 <body>
@@ -46,8 +47,9 @@
                         <li>
                             <div class="user-enter">
                                 <a href="/GearTech/assets/pages/login.php">
-                                    <img src="/GearTech/assets/icons/user.svg" alt="">
-                                    <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua conta</a>
+                                    <img src="/assets/icons/user.svg" alt="">
+                                    <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua
+                                        conta</a>
                                 </a>
                             </div>
                         </li>
@@ -57,28 +59,50 @@
         </div>
 
 
-       <section class="financing">
-        <div class="container">
-            <div class="title-financing">
-                <h2>Simulador de financiamento</h2>
-            </div>
-            <div class="card-financing">
-                <div class="grid-financing">
-                    <form action="">
-                        <div class="item-financing">
-                        <h2>Valor do veículo</h2>
-                        <input type="text">
-                        <h2>Taxa</h2>
-                        <input type="text">
-                        <h2>Valor do veículo</h2>
-                        <input type="text">
-                    </div>
-                    </form>
-                   
+        <section class="financing">
+            <div class="container">
+                <div class="title-financing">
+                    <h2>Simulador de financiamento</h2>
                 </div>
+
+                <div class="card-financing">
+                    <form id="simulador" name="simulador" method="post">
+                        <div class="grid-financing">
+                            <div class="item-financing">
+                                <div class="campo">
+                                    <span class="labelSimula">Valor Financiado:</span>
+                                    <input type="text" name="valor" id="valor" />
+                                </div>
+                            </div>
+                            <div class="item-financing">
+                                <div class="campo">
+                                    <span class="labelSimula">Taxa de Juros(%) ao mês:</span>
+                                    <input type="text" name="taxa" id="taxa" />
+                                </div>
+                            </div>
+                            <div class="item-financing">
+                                <div class="campo">
+                                    <span class="labelSimula">N&ordm; Parcelas ( em meses ):</span>
+                                    <input type="number" name="parcelas" id="parcelas" min="1" step="1" />
+                                </div>
+                                <br style="clear:both;" />
+                            </div>
+                        </div>
+
+                        <div class="button-financing">
+                            <button id="simular">Simular</button>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div id="resultado">
+
+                </div>
+
+
             </div>
-        </div>
-       </section>
+        </section>
     </main>
 
     <footer>
@@ -100,7 +124,9 @@
                 </div>
                 <div class="right-side-footer">
                     <h2>Sobre nós</h2>
-                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada
+                        de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor
+                        escolha da sua vida.
                     </p>
                 </div>
             </div>
@@ -110,17 +136,7 @@
         </div>
     </footer>
     <script src="../js/script.js"></script>
-    <script>
-        document.getElementById('toggleButton').addEventListener('click', function() {
-            var moreBrands = document.querySelectorAll('.grid-logotypes')[1];
-            if (moreBrands.style.display === 'none' || moreBrands.style.display === '') {
-                moreBrands.style.display = 'grid';
-            } else {
-                moreBrands.style.display = 'none';
-            }
-            this.style.display = 'none';
-        });
-    </script>
+    <script src="/bundle.js"></script>
 
 
 </body>
