@@ -34,6 +34,13 @@ INNER JOIN
 WHERE marca.idMarca = $Marca and modelo.idModelo = $Modelo and versao.ano = $Ano";
     
 $carSpec = $finalDATA->query($carSpecConsult);
+foreach ($_SESSION['carSpec'] as $final) {
+    $nomeCarro = $final['nomeCarro'];
+    $MarcaCarro = $final['marca'];
+    $CodModelo = $final['CodModelo'];
+    $codigoAno = $final['codigoAno'];
+    $idModelo = $final['idModelo'];
+}
 
 
 if (!isset($_SESSION)) {
@@ -46,25 +53,106 @@ while ($searchf = $carSpec->fetch_assoc()) {
 
 $nomeUSER = $_SESSION['nomeUsuario'];
 // Função para adicionar o carro aos favoritos
-function FavFunction($idCar, $favoriteMARCA, $nomeUSER) {
+
+
+
+
+
+function FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $codigoAno) {
+    // Inclui as conexões ao banco de dados
     include('connection_favorite.php');
+    include('connection_carsgt.php');
 
-$chkFAV = "SELECT * FROM favorites WHERE favoriteNAME = '$idCar'";
-$execCHK = $favoriteDATA->query($chkFAV);
-$qtd = $execCHK->num_rows;
+    // Verifica se as variáveis GET estão definidas
+    if (isset($_GET['Marca'], $_GET['Modelo'], $_GET['Ano'], $_GET['CodModelo'], $_GET['codAno'])) {
+        $Marca = $_GET['Marca'];
+        $Modelo = $_GET['Modelo'];
+        $Ano = $_GET['Ano'];
+        $CodModelo = $_GET['CodModelo'];
+        $CodAno = $_GET['codAno'];
+    } else {
+        echo "Dados do carro incompletos.";
+        return; // Para a execução se os dados estiverem incompletos
+    }
 
-if($qtd == 0){
-    $FavInsert = "INSERT INTO favorites (favoriteNAME, favoriteMARCA, favoriteUSER) VALUES ('$idCar', '$favoriteMARCA', '$nomeUSER')";
-    $favoriteDATA->query($FavInsert);
-}else if($qtd == 1){
-    echo "<script>alert('CARRO JÁ INSERIDO');</script>";
+    // Consulta para obter as especificações do carro
+    $stmt = $finalDATA->prepare("
+        SELECT 
+            marca.marca,
+            marca.idMarca,
+            modelo.nomeCarro,
+            modelo.CodModelo,
+            modelo.codigoAno,
+            modelo.idModelo,
+            versao.ano
+        FROM 
+            marca
+        INNER JOIN 
+            modelo ON marca.idMarca = modelo.idMarca
+        INNER JOIN 
+            versao ON modelo.idModelo = versao.idVersao
+        WHERE 
+            marca.idMarca = ? AND modelo.idModelo = ? AND versao.ano = ?
+    ");
+    
+    // Prepara e executa a consulta
+    $stmt->bind_param("iii", $Marca, $Modelo, $Ano); // "iii" significa 3 inteiros
+    $stmt->execute();
+    $carSpec = $stmt->get_result();
+    
+    if ($carSpec->num_rows > 0) {
+        while ($final = $carSpec->fetch_assoc()) {
+            $nomeCarro = $final['nomeCarro'];
+            $MarcaCarro = $final['marca'];
+            $CodModelo = $final['CodModelo'];
+            $codigoAno = $final['codigoAno'];
+            $idModelo = $final['idModelo'];
+        }
+    } else {
+        echo "Especificações do carro não encontradas.";
+        return; // Para a execução se não houver resultados
+    }
+
+    // Verifica se o carro já foi favoritado
+    $chkFAV = $favoriteDATA->prepare("SELECT * FROM favorites WHERE favoriteNAME = ?");
+    $chkFAV->bind_param("s", $nomeCarro); // "s" para string
+    $chkFAV->execute();
+    $execCHK = $chkFAV->get_result();
+    $qtdchk = $execCHK->num_rows;
+
+    
+    
+    if ($qtdchk == 0) {
+        // Insere o carro nos favoritos
+        $FavInsert = $favoriteDATA->prepare("
+            INSERT INTO favorites (idfavorite, favoriteNAME, favoriteMARCA, favoriteUSER, CodModelo, CodAno) 
+            VALUES (?, ?, ?, ?, ?, ?)
+        ");
+        $FavInsert->bind_param("isssis", $idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $codigoAno); 
+        $FavInsert->execute();
+
+        var_dump($qtdchk);
+    
+    } else {
+        // Se o carro já estiver favoritado
+        echo "<script>alert('Carro já inserido nos favoritos.');</script>";
+    }
 }
-}
+
+
+
+
+
+
+
+
+
+
 
 // Função para remover o carro dos favoritos
 function DesfavFunction($idCar) {
     include('connection_favorite.php');
-    $UnfavDelete = "DELETE FROM favorites WHERE favoriteNAME = '$idCar'";
+    $UnfavDelete = "DELETE FROM favorites WHERE idfavorite = $idCar";
     $sql_query = $favoriteDATA->query($UnfavDelete);
 }
 
@@ -72,7 +160,7 @@ function DesfavFunction($idCar) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
     $idCar = $_POST['IdCar'];
     if (isset($_POST['FavButton'])) {
-        FavFunction($idCar, $favoriteMARCA, $nomeUSER);
+        FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER,$CodModelo, $codigoAno );
     } elseif (isset($_POST['UnfavButton'])) {
         DesfavFunction($idCar);
     }
@@ -141,6 +229,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                 </nav>
             </header>
         </div>
+
+
+        <form method="POST" action="">
+    <!-- ID do carro e outros dados importantes -->
+    <input type="hidden" name="IdCar" value="<?php echo $idModelo; ?>">
+    <input type="hidden" name="nomeCarro" value="<?php echo $nomeCarro; ?>">
+    <input type="hidden" name="MarcaCarro" value="<?php echo $MarcaCarro; ?>">
+    <input type="hidden" name="nomeUSER" value="<?php echo $nomeUSER; ?>">
+    <input type="hidden" name="CodModelo" value="<?php echo $CodModelo; ?>">
+    <input type="hidden" name="codigoAno" value="<?php echo $codigoAno; ?>">
+
+    <!-- Botão de Favoritar -->
+    <button type="submit" name="FavButton" class="btn-fav">Favoritar</button>
+</form>
+
+<!-- Formulário de Desfavoritar -->
+<form method="POST" action="">
+    <!-- ID do carro para desfavoritar -->
+    <input type="hidden" name="IdCar" value="<?php echo $idModelo; ?>">
+
+    <!-- Botão de Desfavoritar -->
+    <button type="submit" name="UnfavButton" class="btn-unfav">Desfavoritar</button>
+</form>
+
+
 
         <section class="car-specification">
             <div class="container">
