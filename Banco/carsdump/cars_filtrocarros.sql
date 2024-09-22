@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: carsgt
+-- Host: 127.0.0.1    Database: cars
 -- ------------------------------------------------------
--- Server version	5.5.5-10.4.27-MariaDB
+-- Server version	5.5.5-10.4.25-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,29 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `marca`
+-- Table structure for table `filtrocarros`
 --
 
-USE carsgt;
-
-DROP TABLE IF EXISTS `marca`;
+DROP TABLE IF EXISTS `filtrocarros`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `marca` (
-  `idMarca` int(11) NOT NULL,
-  `marca` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`idMarca`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+CREATE TABLE `filtrocarros` (
+  `idFiltro` int(11) NOT NULL AUTO_INCREMENT,
+  `estilo` varchar(10) NOT NULL,
+  PRIMARY KEY (`idFiltro`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `marca`
+-- Dumping data for table `filtrocarros`
 --
 
-LOCK TABLES `marca` WRITE;
-/*!40000 ALTER TABLE `marca` DISABLE KEYS */;
-INSERT INTO `marca` VALUES (6,'Audi'),(7,'BMW'),(13,'Citroen'),(21,'Fiat'),(22,'Ford'),(23,'Chevrolet'),(25,'Honda'),(26,'Hyundai'),(29,'Jeep'),(39,'Mercedes Benz'),(41,'Mitsubishi'),(43,'Nissan'),(44,'Peugeot'),(47,'Porsche'),(48,'Renault'),(56,'Toyota'),(59,'Volkswagen'),(238,'Byd');
-/*!40000 ALTER TABLE `marca` ENABLE KEYS */;
+LOCK TABLES `filtrocarros` WRITE;
+/*!40000 ALTER TABLE `filtrocarros` DISABLE KEYS */;
+INSERT INTO `filtrocarros` VALUES (1,'SUV'),(2,'Hatch'),(3,'Sedan'),(4,'SUV'),(5,'Hatch'),(6,'Sedan');
+/*!40000 ALTER TABLE `filtrocarros` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-21 23:18:36
+-- Dump completed on 2024-09-22 20:47:55

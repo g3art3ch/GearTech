@@ -1,5 +1,4 @@
 <?php
-include('connection_temp.php');
 include('connection_carsgt.php');
 
 if (isset($_GET['Marca'])) {

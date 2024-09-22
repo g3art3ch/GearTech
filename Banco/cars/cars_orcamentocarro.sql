@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `cars` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE `cars`;
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: carsgt
+-- Host: 127.0.0.1    Database: cars
 -- ------------------------------------------------------
--- Server version	5.5.5-10.4.27-MariaDB
+-- Server version	5.5.5-10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,29 +18,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `marca`
+-- Table structure for table `orcamentocarro`
 --
 
-USE carsgt;
-
-DROP TABLE IF EXISTS `marca`;
+DROP TABLE IF EXISTS `orcamentocarro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `marca` (
-  `idMarca` int(11) NOT NULL,
-  `marca` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`idMarca`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+CREATE TABLE `orcamentocarro` (
+  `idOrcamento` int(11) NOT NULL AUTO_INCREMENT,
+  `idNome` int(11) DEFAULT NULL,
+  `orcamento` decimal(10,3) DEFAULT NULL,
+  PRIMARY KEY (`idOrcamento`),
+  KEY `idNome` (`idNome`),
+  CONSTRAINT `orcamentocarro_ibfk_1` FOREIGN KEY (`idNome`) REFERENCES `nomecarro` (`idNome`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `marca`
+-- Dumping data for table `orcamentocarro`
 --
 
-LOCK TABLES `marca` WRITE;
-/*!40000 ALTER TABLE `marca` DISABLE KEYS */;
-INSERT INTO `marca` VALUES (6,'Audi'),(7,'BMW'),(13,'Citroen'),(21,'Fiat'),(22,'Ford'),(23,'Chevrolet'),(25,'Honda'),(26,'Hyundai'),(29,'Jeep'),(39,'Mercedes Benz'),(41,'Mitsubishi'),(43,'Nissan'),(44,'Peugeot'),(47,'Porsche'),(48,'Renault'),(56,'Toyota'),(59,'Volkswagen'),(238,'Byd');
-/*!40000 ALTER TABLE `marca` ENABLE KEYS */;
+LOCK TABLES `orcamentocarro` WRITE;
+/*!40000 ALTER TABLE `orcamentocarro` DISABLE KEYS */;
+INSERT INTO `orcamentocarro` VALUES (1,1,215.000),(2,2,129.000),(3,3,115.000),(4,4,229.000),(5,5,128.000),(6,6,279.000),(7,7,84.000),(8,8,89.000),(9,9,35.000),(10,10,74.000),(11,11,69.000),(12,12,35.000),(13,13,91.000),(14,14,234.000),(15,15,142.000),(16,16,149.000),(17,17,119.000),(18,18,96.000);
+/*!40000 ALTER TABLE `orcamentocarro` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-21 23:18:36
+-- Dump completed on 2024-07-21 22:56:28
