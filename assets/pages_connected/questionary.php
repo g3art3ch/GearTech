@@ -82,41 +82,44 @@ $quantidade = $sql_query2->num_rows;
                     <h2>Questionario de perfil</h2>
                     <div class="first-form">
                         <form id="form-step-1" action="process_questionary.php">
-                        <label for="">Qual é o seu principal objetivo ao comprar um carro?</label>
+                        <label for="">Qual é a finalidade do veículo?</label>
                         <select name="objetivo" id="">
-                            <option value=""></option>
+                            <option value="">Selecione uma opção</option>
                             <option value="Transporte diário">Transporte diário</option>
                             <option value="Viagens e lazer">Viagens e lazer</option>
+                            <option value="Viagens e lazer"> Minimizar impacto ambiental e uso de tecnologias sustentáveis</option>
                         </select>
-                        <label for="">Qual é o seu orçamento para a compra do carro?</label>
+                        <label for="">Com que frequência você usaria seu veículo?</label>
                         <select name="orcamento" id="">
-                            <option value=""></option>
-                            <option value="Até R$ 50.000,00">Até R$ 50.000,00</option>
-                            <option value="Entre R$ 50.000,00 e R$ 150.000,00">Entre R$ 50.000,00 e R$ 150.000,00</option>
-                            <option value="Acima de 150.000,00">Acima de 150.000,00</option>
+                            <option value="">Selecione uma opção</option>
+                            <option value="Até R$ 50.000,00">1 - 3 Dias na semana</option>
+                            <option value="Entre R$ 50.000,00 e R$ 150.000,00"> 4 - 5 Dias na semana</option>
+                            <option value="Acima de 150.000,00">5 - 7 dias na semana</option>
                         </select>
-                        <label for="">Você planeja pagar o carro à vista ou financiar?</label>
-                        <select name="pagamento" id="">
-                            <option value=""></option>
-                            <option value="Pagar à vista">Pagar à vista</option>
-                            <option value="Financiar">Financiar</option>
-                            <option value="Não tenho certeza">Não tenho certeza</option>
-                        </select>
-                        <label for="">Qual é o seu tipo de carro preferido?</label>
+                        <label for="">Qual é a sua prioridade ao escolher um carro?</label>
                         <select name="tipo_carro" id="">
-                            <option value=""></option>
-                            <option value="Sedan">Sedan</option>
-                            <option value="Hatch">Hatch</option>
-                            <option value="SUV">SUV</option>
+                            <option value="">Selecione uma opção</option>
+                            <option value="Sedan">Economia de combustível</option>
+                            <option value="Hatch">Desempenho e velocidade</option>
+                            <option value="SUV">Facilidade de uso em áreas urbanas</option>
+                            <option value="SUV">Sustentabilidade e impacto ambiental</option>
                         </select>
-                        <label for="">Qual é a importância da economia de combustível para você?</label>
+                        <label for="">Você valoriza um amplo espaço interno para acomodar passageiros e bagagens?</label>
                         <select name="economia_combustivel" id="">
-                            <option value=""></option>
-                            <option value="Inegociável">Inegociável</option>
+                            <option value="">Selecione uma opção</option>
                             <option value="Importante">Importante</option>
                             <option value="Pouco importante">Pouco importante</option>
                             <option value="Não é uma preocupação">Não é uma preocupação</option>
                         </select>
+                        <label for="">Você enfrenta dificuldades para estacionar ou manobrar em áreas apertadas?</label>
+                        <select name="pagamento" id="">
+                            <option value="">Selecione uma opção</option>
+                            <option value="Pagar à vista">Sim, frequentemente</option>
+                            <option value="Financiar">Às vezes</option>
+                            <option value="Não tenho certeza">Raramente</option>
+                            <option value="Não tenho certeza">Nunca</option>
+                        </select>  
+                        
                         <div class="next-button">
                             <button type="submit" id="next-step">Próximo</button>
                         </div>
@@ -126,45 +129,42 @@ $quantidade = $sql_query2->num_rows;
                     
                     <div class="second-form">
                          <form id="form-step-2" style="display: none;" action="./profile_result.php" method="POST">
-                        <label for="">Qual é a sua expectativa em relação à garantia do veículo?</label>
-                        <select name="pagamento" id="">
-                            <option value=""></option>
-                            <option value="Pagar à vista">Garantia estendida e completa</option>
-                            <option value="Financiar">Garantia padrão é suficiente</option>
-                            <option value="Não tenho certeza">Garantia padrão é suficiente</option>
-                        </select>
-                        <label for="">Qual é sua experiência anterior com a compra de carros?</label>
-                        <select name="tipo_carro" id="">
-                            <option value=""></option>
-                            <option value="Sedan">Primeira compra</option>
-                            <option value="Hatch">Já possuí alguns carros e sei o que quero</option>
-                            <option value="SUV">Já troquei de carro várias vezes e estou em busca de algo específico</option>
-                        </select>
-                        <label for="">Em qual faixa etária você se encontra?</label>
+                            <label for="">O design e a tecnologia do carro são importantes para você?</label>
                         <select name="economia_combustivel" id="">
-                            <option value=""></option>
-                            <option value="Inegociável">Menos de 25 anos</option>
-                            <option value="Importante">25-34 anos</option>
-                            <option value="Pouco importante">35-44 anos</option>
-                            <option value="Não é uma preocupação">45-54 anos</option>
-                            <option value="Não é uma preocupação">55 anos ou mais</option>
-                        </select>
-                        <label for="">O design e a tecnologia do carro são importantes para você?</label>
-                        <select name="economia_combustivel" id="">
-                            <option value=""></option>
+                        <option value="">Selecione uma opção</option>
                             <option value="Inegociável">Sim, dou grande valor ao design e às inovações tecnológicas</option>
                             <option value="Importante">Prefiro funcionalidade sobre estética, mas gosto de algumas tecnologias</option>
                             <option value="Pouco importante">Não é algo que me preocupe, contanto que o carro seja prático</option>
                         </select>
-                        <label for="">Qual é a principal característica que você busca em um carro?</label>
+                        <label for="">A segurança é um fator decisivo na sua escolha de carro?</label>
                         <select name="economia_combustivel" id="">
-                            <option value=""></option>
-                            <option value="Inegociável">Segurança e confiabilidade</option>
-                            <option value="Importante">Conforto e espaço interno</option>
-                            <option value="Pouco importante">Desempenho e potência</option>
-                            <option value="Não é uma preocupação">Economia e custo-benefício</option>
-                            <option value="Não é uma preocupação">Sustentabilidade e eficiência energética</option>
+                        <option value="">Selecione uma opção</option>
+                            <option value="Inegociável">Sim, é fundamental</option>
+                            <option value="Importante">Sim, mas há outros fatores</option>
+                            <option value="Pouco importante"> Não, prefiro desempenho e estilo</option>
+                            <option value="Não é uma preocupação">Não é uma preocupação</option>
                         </select>
+                        <label for="">Você faz uso do carro em estradas não pavimentadas ou trilhas?</label>
+                        <select name="pagamento" id="">
+                        <option value="">Selecione uma opção</option>
+                            <option value="Pagar à vista"> Sim, com frequência</option>
+                            <option value="Financiar"> Sim, ocasionalmente</option>
+                            <option value="Não tenho certeza"> Não, e prefiro evitar esse tipo de estrada</option>
+                        </select>
+                        
+                        <label for="">Com que frequência você faz a manutenção preventiva ou revisões do seu carro?</label>
+                        <select name="economia_combustivel" id="">
+                        <option value="">Selecione uma opção</option>
+                            <option value="Inegociável">Rigorosamente dentro do prazo</option>
+                            <option value="Importante">Geralmente dentro do prazo, mas não sou muito rígido</option>
+                            <option value="Pouco importante">Às vezes atrasado, só quando necessário</option>
+                            <option value="Não é uma preocupação">Raramente faço revisões</option>
+                        </select>
+
+                        <label for="">Você tem preferência por alguma marca de carros?</label>
+                        
+                        <input type="text" placeholder="Digite a sua marca">
+                        
                         <div class="form-navigation ">
                             <button type="button" id="prev-step">Voltar</button>
                             <button type="submit">Enviar</button>
@@ -176,8 +176,6 @@ $quantidade = $sql_query2->num_rows;
             </div>
             <div class="right-side-questionary">
                 <div class="ilustrative-questionary">
-                    <!-- <h2>Precisamos saber mais sobre você!</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, sequi aut doloremque, cum nobis eos voluptates iusto quas accusantium voluptatibus consequatur delectus vel facere quasi. Eveniet, numquam. Ab, a dolor.</p> -->
                     <img src="/GearTech/assets/images/onix.png" alt="">
                 </div>
             </div>

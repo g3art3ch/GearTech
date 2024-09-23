@@ -1,5 +1,5 @@
 .questionary {
-    padding: 50px 0px;
+    padding: 30px 0px;
 }
 
 .box-questionary {
@@ -66,8 +66,9 @@
     font-weight: 500;
 }
 
-.card-questionary form select {
-    margin: 8px 0px 30px;
+.card-questionary form select,
+.card-questionary form input {
+    margin: 8px 0px 35px;
     padding: 12px 5px;
     background-color: var(--background);
     border: none;

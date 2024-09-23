@@ -270,6 +270,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                             <div class="card-car-specification">
                                 <h2><?php echo  $setVehicle['Valor']; ?></h2>
                                 <?php
+                                
                                 // echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
                                 ?>
                             </div>

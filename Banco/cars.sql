@@ -196,6 +196,8 @@ CREATE TABLE `usocarro` (
 -- Dumping data for table `usocarro`
 --
 
+USE cars;
+
 LOCK TABLES `usocarro` WRITE;
 /*!40000 ALTER TABLE `usocarro` DISABLE KEYS */;
 INSERT INTO `usocarro` VALUES (1,1,'Diário'),(2,2,'Diário'),(3,3,'Diário'),(4,4,'Diário'),(5,5,'Diário'),(6,6,'Passeio'),(7,7,'Diário'),(8,8,'Diário'),(9,9,'Diário'),(10,10,'Diário'),(11,11,'Diário'),(12,12,'Passeio'),(13,13,'Diário'),(14,14,'Passeio'),(15,15,'Passeio'),(16,16,'Passeio'),(17,17,'Diário'),(18,18,'Diário');

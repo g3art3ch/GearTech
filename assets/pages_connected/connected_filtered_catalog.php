@@ -149,7 +149,7 @@ $qtdALL = $searchALL->num_rows;
                             echo '<div class="card-recomendation">';
                             echo '<form action="connected_car_specification.php" method="get">';
                             echo '<div class="box-image">';
-                            echo '<img src=".png" alt="">';
+                            echo '<img src="../car_images/'.$modelo['idModelo'].'.png" alt="">';
                             echo '</div>';
                     
                             echo '<div class="title-card-recomendation">';
@@ -164,23 +164,23 @@ $qtdALL = $searchALL->num_rows;
                             }
                     
 
-                            echo '<br><div class="title-card-recomendation">' .  $modelo['marca'] . '</div>';
+                            echo '<div class="marca-modelo">' .  $modelo['marca'] . '</div>';
                     
 
                             echo '<div class="saiba-mais-recomendation">';
                     
 
 
-                            echo 'Ano: ' . $modelo['ano'];  
+                            echo '<div class="ano-modelo">Ano: ' . $modelo['ano'] . '</div>'; 
                     
 
-                            echo '<br><br>';
+                           
                             echo '<input type="hidden" name="Marca" value="' . $modelo['idMarca'] . '">';
                             echo '<input type="hidden" name="Modelo" value="' . $modelo['idModelo'] . '">';
                             echo '<input type="hidden" name="CodModelo" value="' . $modelo['CodModelo'] . '">';
                             echo '<input type="hidden" name="Ano" value="' . $modelo['ano'] . '">';
                             echo '<input type="hidden" name="codAno" value="' . $modelo['codigoAno'] . '">';
-                            echo '<button type="submit">Enviar</button>';
+                            echo '<button type="submit" class="btn-catalog">Saiba mais</button>';
                             echo '</div>';
                     
                             echo '</form>';
