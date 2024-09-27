@@ -149,19 +149,19 @@ $quantidade = $sql_query2->num_rows;
 
                                     
 
-                                    foreach ($_SESSION['FAVORITES'] as $fav) {
+                                    foreach ($_SESSION['resultados'] as $fav) {
 
                                         echo '<div class="swiper-slide">';
                                         echo '    <div class="item-saved">';
                                         echo '        <div class="box-image-saved">';
-                                        echo '            <img src="../car_images/' . $fav['idIden'] . '.png" alt="">';
+                                        // echo '            <img src="../car_images/' . $fav['idIden'] . '.png" alt="">';
                                         echo '        </div>';
                                         echo '        <div class="info-saved-vehicle">';
-                                        echo '            <h2>' . $fav['nome'] . '</h2>';
-                                        echo '            <div class="price">' . $fav['orcamento'] . '</div>';
+                                        echo '            <h2>' . $fav['favoriteNAME'] . '</h2>';
+                                        // echo '            <div class="price">' . $fav['orcamento'] . '</div>';
                                         echo '            <div class="desc-saved-vehicle">';
                                         echo '            </div>';
-                                        echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar=' . $fav['nome'] . '">Ver detalhes</a>';
+                                        echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?Marca='.$fav['favoriteMARCA'].'&Modelo='.$fav['idfavorite'].'&CodModelo='.$fav['CodModelo'].'&Ano='.$fav['Ano'].'&codAno='.$fav['CodAno'].'">Ver detalhes</a>';
                                         echo '        </div>';
                                         echo '    </div>';
                                         echo '</div>';

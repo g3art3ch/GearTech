@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <nav>
+                <!-- <nav>
                     <ul>
                         <li><a href="./catalog.php">Catálogo</a></li>
                         <li><a href="">Manutenções</a></li>
@@ -53,7 +53,7 @@
                             </div>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
             </header>
         </div>
         <?php

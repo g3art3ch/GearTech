@@ -103,10 +103,15 @@ function FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, 
     if ($carSpec->num_rows > 0) {
         while ($final = $carSpec->fetch_assoc()) {
             $nomeCarro = $final['nomeCarro'];
-            $MarcaCarro = $final['marca'];
+            $MarcaCarro = $final['idMarca'];
             $CodModelo = $final['CodModelo'];
             $codigoAno = $final['codigoAno'];
             $idModelo = $final['idModelo'];
+            $CodModelo = $final['CodModelo'];
+            $CodAno = $final['codigoAno'];
+            $AnoFav = $final['ano'];
+            $nomeMarca = $final['marca'];
+
         }
     } else {
         echo "Especificações do carro não encontradas.";
@@ -125,10 +130,10 @@ function FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, 
     if ($qtdchk == 0) {
         // Insere o carro nos favoritos
         $FavInsert = $favoriteDATA->prepare("
-            INSERT INTO favorites (idfavorite, favoriteNAME, favoriteMARCA, favoriteUSER, CodModelo, CodAno) 
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO favorites (idfavorite, favoriteNAME, favoriteMARCA, favoriteUSER, CodModelo, CodAno, Ano, nomeMarca) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ");
-        $FavInsert->bind_param("isssis", $idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $codigoAno); 
+        $FavInsert->bind_param("isssisis", $idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $CodAno, $AnoFav, $nomeMarca); 
         $FavInsert->execute();
 
         var_dump($qtdchk);

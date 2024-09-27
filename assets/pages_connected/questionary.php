@@ -1,16 +1,6 @@
 <?php
 include('connection.php');
 include('protect.php');
-include('connection_favorite.php');
-include('connection_cars.php');
-
-$nomeUSER = $_SESSION['nomeUsuario'];
-
-$sql_code1 = "SELECT * FROM favorites WHERE favoriteUSER = '$nomeUSER'";
-$sql_query2 = $favoriteDATA->query($sql_code1);
-$quantidade = $sql_query2->num_rows;
-
-
 
 
 ?>
@@ -81,43 +71,43 @@ $quantidade = $sql_query2->num_rows;
                 <div class="card-questionary">
                     <h2>Questionario de perfil</h2>
                     <div class="first-form">
-                        <form id="form-step-1" action="process_questionary.php">
+                        <form id="form-step-1" action="">
                         <label for="">Qual é a finalidade do veículo?</label>
                         <select name="objetivo" id="">
                             <option value="">Selecione uma opção</option>
-                            <option value="Transporte diário">Transporte diário</option>
-                            <option value="Viagens e lazer">Viagens e lazer</option>
-                            <option value="Viagens e lazer"> Minimizar impacto ambiental e uso de tecnologias sustentáveis</option>
+                            <option value="diario">Transporte diário</option>
+                            <option value="lazer">Viagens e lazer</option>
+                            <option value="eco"> Minimizar impacto ambiental e uso de tecnologias sustentáveis</option>
                         </select>
                         <label for="">Com que frequência você usaria seu veículo?</label>
-                        <select name="orcamento" id="">
+                        <select name="freq" id="">
                             <option value="">Selecione uma opção</option>
-                            <option value="Até R$ 50.000,00">1 - 3 Dias na semana</option>
-                            <option value="Entre R$ 50.000,00 e R$ 150.000,00"> 4 - 5 Dias na semana</option>
-                            <option value="Acima de 150.000,00">5 - 7 dias na semana</option>
+                            <option value="1-3">1 - 3 Dias na semana</option>
+                            <option value="4-5"> 4 - 5 Dias na semana</option>
+                            <option value="5-7">5 - 7 dias na semana</option>
                         </select>
                         <label for="">Qual é a sua prioridade ao escolher um carro?</label>
-                        <select name="tipo_carro" id="">
+                        <select name="prio" id="">
                             <option value="">Selecione uma opção</option>
-                            <option value="Sedan">Economia de combustível</option>
-                            <option value="Hatch">Desempenho e velocidade</option>
-                            <option value="SUV">Facilidade de uso em áreas urbanas</option>
-                            <option value="SUV">Sustentabilidade e impacto ambiental</option>
+                            <option value="eco">Economia de combustível</option>
+                            <option value="corre">Desempenho e velocidade</option>
+                            <option value="agil">Facilidade de uso em áreas urbanas</option>
+                            <option value="eco">Sustentabilidade e impacto ambiental</option>
                         </select>
                         <label for="">Você valoriza um amplo espaço interno para acomodar passageiros e bagagens?</label>
-                        <select name="economia_combustivel" id="">
+                        <select name="espaco" id="">
                             <option value="">Selecione uma opção</option>
-                            <option value="Importante">Importante</option>
-                            <option value="Pouco importante">Pouco importante</option>
-                            <option value="Não é uma preocupação">Não é uma preocupação</option>
+                            <option value="muitosim">Importante</option>
+                            <option value="sim">Pouco importante</option>
+                            <option value="nao">Não é uma preocupação</option>
                         </select>
                         <label for="">Você enfrenta dificuldades para estacionar ou manobrar em áreas apertadas?</label>
-                        <select name="pagamento" id="">
+                        <select name="tamanho" id="">
                             <option value="">Selecione uma opção</option>
-                            <option value="Pagar à vista">Sim, frequentemente</option>
-                            <option value="Financiar">Às vezes</option>
-                            <option value="Não tenho certeza">Raramente</option>
-                            <option value="Não tenho certeza">Nunca</option>
+                            <option value="muitosim">Sim, frequentemente</option>
+                            <option value="sim">Às vezes</option>
+                            <option value="poucosim">Raramente</option>
+                            <option value="nao">Nunca</option>
                         </select>  
                         
                         <div class="next-button">
@@ -130,35 +120,35 @@ $quantidade = $sql_query2->num_rows;
                     <div class="second-form">
                          <form id="form-step-2" style="display: none;" action="./profile_result.php" method="POST">
                             <label for="">O design e a tecnologia do carro são importantes para você?</label>
-                        <select name="economia_combustivel" id="">
+                        <select name="tecno" id="">
                         <option value="">Selecione uma opção</option>
-                            <option value="Inegociável">Sim, dou grande valor ao design e às inovações tecnológicas</option>
-                            <option value="Importante">Prefiro funcionalidade sobre estética, mas gosto de algumas tecnologias</option>
-                            <option value="Pouco importante">Não é algo que me preocupe, contanto que o carro seja prático</option>
+                            <option value="muitosim">Sim, dou grande valor ao design e às inovações tecnológicas</option>
+                            <option value="sim">Prefiro funcionalidade sobre estética, mas gosto de algumas tecnologias</option>
+                            <option value="nao">Não é algo que me preocupe, contanto que o carro seja prático</option>
                         </select>
                         <label for="">A segurança é um fator decisivo na sua escolha de carro?</label>
-                        <select name="economia_combustivel" id="">
+                        <select name="seguranca" id="">
                         <option value="">Selecione uma opção</option>
-                            <option value="Inegociável">Sim, é fundamental</option>
-                            <option value="Importante">Sim, mas há outros fatores</option>
-                            <option value="Pouco importante"> Não, prefiro desempenho e estilo</option>
-                            <option value="Não é uma preocupação">Não é uma preocupação</option>
+                            <option value="muitosim">Sim, é fundamental</option>
+                            <option value="sim">Sim, mas há outros fatores</option>
+                            <option value="poucosim"> Não, prefiro desempenho e estilo</option>
+                            <option value="nao">Não é uma preocupação</option>
                         </select>
                         <label for="">Você faz uso do carro em estradas não pavimentadas ou trilhas?</label>
-                        <select name="pagamento" id="">
+                        <select name="condiestrada" id="">
                         <option value="">Selecione uma opção</option>
-                            <option value="Pagar à vista"> Sim, com frequência</option>
-                            <option value="Financiar"> Sim, ocasionalmente</option>
-                            <option value="Não tenho certeza"> Não, e prefiro evitar esse tipo de estrada</option>
+                            <option value="sim"> Sim, com frequência</option>
+                            <option value="poucosim"> Sim, ocasionalmente</option>
+                            <option value="nao"> Não, e prefiro evitar esse tipo de estrada</option>
                         </select>
                         
                         <label for="">Com que frequência você faz a manutenção preventiva ou revisões do seu carro?</label>
-                        <select name="economia_combustivel" id="">
+                        <select name="freqManu" id="">
                         <option value="">Selecione uma opção</option>
-                            <option value="Inegociável">Rigorosamente dentro do prazo</option>
-                            <option value="Importante">Geralmente dentro do prazo, mas não sou muito rígido</option>
-                            <option value="Pouco importante">Às vezes atrasado, só quando necessário</option>
-                            <option value="Não é uma preocupação">Raramente faço revisões</option>
+                            <option value="muitosim">Rigorosamente dentro do prazo</option>
+                            <option value="sim">Geralmente dentro do prazo, mas não sou muito rígido</option>
+                            <option value="poucosim">Às vezes atrasado, só quando necessário</option>
+                            <option value="nao">Raramente faço revisões</option>
                         </select>
 
                         <label for="">Você tem preferência por alguma marca de carros?</label>
