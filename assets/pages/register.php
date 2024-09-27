@@ -59,6 +59,29 @@
         <?php
 
         if (isset($_GET['error'])) {
+
+            if ($_GET['error'] == 'RegisteredEmail'){
+                echo '<script type="text/javascript">
+         
+                Swal.fire({
+                    position: "top",
+                    icon: "error",
+                    iconColor: "#C23A42",
+                    title: "Falha no login",
+                    html: `<p style="font-size: 17px; margin="0px"">E-mail já cadastrado</p>`,
+                        showConfirmButton: false,
+                    width: "27rem",
+                    showCloseButton: true,
+                    background: "#fafafa",
+                    color: "#000",
+                    customClass: {
+                        title: "custom-title",
+                    }
+                });
+            
+                </script>';
+            }else
+
             echo '<script type="text/javascript">
          
     Swal.fire({

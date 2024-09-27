@@ -37,6 +37,7 @@
     font-size: 16px;
     padding: 13px 20px;
     border: none;
+    cursor: pointer;
 }
 
 .FavButton:hover {

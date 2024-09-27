@@ -32,7 +32,7 @@ INNER JOIN
 INNER JOIN 
     versao ON modelo.idModelo = versao.idVersao
 WHERE marca.idMarca = $Marca and modelo.idModelo = $Modelo and versao.ano = $Ano";
-    
+
 $carSpec = $finalDATA->query($carSpecConsult);
 foreach ($_SESSION['carSpec'] as $final) {
     $nomeCarro = $final['nomeCarro'];
@@ -58,7 +58,8 @@ $nomeUSER = $_SESSION['nomeUsuario'];
 
 
 
-function FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $codigoAno) {
+function FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $codigoAno)
+{
     // Inclui as conexões ao banco de dados
     include('connection_favorite.php');
     include('connection_carsgt.php');
@@ -94,12 +95,12 @@ function FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, 
         WHERE 
             marca.idMarca = ? AND modelo.idModelo = ? AND versao.ano = ?
     ");
-    
+
     // Prepara e executa a consulta
     $stmt->bind_param("iii", $Marca, $Modelo, $Ano); // "iii" significa 3 inteiros
     $stmt->execute();
     $carSpec = $stmt->get_result();
-    
+
     if ($carSpec->num_rows > 0) {
         while ($final = $carSpec->fetch_assoc()) {
             $nomeCarro = $final['nomeCarro'];
@@ -125,19 +126,19 @@ function FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, 
     $execCHK = $chkFAV->get_result();
     $qtdchk = $execCHK->num_rows;
 
-    
-    
+
+
     if ($qtdchk == 0) {
         // Insere o carro nos favoritos
         $FavInsert = $favoriteDATA->prepare("
             INSERT INTO favorites (idfavorite, favoriteNAME, favoriteMARCA, favoriteUSER, CodModelo, CodAno, Ano, nomeMarca) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ");
-        $FavInsert->bind_param("isssisis", $idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $CodAno, $AnoFav, $nomeMarca); 
+        $FavInsert->bind_param("isssisis", $idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $CodAno, $AnoFav, $nomeMarca);
         $FavInsert->execute();
 
         var_dump($qtdchk);
-    
+
     } else {
         // Se o carro já estiver favoritado
         echo "<script>alert('Carro já inserido nos favoritos.');</script>";
@@ -155,7 +156,8 @@ function FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, 
 
 
 // Função para remover o carro dos favoritos
-function DesfavFunction($idCar) {
+function DesfavFunction($idCar)
+{
     include('connection_favorite.php');
     $UnfavDelete = "DELETE FROM favorites WHERE idfavorite = $idCar";
     $sql_query = $favoriteDATA->query($UnfavDelete);
@@ -165,12 +167,12 @@ function DesfavFunction($idCar) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
     $idCar = $_POST['IdCar'];
     if (isset($_POST['FavButton'])) {
-        FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER,$CodModelo, $codigoAno );
+        FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $codigoAno);
     } elseif (isset($_POST['UnfavButton'])) {
         DesfavFunction($idCar);
     }
     // Após a ação, recarregue a página para atualizar o botão
-    header("Location: ".$_SERVER['REQUEST_URI']);
+    header("Location: " . $_SERVER['REQUEST_URI']);
     exit();
 }
 
@@ -179,6 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -192,6 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Seu carro ideal</title>
 </head>
+
 <body>
     <main>
         <div class="container">
@@ -236,36 +240,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
         </div>
 
 
+
+        <section class="image-spec">
+            <div class="container">
+                <div class="title-car-title-specification">
+                    <?php echo '<img src="../car_images/' . $Modelo . '.png" alt="">';
+                    ?>
+                </div>
+            </div>
+
+      
+
+        <div class="FAVORITE_BUTTON">
         <form method="POST" action="">
-    <!-- ID do carro e outros dados importantes -->
-    <input type="hidden" name="IdCar" value="<?php echo $idModelo; ?>">
-    <input type="hidden" name="nomeCarro" value="<?php echo $nomeCarro; ?>">
-    <input type="hidden" name="MarcaCarro" value="<?php echo $MarcaCarro; ?>">
-    <input type="hidden" name="nomeUSER" value="<?php echo $nomeUSER; ?>">
-    <input type="hidden" name="CodModelo" value="<?php echo $CodModelo; ?>">
-    <input type="hidden" name="codigoAno" value="<?php echo $codigoAno; ?>">
+            <!-- ID do carro e outros dados importantes -->
+            <input type="hidden" name="IdCar" value="<?php echo $idModelo; ?>">
+            <input type="hidden" name="nomeCarro" value="<?php echo $nomeCarro; ?>">
+            <input type="hidden" name="MarcaCarro" value="<?php echo $MarcaCarro; ?>">
+            <input type="hidden" name="nomeUSER" value="<?php echo $nomeUSER; ?>">
+            <input type="hidden" name="CodModelo" value="<?php echo $CodModelo; ?>">
+            <input type="hidden" name="codigoAno" value="<?php echo $codigoAno; ?>">
 
-    <!-- Botão de Favoritar -->
-    <button type="submit" name="FavButton" class="btn-fav">Favoritar</button>
-</form>
+            <!-- Botão de Favoritar -->
+            <button type="submit" name="FavButton" class="FavButton">Favoritar</button>
+        </form>
 
-<!-- Formulário de Desfavoritar -->
-<form method="POST" action="">
-    <!-- ID do carro para desfavoritar -->
-    <input type="hidden" name="IdCar" value="<?php echo $idModelo; ?>">
+        <!-- Formulário de Desfavoritar -->
+        <form method="POST" action="">
+            <!-- ID do carro para desfavoritar -->
+            <input type="hidden" name="IdCar" value="<?php echo $idModelo; ?>">
 
-    <!-- Botão de Desfavoritar -->
-    <button type="submit" name="UnfavButton" class="btn-unfav">Desfavoritar</button>
-</form>
+            <!-- Botão de Desfavoritar -->
+            <button type="submit" name="UnfavButton" class="UnfavButton">Desfavoritar</button>
+        </form>
+        </div>
 
-
+        </section>
 
         <section class="car-specification">
             <div class="container">
                 <div class="title-car-title-specification">
                     <h2>Mais informações sobre - <?php
                     foreach ($_SESSION['carSpec'] as $final) {
-                        echo $final['marca'] . "&nbsp;&nbsp;&nbsp;&nbsp;" . $final['nomeCarro']. "<br><br>";
+                        echo $final['marca'] . "&nbsp;&nbsp;&nbsp;&nbsp;" . $final['nomeCarro'] . "<br><br>";
 
                         ?>
                         </h2>
@@ -273,9 +290,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                     <div class="box-car-specification">
                         <div class="left-side-specification">
                             <div class="card-car-specification">
-                                <h2><?php echo  $setVehicle['Valor']; ?></h2>
+                                <h2><?php echo $setVehicle['Valor']; ?></h2>
                                 <?php
-                                
+
                                 // echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
                                 ?>
                             </div>
@@ -477,7 +494,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
             </section>
         </main>
 
-    <?php
+        <?php
                     }
                     ?>
 
