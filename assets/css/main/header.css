@@ -152,6 +152,12 @@ header .user-enter a {
 }
 
 
+/* @media (min-width: 901px) and (max-width: 1076px) {
+    header nav ul {
+        gap: 10px;
+    }
+} */
+
 @media (width > 900px) {
 
     header {
@@ -183,7 +189,7 @@ header .user-enter a {
         align-items: center;
         flex-direction: row;
         padding-bottom: 0;
-        gap: 50px;
+        gap: 35px;
     }
 
     header ul a {

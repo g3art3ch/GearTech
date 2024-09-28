@@ -130,3 +130,645 @@ dentro de um form, fudeo a formatação
                       
                     </div>  <a href="./questionary.php">Questionario de perfil</a>
                 </div>
+
+
+
+
+
+
+                let currentBlock = 0;
+    const formBlocks = document.querySelectorAll('.form-block');
+
+    function nextBlock() {
+        if (currentBlock < formBlocks.length - 1) {
+            formBlocks[currentBlock].classList.remove('active');
+            currentBlock++;
+            formBlocks[currentBlock].classList.add('active');
+        }
+
+    }
+
+    function prevBlock() {
+        if (currentBlock > 0) {
+            formBlocks[currentBlock].classList.remove('active');
+            currentBlock--;
+            formBlocks[currentBlock].classList.add('active');
+        }
+    }
+
+    function toggleFields() {
+        const financiamentoFields = document.getElementById('financiamentoFields');
+        const creditoSim = document.querySelector('input[name="credito"][value="sim"]');
+
+
+        if (creditoSim.checked) {
+            financiamentoFields.style.display = 'block';
+        } else {
+            financiamentoFields.style.display = 'none';
+        }
+    }
+
+    const vistoriaInput = document.getElementById('vistoria_num');
+    const vistoriaCustoContainer = document.getElementById('vistoria_custo_container');
+
+    vistoriaInput.addEventListener('input', function() {
+        if (vistoriaInput.value > 0) {
+            vistoriaCustoContainer.style.display = 'block';
+        } else {
+            vistoriaCustoContainer.style.display = 'none';
+        }
+    });
+
+    // Função para gerenciar as etapas
+    document.querySelectorAll('.btn-next').forEach(button => {
+        button.addEventListener('click', function() {
+            const currentStep = button.parentElement;
+            const nextStepId = button.getAttribute('data-next');
+            const nextStep = document.getElementById(`etapa${nextStepId}`);
+
+            // Esconde a etapa atual e exibe a próxima
+            currentStep.style.display = 'none';
+            nextStep.style.display = 'block';
+
+            // Atualiza os spans de progresso
+            updateProgressBar(nextStepId);
+        });
+    });
+
+    function updateProgressBar(stepNumber) {
+        // Adiciona a classe 'active' a todos os spans até a etapa atual
+        document.querySelectorAll('.progress-step').forEach((step, index) => {
+            if (index < stepNumber) {
+                step.classList.add('active'); // Adiciona a classe para spans anteriores
+            } else {
+                step.classList.remove('active'); // Remove a classe para spans futuros
+            }
+        });
+    }
+
+    // Inicia com o primeiro span ativo
+    updateProgressBar(1);
+
+    document.querySelectorAll('.btn-next').forEach(button => {
+        button.addEventListener('click', function() {
+            const nextStep = this.getAttribute('data-next');
+
+            // Verifica se está indo para a etapa 6 ou maior
+            if (nextStep >= 6) {
+                // Altera o título para "Custos Variáveis"
+                document.getElementById('titulo-custos').innerText = 'CUSTOS VARIÁVEIS';
+
+                // Reinicia a contagem da barra de progresso
+                document.getElementById('step1').innerText = '1';
+                document.getElementById('step2').innerText = '2';
+                document.getElementById('step3').innerText = '3';
+                document.getElementById('step4').innerText = '4';
+                document.getElementById('step5').innerText = '5';
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <!-- <section class="calculadora-tco">
+            <div class="container">
+                <div class="title-calculadora-tco">
+                    <h2>Veja quanto custa para manter seu veículo</h2>
+                </div>
+
+                <div class="box-calculadora-tco">
+                    <div class="left-side-calculadora-tco" id="left-side-calculadora">
+                        <h2 id="titulo-custos">CUSTOS FIXOS</h2>
+                        <div class="card-calculadora-tco">
+                            <form id="tco-form" action="tco_result.php" method="post">
+                               
+                                <div class="form-block active">
+                                    <div class="etapa" id="etapa1">
+                                        <h2>Desvalorzação do carro</h2>
+                                        <label>Data de aquisição do veículo:</label>
+                                        <input type="month" name="data_aquisicao" required>
+
+                                        <label>Valor comercial do veículo quando o adquiriu (R$):</label>
+                                        <input type="number" step="0.01" name="valor_aquisicao" required>
+
+                                        <label>Valor do veículo à data de hoje (R$):</label>
+                                        <input type="number" step="0.01" name="valor_hoje" required>
+
+                                        <button type="button" class="btn-next" data-next="2">Próximo</button>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="etapa" id="etapa2" style="display:none;">
+                                    <h2>Seguro do carro <span style="color:#000">(excluindo o DPVAT)</span></h2>
+                                    <label for="">Selecione o período</label>
+                                    <div class="radio">
+                                        <div class="radio-item">
+                                            <input type="radio" id="mensal" name="plano">
+                                            <label for="mensal">Mensal</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="trimestral" name="plano">
+                                            <label for="trimestral">Trimestral</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="semestral" name="plano">
+                                            <label for="semestral">Semestral</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="anual" name="plano">
+                                            <label for="anual">Anual</label>
+                                        </div>
+                                    </div>
+                                    <label for="">Valor do seguro</label>
+                                    <input type="number" placeholder="R$">
+                                    <button type="button" class="btn-next" data-next="3">Próximo</button>
+                                </div>
+
+
+
+                       
+                                <div class="etapa" id="etapa3" style="display:none;">
+                                    <h2>Crédito Automóvel</h2>
+                                    <label>Crédito automóvel:</label>
+                                    <div class="radio">
+                                        <div class="radio-item">
+                                            <input type="radio" id="credito-sim" name="credito" value="sim"
+                                                onclick="toggleFields()" required>
+                                            <label for="credito-sim">Sim</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="credito-nao" name="credito" value="nao"
+                                                onclick="toggleFields()" required>
+                                            <label for="credito-nao">Não</label>
+                                        </div>
+                                    </div>
+
+                                    <div id="financiamentoFields" style="display: none;" class="credito-fields">
+                                        <label>Montante financiado (R$):</label>
+                                        <input type="number" step="0.01" name="montante_financiado">
+
+                                        <label>Período do crédito / n.º de prestações:</label>
+                                        <input type="number" name="num_prestacoes">
+
+                                        <label>Valor médio da prestação (R$):</label>
+                                        <input type="number" step="0.01" name="valor_prestacao">
+
+                                        <label>Valor residual (R$):</label>
+                                        <input type="number" step="0.01" name="valor_residual">
+                                    </div>
+
+                                    <button type="button" class="btn-next" data-next="4">Próximo</button>
+                                </div>
+
+
+                               
+                                <div class="etapa" id="etapa4" style="display: none;">
+                                    <h2>Vistorias</h2>
+                                    <label>Quantas vezes já levou o seu veículo à vistoria?</label>
+                                    <input type="number" name="vistoria_num" id="vistoria_num" required>
+
+                                    <div id="vistoria_custo_container" style="display: none;">
+                                        <label>Custo médio da vistoria para o seu veículo (R$):</label>
+                                        <input type="number" step="0.01" name="vistoria_custo" id="vistoria_custo"
+                                            required>
+                                    </div>
+                                    <button type="button" class="btn-next" data-next="5">Próximo</button>
+                                </div>
+
+              
+                                <div class="etapa" id="etapa5" style="display: none;">
+                                    <h2>Impostos pagos ao estado (por ano)</h2>
+                                    <label for="">IPVA, DPVAT e taxa de licenciamento:</label>
+                                    <input type="number" placeholder="R$">
+                                    <button type="button" class="btn-next" data-next="6">Próximo</button>
+                                </div>
+
+                                <div class="etapa" id="etapa6" style="display: none;">
+                                    <h2>Gastos com combustíveis (R$ por período)</h2>
+                                    <div class="radio">
+                                        <div class="radio-item">
+                                            <input type="radio" id="mensal" name="plano">
+                                            <label for="mensal">Mês</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="trimestral" name="plano">
+                                            <label for="trimestral">Trimestral</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="semestral" name="plano">
+                                            <label for="semestral">Semestral</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="anual" name="plano">
+                                            <label for="anual">Anual</label>
+                                        </div>
+                                    </div>
+                                    <label for="">Gasolina, diesel, álcool, eletricidade, GNV</label>
+                                    <input type="number" placeholder="R$">
+                                    <button type="button" class="btn-next" data-next="7">Próximo</button>
+                                </div>
+
+
+                                <div class="etapa" id="etapa7" style="display: none;">
+                                    <h2>Manutenção preventiva (R$ por ano):</h2>
+                                    <label for="">óleo, filtros, luzes, freios, alinhamentos</label>
+                                    <input type="number" placeholder="R$">
+                                    <button type="button" class="btn-next" data-next="8">Próximo</button>
+                                </div>
+
+                                <div class="etapa" id="etapa8" style="display: none;">
+                                    <h2>Reparações e Melhoramentos(por ano)</h2>
+                                    <label for="">Peças, alterações, quebras e imprevistos de mecânica geral</label>
+                                    <input type="number" placeholder="R$">
+                                    <button type="button" class="btn-next" data-next="9">Próximo</button>
+                                </div>
+
+                                <div class="etapa" id="etapa9" style="display: none;">
+                                    <h2>Estacionamento (R$ por mês):</h2>
+                                    <label for="">arquímetros na cidade, aluguel de garagem, estacionamento subterrâneo
+                                        na cidade</label>
+                                    <input type="number" placeholder="R$">
+                                    <button type="button" class="btn-next" data-next="10">Próximo</button>
+                                </div>
+
+                                <div class="etapa" id="etapa10" style="display: none;">
+                                    <h2>Pedágios:</h2>
+                                    <div class="radio">
+                                        <div class="radio-item">
+                                            <input type="radio" id="dia" name="plano">
+                                            <label for="dia">Dia</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="mensal" name="plano">
+                                            <label for="mensal">Mês</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="trimestral" name="plano">
+                                            <label for="trimestral">Trimestral</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="semestral" name="plano">
+                                            <label for="semestral">Semestral</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="anual" name="plano">
+                                            <label for="anual">Anual</label>
+                                        </div>
+                                    </div>
+                                    <label for="">Valor gasto em pedágio:</label>
+                                    <input type="text" placeholder="R$">
+                                    <button type="button" class="btn-next" data-next="11">Próximo</button>
+                                </div>
+
+                                <div class="etapa" id="etapa11" style="display: none;">
+                                    <h2>Multas (R$ por período):</h2>
+                                    <div class="radio">
+                                        <div class="radio-item">
+                                            <input type="radio" id="mensal" name="plano">
+                                            <label for="mensal">Mês</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="trimestral" name="plano">
+                                            <label for="trimestral">Trimestral</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="semestral" name="plano">
+                                            <label for="semestral">Semestral</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="anual" name="plano">
+                                            <label for="anual">Anual</label>
+                                        </div>
+                                    </div>
+                                    <label for="">Valor gasto em multas:</label>
+                                    <input type="number" placeholder="R$">
+                                    <button type="button" class="btn-next" data-next="13">Próximo</button>
+                                </div>
+
+                                <div class="etapa" id="etapa12" style="display: none;">
+                                <h2>Lavagens e limpeza (R$ por período):</h2>
+                                    <div class="radio">
+                                        <div class="radio-item">
+                                            <input type="radio" id="mensal" name="plano">
+                                            <label for="mensal">Mês</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="trimestral" name="plano">
+                                            <label for="trimestral">Trimestral</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="semestral" name="plano">
+                                            <label for="semestral">Semestral</label>
+                                        </div>
+                                        <div class="radio-item">
+                                            <input type="radio" id="anual" name="plano">
+                                            <label for="anual">Anual</label>
+                                        </div>
+                                    </div>
+                                    <label for="">Valor gasto em lavagens:</label>
+                                    <input type="number" placeholder="R$">
+                                    <button type="button" class="btn-next" data-next="14">Próximo</button>
+                                </div>
+
+                                
+
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="right-side-calculadora">
+                        <div class="card-progress">
+                            <h2>Custos fixos</h2>
+                            <div class="progress-bar">
+                                <span class="progress-step" id="step1">1</span>
+                                <span class="progress-step" id="step2">2</span>
+                                <span class="progress-step" id="step3">3</span>
+                                <span class="progress-step" id="step4">4</span>
+                                <span class="progress-step" id="step5">5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+
+
+
+
+div class="card-calculadora-tco" id="step2" style="display:none;">
+                        <h2>Custos Variáveis</h2>
+                        <label>Gastos com combustíveis (R$ por período):</label>
+                        <select name="combustivel_periodo" required>
+                            <option value="mes">Mês</option>
+                            <option value="trimestre">Trimestre</option>
+                            <option value="semestre">Semestre</option>
+                            <option value="ano">Ano</option>
+                        </select>
+                        <input type="number" step="0.01" name="combustivel_valor" required>
+
+                        <label>Manutenção preventiva (R$ por ano):</label>
+                        <input type="number" step="0.01" name="manutencao_preventiva" required>
+
+                        <label>Reparações e Melhoramentos (R$ por ano):</label>
+                        <input type="number" step="0.01" name="reparacoes" required>
+
+                        <label>Estacionamento (R$ por mês):</label>
+                        <input type="number" step="0.01" name="estacionamento" required>
+
+                        <label>Pedágios (R$ por período):</label>
+                        <select name="pedagio_periodo" required>
+                            <option value="dia">Dia</option>
+                            <option value="mes">Mês</option>
+                            <option value="trimestre">Trimestre</option>
+                            <option value="semestre">Semestre</option>
+                            <option value="ano">Ano</option>
+                        </select>
+                        <input type="number" step="0.01" name="pedagio_valor" required>
+
+                        <label>Multas (R$ por período):</label>
+                        <select name="multas_periodo" required>
+                            <option value="mes">Mês</option>
+                            <option value="trimestre">Trimestre</option>
+                            <option value="semestre">Semestre</option>
+                            <option value="ano">Ano</option>
+                        </select>
+                        <input type="number" step="0.01" name="multas_valor" required>
+
+                        <label>Lavagens e limpeza (R$ por período):</label>
+                        <select name="lavagem_periodo" required>
+                            <option value="mes">Mês</option>
+                            <option value="trimestre">Trimestre</option>
+                            <option value="semestre">Semestre</option>
+                            <option value="ano">Ano</option>
+                        </select>
+                        <input type="number" step="0.01" name="lavagem_valor" required>
+
+                        <button type="button" onclick="nextStep(3)">Próximo</button>
+                        <button type="button" onclick="prevStep(1)">Anterior</button>
+                    </div>
+
+                    <!-- Etapa 3: Dados Adicionais -->
+                    <div class="card-calculadora-tco" id="step3" style="display:none;">
+                        <h2>Dados Adicionais</h2>
+                        <label>Preço médio por pessoa em transporte público (R$ por mês):</label>
+                        <input type="number" step="0.01" name="transporte_publico" required>
+
+                        <label>Rendimento líquido (R$ por ano):</label>
+                        <input type="number" step="0.01" name="rendimento_anual" required>
+
+                        <label>Quilômetros percorridos por mês:</label>
+                        <input type="number" step="0.01" name="km_mes" required>
+
+                        <button type="submit">Calcular TCO</button>
+                        <button type="button" onclick="prevStep(2)">Anterior</button>
+                    </div>
+
+
+
+
+
+    <h2>Custos Fixos (por mês)</h2>
+    <table border="1">
+        <tr><td>Depreciação do veículo</td><td>R$ <?= number_format($depreciacao, 2, ',', '.') ?></td></tr>
+        <tr><td>Seguro</td><td>R$ <?= number_format($seguro_mensal, 2, ',', '.') ?></td></tr>
+        <tr><td>Crédito automóvel</td><td>R$ <?= number_format($valor_prestacao, 2, ',', '.') ?></td></tr>
+        <tr><td>Vistoria automóvel</td><td>R$ <?= number_format($vistoria_total, 2, ',', '.') ?></td></tr>
+        <tr><td>IPVA, DPVAT e licenciamento</td><td>R$ <?= number_format($ipva_total / 12, 2, ',', '.') ?></td></tr>
+        <tr><td>50% Manutenção preventiva</td><td>R$ <?= number_format($manutencao_preventiva / 24, 2, ',', '.') ?></td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>R$ <?= number_format($custos_fixos, 2, ',', '.') ?></strong></td></tr>
+    </table>
+
+    <!-- Segunda tabela: Custos Variáveis -->
+    <h2>Custos Variáveis (por mês)</h2>
+    <table border="1">
+        <tr><td>Combustíveis</td><td>R$ <?= number_format($combustivel_mes, 2, ',', '.') ?></td></tr>
+        <tr><td>50% Manutenção preventiva</td><td>R$ <?= number_format($manutencao_preventiva / 24, 2, ',', '.') ?></td></tr>
+        <tr><td>Reparações e Melhoramentos</td><td>R$ <?= number_format($reparacoes / 12, 2, ',', '.') ?></td></tr>
+        <tr><td>Estacionamento</td><td>R$ <?= number_format($estacionamento, 2, ',', '.') ?></td></tr>
+        <tr><td>Pedágios</td><td>R$ <?= number_format($pedagio_mes, 2, ',', '.') ?></td></tr>
+        <tr><td>Multas</td><td>R$ <?= number_format($multas_mes, 2, ',', '.') ?></td></tr>
+        <tr><td>Lavagens e Limpeza</td><td>R$ <?= number_format($lavagem_mes, 2, ',', '.') ?></td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>R$ <?= number_format($custos_variaveis, 2, ',', '.') ?></strong></td></tr>
+    </table>
+
+    <!-- Tabela final: TOTAL -->
+    <h2>TOTAL</h2>
+    <table border="1">
+        <tr><td>Custos fixos</td><td>R$ <?= number_format($custos_fixos, 2, ',', '.') ?></td></tr>
+        <tr><td>Custos variáveis</td><td>R$ <?= number_format($custos_variaveis, 2, ',', '.') ?></td></tr>
+        <tr><td><strong>Total TCO</strong></td><td><strong>R$ <?= number_format($total_tco, 2, ',', '.') ?></strong></td></tr>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="calculadora-tco">
+            <div class="container">
+                <form action="tco_result.php" method="post" id="multiStepForm">
+                    <div class="title-calculadora-tco">
+                        <h2>Veja quanto custa para manter seu veículo</h2>
+                    </div>
+                    <!-- Etapa 1: Custos Fixos -->
+                    <div class="card-calculadora-tco" id="step1">
+                        <h2>Custos Fixos</h2>
+                        <div class="box-calculadora-tco">
+                            <div class="left-side-calculadora-tco">
+                                <label>Data de aquisição do veículo:</label>
+                                <input type="month" name="data_aquisicao" required>
+
+                                <label>Valor comercial do veículo quando o adquiriu (R$):</label>
+                                <input type="number" step="0.01" name="valor_aquisicao" required>
+
+                                <label>Valor do veículo à data de hoje (R$):</label>
+                                <input type="number" step="0.01" name="valor_hoje" required>
+
+                                <label>Seguro automóvel:</label>
+                                <div class="flex-calculadora">
+                                    <select name="seguro_periodo" required>
+                                        <option value="mensal">Mensal</option>
+                                        <option value="trimestral">Trimestral</option>
+                                        <option value="semestral">Semestral</option>
+                                        <option value="anual">Anual</option>
+                                    </select>
+                                    <input type="number" step="0.01" name="seguro_valor" placeholder="R$" required>
+                                </div>
+                            </div>
+
+                            <div class="right-side-calculadora-tco">
+                                <label>Crédito automóvel:</label>
+                                <div class="radio">
+                                    <div class="radio-item">
+                                        <input type="radio" id="credito-sim" name="credito" value="sim" required>
+                                        <label for="credito-sim">Sim</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="credito-nao" name="credito" value="nao" required>
+                                        <label for="credito-nao">Não</label>
+                                    </div>
+                                </div>
+
+
+                                <div id="credito_detalhes" style="display:none;">
+                                    <label>Montante financiado (R$):</label>
+                                    <input type="number" step="0.01" name="montante_financiado">
+
+                                    <label>Período do crédito / n.º de prestações:</label>
+                                    <input type="number" name="num_prestacoes">
+
+                                    <label>Valor médio da prestação (R$):</label>
+                                    <input type="number" step="0.01" name="valor_prestacao">
+
+                                    <label>Valor residual (R$):</label>
+                                    <input type="number" step="0.01" name="valor_residual">
+                                </div>
+
+                                <label>Quantas vezes já levou o seu veículo à vistoria?</label>
+                                <input type="number" name="vistoria_num" required>
+
+                                <label>IPVA, DPVAT e taxa de licenciamento (R$ por ano):</label>
+                                <input type="number" step="0.01" name="ipva_total" required>
+                            </div>
+                        </div>
+                        <button type="button" onclick="nextStep(2)">Próximo</button>
+                    </div>
+
+                    <!-- Etapa 2: Custos Variáveis -->
+                    <div class="card-calculadora-tco" id="step2" style="display:none;">
+                        <h2>Custos Variáveis</h2>
+                        <label>Gastos com combustíveis (R$ por período):</label>
+                        <select name="combustivel_periodo" required>
+                            <option value="mes">Mês</option>
+                            <option value="trimestre">Trimestre</option>
+                            <option value="semestre">Semestre</option>
+                            <option value="ano">Ano</option>
+                        </select>
+                        <input type="number" step="0.01" name="combustivel_valor" required>
+
+                        <label>Manutenção preventiva (R$ por ano):</label>
+                        <input type="number" step="0.01" name="manutencao_preventiva" required>
+
+                        <label>Reparações e Melhoramentos (R$ por ano):</label>
+                        <input type="number" step="0.01" name="reparacoes" required>
+
+                        <label>Estacionamento (R$ por mês):</label>
+                        <input type="number" step="0.01" name="estacionamento" required>
+
+                        <label>Pedágios (R$ por período):</label>
+                        <select name="pedagio_periodo" required>
+                            <option value="dia">Dia</option>
+                            <option value="mes">Mês</option>
+                            <option value="trimestre">Trimestre</option>
+                            <option value="semestre">Semestre</option>
+                            <option value="ano">Ano</option>
+                        </select>
+                        <input type="number" step="0.01" name="pedagio_valor" required>
+
+                        <label>Multas (R$ por período):</label>
+                        <select name="multas_periodo" required>
+                            <option value="mes">Mês</option>
+                            <option value="trimestre">Trimestre</option>
+                            <option value="semestre">Semestre</option>
+                            <option value="ano">Ano</option>
+                        </select>
+                        <input type="number" step="0.01" name="multas_valor" required>
+
+                        <label>Lavagens e limpeza (R$ por período):</label>
+                        <select name="lavagem_periodo" required>
+                            <option value="mes">Mês</option>
+                            <option value="trimestre">Trimestre</option>
+                            <option value="semestre">Semestre</option>
+                            <option value="ano">Ano</option>
+                        </select>
+                        <input type="number" step="0.01" name="lavagem_valor" required>
+
+                        <button type="button" onclick="nextStep(3)">Próximo</button>
+                        <button type="button" onclick="prevStep(1)">Anterior</button>
+                    </div>
+
+                    <!-- Etapa 3: Dados Adicionais -->
+                    <div class="card-calculadora-tco" id="step3" style="display:none;">
+                        <h2>Dados Adicionais</h2>
+                        <label>Preço médio por pessoa em transporte público (R$ por mês):</label>
+                        <input type="number" step="0.01" name="transporte_publico" required>
+
+                        <label>Rendimento líquido (R$ por ano):</label>
+                        <input type="number" step="0.01" name="rendimento_anual" required>
+
+                        <label>Quilômetros percorridos por mês:</label>
+                        <input type="number" step="0.01" name="km_mes" required>
+
+                        <button type="submit">Calcular TCO</button>
+                        <button type="button" onclick="prevStep(2)">Anterior</button>
+                    </div>
+                </form>
+            </div>
+        </section>

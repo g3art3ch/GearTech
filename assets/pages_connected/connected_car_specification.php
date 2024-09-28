@@ -213,6 +213,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                     <ul>
                         <li><a href="./connected_catalog.php">Catálogo</a></li>
                         <li><a href="./connected_maintenance.php">Manutenções</a></li>
+                        <li><a href="./calculadora_tco.php">Calculadora TCO</a></li>
                         <li class="dropdown">
                             <div class="user-enter">
                                 <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
