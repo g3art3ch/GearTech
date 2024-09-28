@@ -9,7 +9,7 @@ $credito = $_POST['credito'];
 $valor_prestacao = $credito == 'sim' ? $_POST['valor_prestacao'] : 0;
 
 $vistoria_num = $_POST['vistoria_num'];
-$vistoria_custo = $vistoria_num > 0 ? $_POST['vistoria_custo'] : 0;
+$vistoria_custo = $vistoria_num > 0 ? $_POST['vistoria_num'] : 0;
 
 $ipva_total = $_POST['ipva_total'];
 $manutencao_preventiva = $_POST['manutencao_preventiva'];
