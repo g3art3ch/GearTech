@@ -27,6 +27,7 @@ $quantidade = $sql_query2->num_rows;
     <link rel="stylesheet" href="../css/main/main.css">
     <link rel="stylesheet" href="../css/main/header.css">
     <link rel="stylesheet" href="../css/saved-vehicle.css">
+    <link rel="stylesheet" href="../css/profile-result.css">
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="stylesheet" href="../js/slick/slick.css">
     <link rel="stylesheet" href="../js/slick/slick-theme.css">
@@ -170,7 +171,7 @@ $quantidade = $sql_query2->num_rows;
 
                         </div>
                                 ';
-                            } else{
+                            } else {
                                 echo '
                             <div class="profile-result">
                         <div class="card-profile-result">
@@ -185,7 +186,7 @@ $quantidade = $sql_query2->num_rows;
                                 <p>Identificamos que você possui um perfil ' . $tipoUSER . '! <br>
                                 Esses são os veículos que mais combiam com você</p>
                             </div>';
-                            echo '   
+                                echo '   
                             <div class="area-car-result-profile">
                                 <div class="box-image-result-profile">
                                     <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
@@ -200,7 +201,7 @@ $quantidade = $sql_query2->num_rows;
                     </div>
                             
                             ';
-                        }
+                            }
                         }
 
                         ?>
