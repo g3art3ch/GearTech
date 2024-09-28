@@ -10,6 +10,30 @@ $sql_code1 = "SELECT * FROM favorites WHERE favoriteUSER = '$nomeUSER'";
 $sql_query2 = $favoriteDATA->query($sql_code1);
 $quantidade = $sql_query2->num_rows;
 
+$perfil_urbano = 0;
+$perfil_viagens = 0;
+$perfil_sustentavel = 0;
+$perfil_desempenho = 0;
+$perfil_offroad = 0;
+
+// Verificar as respostas do primeiro formulário
+if ($_POST['objetivo'] == 'urbano') { $perfil_urbano += 2; }
+if ($_POST['objetivo'] == 'viagens') { $perfil_viagens += 2; }
+if ($_POST['objetivo'] == 'sustentavel') { $perfil_sustentavel += 3; }
+
+// Outras verificações de respostas...
+// Somar os pontos de acordo com o perfil correspondente
+
+// No final, identificar o perfil com maior pontuação:
+if ($perfil_urbano > $perfil_viagens && $perfil_urbano > $perfil_sustentavel) {
+    $tipo_usuario = "Usuário Urbano";
+} elseif ($perfil_viagens > $perfil_urbano && $perfil_viagens > $perfil_sustentavel) {
+    $tipo_usuario = "Usuário de Longas Viagens";
+} // Continue para outros perfis
+
+// Exibir o tipo de usuário ao final:
+echo "O seu perfil é: " . $tipo_usuario;
+
 
 
 ?>

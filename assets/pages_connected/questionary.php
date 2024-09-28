@@ -65,113 +65,138 @@ include('protect.php');
             </header>
         </div>
         <section class="questionary">
-    <div class="container">
-        <div class="box-questionary">
-            <div class="left-side-questionary">
-                <div class="card-questionary">
-                    <h2>Questionario de perfil</h2>
-                    <div class="first-form">
-                        <form id="form-step-1" action="">
-                        <label for="">Qual é a finalidade do veículo?</label>
-                        <select name="objetivo" id="">
-                            <option value="">Selecione uma opção</option>
-                            <option value="diario">Transporte diário</option>
-                            <option value="lazer">Viagens e lazer</option>
-                            <option value="eco"> Minimizar impacto ambiental e uso de tecnologias sustentáveis</option>
-                        </select>
-                        <label for="">Com que frequência você usaria seu veículo?</label>
-                        <select name="freq" id="">
-                            <option value="">Selecione uma opção</option>
-                            <option value="1-3">1 - 3 Dias na semana</option>
-                            <option value="4-5"> 4 - 5 Dias na semana</option>
-                            <option value="5-7">5 - 7 dias na semana</option>
-                        </select>
-                        <label for="">Qual é a sua prioridade ao escolher um carro?</label>
-                        <select name="prio" id="">
-                            <option value="">Selecione uma opção</option>
-                            <option value="eco">Economia de combustível</option>
-                            <option value="corre">Desempenho e velocidade</option>
-                            <option value="agil">Facilidade de uso em áreas urbanas</option>
-                            <option value="eco">Sustentabilidade e impacto ambiental</option>
-                        </select>
-                        <label for="">Você valoriza um amplo espaço interno para acomodar passageiros e bagagens?</label>
-                        <select name="espaco" id="">
-                            <option value="">Selecione uma opção</option>
-                            <option value="muitosim">Importante</option>
-                            <option value="sim">Pouco importante</option>
-                            <option value="nao">Não é uma preocupação</option>
-                        </select>
-                        <label for="">Você enfrenta dificuldades para estacionar ou manobrar em áreas apertadas?</label>
-                        <select name="tamanho" id="">
-                            <option value="">Selecione uma opção</option>
-                            <option value="muitosim">Sim, frequentemente</option>
-                            <option value="sim">Às vezes</option>
-                            <option value="poucosim">Raramente</option>
-                            <option value="nao">Nunca</option>
-                        </select>  
-                        
-                        <div class="next-button">
-                            <button type="submit" id="next-step">Próximo</button>
-                        </div>
-                    </form>
+            <div class="container">
+                <div class="box-questionary">
+                    <div class="left-side-questionary">
+                        <div class="card-questionary">
+                            <h2>Questionario de perfil</h2>
+                            <div class="first-form">
+                                <form id="form-step-1" action="">
+                                    <label for="">Qual é a finalidade do veículo?</label>
+                                    <select name="objetivo" id="">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="urbano">Transporte diário</option> <!-- Usuário Urbano -->
+                                        <option value="viagens">Viagens e lazer</option>
+                                        <!-- Usuário de Longas Viagens -->
+                                        <option value="sustentavel">Minimizar impacto ambiental e uso de tecnologias
+                                            sustentáveis</option> <!-- Usuário Sustentável -->
+                                    </select>
 
-                    </div>
-                    
-                    <div class="second-form">
-                         <form id="form-step-2" style="display: none;" action="./profile_result.php" method="POST">
-                            <label for="">O design e a tecnologia do carro são importantes para você?</label>
-                        <select name="tecno" id="">
-                        <option value="">Selecione uma opção</option>
-                            <option value="muitosim">Sim, dou grande valor ao design e às inovações tecnológicas</option>
-                            <option value="sim">Prefiro funcionalidade sobre estética, mas gosto de algumas tecnologias</option>
-                            <option value="nao">Não é algo que me preocupe, contanto que o carro seja prático</option>
-                        </select>
-                        <label for="">A segurança é um fator decisivo na sua escolha de carro?</label>
-                        <select name="seguranca" id="">
-                        <option value="">Selecione uma opção</option>
-                            <option value="muitosim">Sim, é fundamental</option>
-                            <option value="sim">Sim, mas há outros fatores</option>
-                            <option value="poucosim"> Não, prefiro desempenho e estilo</option>
-                            <option value="nao">Não é uma preocupação</option>
-                        </select>
-                        <label for="">Você faz uso do carro em estradas não pavimentadas ou trilhas?</label>
-                        <select name="condiestrada" id="">
-                        <option value="">Selecione uma opção</option>
-                            <option value="sim"> Sim, com frequência</option>
-                            <option value="poucosim"> Sim, ocasionalmente</option>
-                            <option value="nao"> Não, e prefiro evitar esse tipo de estrada</option>
-                        </select>
-                        
-                        <label for="">Com que frequência você faz a manutenção preventiva ou revisões do seu carro?</label>
-                        <select name="freqManu" id="">
-                        <option value="">Selecione uma opção</option>
-                            <option value="muitosim">Rigorosamente dentro do prazo</option>
-                            <option value="sim">Geralmente dentro do prazo, mas não sou muito rígido</option>
-                            <option value="poucosim">Às vezes atrasado, só quando necessário</option>
-                            <option value="nao">Raramente faço revisões</option>
-                        </select>
+                                    <label for="">Com que frequência você usaria seu veículo?</label>
+                                    <select name="freq" id="">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="viagens">1 - 3 Dias na semana</option>
+                                        <!-- Usuário de Longas Viagens -->
+                                        <option value="viagens">4 - 5 Dias na semana</option>
+                                        <!-- Usuário de Longas Viagens -->
+                                        <option value="urbano">5 - 7 dias na semana</option> <!-- Usuário Urbano -->
+                                    </select>
 
-                        <label for="">Você tem preferência por alguma marca de carros?</label>
-                        
-                        <input type="text" placeholder="Digite a sua marca">
-                        
-                        <div class="form-navigation ">
-                            <button type="button" id="prev-step">Voltar</button>
-                            <button type="submit">Enviar</button>
-                        </div>
-                    </form>
+                                    <label for="">Qual é a sua prioridade ao escolher um carro?</label>
+                                    <select name="prio" id="">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="sustentavel">Economia de combustível</option>
+                                        <!-- Usuário Sustentável -->
+                                        <option value="desempenho">Desempenho e velocidade</option>
+                                        <!-- Usuário de Desempenho -->
+                                        <option value="urbano">Facilidade de uso em áreas urbanas</option>
+                                        <!-- Usuário Urbano -->
+                                        <option value="sustentavel">Sustentabilidade e impacto ambiental</option>
+                                        <!-- Usuário Sustentável -->
+                                    </select>
+
+                                    <label for="">Você valoriza um amplo espaço interno para acomodar passageiros e
+                                        bagagens?</label>
+                                    <select name="espaco" id="">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="viagens">Importante</option> <!-- Usuário de Longas Viagens -->
+                                        <option value="urbano">Pouco importante</option> <!-- Usuário Urbano -->
+                                        <option value="nenhum">Não é uma preocupação</option> <!-- Neutro -->
+                                    </select>
+
+                                    <label for="">Você enfrenta dificuldades para estacionar ou manobrar em áreas
+                                        apertadas?</label>
+                                    <select name="tamanho" id="">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="urbano">Sim, frequentemente</option> <!-- Usuário Urbano -->
+                                        <option value="urbano">Às vezes</option> <!-- Usuário Urbano -->
+                                        <option value="viagens">Raramente</option> <!-- Usuário de Longas Viagens -->
+                                        <option value="viagens">Nunca</option> <!-- Usuário de Longas Viagens -->
+                                    </select>
+
+                                    <div class="next-button">
+                                        <button type="submit" id="next-step">Próximo</button>
+                                    </div>
+                                </form>
+
+
+                            </div>
+
+                            <div class="second-form">
+                                <form id="form-step-2" style="display: none;" action="./profile_result.php"
+                                    method="POST">
+                                    <label for="">O design e a tecnologia do carro são importantes para você?</label>
+                                    <select name="tecno" id="">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="desempenho">Sim, dou grande valor ao design e às inovações
+                                            tecnológicas</option> <!-- Usuário de Desempenho -->
+                                        <option value="urbano">Prefiro funcionalidade sobre estética, mas gosto de
+                                            algumas tecnologias</option> <!-- Usuário Urbano -->
+                                        <option value="nenhum">Não é algo que me preocupe, contanto que o carro seja
+                                            prático</option> <!-- Neutro -->
+                                    </select>
+
+                                    <label for="">A segurança é um fator decisivo na sua escolha de carro?</label>
+                                    <select name="seguranca" id="">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="todos">Sim, é fundamental</option>
+                                        <!-- Aplica a todos os perfis -->
+                                        <option value="todos">Sim, mas há outros fatores</option>
+                                        <!-- Aplica a todos os perfis -->
+                                        <option value="desempenho">Não, prefiro desempenho e estilo</option>
+                                        <!-- Usuário de Desempenho -->
+                                        <option value="nenhum">Não é uma preocupação</option> <!-- Neutro -->
+                                    </select>
+
+                                    <label for="">Você faz uso do carro em estradas não pavimentadas ou trilhas?</label>
+                                    <select name="condiestrada" id="">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="offroad">Sim, com frequência</option> <!-- Usuário Off-road -->
+                                        <option value="offroad">Sim, ocasionalmente</option> <!-- Usuário Off-road -->
+                                        <option value="urbano">Não, e prefiro evitar esse tipo de estrada</option>
+                                        <!-- Usuário Urbano -->
+                                    </select>
+
+                                    <label for="">Com que frequência você faz a manutenção preventiva ou revisões do seu
+                                        carro?</label>
+                                    <select name="freqManu" id="">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="sustentavel">Rigorosamente dentro do prazo</option>
+                                        <!-- Usuário Sustentável -->
+                                        <option value="nenhum">Geralmente dentro do prazo, mas não sou muito rígido
+                                        </option> <!-- Neutro -->
+                                        <option value="nenhum">Às vezes atrasado, só quando necessário</option>
+                                        <!-- Neutro -->
+                                        <option value="nenhum">Raramente faço revisões</option> <!-- Neutro -->
+                                    </select>
+
+                                    <div class="form-navigation ">
+                                        <button type="button" id="prev-step">Voltar</button>
+                                        <button type="submit">Enviar</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>  
                     </div>
-                   
+                    <div class="right-side-questionary">
+                        <div class="ilustrative-questionary">
+                            <img src="/GearTech/assets/images/onix.png" alt="">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="right-side-questionary">
-                <div class="ilustrative-questionary">
-                    <img src="/GearTech/assets/images/onix.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
     </main>
     <footer>
         <div class="container">
@@ -208,21 +233,21 @@ include('protect.php');
 
     <script src="../js/script.js"></script>
     <script>
-    const nextStepButton = document.getElementById('next-step');
-    const prevStepButton = document.getElementById('prev-step');
-    const formStep1 = document.getElementById('form-step-1');
-    const formStep2 = document.getElementById('form-step-2');
+        const nextStepButton = document.getElementById('next-step');
+        const prevStepButton = document.getElementById('prev-step');
+        const formStep1 = document.getElementById('form-step-1');
+        const formStep2 = document.getElementById('form-step-2');
 
-    nextStepButton.addEventListener('click', function() {
-        formStep1.style.display = 'none';
-        formStep2.style.display = 'block';
-    });
+        nextStepButton.addEventListener('click', function () {
+            formStep1.style.display = 'none';
+            formStep2.style.display = 'block';
+        });
 
-    prevStepButton.addEventListener('click', function() {
-        formStep2.style.display = 'none';
-        formStep1.style.display = 'block';
-    });
-</script>
+        prevStepButton.addEventListener('click', function () {
+            formStep2.style.display = 'none';
+            formStep1.style.display = 'block';
+        });
+    </script>
 </body>
 
 </html>
