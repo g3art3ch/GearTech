@@ -69,48 +69,33 @@ $qtdALL = $searchALL->num_rows;
     <link rel="stylesheet" href="../css/recomendation.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Seu carro ideal</title>
-    <script>
-        function sendWidth() {
-            var width = window.innerWidth;
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("width=" + width);
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("result").innerHTML = this.responseText;
-                }
-            };
-        }
-        window.onload = sendWidth;
-        window.onresize = sendWidth;
-    </script>
+
 </head>
 
 
 <body>
     <main>
-    <div class="container">
-        <header>
-            <div class="area">
-                <div class="logo">
-                    <a href="/GearTech/assets/pages_connected/connected.php">
-                        <img src="../images/logo.svg" alt="" />
-                    </a>
-                </div>
-                <div class="menu-opener">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+        <div class="container">
+            <header>
+                <div class="area">
+                    <div class="logo">
+                        <a href="/Geartech/assets/pages_connected/connected.php">
+                            <img src="../images/logo.svg" alt="" />
+                        </a>
                     </div>
-                    <div class="close-icon">
-                        <span></span>
-                        <span></span>
+                    <div class="menu-opener">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="close-icon">
+                            <span></span>
+                            <span></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <nav>
+                <nav>
                     <ul>
                         <li><a href="./connected_catalog.php">Catálogo</a></li>
                         <li><a href="./connected_maintenance.php">Manutenções</a></li>
@@ -129,14 +114,15 @@ $qtdALL = $searchALL->num_rows;
                         </li>
                     </ul>
                 </nav>
-        </header>
-    </div>
+            </header>
+        </div>
 
-    <section class="recomendation">
-    <div class="container">
-        
-        <div class="grid-recomendation">
-        <?php
+
+        <section class="recomendation">
+            <div class="container">
+
+                <div class="grid-recomendation">
+                    <?php
                     if ($qtdALL > 0) {
                         if (!isset($_SESSION)) {
                             session_start();
@@ -204,16 +190,16 @@ $qtdALL = $searchALL->num_rows;
                         }
                     }
                     ?>
-        </div>
-    </div>
-</section>
+                </div>
+            </div>
+        </section>
 
 
-    
 
-    <div class="pagination">
-        <div class="box-pagination">
-            <?php
+
+        <div class="pagination">
+            <div class="box-pagination">
+                <?php
             $lim_pag = 4;
             $consulta = "SELECT * FROM identificador WHERE Marca = '$marca'";
             $result = $mysqli->query($consulta);
@@ -251,8 +237,8 @@ $qtdALL = $searchALL->num_rows;
                 echo '</p>';
             unset($_SESSION['resultados']);
             ?>
+            </div>
         </div>
-    </div>
     </main>
     <footer>
         <div class="container">
@@ -273,7 +259,9 @@ $qtdALL = $searchALL->num_rows;
                 </div>
                 <div class="right-side-footer">
                     <h2>Sobre nós</h2>
-                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada
+                        de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor
+                        escolha da sua vida.
                     </p>
                 </div>
             </div>
@@ -282,7 +270,37 @@ $qtdALL = $searchALL->num_rows;
             </div>
         </div>
     </footer>
+            
     <script src="../js/script.js"></script>
+    <script>
+    let menuOpener = document.querySelector('.menu-opener');
+    let nav = document.querySelector('header nav');
+
+    menuOpener.addEventListener('click', () => {
+        if (nav.classList.contains('opened')) {
+            nav.classList.remove('opened');
+            menuOpener.querySelector('.close-icon').style.display = 'none';
+            menuOpener.querySelector('.hamburger-icon').style.display = 'flex';
+        } else {
+            nav.classList.add('opened');
+            menuOpener.querySelector('.close-icon').style.display = 'flex';
+            menuOpener.querySelector('.hamburger-icon').style.display = 'none';
+        }
+    });
+
+    function sendWidth() {
+        var width = window.innerWidth;
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("width=" + width);
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("result").innerHTML = this.responseText;
+            }
+        };
+    }
+    </script>
 
 </body>
 

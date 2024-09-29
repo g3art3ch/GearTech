@@ -177,7 +177,7 @@ $quantidade = $sql_query2->num_rows;
                         <div class="card-profile-result">
                             <div class="headline-profile-result">
                                 <div class="category-profile">
-                                    <img src="../icons/icon-family.svg" alt="">
+                                    <img src="../icons/urbano.svg" alt="">
                                     <p>' . $tipoUSER . '</p>
                                 </div>
                                 <a href="./questionary.php">Editar perfil</a>

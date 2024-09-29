@@ -56,9 +56,10 @@ $qtdALL = $searchALL->num_rows;
                 <div class="area">
                     <div class="logo">
                         <a href="/GearTech/assets/pages_connected/connected.php">
-                            <img src="/GearTech/assets/images/logo.svg" alt="Logo" />
+                            <img src="/GearTech/assets/images/logo.svg" alt="Logo" /> 
+                            <h1>Geartech</h1>
                         </a>
-                        <h1>Geartech</h1>
+                       
                     </div>
                     <div class="menu-opener">
                         <div class="hamburger-icon">

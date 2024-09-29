@@ -83,10 +83,11 @@ $quantidade = $sql_query2->num_rows;
 
         <section class="calculadora-tco">
             <div class="container">
+                <div class="title-calculadora-tco">
+                    <h2>Veja quanto custa para manter seu veículo</h2>
+                </div>
                 <form action="tco_result.php" method="post" id="multiStepForm">
-                    <div class="title-calculadora-tco">
-                        <h2>Veja quanto custa para manter seu veículo</h2>
-                    </div>
+
                     <div class="card-calculadora-tco" id="step1">
                         <h2>Custos Fixos</h2>
                         <div class="box-calculadora-tco">
@@ -108,11 +109,11 @@ $quantidade = $sql_query2->num_rows;
                                         <option value="semestral">Semestral</option>
                                         <option value="anual">Anual</option>
                                     </select>
-                                    <input type="number" step="0.01" name="seguro_valor" placeholder="R$" required >
+                                    <input type="number" step="0.01" name="seguro_valor" placeholder="R$" required>
                                 </div>
                                 <button type="button" onclick="nextStep(2)">Próximo</button>
                             </div>
-                            
+
                         </div>
 
                     </div>
@@ -123,7 +124,7 @@ $quantidade = $sql_query2->num_rows;
                         <label>Crédito automóvel:</label>
                         <div class="radio">
                             <div class="radio-item">
-                                <input type="radio" id="credito-sim" name="credito" value="sim" required >
+                                <input type="radio" id="credito-sim" name="credito" value="sim" required>
                                 <label for="credito-sim">Sim</label>
                             </div>
                             <div class="radio-item">
@@ -150,11 +151,19 @@ $quantidade = $sql_query2->num_rows;
                         <label>Quantas vezes já levou o seu veículo à vistoria?</label>
                         <input type="number" name="vistoria_num" required placeholder="R$">
 
+                        <div id="vistoria_detalhes" style="display:none;">
+                            <label>Custo médio da vistoria para o seu veículo (R$):</label>
+                            <input type="number" step="0.01" name="vistoria_custo" placeholder="R$">
+                        </div>
+
                         <label>IPVA, DPVAT e taxa de licenciamento (R$ por ano):</label>
                         <input type="number" step="0.01" name="ipva_total" required placeholder="R$">
 
-                        <button type="button" onclick="nextStep(3)">Próximo</button>
-                        <button type="button" onclick="prevStep(1)">Anterior</button>
+                        <div class="container-button-tco">
+                            <button type="button" onclick="nextStep(3)">Próximo</button>
+                            <button type="button" onclick="prevStep(1)">Anterior</button>
+                        </div>
+
                     </div>
 
                     <!-- Etapa 3: Dados Adicionais -->
@@ -162,13 +171,13 @@ $quantidade = $sql_query2->num_rows;
                         <h2>Custos Variáveis</h2>
                         <label>Gastos com combustíveis (R$ por período):</label>
                         <div class="flex-calculadora">
-                        <select name="combustivel_periodo" required>
-                            <option value="mes">Mês</option>
-                            <option value="trimestre">Trimestre</option>
-                            <option value="semestre">Semestre</option>
-                            <option value="ano">Ano</option>
-                        </select>
-                        <input type="number" step="0.01" name="combustivel_valor" required placeholder="R$">
+                            <select name="combustivel_periodo" required>
+                                <option value="mes">Mês</option>
+                                <option value="trimestre">Trimestre</option>
+                                <option value="semestre">Semestre</option>
+                                <option value="ano">Ano</option>
+                            </select>
+                            <input type="number" step="0.01" name="combustivel_valor" required placeholder="R$">
                         </div>
                         <label>Manutenção preventiva (R$ por ano):</label>
                         <input type="number" step="0.01" name="manutencao_preventiva" required placeholder="R$">
@@ -176,57 +185,61 @@ $quantidade = $sql_query2->num_rows;
                         <label>Reparações e Melhoramentos (R$ por ano):</label>
                         <input type="number" step="0.01" name="reparacoes" required placeholder="R$">
 
-                        <button type="button" onclick="nextStep(4)">Próximo</button>
-                        <button type="button" onclick="prevStep(2)">Anterior</button>
+                        <div class="container-button-tco">
+                            <button type="button" onclick="nextStep(4)">Próximo</button>
+                            <button type="button" onclick="prevStep(2)">Anterior</button>
+                        </div>
                     </div>
 
                     <div class="card-calculadora-tco" id="step4" style="display:none;">
                         <h2>Custos Variáveis</h2>
                         <label>Estacionamento (R$ por mês):</label>
-                        <input type="number" step="0.01" name="estacionamento" placeholder="R$" required >
+                        <input type="number" step="0.01" name="estacionamento" placeholder="R$" required>
 
                         <label>Pedágios (R$ por período):</label>
                         <div class="flex-calculadora">
-                        <select name="pedagio_periodo" required>
-                            <option value="dia">Dia</option>
-                            <option value="mes">Mês</option>
-                            <option value="trimestre">Trimestre</option>
-                            <option value="semestre">Semestre</option>
-                            <option value="ano">Ano</option>
-                        </select>
-                        <input type="number" step="0.01" name="pedagio_valor" required  placeholder="R$">
+                            <select name="pedagio_periodo" required>
+                                <option value="dia">Dia</option>
+                                <option value="mes">Mês</option>
+                                <option value="trimestre">Trimestre</option>
+                                <option value="semestre">Semestre</option>
+                                <option value="ano">Ano</option>
+                            </select>
+                            <input type="number" step="0.01" name="pedagio_valor" required placeholder="R$">
                         </div>
 
                         <label>Multas (R$ por período):</label>
                         <div class="flex-calculadora">
-                        <select name="multas_periodo" required>
-                            <option value="mes">Mês</option>
-                            <option value="trimestre">Trimestre</option>
-                            <option value="semestre">Semestre</option>
-                            <option value="ano">Ano</option>
-                        </select>
-                        <input type="number" step="0.01" name="multas_valor" required  placeholder="R$">
+                            <select name="multas_periodo" required>
+                                <option value="mes">Mês</option>
+                                <option value="trimestre">Trimestre</option>
+                                <option value="semestre">Semestre</option>
+                                <option value="ano">Ano</option>
+                            </select>
+                            <input type="number" step="0.01" name="multas_valor" required placeholder="R$">
                         </div>
 
-                       
+
                         <label>Lavagens e limpeza (R$ por período):</label>
                         <div class="flex-calculadora">
-                        <select name="lavagem_periodo" required>
-                            <option value="mes">Mês</option>
-                            <option value="trimestre">Trimestre</option>
-                            <option value="semestre">Semestre</option>
-                            <option value="ano">Ano</option>
-                        </select>
-                        <input type="number" step="0.01" name="lavagem_valor" required  placeholder="R$">
+                            <select name="lavagem_periodo" required>
+                                <option value="mes">Mês</option>
+                                <option value="trimestre">Trimestre</option>
+                                <option value="semestre">Semestre</option>
+                                <option value="ano">Ano</option>
+                            </select>
+                            <input type="number" step="0.01" name="lavagem_valor" required placeholder="R$">
                         </div>
 
-                        <button type="button" onclick="nextStep(5)">Próximo</button>
-                        <button type="button" onclick="prevStep(2)">Anterior</button>
+                        <div class="container-button-tco">
+                            <button type="button" onclick="nextStep(5)">Próximo</button>
+                            <button type="button" onclick="prevStep(2)">Anterior</button>
+                        </div>
                     </div>
 
                     <div class="card-calculadora-tco" id="step5" style="display:none;">
                         <h2>Custos Adicionais</h2>
-                        <label>Preço médio por pessoa em transporte público (R$ por mês):</label>
+                        <label>Custo médio em transporte público (R$ por mês):</label>
                         <input type="number" step="0.01" name="transporte_publico" required placeholder="R$">
 
                         <label>Rendimento líquido (R$ por ano):</label>
@@ -237,11 +250,28 @@ $quantidade = $sql_query2->num_rows;
 
                         <button type="submit">Calcular TCO</button>
                     </div>
-                </form>
+
+                    <div class="card-progress">
+                        <div class="progress-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                            <h2>Calculadora TCO</h2>
+                            <div class="progress-steps">
+                                <div class="step active">1</div>
+                                <div class="step">2</div>
+                                <div class="step">3</div>
+                                <div class="step">4</div>
+                                <div class="step">5</div>
+                            </div>
+                        </div>
+                    </div>
+
+
             </div>
+            </form>
         </section>
 
 
+        </div>
 
     </main>
     <footer>
@@ -294,23 +324,48 @@ $quantidade = $sql_query2->num_rows;
         document.getElementById('vistoria_detalhes').style.display = this.value > 0 ? 'block' : 'none';
     });
 
-    function nextStep(step) {
-        document.getElementById("step" + (step - 1)).style.display = "none";
+    function changeStep(step) {
+        const currentStep = step === 1 ? step + 1 : step - 1;
+        document.getElementById("step" + currentStep).style.display = "none";
         document.getElementById("step" + step).style.display = "block";
+        updateProgress(step);
+    }
+
+    function nextStep(step) {
+        changeStep(step);
     }
 
     function prevStep(step) {
-        document.getElementById("step" + (step + 1)).style.display = "none";
-        document.getElementById("step" + step).style.display = "block";
+        changeStep(step);
     }
 
-    // Exibir detalhes do crédito automóvel apenas se "Sim" for selecionado
-    document.querySelectorAll('input[name="credito"]').forEach((el) => {
-        el.addEventListener('change', function() {
-            document.getElementById("credito_detalhes").style.display = this.value === 'sim' ? 'block' :
-                'none';
+    function updateProgress(step) {
+        const totalSteps = 5;
+        const progressBar = document.getElementById('progressBar');
+        const steps = document.querySelectorAll('.step');
+
+        // Atualiza a largura da barra
+        progressBar.style.width = ((step - 1) / totalSteps) * 100 + '%';
+
+        // Atualiza as classes dos passos
+        steps.forEach((element, index) => {
+            element.classList.remove('active', 'completed');
+            if (index < step - 1) {
+                element.classList.add('completed');
+            } else if (index === step - 1) {
+                element.classList.add('active');
+            }
         });
-    });
+    }
+
+    function changeStep(step) {
+        const currentStep = step === 1 ? step + 1 : step - 1;
+        document.getElementById("step" + currentStep).style.display = "none";
+        document.getElementById("step" + step).style.display = "block";
+        updateProgress(step); // Atualiza a barra de progresso
+    }
     </script>
 
 </body>
+
+</html>

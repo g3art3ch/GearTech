@@ -25,7 +25,9 @@
                     <div class="logo">
                         <a href="/GearTech/index.php">
                             <img src="../images/logo.svg" alt="" />
+                            <h1>Geartech</h1>
                         </a>
+                       
                     </div>
                     <div class="menu-opener">
                         <div class="hamburger-icon">
