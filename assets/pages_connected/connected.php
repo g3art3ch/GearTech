@@ -1,35 +1,26 @@
 <?php
 include('connection.php');
-include('connection_cars.php');
+include('connection_carsgt.php');
 include('protect.php');
-$sql_code = "SELECT 
-    nc.nome,
-    fc.estilo,
-    oc.orcamento,
-    tc.combustivel,
-    cc.capacidade,
-    uc.tipoUso,
-    iden.idIden,
-    iden.urlCarro,
-    iden.Marca
-FROM 
-    nomeCarro nc
-INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
-INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
-INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
-INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
-INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
-INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome  
-WHERE nome in ('Chevrolet Onix 1.0 SPE/4 2024', 'Hyundai HB20 1.0 Comfort Plus ', 'Chevrolet Tracker 1.0 Turbo (A')";
 
-$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-$quantidade = $sql_query->num_rows;
+$sql_code = "SELECT 
+    marca.marca,
+    marca.idMarca,
+    modelo.nomeCarro,
+    modelo.CodModelo,
+    modelo.idModelo,
+    modelo.codigoAno,
+    versao.nomeVersao,
+    versao.ano
+FROM 
+    marca
+INNER JOIN 
+    modelo ON marca.idMarca = modelo.idMarca
+INNER JOIN 
+    versao ON modelo.idModelo = versao.idVersao
+WHERE modelo.idModelo = 41447 OR modelo.idModelo = 55616 OR modelo.idModelo = 37678";
+$searchALL = $finalDATA->query($sql_code);
+$qtdALL = $searchALL->num_rows;
 
 ?>
 
@@ -233,9 +224,9 @@ $quantidade = $sql_query->num_rows;
                 </div>
                 <?php
 
-                if ($quantidade > 0) {
+                if ($qtdALL > 0) {
                     $_SESSION['resultados'] = array();
-                    while ($result = $sql_query->fetch_assoc()) {
+                    while ($result = $searchALL->fetch_assoc()) {
                         $_SESSION['resultados'][] = $result;
                     };
                 };
@@ -244,33 +235,33 @@ $quantidade = $sql_query->num_rows;
                     foreach ($_SESSION['resultados'] as $carro) {
                         echo '<div class="card-popular-cars">';
                         echo '<div class="box-image-popular-cars">';
-                        echo '<img src="/GearTech/assets/car_images/' . $carro['idIden'] . '.png" alt="">';
+                        echo '<img src="../car_images/' . $carro['idModelo']. '.png" alt="">';
                         echo '</div>';
                         echo '<div class="box-description-popular-cars">';
                         echo '    <div class="title-card-popular-cars">';
-                        echo '        <h2>'. $carro['nome'] .'</h2>';
+                        echo '        <h2>'. $carro['nomeCarro'] .'</h2>';
                         echo '    </div>';
                         echo '    <div class="group-popular-cars">';
                         echo '        <div class="info-popular-cars">';
-                        echo '            <img src="/GearTech/assets/icons/passager.svg" alt="">';
-                        echo '            <p>' . ($carro['capacidade']-1) . ' passageiros</p>';
+                        // echo '            <img src="/GearTech/assets/icons/passager.svg" alt="">';
+                        // echo '            <p>' . ($carro['capacidade']-1) . ' passageiros</p>';
                         echo '        </div>';
                         echo '        <div class="info-popular-cars">';
-                        echo '            <img src="/GearTech/assets/icons/cambio.svg" alt="">';
-                        echo '            <p>Automático</p>';
+                        // echo '            <img src="/GearTech/assets/icons/cambio.svg" alt="">';
+                        // echo '            <p>Automático</p>';
                         echo '        </div>';
                         echo '        <div class="info-popular-cars">';
-                        echo '            <img src="/GearTech/assets/icons/car-door.svg" alt="">';
-                        echo '            <p>' . ($carro['capacidade'] -1) . ' portas</p>';
+                        // echo '            <img src="/GearTech/assets/icons/car-door.svg" alt="">';
+                        // echo '            <p>' . ($carro['capacidade'] -1) . ' portas</p>';
                         echo '        </div>';
                         echo '    </div>';
                         echo '    <hr>';
                         echo '    <div class="price-popular-cars">';
                         echo '        <p>Preço</p>';
-                        echo '        <span>R$' . $carro['orcamento'] . '</span>';
+                        // echo '        <span>R$' . $carro['orcamento'] . '</span>';
                         echo '    </div>';
                         echo '    <div class="more-info-popular-cars">';
-                        echo '<a href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar='. $carro['nome'] .' ">Saiba mais</a>';
+                        echo '<a href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar='. $carro['nomeCarro'] .' ">Saiba mais</a>';
                         echo '    </div>';
                         echo '</div>';
 
