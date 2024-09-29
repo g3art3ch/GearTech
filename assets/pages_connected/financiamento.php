@@ -1,3 +1,26 @@
+<?php 
+include('connection.php');
+include('connection_carsgt.php');
+include('protect.php');
+
+if(isset($_GET['Val'])){
+    $valor = $_GET['Val'];
+// Remover 'R$', apóstrofos e espaços
+$valor_limpo = str_replace(["R$", "'", " "], "", $valor);
+
+// Substituir a vírgula por ponto
+$valor_limpo = str_replace(",", ".", $valor_limpo);
+
+// Remover pontos extras (separadores de milhar)
+$valor_limpo = str_replace(".", "", substr($valor_limpo, 0, -3)) . substr($valor_limpo, -3);
+
+// Converter para número decimal (float)
+$valor_numerico = (float) $valor_limpo;
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,13 +43,14 @@
 
 <body>
     <main>
-        <div class="container">
+    <div class="container">
             <header>
                 <div class="area">
                     <div class="logo">
-                        <a href="../pages_connected/logout.php">
-                            <img src="../images/logo.svg" alt="" />
+                        <a href="/GearTech/assets/pages_connected/connected.php">
+                            <img src="/GearTech/assets/images/logo.svg" alt="Logo" />
                         </a>
+
                     </div>
                     <div class="menu-opener">
                         <div class="hamburger-icon">
@@ -42,23 +66,25 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="./catalog.php">Catálogo</a></li>
-                        <li><a href="./maintenance.php">Manutenções</a></li>
-                        <li>
+                        <li><a href="./connected_catalog.php">Catálogo</a></li>
+                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
+                        <li><a href="./calculadora_tco.php">Calculadora TCO</a></li>
+                        <li class="dropdown">
                             <div class="user-enter">
-                                <a href="/GearTech/assets/pages/login.php">
-                                    <img src="/assets/icons/user.svg" alt="">
-                                    <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua
-                                        conta</a>
-                                </a>
+                                <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
+                                <a href="#" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
                             </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="./user.php">Dados pessoais</a></li>
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="/GearTech/index.php">Sair</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
             </header>
         </div>
-
-
         <section class="financing">
             <div class="container">
                 <div class="title-financing">
@@ -71,7 +97,8 @@
                             <div class="item-financing">
                                 <div class="campo">
                                     <span class="labelSimula">Valor Financiado:</span>
-                                    <input type="text" name="valor" id="valor" />
+                                    <input type="text" name="valor" id="valor" value="<?php echo $valor_numerico; ?>
+"/>
                                 </div>
                             </div>
                             <div class="item-financing">
@@ -136,9 +163,7 @@
         </div>
     </footer>
     <script src="../js/script.js"></script>
-    <script src="/bundle.js"></script>
-
+    <script src="bundle.js"></script>
 
 </body>
-
 </html>

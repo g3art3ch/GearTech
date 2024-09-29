@@ -56,10 +56,10 @@ $qtdALL = $searchALL->num_rows;
                 <div class="area">
                     <div class="logo">
                         <a href="/GearTech/assets/pages_connected/connected.php">
-                            <img src="/GearTech/assets/images/logo.svg" alt="Logo" /> 
+                            <img src="/GearTech/assets/images/logo.svg" alt="Logo" />
                             <h1>Geartech</h1>
                         </a>
-                       
+
                     </div>
                     <div class="menu-opener">
                         <div class="hamburger-icon">
@@ -122,10 +122,10 @@ $qtdALL = $searchALL->num_rows;
 
                             <div class="error-register-index">
                                 <?php
-                            if (isset($_GET['error'])) {
-                                echo "<p  style='color:red;'>" . $_GET['error'] . "</p>";
-                            }
-                            ?>
+                                if (isset($_GET['error'])) {
+                                    echo "<p  style='color:red;'>" . $_GET['error'] . "</p>";
+                                }
+                                ?>
                             </div>
                             <div class="group-1">
                                 <div class="itens-filter">
@@ -188,29 +188,29 @@ $qtdALL = $searchALL->num_rows;
                                 </div>
                             </div>
                             <script>
-                            function formatarNumero(valor) {
-                                valor = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
-                                if (valor === "") return "";
+                                function formatarNumero(valor) {
+                                    valor = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
+                                    if (valor === "") return "";
 
-                                valor = (parseInt(valor, 10) / 100).toFixed(2) +
-                                ''; // Converte para número e formata com duas casas decimais
-                                valor = valor.replace(".", ","); // Substitui ponto por vírgula
-                                valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona pontos a cada milhar
-                                return valor;
-                            }
+                                    valor = (parseInt(valor, 10) / 100).toFixed(2) +
+                                        ''; // Converte para número e formata com duas casas decimais
+                                    valor = valor.replace(".", ","); // Substitui ponto por vírgula
+                                    valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona pontos a cada milhar
+                                    return valor;
+                                }
 
-                            const inputPreco = document.getElementById('preco_input');
+                                const inputPreco = document.getElementById('preco_input');
 
-                            inputPreco.addEventListener('input', function() {
-                                let cursorPosition = this.selectionStart;
-                                let valorAntigo = this.value;
+                                inputPreco.addEventListener('input', function () {
+                                    let cursorPosition = this.selectionStart;
+                                    let valorAntigo = this.value;
 
-                                this.value = formatarNumero(this.value);
+                                    this.value = formatarNumero(this.value);
 
-                                // Recalcular posição do cursor
-                                cursorPosition = this.value.length - valorAntigo.length + cursorPosition;
-                                this.setSelectionRange(cursorPosition, cursorPosition);
-                            });
+                                    // Recalcular posição do cursor
+                                    cursorPosition = this.value.length - valorAntigo.length + cursorPosition;
+                                    this.setSelectionRange(cursorPosition, cursorPosition);
+                                });
                             </script>
                         </form>
                     </div>
@@ -225,22 +225,29 @@ $qtdALL = $searchALL->num_rows;
                 </div>
                 <?php
 
+                require("../fipeIN/vendor/autoload.php");
+                use DeividFortuna\Fipe\FipeCarros;
+
+
                 if ($qtdALL > 0) {
                     $_SESSION['resultados'] = array();
                     while ($result = $searchALL->fetch_assoc()) {
                         $_SESSION['resultados'][] = $result;
-                    };
-                };
+                    }
+                    ;
+                }
+                ;
                 echo "<div class=grid-popular-cars>";
                 if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
                     foreach ($_SESSION['resultados'] as $carro) {
+                        $setVehicle = FipeCarros::getVeiculo($carro['idMarca'], $carro['CodModelo'], $carro['codigoAno']);
                         echo '<div class="card-popular-cars">';
                         echo '<div class="box-image-popular-cars">';
-                        echo '<img src="../car_images/' . $carro['idModelo']. '.png" alt="">';
+                        echo '<img src="../car_images/' . $carro['idModelo'] . '.png" alt="">';
                         echo '</div>';
                         echo '<div class="box-description-popular-cars">';
                         echo '    <div class="title-card-popular-cars">';
-                        echo '        <h2>'. $carro['nomeCarro'] .'</h2>';
+                        echo '        <h2>' . $carro['nomeCarro'] . '</h2>';
                         echo '    </div>';
                         echo '    <div class="group-popular-cars">';
                         echo '        <div class="info-popular-cars">';
@@ -259,18 +266,20 @@ $qtdALL = $searchALL->num_rows;
                         echo '    <hr>';
                         echo '    <div class="price-popular-cars">';
                         echo '        <p>Preço</p>';
-                        // echo '        <span>R$' . $carro['orcamento'] . '</span>';
+                        echo '        <span>' . $setVehicle['Valor'] . '</span>';
                         echo '    </div>';
                         echo '    <div class="more-info-popular-cars">';
-                        echo '<a href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar='. $carro['nomeCarro'] .' ">Saiba mais</a>';
+                        echo '<a href="/GearTech/assets/pages_connected/connected_car_specification.php?Marca='.$carro['idMarca'].'&Modelo='.$carro['idModelo'].'&CodModelo='.$carro['CodModelo'].'&Ano='.$carro['ano'].'&codAno='.$carro['codigoAno'].'">Saiba mais</a>';
                         echo '    </div>';
                         echo '</div>';
 
                         echo '</div>';
-                    };
-                };
+                    }
+                    ;
+                }
+                ;
                 echo "</div>"
-                ?>
+                    ?>
             </div>
         </section>
 
@@ -439,10 +448,10 @@ $qtdALL = $searchALL->num_rows;
 
     <script src="/GearTech/assets/js/script.js"></script>
     <script>
-    function validarInput(input) {
-        if (input.value < 0) input.value = 0;
-        if (input.value > 4) input.value = 4;
-    }
+        function validarInput(input) {
+            if (input.value < 0) input.value = 0;
+            if (input.value > 4) input.value = 4;
+        }
     </script>
 </body>
 
