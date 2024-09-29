@@ -631,6 +631,33 @@ div class="card-calculadora-tco" id="step2" style="display:none;">
 
 
 
+
+<div class="progress-card">
+                        <h2>Calculadora TCO</h2>
+                        <div class="step-numbers">
+                            <div class="step active" id="step1">1</div>
+                            <div class="step" id="step2">2</div>
+                            <div class="step" id="step3">3</div>
+                            <div class="step" id="step4">4</div>
+                            <div class="step" id="step5">5</div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <section class="calculadora-tco">
             <div class="container">
                 <form action="tco_result.php" method="post" id="multiStepForm">
