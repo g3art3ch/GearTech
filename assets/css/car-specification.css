@@ -9,7 +9,8 @@
 }
 
 .FAVORITE_BUTTON {
-    padding: 30px 0px;
+    display: flex;
+    margin-bottom: 32px;
 }
 
 
@@ -37,6 +38,7 @@
     font-size: 16px;
     padding: 13px 20px;
     border: none;
+    cursor: pointer;
 }
 
 .FavButton:hover {
@@ -142,6 +144,31 @@
     display: none;
 }
 
+.box-button-simulation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-button-simulation h2 {
+    font-weight: 900;
+}
+
+.box-button-simulation a {
+    /* background-color: var(--secondary); */
+    border: 1px solid var(--secondary);
+    border-radius: 15px;
+    padding: 6px;
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.box-button-simulation a:hover {
+    background-color: var(--secondary);
+    color: #fff;
+
+}
+
 @media (min-width:531px) and (max-width:900px) {
 
     .car-specification h2 {
@@ -164,7 +191,7 @@
     .card-car-specification {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .card-car-specification h2 {
@@ -188,6 +215,14 @@
     .card-technology-specification table,
     .card-mecanic-specification table {
         table-layout: fixed;
+    }
+
+    .box-button-simulation {
+        flex-direction: column;
+    }
+
+    .box-button-simulation h2 {
+        margin-bottom: 12px;
     }
 }
 
@@ -230,12 +265,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
         gap: 20px;
     }
 
     .UnfavButton {
         margin-left: 10px;
+    }
+
+    .box-button-simulation {
+        flex-direction: column;
+    }
+
+    .box-button-simulation h2 {
+        margin-top: 12px;
+        margin-bottom: 12px;
     }
 }
 

@@ -25,7 +25,9 @@
                     <div class="logo">
                         <a href="/GearTech/index.php">
                             <img src="../images/logo.svg" alt="" />
+                            <h1>Geartech</h1>
                         </a>
+                       
                     </div>
                     <div class="menu-opener">
                         <div class="hamburger-icon">
@@ -39,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <nav>
+                <!-- <nav>
                     <ul>
                         <li><a href="./catalog.php">Catálogo</a></li>
                         <li><a href="">Manutenções</a></li>
@@ -53,12 +55,35 @@
                             </div>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
             </header>
         </div>
         <?php
 
         if (isset($_GET['error'])) {
+
+            if ($_GET['error'] == 'RegisteredEmail'){
+                echo '<script type="text/javascript">
+         
+                Swal.fire({
+                    position: "top",
+                    icon: "error",
+                    iconColor: "#C23A42",
+                    title: "Falha no login",
+                    html: `<p style="font-size: 17px; margin="0px"">E-mail já cadastrado</p>`,
+                        showConfirmButton: false,
+                    width: "27rem",
+                    showCloseButton: true,
+                    background: "#fafafa",
+                    color: "#000",
+                    customClass: {
+                        title: "custom-title",
+                    }
+                });
+            
+                </script>';
+            }else
+
             echo '<script type="text/javascript">
          
     Swal.fire({

@@ -27,6 +27,7 @@ $quantidade = $sql_query2->num_rows;
     <link rel="stylesheet" href="../css/main/main.css">
     <link rel="stylesheet" href="../css/main/header.css">
     <link rel="stylesheet" href="../css/saved-vehicle.css">
+    <link rel="stylesheet" href="../css/profile-result.css">
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="stylesheet" href="../js/slick/slick.css">
     <link rel="stylesheet" href="../js/slick/slick-theme.css">
@@ -106,93 +107,116 @@ $quantidade = $sql_query2->num_rows;
                                     $_SESSION['resultados'][] = $result;
                                 }
 
-                                // Defina o limite de carros a serem exibidos
-                                $limite = 10;
-                                $minimo = 3;
-                                $contador = 0;
 
-                                foreach ($_SESSION['resultados'] as $results) {
-                                    if ($contador >= $limite)
-                                        break;
 
-                                    $consultNAME = $results['favoriteNAME'];
-                                    $sql_code = "SELECT 
-                                        nc.nome,
-                                        fc.estilo,
-                                        oc.orcamento,
-                                        tc.combustivel,
-                                        cc.capacidade,
-                                        uc.tipoUso,
-                                        iden.idIden,
-                                        iden.urlCarro,
-                                        iden.Marca
-                                        FROM 
-                                        nomeCarro nc
-                                        INNER JOIN 
-                                        filtroCarros fc ON nc.idFiltro = fc.idFiltro
-                                        INNER JOIN 
-                                        orcamentoCarro oc ON nc.idNome = oc.idNome
-                                        INNER JOIN 
-                                        tipoCombustivel tc ON nc.idNome = tc.idNome
-                                        INNER JOIN 
-                                        capacidadeCarro cc ON nc.idNome = cc.idNome
-                                        INNER JOIN 
-                                        usoCarro uc ON nc.idNome = uc.idNome
-                                        INNER JOIN 
-                                        identificador iden ON nc.idNome = iden.idNome  
-                                        WHERE nome = '$consultNAME'";
 
-                                    $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-                                    $_SESSION['FAVORITES'] = array();
-                                    while ($resultFAVORITES = $sql_query->fetch_assoc()) {
-                                        $_SESSION['FAVORITES'][] = $resultFAVORITES;
-                                    }
 
-                                    
 
-                                    foreach ($_SESSION['FAVORITES'] as $fav) {
 
-                                        echo '<div class="swiper-slide">';
-                                        echo '    <div class="item-saved">';
-                                        echo '        <div class="box-image-saved">';
-                                        echo '            <img src="../car_images/' . $fav['idIden'] . '.png" alt="">';
-                                        echo '        </div>';
-                                        echo '        <div class="info-saved-vehicle">';
-                                        echo '            <h2>' . $fav['nome'] . '</h2>';
-                                        echo '            <div class="price">' . $fav['orcamento'] . '</div>';
-                                        echo '            <div class="desc-saved-vehicle">';
-                                        echo '            </div>';
-                                        echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar=' . $fav['nome'] . '">Ver detalhes</a>';
-                                        echo '        </div>';
-                                        echo '    </div>';
-                                        echo '</div>';
-                                        
-                                    }
+                                foreach ($_SESSION['resultados'] as $fav) {
 
+                                    echo '<div class="swiper-slide">';
+                                    echo '    <div class="item-saved">';
+                                    echo '        <div class="box-image-saved">';
+                                    echo '            <img src="../car_images/' . $fav['idfavorite'] . '.png" alt="">';
+                                    echo '        </div>';
+                                    echo '        <div class="info-saved-vehicle">';
+                                    echo '            <h2>' . $fav['favoriteNAME'] . '</h2>';
+                                    echo '            <div class="desc-saved-vehicle">';
+                                    echo '            </div>';
+                                    echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?Marca=' . $fav['favoriteMARCA'] . '&Modelo=' . $fav['idfavorite'] . '&CodModelo=' . $fav['CodModelo'] . '&Ano=' . $fav['Ano'] . '&codAno=' . $fav['CodAno'] . '">Ver detalhes</a>';
+                                    echo '        </div>';
+                                    echo '    </div>';
+                                    echo '</div>';
 
                                 }
+
+
+
 
                             }
                             echo '</div>';
                             ?>
 
-                            
+
 
                         </div>
                     </div>
                     <div class="right-side-saved">
-                    <div class="card-questionnaire">
-                        <h2>Continua confuso para tomar sua decisão?</h2>
-                        <p>Responder a algumas perguntas rápidas pode mudar isso! Nosso questionário foi projetado para entender suas preferências e necessidades.</p>
-                      <a href="./questionary.php"><button>Questionario de perfil</button></a>
-                      
-                    </div> 
-                </div>
+
+
+                        <?php
+
+                        $sql_code = "SELECT * FROM usuarios WHERE nomeUsuario= '$nomeUSER'";
+                        $sql_query = $userDATA->query($sql_code) or die("Falha na execução do código SQL: " . $userDATA->error);
+
+                        $quantidadeUSER = $sql_query->num_rows;
+
+
+                        if ($quantidadeUSER == 1) {
+                            $_SESSION['usuarios'] = array();
+                            while ($resultuser = $sql_query->fetch_assoc()) {
+                                $_SESSION['usuarios'][] = $resultuser;
+                            }
+                            foreach ($_SESSION['usuarios'] as $userch) {
+                                $tipoUSER = $userch['usuario'];
+                            }
+                            if (empty($tipoUSER)) {
+                                echo '
+                                <div class="card-questionnaire">
+                            <h2>Continua confuso para tomar sua decisão?</h2>
+                            <p>Responder a algumas perguntas rápidas pode mudar isso! Nosso questionário foi projetado
+                                para entender suas preferências e necessidades.</p>
+                            <a href="./questionary.php"><button>Questionario de perfil</button></a>
+
+                        </div>
+                                ';
+                            } else {
+                                echo '
+                            <div class="profile-result">
+                        <div class="card-profile-result">
+                            <div class="headline-profile-result">
+                                <div class="category-profile">
+                                    <img src="../icons/off-road.svg" alt="">
+                                    <p>' . $tipoUSER . '</p>
+                                </div>
+                                <a href="./questionary.php">Editar perfil</a>
+                            </div>
+                            <div class="fixed-text-profile-result">
+                                <p>Identificamos que você possui um perfil ' . $tipoUSER . '! <br>
+                                Esses são os veículos que mais combiam com você</p>
+                            </div>';
+                                echo '   
+                            <div class="area-car-result-profile">
+                                <div class="box-image-result-profile">
+                                    <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
+                                </div>
+                                <div class="desc-car-result-profile">
+                                    <h2>Chevrolet Tracker 1.0 Turbo (A</h2>
+                                    <div class="price">R$ 128.000</div>
+                                    <a href="">Ver detalhes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            
+                            ';
+                            }
+                        }
+
+                        ?>
+
+
+
+
+
+
+                    </div>
                 </div>
             </div>
             </div>
 
-           
+
         </section>
     </main>
     <footer>
@@ -237,10 +261,11 @@ $quantidade = $sql_query2->num_rows;
                 vertical: true,
                 verticalSwiping: true,
                 slidesToShow: 3,
-                nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-dowm.svg"></img></button></div>'
+                nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
+                prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
 
             });
         });
     </script>
-   
+
 </body>

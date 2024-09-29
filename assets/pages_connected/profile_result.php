@@ -10,9 +10,111 @@ $sql_code1 = "SELECT * FROM favorites WHERE favoriteUSER = '$nomeUSER'";
 $sql_query2 = $favoriteDATA->query($sql_code1);
 $quantidade = $sql_query2->num_rows;
 
+// Inicialização das pontuações dos perfis
+$perfil_urbano = 0;
+$perfil_viagens = 0;
+$perfil_sustentavel = 0;
+$perfil_desempenho = 0;
+$perfil_offroad = 0;
+
+// Verificar a finalidade do veículo (peso 3)
+if ($_POST['objetivo'] == 'urbano') { 
+    $perfil_urbano += 3; 
+}
+if ($_POST['objetivo'] == 'viagens') { 
+    $perfil_viagens += 3; 
+}
+if ($_POST['objetivo'] == 'sustentavel') { 
+    $perfil_sustentavel += 3; 
+}
+
+// Frequência de uso (peso 2)
+if ($_POST['freq'] == 'urbano') { 
+    $perfil_urbano += 2; 
+}
+if ($_POST['freq'] == 'viagens') { 
+    $perfil_viagens += 2; 
+}
+
+// Prioridade ao escolher um carro (peso 2)
+if ($_POST['prio'] == 'sustentavel') { 
+    $perfil_sustentavel += 2; 
+}
+if ($_POST['prio'] == 'desempenho') { 
+    $perfil_desempenho += 2; 
+}
+if ($_POST['prio'] == 'urbano') { 
+    $perfil_urbano += 2; 
+}
+
+// Espaço interno (peso 1, pode contribuir para vários perfis)
+if ($_POST['espaco'] == 'viagens') { 
+    $perfil_viagens += 1; 
+    $perfil_desempenho += 1;
+}
+if ($_POST['espaco'] == 'urbano') { 
+    $perfil_urbano += 1; 
+}
+
+// Dificuldade para estacionar (peso 1)
+if ($_POST['tamanho'] == 'urbano') { 
+    $perfil_urbano += 1; 
+}
+if ($_POST['tamanho'] == 'viagens') { 
+    $perfil_viagens += 1; 
+}
+
+// Tecnologia e design (peso 1)
+if ($_POST['tecno'] == 'desempenho') { 
+    $perfil_desempenho += 1; 
+}
+if ($_POST['tecno'] == 'urbano') { 
+    $perfil_urbano += 1; 
+}
+
+// Segurança (peso 1, pode contribuir para vários perfis)
+if ($_POST['seguranca'] == 'desempenho') { 
+    $perfil_desempenho += 1; 
+}
+
+// Estradas não pavimentadas (peso 2)
+if ($_POST['condiestrada'] == 'offroad') { 
+    $perfil_offroad += 2; 
+}
+if ($_POST['condiestrada'] == 'urbano') { 
+    $perfil_urbano += 1; 
+}
+
+// Manutenção (peso 1)
+if ($_POST['freqManu'] == 'sustentavel') { 
+    $perfil_sustentavel += 1; 
+}
+
+// Definir o perfil final com base nas pontuações
+$tipo_usuario = "";
+if ($perfil_urbano >= 5) {
+    $tipo_usuario = "Urbano";
+} elseif ($perfil_viagens >= 5) {
+    $tipo_usuario = "Longas Viagens";
+} elseif ($perfil_sustentavel >= 5) {
+    $tipo_usuario = "Sustentável";
+} elseif ($perfil_desempenho >= 5) {
+    $tipo_usuario = "Desempenho";
+} elseif ($perfil_offroad >= 5) {
+    $tipo_usuario = "Off-Road";
+} else {
+    $tipo_usuario = "Indef";
+}
 
 
+
+$typeUser = "UPDATE usuarios
+SET usuario = '$tipo_usuario'
+WHERE nomeUsuario = '$nomeUSER'";
+$insertUser = $userDATA->query($typeUser);
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -190,12 +292,12 @@ $quantidade = $sql_query2->num_rows;
                             <div class="headline-profile-result">
                                 <div class="category-profile">
                                     <img src="../icons/icon-family.svg" alt="">
-                                    <p>Família</p>
+                                    <p><?php echo $tipo_usuario?></p>
                                 </div>
                                 <a href="./questionary.php">Editar perfil</a>
                             </div>
                             <div class="fixed-text-profile-result">
-                                <p>Identificamos que você possui um perifl família! <br>
+                                <p>Identificamos que você possui um perfil <?php echo $tipo_usuario?>! <br>
                                 Esses são os veículos que mais combiam com você</p>
                             </div>
                             <div class="area-car-result-profile">
