@@ -131,7 +131,7 @@ $quantidade = $sql_query2->num_rows;
                                         SET senha = '$EditSenha'
                                         WHERE email = '$_SESSION[email]';
                                         ";
-                                            $sql_query = $mysqli->query($sql_code);
+                                            $sql_query = $userDATA->query($sql_code);
                                             echo '<p>Senha alterada com sucesso!</p>';
                                         } else {
                                             echo '<p>Senha de confirmação incorreta.</p>';

@@ -176,9 +176,12 @@ $quantidade = $sql_query2->num_rows;
                             <div class="profile-result">
                         <div class="card-profile-result">
                             <div class="headline-profile-result">
-                                <div class="category-profile">
-                                    <img src="../icons/urbano.svg" alt="">
-                                    <p>' . $tipoUSER . '</p>
+                                <div class="category-profile">';
+
+                                echo ' <img src="../icons/' . $tipoUSER . '.svg" alt="">';
+
+
+                                echo '<p>' . $tipoUSER . '</p>
                                 </div>
                                 <a href="./questionary.php">Editar perfil</a>
                             </div>
@@ -186,17 +189,27 @@ $quantidade = $sql_query2->num_rows;
                                 <p>Identificamos que você possui um perfil ' . $tipoUSER . '! <br>
                                 Esses são os veículos que mais combinam com você</p>
                             </div>';
+                                echo '<div class="option-slides">';
+                                foreach ($_SESSION['resultados'] as $fav) {
+
+                                    echo '<div class="swiper-slide">';
+                                    echo '    <div class="item-saved">';
+                                    echo '        <div class="box-image-saved">';
+                                    echo '            <img src="../car_images/' . $fav['idfavorite'] . '.png" alt="">';
+                                    echo '        </div>';
+                                    echo '        <div class="info-saved-vehicle">';
+                                    echo '            <h2>' . $fav['favoriteNAME'] . '</h2>';
+                                    echo '            <div class="desc-saved-vehicle">';
+                                    echo '            </div>';
+                                    echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?Marca=' . $fav['favoriteMARCA'] . '&Modelo=' . $fav['idfavorite'] . '&CodModelo=' . $fav['CodModelo'] . '&Ano=' . $fav['Ano'] . '&codAno=' . $fav['CodAno'] . '">Ver detalhes</a>';
+                                    echo '        </div>';
+                                    echo '    </div>';
+                                    echo '</div>';
+
+                                }
+
                                 echo '   
-                            <div class="area-car-result-profile">
-                                <div class="box-image-result-profile">
-                                    <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
                                 </div>
-                                <div class="desc-car-result-profile">
-                                    <h2>Chevrolet Tracker 1.0 Turbo (A</h2>
-                                    <div class="price">R$ 128.000</div>
-                                    <a href="">Ver detalhes</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                             
@@ -261,6 +274,17 @@ $quantidade = $sql_query2->num_rows;
                 vertical: true,
                 verticalSwiping: true,
                 slidesToShow: 3,
+                nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
+                prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
+
+            });
+        });
+
+        $(document).ready(function () {
+            $('.option-slides').slick({
+                vertical: true,
+                verticalSwiping: true,
+                slidesToShow: 1,
                 nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
                 prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
 

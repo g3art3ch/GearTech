@@ -38,7 +38,7 @@ create table versao (
 	idVersao VARCHAR (200),
     idModelo INT,
     nomeVersao VARCHAR (255),
-	ano year,
+	ano INT(11),
     carroceria VARCHAR (50),
     direcao VARCHAR (50),
     combustivel VARCHAR (50),

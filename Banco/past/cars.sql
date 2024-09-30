@@ -19,6 +19,9 @@
 -- Table structure for table `capacidadecarro`
 --
 
+USE cars;
+
+
 DROP TABLE IF EXISTS `capacidadecarro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
