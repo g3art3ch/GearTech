@@ -120,6 +120,10 @@
     text-align: center;
 }
 
+.card-calculadora-tco button:hover {
+    opacity: 0.8;
+}
+
 .box-car {
     max-width: 500px;
 }
@@ -254,6 +258,16 @@
 .container-button-tco {
     display: flex;
     gap: 10px;
+}
+
+#btn-2 {
+    border: 2px solid var(--secondary);
+    background-color: var(--cardBackground);
+    color: var(--secondary);
+}
+
+#btn-2:hover {
+    opacity: 0.8;
 }
 
 @media (max-width: 480px) {

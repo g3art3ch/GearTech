@@ -73,6 +73,7 @@ $quantidade = $sql_query2->num_rows;
                             </div>
                             <ul class="dropdown-menu">
                                 <li><a href="./user.php">Dados pessoais</a></li>
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
                                 <li><a href="/GearTech/index.php">Sair</a></li>
                             </ul>
                         </li>
@@ -161,8 +162,9 @@ $quantidade = $sql_query2->num_rows;
                         <input type="number" step="0.01" name="ipva_total" required placeholder="R$">
 
                         <div class="container-button-tco">
+                            
+                            <button type="button" onclick="prevStep(1)" id="btn-2">Anterior</button>
                             <button type="button" onclick="nextStep(3)">Próximo</button>
-                            <button type="button" onclick="prevStep(1)">Anterior</button>
                         </div>
 
                     </div>
@@ -187,8 +189,9 @@ $quantidade = $sql_query2->num_rows;
                         <input type="number" step="0.01" name="reparacoes" required placeholder="R$">
 
                         <div class="container-button-tco">
+                        <button type="button" onclick="prevStep(2)" id="btn-2">Anterior</button>
                             <button type="button" onclick="nextStep(4)">Próximo</button>
-                            <button type="button" onclick="prevStep(2)">Anterior</button>
+                        
                         </div>
                     </div>
 
@@ -232,7 +235,7 @@ $quantidade = $sql_query2->num_rows;
                             <input type="number" step="0.01" name="lavagem_valor" required placeholder="R$">
                         </div>
 
-                        <button type="submit">Calcular TCO</button>     
+                        <button type="submit">Calcular TCO</button>
                     </div>
 
                     <div class="card-progress">

@@ -153,7 +153,7 @@ if(isset($_GET['message'])){
                 <div class="car-login">
                         <div class="title-car-login">
                             <h2>Seja bem vindo ao <span>GearTech</span> </h2>
-                            <p>Compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade.</p>
+                            <p>Estamos comprometidos em ajudar você a encontrar o carro ideal para suas necessidades. Faça login para descobrir a opção perfeita. <span><strong>Sua jornada começa agora!</strong></span> </p>
                         </div>
                        
                         <div class="box-car-login">
