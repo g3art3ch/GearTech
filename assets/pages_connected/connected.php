@@ -335,7 +335,7 @@ $quantidade = $sql_query->num_rows;
                             <h2>Facilita sua <br> decisão</h2>
                         </div>
                         <div class="desc-about-us-group">
-                            <p>Através das recomendações personalizadas e comparações detalhadas, tomar decisões
+                            <p>Através das recomendações personalizadas e comparações detalhadas, tomar decisões bem
                                 informadas nunca foi tão simples.</p>
                         </div>
                     </div>
@@ -365,8 +365,8 @@ $quantidade = $sql_query->num_rows;
             <div class="title-contact">
                 <h2>Ficou com alguma dúvida?<br>Entre em contato conosco</h2>
                 <div class="desc-contact-mobile">
-                    <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários, se
-                        enfrentar problemas ou dificuldades utilize nossos meios de contato.</p>
+                    <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários. Se
+                        enfrentar problemas ou dificuldades, utilize nossos meios de contato.</p>
                 </div>
 
             </div>

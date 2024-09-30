@@ -72,6 +72,7 @@ $quantidade = $sql_query2->num_rows;
                             </div>
                             <ul class="dropdown-menu">
                                 <li><a href="./user.php">Dados pessoais</a></li>
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
                                 <li><a href="/GearTech/index.php">Sair</a></li>
                             </ul>
                         </li>
@@ -149,7 +150,7 @@ $quantidade = $sql_query2->num_rows;
                         </div>
 
                         <label>Quantas vezes já levou o seu veículo à vistoria?</label>
-                        <input type="number" name="vistoria_num" required placeholder="R$">
+                        <input type="number" name="vistoria_num" required >
 
                         <div id="vistoria_detalhes" style="display:none;">
                             <label>Custo médio da vistoria para o seu veículo (R$):</label>
@@ -242,7 +243,7 @@ $quantidade = $sql_query2->num_rows;
                         <label>Custo médio em transporte público (R$ por mês):</label>
                         <input type="number" step="0.01" name="transporte_publico" required placeholder="R$">
 
-                        <label>Rendimento líquido (R$ por ano):</label>
+                        <label>Salário líquido (R$ por ano):</label>
                         <input type="number" step="0.01" name="rendimento_anual" required placeholder="R$">
 
                         <label>Quilômetros percorridos por mês:</label>
