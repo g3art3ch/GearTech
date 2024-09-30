@@ -297,6 +297,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                     ?>
                             </div>
                             <div class="box-button-simulation">
+
+                            
                                 <h2><?php echo $setVehicle['Valor']; ?></h2>
                                 <a href="financiamento.php?Val='<?php echo $setVehicle['Valor']; ?>'">Simular financiamento</a>
                             </div>
