@@ -141,7 +141,10 @@
                     </div>
                     <div class="card-error">
                         <div class="error-register">
-                            <h2>Validação de senha</h2>
+                            <div class="title-validacao">
+                            <h2>Sua senha precisa de:</h2>
+                            </div>
+                            
                             <div class="error-message">
 
                                 <!-- <img src="/GearTech/assets/icons/check-register-none.svg"> </img> -->

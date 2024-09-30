@@ -4,6 +4,7 @@
 
 .register .box-login{
     padding: 0;
+    gap: 30px;
 }
 
 .register .card form input {
@@ -165,8 +166,7 @@ section .create-an-account a:hover {
     text-decoration: underline;
 }
 .card-error {
-  
-    height: 160px;
+    width: 40%;
 }
 
 .error-register {
@@ -176,16 +176,17 @@ section .create-an-account a:hover {
     padding: 20px;
     border-radius: 15px;
     box-shadow: var(--shadow);
+    max-width: 400px;
 }
 
 .error-register h2 {
     font-size: 20px;
     padding-bottom: 12px;
 }
+
 .error-message {
     display: flex;
     width: 100%;
-    
 }
 
 .error-message p {
@@ -194,12 +195,16 @@ section .create-an-account a:hover {
     font-size: 15px;
 }
 
+.title-validacao {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+}
 
 .popup-verificacao {
     background-color: #f00;
 }
 
-.card-error {}
 
 @media (max-width: 900px) {
 
@@ -233,6 +238,14 @@ section .create-an-account a:hover {
 
     .create-an-account  {
         padding-bottom: 20px;
+    }
+
+    .error-register {
+        max-width: unset;
+        width: 100%;
+    }
+    .card-error {
+        width: 100%;
     }
 
 }
