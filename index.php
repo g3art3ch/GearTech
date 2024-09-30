@@ -150,6 +150,17 @@ if(isset($_GET['message'])){
         <section class="login">
             <div class="container">
                 <div class="box-login">
+                <div class="car-login">
+                        <div class="title-car-login">
+                            <h2>Seja bem vindo ao <span>GearTech</span> </h2>
+                            <p>Compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade.</p>
+                        </div>
+                       
+                        <div class="box-car-login">
+                            <img src="/GearTech/assets/images/onix.png" alt="">
+                        </div>
+                        
+                    </div>
                     <div class="card">
                         <h2><span>Seja bem vindo!</span><br>Acesse sua conta</h2>
                         <form action="login_process.php" method="POST" id="loginForm">
@@ -164,6 +175,7 @@ if(isset($_GET['message'])){
                             </div>
                         </form>
                     </div>
+                  
                 </div>
             </div>
         </section>

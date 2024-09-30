@@ -97,6 +97,7 @@ $qtdALL = $searchALL->num_rows;
                 </div>
                 <nav>
                     <ul>
+
                         <li><a href="./connected_catalog.php">Catálogo</a></li>
                         <li><a href="./connected_maintenance.php">Manutenções</a></li>
                         <li><a href="./calculadora_tco.php">Calculadora TCO</a></li>
@@ -197,47 +198,7 @@ $qtdALL = $searchALL->num_rows;
 
 
 
-        <div class="pagination">
-            <div class="box-pagination">
-                <?php
-            $lim_pag = 4;
-            $consulta = "SELECT * FROM identificador WHERE Marca = '$marca'";
-            $result = $mysqli->query($consulta);
-            $total_registros = $result->num_rows;
-            $total_paginas = Ceil($total_registros / $limite);
-            $inicio = ((($pagina - $lim_pag) > 1) ? $pagina - $lim_pag : 1);
-            $fim = ((($pagina + $lim_pag) < $total_paginas) ? $pagina + $lim_pag : $total_paginas);
-
-            echo '<p align="center">';
-
-
-            if ($total_registros >= $limite) {
-                if ($pagina > 1) {
-                    echo '<a href="filtered_catalog.php">Página Inicial</a> ';
-                    echo "\t";
-                }
-                if ($total_paginas > 1 && $pagina <= $total_paginas) {
-                    for ($i = $inicio; $i <= $fim; $i++) {
-                        if ($pagina == $i) {
-                            echo " " . $i . " ";
-                        } else {
-                            echo '<a href="filtered_catalog.php?pag=' . $i . '"> ' . $i . '</a>';
-                        }
-                    }
-                }
-                if ($pagina != $total_paginas) {
-                    echo "\t";
-                    echo '<a href="filtered_catalog.php?pag=' . $total_paginas . '"> Última página</a>';
-                }
-            } else
-
-
-
-
-                echo '</p>';
-            unset($_SESSION['resultados']);
-            ?>
-            </div>
+        
         </div>
     </main>
     <footer>

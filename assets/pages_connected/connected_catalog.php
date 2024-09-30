@@ -48,7 +48,7 @@ include('protect.php');
             </div>
             <nav>
                     <ul>
-                        <li><a href="/GearTech/assets/pages_connected/connected.php">Voltar ao início</a></li>
+                        <li><a href="./connected_catalog.php">Catálogo</a></li>
                         <li><a href="./connected_maintenance.php">Manutenções</a></li>
                         <li><a href="./calculadora_tco.php">Calculadora TCO</a></li>
                         <li class="dropdown">

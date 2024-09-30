@@ -27,7 +27,7 @@
                             <img src="../images/logo.svg" alt="" />
                             <h1>Geartech</h1>
                         </a>
-                       
+
                     </div>
                     <div class="menu-opener">
                         <div class="hamburger-icon">
@@ -130,17 +130,6 @@
                             <input type="password" name="senhaC" id="passwordConfirm"
                                 placeholder="Digite sua senha novamente" onkeyup="validatePassword()">
 
-                            <div class="error-register">
-                                <div class="error-message">
-                                    <!-- <img src="/GearTech/assets/icons/check-register-none.svg"> </img> -->
-                                    <p id="length" class="invalid">Pelo menos 8 caracteres.</p><br>
-                                    <p id="uppercase" class="invalid">Pelo menos uma letra maiúscula.</p><br>
-                                    <p id="number" class="invalid">Pelo menos um número.</p><br>
-                                    <p id="special" class="invalid">Pelo menos um caractere especial.</p><br>
-                                    <p id="match" class="invalid">As senhas não coincidem.</p>
-                                </div>
-                            </div>
-
                             <button type="submit" name="submit" class="account btn-register">Entrar</button>
                         </form>
 
@@ -148,6 +137,21 @@
 
 
 
+
+                    </div>
+                    <div class="card-error">
+                        <div class="error-register">
+                            <h2>Validação de senha</h2>
+                            <div class="error-message">
+
+                                <!-- <img src="/GearTech/assets/icons/check-register-none.svg"> </img> -->
+                                <p id="length" class="invalid">Pelo menos 8 caracteres.</p><br>
+                                <p id="uppercase" class="invalid">Pelo menos uma letra maiúscula.</p><br>
+                                <p id="number" class="invalid">Pelo menos um número.</p><br>
+                                <p id="special" class="invalid">Pelo menos um caractere especial.</p><br>
+                                <p id="match" class="invalid">As senhas não coincidem.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -188,86 +192,85 @@
 
     <script src="../js/script.js"></script>
     <script type='text/javascript'>
-        function popup() {
-            Swal.fire({
-                position: "top",
-                icon: "success",
-                title: "Verifique sua caixa de entrada",
-                text: " o link de ativação de cadastro foi enviado para seu e-mail.",
-                showConfirmButton: false,
-                width: "30rem",
-                showCloseButton: true,
-                background: "#fafafa",
-            });
+    function popup() {
+        Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Verifique sua caixa de entrada",
+            text: " o link de ativação de cadastro foi enviado para seu e-mail.",
+            showConfirmButton: false,
+            width: "30rem",
+            showCloseButton: true,
+            background: "#fafafa",
+        });
 
-        }
-        function validatePassword() {
-            var password = document.getElementById("password").value;
-            var passwordConfirm = document.getElementById("passwordConfirm").value;
-            var length = document.getElementById("length");
-            var uppercase = document.getElementById("uppercase");
-            var number = document.getElementById("number");
-            var special = document.getElementById("special");
-            var match = document.getElementById("match");
+    }
 
-            // Verificação de comprimento
-            if (password.length >= 8) {
-                length.className = "valid";
-            } else {
-                length.className = "invalid";
-            }
+    function validatePassword() {
+        var password = document.getElementById("password").value;
+        var passwordConfirm = document.getElementById("passwordConfirm").value;
+        var length = document.getElementById("length");
+        var uppercase = document.getElementById("uppercase");
+        var number = document.getElementById("number");
+        var special = document.getElementById("special");
+        var match = document.getElementById("match");
 
-            // Verificação de letra maiúscula
-            if (/[A-Z]/.test(password)) {
-                uppercase.className = "valid";
-            } else {
-                uppercase.className = "invalid";
-            }
-
-            // Verificação de número
-            if (/[0-9]/.test(password)) {
-                number.className = "valid";
-            } else {
-                number.className = "invalid";
-            }
-
-            // Verificação de caractere especial
-            if (/[\W_]/.test(password)) {
-                special.className = "valid";
-            } else {
-                special.className = "invalid";
-            }
-
-            // Verificação de correspondência das senhas
-            if (password === passwordConfirm && password.length > 0) {
-                match.className = "valid";
-                match.textContent = "As senhas coincidem.";
-            } else {
-                match.className = "invalid";
-                match.textContent = "As senhas não coincidem.";
-            }
+        // Verificação de comprimento
+        if (password.length >= 8) {
+            length.className = "valid";
+        } else {
+            length.className = "invalid";
         }
 
+        // Verificação de letra maiúscula
+        if (/[A-Z]/.test(password)) {
+            uppercase.className = "valid";
+        } else {
+            uppercase.className = "invalid";
+        }
 
+        // Verificação de número
+        if (/[0-9]/.test(password)) {
+            number.className = "valid";
+        } else {
+            number.className = "invalid";
+        }
+
+        // Verificação de caractere especial
+        if (/[\W_]/.test(password)) {
+            special.className = "valid";
+        } else {
+            special.className = "invalid";
+        }
+
+        // Verificação de correspondência das senhas
+        if (password === passwordConfirm && password.length > 0) {
+            match.className = "valid";
+            match.textContent = "As senhas coincidem.";
+        } else {
+            match.className = "invalid";
+            match.textContent = "As senhas não coincidem.";
+        }
+    }
     </script>
 
 </body>
 
 <style>
-    .valid {
-        color: green;
-    }
+.valid {
+    color: green;
+}
 
-    .invalid {
-        color: red;
-    }
+.invalid {
+    color: red;
+}
 
-    .error-message {
-        display: flex;
-        width: 100%;
-        flex-direction: column;
-        font-size: 1px;
-    }
+.error-message {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    font-size: 1px;
+}
 </style>
 
 </html>

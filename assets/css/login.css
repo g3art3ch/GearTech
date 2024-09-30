@@ -16,16 +16,57 @@
 
 section .box-login {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin: 35px 0px;
 }
 
-section .card {
+.car-login {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    max-width: 610px;
+}
+
+.car-login h2 {
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.title-car-login {
+    /* max-width: 587px; */
     width: 100%;
-    max-width: 550px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title-car-login p {
+    color: var(--third);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.7;
+    width: 95%;
+}
+
+.box-car-login {
+    max-width: 552px;
+}
+
+.box-car-login img {
+    width: 90%;
+}
+
+.title-car-login span {
+color: var(--secondary);}
+
+section .card {
     background-color: var(--cardBackground);
     border-radius: 15px;
     box-shadow: var(--shadow);
+    max-width: 515px;
+    width: 100%;
 }
 
 section .card h2 {
@@ -123,10 +164,28 @@ section .create-an-account a {
 section .create-an-account a:hover {
     text-decoration: underline;
 }
+.card-error {
+  
+    height: 160px;
+}
 
+.error-register {
+    flex-direction: column;
+    display: flex;
+    background-color: var(--cardBackground);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.error-register h2 {
+    font-size: 20px;
+    padding-bottom: 12px;
+}
 .error-message {
     display: flex;
     width: 100%;
+    
 }
 
 .error-message p {
@@ -140,7 +199,29 @@ section .create-an-account a:hover {
     background-color: #f00;
 }
 
+.card-error {}
+
 @media (max-width: 900px) {
+
+    .box-login {
+        flex-direction: column;
+    }
+
+    .title-car-login {display: none;
+    }
+
+    .box-car-login {
+        display: none;
+    }
+
+    .title-car-login h2{
+        font-size: 32px;
+    }
+
+    .title-car-login p {
+        font-size: 16px;
+        padding-bottom: 17px;
+    }
 
     .register .card h2 {
         font-size: 20px;
