@@ -170,7 +170,7 @@ $qtdALL = $searchALL->num_rows;
                                         <div class="title-headline">Capacidade de passageiros</div>
                                     </div>
                                     <input type="number" name="capacidade" id=""
-                                        placeholder="Selecione a quantidade de passageiros" min="0" max="4">
+                                        placeholder="Selecione a quantidade de passageiros" min="0" max="5">
                                 </div>
                                 <div class="itens-filter">
                                     <div class="headline">
