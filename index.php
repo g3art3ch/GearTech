@@ -157,10 +157,7 @@ if(isset($_GET['message'])){
                             <input type="mail" name="email" placeholder="Digite seu email">
                             <label for="">Senha</label>
                             <input type="password" name="senha" id="password" placeholder="Digite sua senha">
-                            <div class="forgot-password">
-                                <img src="assets/icons/lock.svg" alt="">
-                                <a href="">Esqueceu sua senha</a>
-                            </div>
+                            
                             <button type="submit" class="account" >Entrar</button>
                             <div class="create-an-account">
                                 <p>Ainda não tem uma conta?<a href="assets/pages/register.php">Crie uma</a></p>

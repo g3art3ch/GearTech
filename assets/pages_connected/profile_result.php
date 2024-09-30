@@ -298,7 +298,7 @@ $insertUser = $userDATA->query($typeUser);
                             </div>
                             <div class="fixed-text-profile-result">
                                 <p>Identificamos que você possui um perfil <?php echo $tipo_usuario?>! <br>
-                                Esses são os veículos que mais combiam com você</p>
+                                Esses são os veículos que mais combinam com você</p>
                             </div>
                             <div class="area-car-result-profile">
                                 <div class="box-image-result-profile">

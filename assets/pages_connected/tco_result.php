@@ -29,10 +29,6 @@ $multas_periodo = $_POST['multas_periodo'];
 $lavagem_valor = $_POST['lavagem_valor'];
 $lavagem_periodo = $_POST['lavagem_periodo'];
 
-$transporte_publico = $_POST['transporte_publico'];
-$rendimento_anual = $_POST['rendimento_anual'];
-$km_mes = $_POST['km_mes'];
-
 // Cálculo da depreciação mensal
 // Supondo que 'data_aquisicao' está no formato 'YYYY-MM'
 $data_aquisicao = $_POST['data_aquisicao'];

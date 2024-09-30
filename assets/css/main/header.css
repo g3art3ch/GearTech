@@ -158,12 +158,6 @@ header .user-enter a {
 }
 
 
-/* @media (min-width: 901px) and (max-width: 1076px) {
-    header nav ul {
-        gap: 10px;
-    }
-} */
-
 @media (width > 900px) {
 
     header {
@@ -201,14 +195,14 @@ header .user-enter a {
         align-items: center;
         flex-direction: row;
         padding-bottom: 0;
-        gap: 35px;
+        gap: 30px;
     }
 
     header ul a {
         font-size: 15px;
         border: 1px solid var(--third);
         border-radius: 3px;
-        padding: 12px 33px;
+        padding: 12px 25px;
     }
 
     header ul a:hover {
@@ -231,9 +225,7 @@ header .user-enter a {
         background-color: transparent;
         color: var(--secondary);
     }
-
 }
-
 
 @media (max-width:900px) {
     .dropdown-menu {

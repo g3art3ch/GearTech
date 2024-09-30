@@ -184,7 +184,7 @@ $quantidade = $sql_query2->num_rows;
                             </div>
                             <div class="fixed-text-profile-result">
                                 <p>Identificamos que você possui um perfil ' . $tipoUSER . '! <br>
-                                Esses são os veículos que mais combiam com você</p>
+                                Esses são os veículos que mais combinam com você</p>
                             </div>';
                                 echo '   
                             <div class="area-car-result-profile">

@@ -149,7 +149,7 @@ $quantidade = $sql_query2->num_rows;
                         </div>
 
                         <label>Quantas vezes já levou o seu veículo à vistoria?</label>
-                        <input type="number" name="vistoria_num" required placeholder="R$">
+                        <input type="number" name="vistoria_num" required>
 
                         <div id="vistoria_detalhes" style="display:none;">
                             <label>Custo médio da vistoria para o seu veículo (R$):</label>
@@ -231,24 +231,7 @@ $quantidade = $sql_query2->num_rows;
                             <input type="number" step="0.01" name="lavagem_valor" required placeholder="R$">
                         </div>
 
-                        <div class="container-button-tco">
-                            <button type="button" onclick="nextStep(5)">Próximo</button>
-                            <button type="button" onclick="prevStep(2)">Anterior</button>
-                        </div>
-                    </div>
-
-                    <div class="card-calculadora-tco" id="step5" style="display:none;">
-                        <h2>Custos Adicionais</h2>
-                        <label>Custo médio em transporte público (R$ por mês):</label>
-                        <input type="number" step="0.01" name="transporte_publico" required placeholder="R$">
-
-                        <label>Rendimento líquido (R$ por ano):</label>
-                        <input type="number" step="0.01" name="rendimento_anual" required placeholder="R$">
-
-                        <label>Quilômetros percorridos por mês:</label>
-                        <input type="number" step="0.01" name="km_mes" required placeholder="R$">
-
-                        <button type="submit">Calcular TCO</button>
+                        <button type="submit">Calcular TCO</button>     
                     </div>
 
                     <div class="card-progress">
@@ -260,12 +243,9 @@ $quantidade = $sql_query2->num_rows;
                                 <div class="step">2</div>
                                 <div class="step">3</div>
                                 <div class="step">4</div>
-                                <div class="step">5</div>
                             </div>
                         </div>
                     </div>
-
-
             </div>
             </form>
         </section>

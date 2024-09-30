@@ -48,8 +48,9 @@ include('protect.php');
                 </div>
                 <nav>
                     <ul>
+                        
+                        <li><a href="/GearTech/assets/pages_connected/connected.php">Voltar ao início</a></li>
                         <li><a href="./connected_catalog.php">Catálogo</a></li>
-                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
                         <li><a href="./calculadora_tco.php">Calculadora TCO</a></li>
                         <li class="dropdown">
                             <div class="user-enter">
@@ -75,7 +76,7 @@ include('protect.php');
                 </div>
                 <div class="grid-maintenance">
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/audi/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.manualpdf.com.br/audi" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/audi.png" alt="">
                             </div>
@@ -83,7 +84,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/bmw/pickmodel" class="card-maintenance">
+                        <a href="" class="card-maintenance">
                             <div class="box-maintenance">
                                 <img src="../logo_images/bmw.png" alt="">
                             </div>
@@ -91,7 +92,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="#" class="card-maintenance" target="_blank">
+                        <a href="https://www.byd.com/br/manual-manutencao-garantia" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/byd.png" alt="">
                             </div>
@@ -99,7 +100,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/chevrolet/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://meu.chevrolet.com.br/saiba-mais-e-suporte/manuais-guias" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/chevrolet.png" alt="">
                             </div>
@@ -107,7 +108,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/citroen/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.citroen.com.br/meu-citroen/manuais.html" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/citroen.png" alt="">
                             </div>
@@ -115,7 +116,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/fiat/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://servicos.fiat.com.br/manuais.html" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/fiat.png" alt="">
                             </div>
@@ -123,7 +124,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/ford/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.ford.com.br/support/owner-manuals/" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/ford.png" alt="">
                             </div>
@@ -131,7 +132,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/honda/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.honda.com.br/pos-venda/motos/manual-e-guia" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/honda.png" alt="">
                             </div>
@@ -139,7 +140,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/hyundai/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.hyundai.com.br/manutencao.html" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/hyundai.png" alt="">
                             </div>
@@ -147,7 +148,15 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/mitsubishi/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.jeep.com.br/proprietarios/manuais.html" class="card-maintenance" target="_blank">
+                            <div class="box-maintenance">
+                                <img src="../logo_images/jeep.png" alt="">
+                            </div>
+                            <p>Jeep</p>
+                        </a>
+                    </div>
+                    <div class="item-maintanance">
+                        <a href="https://www.mitsubishi-motors.ca/en/owners/know-your-mitsubishi/owners-manuals" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/mitsubishi.png" alt="">
                             </div>
@@ -155,7 +164,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/mercedes-benz/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.mercedes-benz-trucks.com.br/caminhoes/servicos-e-pecas/manuais" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/mercedesbenz.png" alt="">
                             </div>
@@ -163,7 +172,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/nissan/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.nissan.com.br/servicos/manuais.html" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/nissan.png" alt="">
                             </div>
@@ -171,7 +180,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/porsche/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://relacionamento.porschebr.com.br/manutencao/" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/porsche.png" alt="">
                             </div>
@@ -179,7 +188,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/peugeot/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://carros.peugeot.com.br/servicos-e-manutencao/manutencao-do-veiculo/manuais.html" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/peugeot.png" alt="">
                             </div>
@@ -187,7 +196,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/renault/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.renault.com.br/manuais.html" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/renault.png" alt="">
                             </div>
@@ -195,7 +204,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/toyota/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.toyota.com.br/manuais" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/toyota.png" alt="">
                             </div>
@@ -203,7 +212,7 @@ include('protect.php');
                         </a>
                     </div>
                     <div class="item-maintanance">
-                        <a href="https://www.startmycar.com/volkswagen/pickmodel" class="card-maintenance" target="_blank">
+                        <a href="https://www.vw.com.br/pt/servicos-e-acessorios/manuais-e-garantia/manuais.html" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
                                 <img src="../logo_images/volkswagen.png" alt="">
                             </div>
