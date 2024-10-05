@@ -35,7 +35,7 @@ $quantidade = $sql_query2->num_rows;
 
 
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
-    <title>Minha conta</title>
+    <title>Seus salvos</title>
 </head>
 
 <body>
@@ -143,89 +143,42 @@ $quantidade = $sql_query2->num_rows;
                         </div>
                     </div>
                     <div class="right-side-saved">
-
-
-                        <?php
-
-                        $sql_code = "SELECT * FROM usuarios WHERE nomeUsuario= '$nomeUSER'";
-                        $sql_query = $userDATA->query($sql_code) or die("Falha na execução do código SQL: " . $userDATA->error);
-
-                        $quantidadeUSER = $sql_query->num_rows;
-
-
-                        if ($quantidadeUSER == 1) {
-                            $_SESSION['usuarios'] = array();
-                            while ($resultuser = $sql_query->fetch_assoc()) {
-                                $_SESSION['usuarios'][] = $resultuser;
-                            }
-                            foreach ($_SESSION['usuarios'] as $userch) {
-                                $tipoUSER = $userch['usuario'];
-                            }
-                            if (empty($tipoUSER)) {
-                                echo '
-                                <div class="card-questionnaire">
-                            <h2>Continua confuso para tomar sua decisão?</h2>
-                            <p>Responder a algumas perguntas rápidas pode mudar isso! Nosso questionário foi projetado
-                                para entender suas preferências e necessidades.</p>
-                            <a href="./questionary.php"><button>Questionario de perfil</button></a>
-
-                        </div>
-                                ';
-                            } else {
-                                echo '
-                            <div class="profile-result">
-                        <div class="card-profile-result">
-                            <div class="headline-profile-result">
-                                <div class="category-profile">';
-
-                                echo ' <img src="../icons/' . $tipoUSER . '.svg" alt="">';
-
-
-                                echo '<p>' . $tipoUSER . '</p>
-                                </div>
-                                <a href="./questionary.php">Editar perfil</a>
+                        <div class="card-comparative-saved">
+                            <div class="title-comparative-saved">
+                                <h2>Faça uma comparação de seus veículos</h2>
+                                <p>Para tomar uma decisão melhor, faça uma comparação entre <span> componentes mecânicos, recursos tecnologicos e custos de manutenção<span></p>
                             </div>
-                            <div class="fixed-text-profile-result">
-                                <p>Identificamos que você possui um perfil ' . $tipoUSER . '! <br>
-                                Esses são os veículos que mais combinam com você</p>
-                            </div>';
-                                echo '<div class="option-slides">';
-                                foreach ($_SESSION['resultados'] as $fav) {
-
-                                    echo '<div class="swiper-slide">';
-                                    echo '    <div class="item-saved">';
-                                    echo '        <div class="box-image-saved">';
-                                    echo '            <img src="../car_images/' . $fav['idfavorite'] . '.png" alt="">';
-                                    echo '        </div>';
-                                    echo '        <div class="info-saved-vehicle">';
-                                    echo '            <h2>' . $fav['favoriteNAME'] . '</h2>';
-                                    echo '            <div class="desc-saved-vehicle">';
-                                    echo '            </div>';
-                                    echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?Marca=' . $fav['favoriteMARCA'] . '&Modelo=' . $fav['idfavorite'] . '&CodModelo=' . $fav['CodModelo'] . '&Ano=' . $fav['Ano'] . '&codAno=' . $fav['CodAno'] . '">Ver detalhes</a>';
-                                    echo '        </div>';
-                                    echo '    </div>';
-                                    echo '</div>';
-
-                                }
-
-                                echo '   
-                                </div>
+                            <div class="box-inputs-comparative">
+                                <form action="./comparative.php">
+                                    <label for="">Tipo de carro</label>
+                                    <select name="" id="">
+                                        <option value="">Selecione a carroceria</option>
+                                        <option value="">Hatch</option>
+                                        <option value="">Sedan</option>
+                                        <option value="">SUV</option>
+                                    </select>
+                                    <label for="">Modelo</label>
+                                    <select name="" id="">
+                                        <option value="">Selecione o modelo</option>
+                                    </select>
+                                    <label for="">Marca</label>
+                                    <select name="" id="">
+                                        <option value="">Selecione a marca</option>
+                                    </select>
+                                    <button type="submit">Compare</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                            
-                            ';
-                            }
-                        }
-
-                        ?>
 
 
 
 
 
 
-                    </div>
+
                 </div>
+            </div>
             </div>
             </div>
 
@@ -269,27 +222,27 @@ $quantidade = $sql_query2->num_rows;
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="../js/slick/slick.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('.save-slides').slick({
-                vertical: true,
-                verticalSwiping: true,
-                slidesToShow: 3,
-                nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
-                prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
+    $(document).ready(function() {
+        $('.save-slides').slick({
+            vertical: true,
+            verticalSwiping: true,
+            slidesToShow: 3,
+            nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
+            prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
 
-            });
         });
+    });
 
-        $(document).ready(function () {
-            $('.option-slides').slick({
-                vertical: true,
-                verticalSwiping: true,
-                slidesToShow: 1,
-                nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
-                prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
+    $(document).ready(function() {
+        $('.option-slides').slick({
+            vertical: true,
+            verticalSwiping: true,
+            slidesToShow: 1,
+            nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
+            prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
 
-            });
         });
+    });
     </script>
 
 </body>

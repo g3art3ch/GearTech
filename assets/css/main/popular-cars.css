@@ -53,6 +53,12 @@
     padding-bottom: 6px;
 }
 
+.box-image-popular-cars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .info-popular-cars {
     display: flex;
     align-items: center;

@@ -68,7 +68,7 @@ $qtdALL = $searchALL->num_rows;
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="stylesheet" href="../css/recomendation.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
-    <title>Seu carro ideal</title>
+    <title>Veículos da marca</title>
 
 </head>
 

@@ -201,7 +201,7 @@ $quantidade = $sql_query2->num_rows;
 
 
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
-    <title>Minha conta</title>
+    <title>Custo do seu veículo</title>
 </head>
 
 <body>
@@ -228,6 +228,7 @@ $quantidade = $sql_query2->num_rows;
                 </div>
                 <nav>
                     <ul>
+                        <li><a href="./connected.php">Voltar à página inicial</a></li>
                         <li><a href="./connected_catalog.php">Catálogo</a></li>
                         <li><a href="./connected_maintenance.php">Manutenções</a></li>
                         <li class="dropdown">
@@ -251,46 +252,51 @@ $quantidade = $sql_query2->num_rows;
             <div class="container">
                 <div class="resultado-tco">
                     <div class="title-resultado-tco">
-                        <h2>Custo para manter o seu veículo de acordo com a nossa <br> <span>calculadora TCO</span> </h2>
+                        <h2>Custo para manter o seu veículo de acordo com a nossa <br> <span>calculadora TCO</span>
+                        </h2>
                     </div>
 
                     <div class="grid-resultado-tco">
-                        <div class="card-resultado" id="custos-fixos-resultado">
+                        <div class="card-resultado">
                             <h2>Custos Fixos (por mês)</h2>
-                            <table >
-                                <tr>
-                                    <td>Depreciação do veículo</td>
-                                    <td>R$ <?= number_format($depreciacao, 2, ',', '.') ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Seguro</td>
-                                    <td>R$ <?= number_format($seguro_mensal, 2, ',', '.') ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Crédito automóvel</td>
-                                    <td>R$ <?= number_format($valor_prestacao, 2, ',', '.') ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Vistoria automóvel</td>
-                                    <td>R$ <?= number_format($vistoria_total, 2, ',', '.') ?></td>
-                                </tr>
-                                <tr>
-                                    <td>IPVA, DPVAT e licenciamento</td>
-                                    <td>R$ <?= number_format($ipva_total / 12, 2, ',', '.') ?></td>
-                                </tr>
-                                <tr>
-                                    <td>50% Manutenção preventiva</td>
-                                    <td>R$ <?= number_format($manutencao_preventiva / 24, 2, ',', '.') ?></td>
-                                </tr>
-                                <tr>
-                                    <td class="table-red"><strong>Total</strong></td>
-                                    <td class="table-red"><strong>R$ <?= number_format($custos_fixos, 2, ',', '.') ?></strong></td>
-                                </tr>
-                            </table>
+                            <div id="custos-fixos-resultado">
+                                <table>
+                                    <tr>
+                                        <td>Depreciação do veículo</td>
+                                        <td>R$ <?= number_format($depreciacao, 2, ',', '.') ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Seguro</td>
+                                        <td>R$ <?= number_format($seguro_mensal, 2, ',', '.') ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Crédito automóvel</td>
+                                        <td>R$ <?= number_format($valor_prestacao, 2, ',', '.') ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vistoria automóvel</td>
+                                        <td>R$ <?= number_format($vistoria_total, 2, ',', '.') ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>IPVA, DPVAT e licenciamento</td>
+                                        <td>R$ <?= number_format($ipva_total / 12, 2, ',', '.') ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>50% Manutenção preventiva</td>
+                                        <td>R$ <?= number_format($manutencao_preventiva / 24, 2, ',', '.') ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-red"><strong>Total</strong></td>
+                                        <td class="table-red"><strong>R$
+                                                <?= number_format($custos_fixos, 2, ',', '.') ?></strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+
                         </div>
                         <div class="card-resultado">
                             <h2>Custos Variáveis (por mês)</h2>
-                            <table >
+                            <table>
                                 <tr>
                                     <td>Combustíveis</td>
                                     <td>R$ <?= number_format($combustivel_mes, 2, ',', '.') ?></td>
@@ -321,13 +327,14 @@ $quantidade = $sql_query2->num_rows;
                                 </tr>
                                 <tr>
                                     <td class="table-red"><strong>Total</strong></td>
-                                    <td class="table-red"><strong>R$ <?= number_format($custos_variaveis, 2, ',', '.') ?></strong></td>
+                                    <td class="table-red"><strong>R$
+                                            <?= number_format($custos_variaveis, 2, ',', '.') ?></strong></td>
                                 </tr>
                             </table>
                         </div>
-                        <div class="card-resultado"  id="total-resultado">
+                        <div class="card-resultado" id="total-resultado">
                             <h2>TOTAL</h2>
-                            <table >
+                            <table>
                                 <tr>
                                     <td>Custos fixos</td>
                                     <td>R$ <?= number_format($custos_fixos, 2, ',', '.') ?></td>
@@ -338,7 +345,8 @@ $quantidade = $sql_query2->num_rows;
                                 </tr>
                                 <tr>
                                     <td class="table-red"><strong>Total TCO</strong></td>
-                                    <td class="table-red"><strong>R$ <?= number_format($total_tco, 2, ',', '.') ?></strong></td>
+                                    <td class="table-red"><strong>R$
+                                            <?= number_format($total_tco, 2, ',', '.') ?></strong></td>
                                 </tr>
                             </table>
                         </div>

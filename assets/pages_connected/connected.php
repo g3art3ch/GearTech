@@ -220,7 +220,7 @@ $qtdALL = $searchALL->num_rows;
             <div class="container">
                 <div class="title-popular-cars">
                     <h2>Carros mais vendidos <br>no ultimo semestre</h2>
-                    <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais veículos lideram as listas de
+                    <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais os veículos que lideram a lista de
                         mais vendidos.</p>
                 </div>
                 <?php
@@ -336,7 +336,7 @@ $qtdALL = $searchALL->num_rows;
                         </div>
                         <div class="desc-about-us-group">
                             <p>Através das recomendações personalizadas e comparações detalhadas, tomar decisões
-                                informadas nunca foi tão simples.</p>
+                                bem informadas nunca foi tão simples.</p>
                         </div>
                     </div>
                 </div>
@@ -376,8 +376,7 @@ $qtdALL = $searchALL->num_rows;
 
                     <div class="left-side-contact">
                         <div class="desc-contact">
-                            <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários,
-                                se enfrentar problemas ou dificuldades utilize nossos meios de contato.
+                            <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários. Se enfrentar problemas ou dificuldades, utilize nossos meios de contato.
                             </p>
                         </div>
 

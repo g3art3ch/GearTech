@@ -97,8 +97,7 @@ $valor_numerico = (float) $valor_limpo;
                             <div class="item-financing">
                                 <div class="campo">
                                     <span class="labelSimula">Valor Financiado:</span>
-                                    <input type="text" name="valor" id="valor" value="<?php echo $valor_numerico; ?>
-"/>
+                                    <input type="text" name="valor" id="valor" value="<?php echo $valor_numerico; ?>"/>
                                 </div>
                             </div>
                             <div class="item-financing">

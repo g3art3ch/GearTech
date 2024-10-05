@@ -193,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
     <link rel="stylesheet" href="../css/catalog.css">
     <link rel="stylesheet" href="../css/car-specification.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
-    <title>Seu carro ideal</title>
+    <title>Especificações</title>
 </head>
 
 <body>

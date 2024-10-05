@@ -35,7 +35,7 @@ $quantidade = $sql_query2->num_rows;
 
 
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
-    <title>Minha conta</title>
+    <title>Calculadora TCO</title>
 </head>
 
 <body>

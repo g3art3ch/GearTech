@@ -1,10 +1,11 @@
 .recomendation {
-    padding: 80px 0px;
+    padding: 60px 0px;
 }
 
 .title-recomendation h2 {
     font-weight: 800;
     padding-bottom: 28px;
+    font-size: 26px;
 }
 
 .grid-recomendation {
