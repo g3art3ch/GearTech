@@ -402,6 +402,7 @@ $quantidade = $sql_query2->num_rows;
             </div>
         </div>
     </footer>
+    <script src="/GearTech/assets/js/script.js"></script>
 </body>
 
 </html>

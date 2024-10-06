@@ -31,7 +31,6 @@ $quantidade = $sql_query2->num_rows;
     <link rel="stylesheet" href="../css/calculadora-tco.css">
     <link rel="stylesheet" href="../js/slick/slick.css">
     <link rel="stylesheet" href="../js/slick/slick-theme.css">
-    <script src="../js/script.js"></script>
 
 
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
@@ -162,7 +161,7 @@ $quantidade = $sql_query2->num_rows;
                         <input type="number" step="0.01" name="ipva_total" required placeholder="R$">
 
                         <div class="container-button-tco">
-                            
+
                             <button type="button" onclick="prevStep(1)" id="btn-2">Anterior</button>
                             <button type="button" onclick="nextStep(3)">Próximo</button>
                         </div>
@@ -189,9 +188,9 @@ $quantidade = $sql_query2->num_rows;
                         <input type="number" step="0.01" name="reparacoes" required placeholder="R$">
 
                         <div class="container-button-tco">
-                        <button type="button" onclick="prevStep(2)" id="btn-2">Anterior</button>
+                            <button type="button" onclick="prevStep(2)" id="btn-2">Anterior</button>
                             <button type="button" onclick="nextStep(4)">Próximo</button>
-                        
+
                         </div>
                     </div>
 
@@ -297,6 +296,21 @@ $quantidade = $sql_query2->num_rows;
 
 
     <script type="text/javascript">
+    // let menuOpener = document.querySelector('.menu-opener');
+    // let nav = document.querySelector('header nav');
+
+    // menuOpener.addEventListener('click', () => {
+    //     if (nav.classList.contains('opened')) {
+    //         nav.classList.remove('opened');
+    //         menuOpener.querySelector('.close-icon').style.display = 'none';
+    //         menuOpener.querySelector('.hamburger-icon').style.display = 'flex';
+    //     } else {
+    //         nav.classList.add('opened');
+    //         menuOpener.querySelector('.close-icon').style.display = 'flex';
+    //         menuOpener.querySelector('.hamburger-icon').style.display = 'none';
+    //     }
+    // });
+
     document.querySelectorAll('input[name="credito"]').forEach(radio => {
         radio.addEventListener('change', function() {
             document.getElementById('credito_detalhes').style.display = this.value === 'sim' ? 'block' :

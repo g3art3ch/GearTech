@@ -29,7 +29,7 @@
                         </a>
 
                     </div>
-                    <div class="menu-opener">
+                    <!-- <div class="menu-opener">
                         <div class="hamburger-icon">
                             <span></span>
                             <span></span>
@@ -39,7 +39,7 @@
                             <span></span>
                             <span></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- <nav>
                     <ul>
