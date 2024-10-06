@@ -43,7 +43,6 @@ html {
 .item-saved {
     border: 1px solid #555;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     border-radius: 5px;
     margin: 20px 0px;
@@ -52,7 +51,9 @@ html {
 
 .item-saved h2 {
     font-size: 18px;
+    margin-left: 20px;
 }
+
 
 .info-saved-vehicle {
     padding: 0px 5px;
@@ -84,6 +85,8 @@ html {
     font-weight: 500;
 }
 
+
+
 .right-side-saved {
     max-width: 562px;
     width: 100%;
@@ -103,7 +106,7 @@ html {
 }
 
 .title-comparative-saved p {
-    font-size: 16.5px;
+    font-size: 16px;
     margin-bottom: 20px;
     line-height: 1.4;
 }
@@ -132,20 +135,28 @@ html {
     outline: none;
 }
 
-.box-inputs-comparative button {
+.button-comparative-saved {
+    max-width: 153px;
+    display: flex;
+}
+
+.button-comparative-saved a {
     background-color: var(--secondary);
     border-radius: 15px;
     border: none;
     font-weight: 700;
     padding: 8px 12px;
-    max-width: 180px;
-    width: 100%;
     font-size: 16px;
     box-shadow: var(--shadow);
     color: #fff;
     text-decoration: none;
     cursor: pointer;
-    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.button-comparative-saved a:hover {
+    opacity: 0.8;
 }
 
 .box-inputs-comparative button:hover {
@@ -160,6 +171,7 @@ html {
 .CheckCarInfo {
     color: var(--third);
     font-weight: 500;
+    margin-left: 20px;
 }
 
 
@@ -175,9 +187,6 @@ html {
         width: 100%;
     }
 
-    .item-saved {
-        justify-content: space-around;
-    }
     
 }
 

@@ -309,63 +309,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                         </div>
 
                         <div class="card-technology-specification none-mobile">
-                            <h2>Conforto e tecnologia</h2>
+                            <h2>Manutenções e revisões</h2>
                             <table>
-                                <tr>
-                                    <td>Ar condicionado</td>
-                                    <td>
-                                        <p>...</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Travas Elétricas</td>
-                                    <td>
-                                        <p>...</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Freio ABS</td>
-                                    <td>
-                                        <p>...</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Multimídia</td>
-                                    <td>
-                                        <p>...</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Câmeras de estacionamento</td>
-                                    <td>
-                                        <p>...</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Airbags frontais</td>
-                                    <td>
-                                        <p>...</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Apoio de braço</td>
-                                    <td>
-                                        <p>...</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Retrovisores elétricos</td>
-                                    <td>
-                                        <p>...</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Teto Solar</td>
-                                    <td>
-                                        <p>...</p>
-                                    </td>
-                                </tr>
-                            </table>
+                            <tr>
+                                <td>Seguro</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>IPVA</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Desvalorização</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Garantia</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Revisões até 60.000 km</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consumo urbano (Gasolina)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consumo rodoviário (Gasolina)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consumo urbano (Álcool)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consumo rodoviário (Álcool)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                        </table>
                         </div>
                     </div>
                     <div class="right-side-specification">
@@ -385,32 +385,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Tipo de Carroceria</td>
+                                    <td>Carroceria</td>
                                     <td>
                                         <p>...</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Capacidade de passageiros</td>
+                                    <td>Ano</td>
                                     <td>
                                         <p>...</p>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td>Consumo</td>
+                                    <td>Preço</td>
                                     <td>
                                         <p>...</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Motorização</td>
+                                    <td>Combustível</td>
                                     <td>
                                         <p>...</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Transmissão</td>
+                                    <td>Direção </td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Câmbio</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Marchas</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cilindros</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Peso/Potência</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Velocidade máxima</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Porta-malas</td>
                                     <td>
                                         <p>...</p>
                                     </td>
@@ -422,79 +458,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Quantidade de portas</td>
+                                    <td>Lugares</td>
                                     <td>
                                         <p>...</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Capacidade de Carga</td>
+                                    <td>Portas</td>
                                     <td>
                                         <p>...</p>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Estilo de Direção</td>
-                                    <td>
-                                        <p>...</p>
-                                    </td>
-                                </tr>
+                                
                             </table>
                         </div>
                     </div>
                     <div class="card-technology-specification flex-mobile">
-                        <h2>Conforto e tecnologia</h2>
+                        <h2>Manutenções e revisões</h2>
                         <table>
                             <tr>
-                                <td>Ar condicionado</td>
+                                <td>Seguro</td>
                                 <td>
                                     <p>...</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Travas Elétricas</td>
+                                <td>IPVA</td>
                                 <td>
                                     <p>...</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Freio ABS</td>
+                                <td>Desvalorização</td>
                                 <td>
                                     <p>...</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Multimídia</td>
+                                <td>Garantia</td>
                                 <td>
                                     <p>...</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Câmeras de estacionamento</td>
+                                <td>Revisões até 60.000 km</td>
                                 <td>
                                     <p>...</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Airbags frontais</td>
+                                <td>Consumo urbano (Gasolina)</td>
                                 <td>
                                     <p>...</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Apoio de braço</td>
+                                <td>Consumo rodoviário (Gasolina)</td>
                                 <td>
                                     <p>...</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Retrovisores elétricos</td>
+                                <td>Consumo urbano (Álcool)</td>
                                 <td>
                                     <p>...</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Teto Solar</td>
+                                <td>Consumo rodoviário (Álcool)</td>
                                 <td>
                                     <p>...</p>
                                 </td>

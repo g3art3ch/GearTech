@@ -29,6 +29,7 @@ $quantidade = $sql_query2->num_rows;
     <link rel="stylesheet" href="../css/result-comparative.css">
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="shortcut icon" href="/GearTech/assets/icons/logo.ico" type="image/x-icon">
+    <title>Resultado do comparativo</title>
 </head>
 
 <body>
@@ -86,7 +87,8 @@ $quantidade = $sql_query2->num_rows;
                         <div class="item-result-comparative">
                             <div class="card-image-result-comparative">
                                 <div class="box-image-result-comparative">
-                                    <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
+                                    <img src="../car_images/35196.png" alt="">
+                                    <h2>320iA 2.0 TB M Sport</h2>
                                 </div>
                             </div>
 
@@ -97,42 +99,57 @@ $quantidade = $sql_query2->num_rows;
                                     <input type="text">
                                     <label for="">Modelo</label>
                                     <input type="text">
-                                    <label for="">Tipo de carroceria</label>
+                                    <label for="">Carroceria</label>
                                     <input type="text">
-                                    <label for="">Consumo</label>
+                                    <label for="">Ano</label>
                                     <input type="text">
-                                    <label for="">Motorização</label>
+                                    <label for="">Preço</label>
                                     <input type="text">
-                                    <label for="">Transmissão</label>
+                                    <label for="">Combustível</label>
+                                    <input type="text">
+                                    <label for="">Direção</label>
+                                    <input type="text">
+                                    <label for="">Câmbio</label>
+                                    <input type="text">
+                                    <label for="">Marchas</label>
+                                    <input type="text">
+                                    <label for="">Cilindros</label>
+                                    <input type="text">
+                                    <label for="">Peso/Potência</label>
+                                    <input type="text">
+                                    <label for="">Velocidade máxima</label>
+                                    <input type="text">
+                                    <label for="">Porta-malas</label>
                                     <input type="text">
                                     <label for="">Tração</label>
                                     <input type="text">
-                                    <label for="">Capacidade de carga</label>
+                                    <label for="">Lugares</label>
                                     <input type="text">
-                                    <label for="">Estilo de direção</label>
+                                    <label for="">Portas</label>
                                     <input type="text">
                                 </div>
                             </div>
+                            
                             <div class="card-table-result-comparative">
-                                <h2>Conforto e tecnologia</h2>
+                                <h2>Manutenções e revisões</h2>
                                 <div class="componentes-table-result-comparative">
-                                    <label for="">Ar-condicionado</label>
+                                 <label for="">Seguro</label>
                                     <input type="text">
-                                    <label for="">Travas Elétricas</label>
+                                    <label for="">IPVA</label>
                                     <input type="text">
-                                    <label for="">Freio ABS</label>
+                                    <label for="">Desvalorização</label>
                                     <input type="text">
-                                    <label for="">Multimídia</label>
+                                    <label for="">Garantia</label>
                                     <input type="text">
-                                    <label for="">Câmeras de estacionamento</label>
+                                    <label for="">Revisões até 60.000 km</label>
                                     <input type="text">
-                                    <label for="">Airbags frontais</label>
+                                    <label for="">Consumo urbano (Gasolina)</label>
                                     <input type="text">
-                                    <label for="">Apoio de braço</label>
+                                    <label for="">Consumo rodoviário (Gasolina)</label>
                                     <input type="text">
-                                    <label for="">Retrovisores elétricos</label>
+                                    <label for="">Consumo urbano (Álcool)</label>
                                     <input type="text">
-                                    <label for="">Teto solar</label>
+                                    <label for="">Consumo rodoviário (Álcool)</label>
                                     <input type="text">
                                 </div>
                             </div>
@@ -140,53 +157,69 @@ $quantidade = $sql_query2->num_rows;
                         <div class="item-result-comparative">
                             <div class="card-image-result-comparative">
                                 <div class="box-image-result-comparative">
-                                    <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
+                                    <img src="../car_images/34389.png" alt="">
+                                    <h2>Audi A3 Sed.Perf. Black</h2>
                                 </div>
                             </div>
 
                             <div class="card-table-result-comparative">
                                 <h2>Componentes mecânicos</h2>
                                 <div class="componentes-table-result-comparative">
-                                    <label for="">Marca</label>
+                                <label for="">Marca</label>
                                     <input type="text">
                                     <label for="">Modelo</label>
                                     <input type="text">
-                                    <label for="">Tipo de carroceria</label>
+                                    <label for="">Carroceria</label>
                                     <input type="text">
-                                    <label for="">Consumo</label>
+                                    <label for="">Ano</label>
                                     <input type="text">
-                                    <label for="">Motorização</label>
+                                    <label for="">Preço</label>
                                     <input type="text">
-                                    <label for="">Transmissão</label>
+                                    <label for="">Combustível</label>
+                                    <input type="text">
+                                    <label for="">Direção</label>
+                                    <input type="text">
+                                    <label for="">Câmbio</label>
+                                    <input type="text">
+                                    <label for="">Marchas</label>
+                                    <input type="text">
+                                    <label for="">Cilindros</label>
+                                    <input type="text">
+                                    <label for="">Peso/Potência</label>
+                                    <input type="text">
+                                    <label for="">Velocidade máxima</label>
+                                    <input type="text">
+                                    <label for="">Porta-malas</label>
                                     <input type="text">
                                     <label for="">Tração</label>
                                     <input type="text">
-                                    <label for="">Capacidade de carga</label>
+                                    <label for="">Lugares</label>
                                     <input type="text">
-                                    <label for="">Estilo de direção</label>
+                                    <label for="">Portas</label>
                                     <input type="text">
                                 </div>
                             </div>
+
                             <div class="card-table-result-comparative">
-                                <h2>Conforto e tecnologia</h2>
+                                <h2>Manutenções e revisões</h2>
                                 <div class="componentes-table-result-comparative">
-                                    <label for="">Ar-condicionado</label>
+                                     <label for="">Seguro</label>
                                     <input type="text">
-                                    <label for="">Travas Elétricas</label>
+                                    <label for="">IPVA</label>
                                     <input type="text">
-                                    <label for="">Freio ABS</label>
+                                    <label for="">Desvalorização</label>
                                     <input type="text">
-                                    <label for="">Multimídia</label>
+                                    <label for="">Garantia</label>
                                     <input type="text">
-                                    <label for="">Câmeras de estacionamento</label>
+                                    <label for="">Revisões até 60.000 km</label>
                                     <input type="text">
-                                    <label for="">Airbags frontais</label>
+                                    <label for="">Consumo urbano (Gasolina)</label>
                                     <input type="text">
-                                    <label for="">Apoio de braço</label>
+                                    <label for="">Consumo rodoviário (Gasolina)</label>
                                     <input type="text">
-                                    <label for="">Retrovisores elétricos</label>
+                                    <label for="">Consumo urbano (Álcool)</label>
                                     <input type="text">
-                                    <label for="">Teto solar</label>
+                                    <label for="">Consumo rodoviário (Álcool)</label>
                                     <input type="text">
                                 </div>
                             </div>
@@ -194,53 +227,69 @@ $quantidade = $sql_query2->num_rows;
                         <div class="item-result-comparative">
                             <div class="card-image-result-comparative">
                                 <div class="box-image-result-comparative">
-                                    <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
+                                    <img src="../car_images/36338.png" alt="">
+                                    <h2>BYD Seal</h2>
                                 </div>
                             </div>
 
                             <div class="card-table-result-comparative">
                                 <h2>Componentes mecânicos</h2>
                                 <div class="componentes-table-result-comparative">
-                                    <label for="">Marca</label>
+                                <label for="">Marca</label>
                                     <input type="text">
                                     <label for="">Modelo</label>
                                     <input type="text">
-                                    <label for="">Tipo de carroceria</label>
+                                    <label for="">Carroceria</label>
                                     <input type="text">
-                                    <label for="">Consumo</label>
+                                    <label for="">Ano</label>
                                     <input type="text">
-                                    <label for="">Motorização</label>
+                                    <label for="">Preço</label>
                                     <input type="text">
-                                    <label for="">Transmissão</label>
+                                    <label for="">Combustível</label>
+                                    <input type="text">
+                                    <label for="">Direção</label>
+                                    <input type="text">
+                                    <label for="">Câmbio</label>
+                                    <input type="text">
+                                    <label for="">Marchas</label>
+                                    <input type="text">
+                                    <label for="">Cilindros</label>
+                                    <input type="text">
+                                    <label for="">Peso/Potência</label>
+                                    <input type="text">
+                                    <label for="">Velocidade máxima</label>
+                                    <input type="text">
+                                    <label for="">Porta-malas</label>
                                     <input type="text">
                                     <label for="">Tração</label>
                                     <input type="text">
-                                    <label for="">Capacidade de carga</label>
+                                    <label for="">Lugares</label>
                                     <input type="text">
-                                    <label for="">Estilo de direção</label>
+                                    <label for="">Portas</label>
                                     <input type="text">
                                 </div>
                             </div>
+
                             <div class="card-table-result-comparative">
-                                <h2>Conforto e tecnologia</h2>
+                                <h2>Manutenções e revisões</h2>
                                 <div class="componentes-table-result-comparative">
-                                    <label for="">Ar-condicionado</label>
+                                <label for="">Seguro</label>
                                     <input type="text">
-                                    <label for="">Travas Elétricas</label>
+                                    <label for="">IPVA</label>
                                     <input type="text">
-                                    <label for="">Freio ABS</label>
+                                    <label for="">Desvalorização</label>
                                     <input type="text">
-                                    <label for="">Multimídia</label>
+                                    <label for="">Garantia</label>
                                     <input type="text">
-                                    <label for="">Câmeras de estacionamento</label>
+                                    <label for="">Revisões até 60.000 km</label>
                                     <input type="text">
-                                    <label for="">Airbags frontais</label>
+                                    <label for="">Consumo urbano (Gasolina)</label>
                                     <input type="text">
-                                    <label for="">Apoio de braço</label>
+                                    <label for="">Consumo rodoviário (Gasolina)</label>
                                     <input type="text">
-                                    <label for="">Retrovisores elétricos</label>
+                                    <label for="">Consumo urbano (Álcool)</label>
                                     <input type="text">
-                                    <label for="">Teto solar</label>
+                                    <label for="">Consumo rodoviário (Álcool)</label>
                                     <input type="text">
                                 </div>
                             </div>
@@ -248,57 +297,74 @@ $quantidade = $sql_query2->num_rows;
                         <div class="item-result-comparative">
                             <div class="card-image-result-comparative">
                                 <div class="box-image-result-comparative">
-                                    <img src="../car_images/Chevrolet_Tracker_1.0_Turbo_(Aut)_2024.png" alt="">
+                                    <img src="../car_images/36673.png" alt="">
+                                    <h2>Chevrolet Camaro SS</h2>
                                 </div>
                             </div>
 
                             <div class="card-table-result-comparative">
                                 <h2>Componentes mecânicos</h2>
                                 <div class="componentes-table-result-comparative">
-                                    <label for="">Marca</label>
+                                <label for="">Marca</label>
                                     <input type="text">
                                     <label for="">Modelo</label>
                                     <input type="text">
-                                    <label for="">Tipo de carroceria</label>
+                                    <label for="">Carroceria</label>
                                     <input type="text">
-                                    <label for="">Consumo</label>
+                                    <label for="">Ano</label>
                                     <input type="text">
-                                    <label for="">Motorização</label>
+                                    <label for="">Preço</label>
                                     <input type="text">
-                                    <label for="">Transmissão</label>
+                                    <label for="">Combustível</label>
+                                    <input type="text">
+                                    <label for="">Direção</label>
+                                    <input type="text">
+                                    <label for="">Câmbio</label>
+                                    <input type="text">
+                                    <label for="">Marchas</label>
+                                    <input type="text">
+                                    <label for="">Cilindros</label>
+                                    <input type="text">
+                                    <label for="">Peso/Potência</label>
+                                    <input type="text">
+                                    <label for="">Velocidade máxima</label>
+                                    <input type="text">
+                                    <label for="">Porta-malas</label>
                                     <input type="text">
                                     <label for="">Tração</label>
                                     <input type="text">
-                                    <label for="">Capacidade de carga</label>
+                                    <label for="">Lugares</label>
                                     <input type="text">
-                                    <label for="">Estilo de direção</label>
+                                    <label for="">Portas</label>
                                     <input type="text">
                                 </div>
                             </div>
+
                             <div class="card-table-result-comparative">
-                                <h2>Conforto e tecnologia</h2>
+                                <h2>Manutenções e revisões</h2>
                                 <div class="componentes-table-result-comparative">
-                                    <label for="">Ar-condicionado</label>
+                                    <label for="">Seguro</label>
                                     <input type="text">
-                                    <label for="">Travas Elétricas</label>
+                                    <label for="">IPVA</label>
                                     <input type="text">
-                                    <label for="">Freio ABS</label>
+                                    <label for="">Desvalorização</label>
                                     <input type="text">
-                                    <label for="">Multimídia</label>
+                                    <label for="">Garantia</label>
                                     <input type="text">
-                                    <label for="">Câmeras de estacionamento</label>
+                                    <label for="">Revisões até 60.000 km</label>
                                     <input type="text">
-                                    <label for="">Airbags frontais</label>
+                                    <label for="">Consumo urbano (Gasolina)</label>
                                     <input type="text">
-                                    <label for="">Apoio de braço</label>
+                                    <label for="">Consumo rodoviário (Gasolina)</label>
                                     <input type="text">
-                                    <label for="">Retrovisores elétricos</label>
+                                    <label for="">Consumo urbano (Álcool)</label>
                                     <input type="text">
-                                    <label for="">Teto solar</label>
+                                    <label for="">Consumo rodoviário (Álcool)</label>
                                     <input type="text">
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
