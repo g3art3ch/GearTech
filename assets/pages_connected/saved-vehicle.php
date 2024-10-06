@@ -10,7 +10,15 @@ $sql_code1 = "SELECT * FROM favorites WHERE favoriteUSER = '$nomeUSER'";
 $sql_query2 = $favoriteDATA->query($sql_code1);
 $quantidade = $sql_query2->num_rows;
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $carroceria = $_POST["carroceria"];
+    $marca = $_POST["marca"];
+    $modelo = $_POST["modelo"];
 
+    // Aqui você pode utilizar esses valores conforme necessário
+    echo "Carroceria: " . $carroceria . ", Marca: " . $marca . ", Modelo: " . $modelo;
+    exit;
+}
 
 ?>
 
@@ -146,32 +154,57 @@ $quantidade = $sql_query2->num_rows;
                         <div class="card-comparative-saved">
                             <div class="title-comparative-saved">
                                 <h2>Faça uma comparação de seus veículos</h2>
-                                <p>Para tomar uma decisão melhor, faça uma comparação entre <span> componentes mecânicos, recursos tecnologicos e custos de manutenção<span></p>
+                                <p>Para tomar uma decisão melhor, faça uma comparação entre <span> componentes
+                                        mecânicos, recursos tecnologicos e custos de manutenção<span></p>
                             </div>
                             <div class="box-inputs-comparative">
-                                <form action="./comparative.php">
-                                    <label for="">Tipo de carro</label>
-                                    <select name="" id="">
+                                <form id="compareForm">
+                                    <label for="carroceria">Tipo de carro</label>
+                                    <select name="carroceria" id="carroceria">
                                         <option value="">Selecione a carroceria</option>
-                                        <option value="">Hatch</option>
-                                        <option value="">Sedan</option>
-                                        <option value="">SUV</option>
+                                        <option value="1">1</option>
+                                        <!-- Adicione as opções aqui -->
                                     </select>
-                                    <label for="">Modelo</label>
-                                    <select name="" id="">
-                                        <option value="">Selecione o modelo</option>
-                                    </select>
-                                    <label for="">Marca</label>
-                                    <select name="" id="">
+
+                                    <label for="marca">Marca</label>
+                                    <select name="marca" id="marca">
                                         <option value="">Selecione a marca</option>
+                                        <option value="1">1</option>
+                                        <!-- Adicione as opções aqui -->
                                     </select>
+
+                                    <label for="modelo">Modelo</label>
+                                    <select name="modelo" id="modelo">
+                                        <option value="">Selecione o modelo</option>
+                                        <option value="1">1</option>
+                                        <!-- Adicione as opções aqui -->
+                                    </select>
+
                                     <button type="submit">Compare</button>
                                 </form>
                             </div>
                         </div>
                     </div>
 
+                    <script>
+                        document.getElementById('compareForm').addEventListener('submit', function (event) {
+                            event.preventDefault(); // Evita o envio padrão do formulário
 
+                            const carroceria = document.getElementById('carroceria').value;
+                            const marca = document.getElementById('marca').value;
+                            const modelo = document.getElementById('modelo').value;
+
+                            const xhr = new XMLHttpRequest();
+                            xhr.open('POST', '', true); // O mesmo arquivo PHP processará o formulário
+                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                    console.log(xhr.responseText);
+                                }
+                            };
+                            xhr.send('carroceria=' + carroceria + '&marca=' + marca + '&modelo=' + modelo);
+                        });
+                    </script>
 
 
 
@@ -222,27 +255,27 @@ $quantidade = $sql_query2->num_rows;
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="../js/slick/slick.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('.save-slides').slick({
-            vertical: true,
-            verticalSwiping: true,
-            slidesToShow: 3,
-            nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
-            prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
+        $(document).ready(function () {
+            $('.save-slides').slick({
+                vertical: true,
+                verticalSwiping: true,
+                slidesToShow: 3,
+                nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
+                prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
 
+            });
         });
-    });
 
-    $(document).ready(function() {
-        $('.option-slides').slick({
-            vertical: true,
-            verticalSwiping: true,
-            slidesToShow: 1,
-            nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
-            prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
+        $(document).ready(function () {
+            $('.option-slides').slick({
+                vertical: true,
+                verticalSwiping: true,
+                slidesToShow: 1,
+                nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
+                prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
 
+            });
         });
-    });
     </script>
 
 </body>
