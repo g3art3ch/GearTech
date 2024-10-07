@@ -41,7 +41,7 @@
                         </a>
                        
                     </div>
-                    <div class="menu-opener">
+                    <!-- <div class="menu-opener">
                         <div class="hamburger-icon">
                             <span></span>
                             <span></span>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <nav>
+                <nav> -->
                     <!-- <ul>
                         <li><a href="assets/pages/catalog.php">Catálogo</a></li>
                         <li><a href="">Manutenções</a></li>

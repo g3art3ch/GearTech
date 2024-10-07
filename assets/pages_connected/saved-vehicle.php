@@ -39,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="stylesheet" href="../js/slick/slick.css">
     <link rel="stylesheet" href="../js/slick/slick-theme.css">
-    <script src="../js/script.js"></script>
 
 
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">

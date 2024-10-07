@@ -210,9 +210,12 @@ section .create-an-account a:hover {
 
     .box-login {
         flex-direction: column;
+        max-width: unset;
+        width: 100%;
     }
 
-    .title-car-login {display: none;
+    .title-car-login {
+        display: none;
     }
 
     .box-car-login {
@@ -246,6 +249,15 @@ section .create-an-account a:hover {
     }
     .card-error {
         width: 100%;
+    }
+
+    .car-login {
+        display: flex;
+        justify-content: center;
+    }
+    
+    section .card  {
+        max-width: unset;
     }
 
 }
