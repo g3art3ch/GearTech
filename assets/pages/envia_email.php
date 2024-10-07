@@ -40,7 +40,7 @@ $mail->Port = 587;
     
     Clique no Botão abaixo: <br><br>
     
-    <a href='http://localhost:8080/GearTech/assets/pages/ativacao.php?hash=$hash' style = '
+    <a href='http://localhost:80/GearTech/assets/pages/ativacao.php?hash=$hash' style = '
     
     background-color: #007bff;
     border: none;
@@ -62,7 +62,7 @@ $mail->Port = 587;
     echo "Falha ao enviar o link de ativação! Error: {$mail->ErrorInfo}";
 }
 
-header("Location: login.php?message=O link de ativação de cadastro foi enviado para seu e-mail. Favor verificar sua caixa de entrada.");
+header("Location: login.php?message=Confirm");
 
 
 

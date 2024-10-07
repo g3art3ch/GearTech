@@ -23,7 +23,7 @@
     margin-top: 34px;
 }
 
-.box-filter {
+.card-filter form {
     padding: 40px;
 }
 
@@ -82,9 +82,25 @@
     font-size: 18px;
 }
 
+.advanced-search {
+    margin-top: -30px;
+    padding: 2px 40px 30px;
+}
+
+.advanced-search a {
+    color: var(--third);
+    font-weight: 500;
+}
+
+.advanced-search a:hover {
+    opacity: 0.8;
+}
+
 .itens-filter button:hover {
     opacity: 0.8;
 }
+
+
 
 @media (max-width: 900px) {
   
@@ -113,6 +129,10 @@
 }
 
 @media (max-width: 480px) {
+
+    .card-filter form {
+        padding: 25px;
+    }
 
     .filter {
         padding-top: 10px;
@@ -143,6 +163,10 @@
     
     .itens-filter button {
         margin-top: 10px;
+    }
+
+    .user-enter img {
+        margin-right: 7px;
     }
     
 

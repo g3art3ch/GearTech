@@ -1,18 +1,23 @@
-<?php 
+<?php
 include('protect.php');
 include('connection_favorite.php');
-include('connection_cars.php');
 
 $sql_code1 = "SELECT * FROM favorites";
 $sql_query2 = $favoriteDATA->query($sql_code1);
 $quantidade = $sql_query2->num_rows;
 
+
+$distMARCA = "SELECT DISTINCT nomeMarca FROM favorites;";
+$ckMARCA = $favoriteDATA->query($distMARCA);
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,205 +31,133 @@ $quantidade = $sql_query2->num_rows;
     <link rel="shortcut icon" href="/GearTech/assets/icons/logo.ico" type="image/x-icon">
     <title>Comparativo</title>
 </head>
+
 <body>
-<main>
-    <div class="container">
-        <header>
-        <div class="area">
-            <div class="logo">
-                <a href="/GearTech/assets/pages_connected/connected.php">
-                    <img src="/GearTech/assets/images/logo.svg" alt="Logo" />    
-                </a>
-            </div>
-            <div class="menu-opener">
-                <div class="hamburger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="close-icon">
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
-                <li><a href="">Manutenções</a></li>
-                <li>
-                    <div class="user-enter">
-                        <a href="user.php">
-                            <img src="/GearTech/assets/icons/user.svg" alt="Usuário">
-                            <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+    <main>
+        <div class="container">
+            <header>
+                <div class="area">
+                    <div class="logo">
+                        <a href="/GearTech/assets/pages_connected/connected.php">
+                            <img src="/GearTech/assets/images/logo.svg" alt="Logo" />
                         </a>
                     </div>
-    
-                </li>
-            </ul>
-        </nav>
-    </header>
-    </div>
-    <script>
-        function enviarMarca(marca, carCOUNT) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "process_brand.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById('marcaSelecionadaDisplay-' + carCOUNT).innerHTML = "<p>Marca selecionada: " + marca + "</p>";
-                }
-            };
-            xhr.send("marca=" + marca + "&carCOUNT=" + carCOUNT);
+                    <div class="menu-opener">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="close-icon">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
 
-            // Armazene o valor da marca no localStorage
-            localStorage.setItem('selectedBrand', marca);
-
-            // Recarregue a página
-            location.reload();
-        }
-        
-        </script>
-    <section class="comparative">
-        <div class="container">
-            <div class="title-comparative">
-                <h2>Comparativo de seus favoritos</h2>
-            </div>
-
-            <div class="card-comparative">
-                <div class="grid-comparative">
-                    <?php
-                    
-                if ($quantidade > 1) {
-                                if (!isset($_SESSION)) {
-                                    session_start();
-                                }
-                                $_SESSION['resultados'] = array();
-                                while ($result = $sql_query2->fetch_assoc()) {
-                                    $_SESSION['resultados'][] = $result;
-                                }
-
-
-                                $carCOUNT = 1;
-
-                                foreach ($_SESSION['resultados'] as $results) {
-                                    $consultNAME = $results['favoriteNAME'];
-
-
-                                    $sql_code = "SELECT 
-    nc.nome,
-    fc.estilo,
-    oc.orcamento,
-    tc.combustivel,
-    cc.capacidade,
-    uc.tipoUso,
-    iden.idIden,
-    iden.urlCarro,
-    iden.Marca
-FROM 
-    nomeCarro nc
-INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
-INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
-INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
-INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
-INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
-INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome  
-WHERE nome = '$consultNAME'";
-
-$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-$quantidade1 = $sql_query->num_rows;
-$_SESSION['FAVORITES'] = array();
-while ($resultFAVORITES = $sql_query->fetch_assoc()) {
-    $_SESSION['FAVORITES'][] = $resultFAVORITES;
-}
-
-
-echo '<div class="item-comparative">';
-                foreach ($_SESSION['FAVORITES'] as $fav) {
-                    
-                    echo '<h2>' . $carCOUNT . '</h2>';
-    $carCOUNT++;
-
-    // Select de marca com ID único
-    echo '<label>Marca</label>';
-    echo '<select name="marcaSelecionada[]" id="marcaSelect-' . $carCOUNT . '" onchange="enviarMarca(this.value, ' . $carCOUNT . ')">'; 
-    foreach($_SESSION['resultados'] as $resultados){
-        echo '<option value="' . $resultados['favoriteMARCA'] . '">' . $resultados['favoriteMARCA'] . '</option>';
-    }
-    echo '</select>';
-                    
-    echo '<div id="marcaSelecionadaDisplay-' . $carCOUNT . '">';
-    if (isset($_SESSION['marcaSelecionada'][$carCOUNT])) {
-        $marcaSelecionada = $_SESSION['marcaSelecionada'][$carCOUNT];
-        $searchBRAND = "SELECT * FROM favorites WHERE favoriteMARCA = '$marcaSelecionada'";
-        $queryBRAND = $favoriteDATA->query($searchBRAND);
-        $_SESSION['FILTEREDfav'] = array();
-        while ($resultBRAND = $queryBRAND->fetch_assoc()) {
-        $_SESSION['FILTEREDfav'][] = $resultBRAND;
-}
-
-    }
-    echo '</div>';
-
-                    // add foreach com opcoes de modelo
-                    echo '    <label for="">Modelo</label>';
-                    echo '    <select name="" id="">';
-                    
-                    foreach($_SESSION['FILTEREDfav'] as $Ffav){
-                    echo '        <option value="">'. $Ffav['favoriteNAME'] .'</option>';
-                }
-                     echo '    </select>';
-                
-
-
-                    //add foreach com opcoes de ano
-                    // foreach(){
-                    // echo '    <label for="">Ano</label>';
-                    // echo '    <select name="" id="">';
-                    // echo '    <option value=""></option>';
-                    // echo '</select>';
-                    // }
-
-                    echo '</div>';
-
-                                }
-
-                            }
-                            echo '<!--formar de forma que o botão tenha a posição fixa embaixo, ou fixa em outro lugar, se a qtd de carros < 4, a disposicao do botao fica perereca feia -->
-                <div class="button-comparative">
-                    <a href="./result_comparative.php"><button>Comparar</button></a>
-                </div>';
-
-                        }else if($quantidade < 1) {
-
-
-                        //formatar a informação abaixo com os padroes ZNfront
-                        echo 'adicione pelo menos mais um carro';
-                        echo '<div class="button-comparative">
-                    <a href="./user.php"><button>Voltar</button></a>
-                </div>';
-
-                        echo '<div class="button-comparative">
-                    <a href="./connected_catalog.php"><button>Adicionar mais</button></a>
-                </div>';
-                        }
-                            ?>
-
-                            
-
-
-            </div>
+                        <li><a href="./connected_catalog.php">Catálogo</a></li>
+                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
+                        <li><a href="./calculadora_tco.php">Calculadora TCO</a></li>
+                        <li class="dropdown">
+                            <div class="user-enter">
+                                <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
+                                <a href="#" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="./user.php">Dados pessoais</a></li>
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="/GearTech/index.php">Sair</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
         </div>
-    </section>
-</main>
+        <section class="comparative">
+            <div class="container">
+                <div class="title-comparative">
+                    <h2>Comparativo de seus carros salvos</h2>
+                </div>
+                <div class="card-comparative">
+                    <form class="grid-comparative" method="POST" action="result_comparative.php">
+                        <?php
+                        $count = 1;
+                        foreach ($_SESSION['resultados'] as $fav) {
+                            echo '<div class="item-comparative">
+            <h2>Carro ' . $count . '</h2>
+            <label for="marca_' . $count . '">Marca</label>
+            <select name="marca_' . $count . '" id="marca_' . $count . '" class="marca-select" onchange="fetchModelos(this.value, ' . $count . ')">';
 
-<footer>
+                            foreach ($_SESSION['resMARCA'] as $mar) {
+                                echo '<option value="' . $mar['nomeMarca'] . '">' . $mar['nomeMarca'] . '</option>';
+                            }
+                            echo '</select>';
+
+                            if (isset($_POST['marca'])) {
+                                $marca = $_POST['marca'];
+
+                                // Exemplo de consulta ao banco de dados para buscar modelos da marca
+                                // Substitua com a consulta correta ao seu banco de dados
+                                $query = "SELECT favoriteNAME FROM favorites WHERE nomeMarca = ?";
+                                $stmt = $pdo->prepare($query);
+                                $stmt->execute([$marca]);
+                                $modelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                                // Gera as opções de modelo
+                                echo '<option value="">Selecione um modelo</option>';
+                                foreach ($modelos as $modelo) {
+                                    echo '<option value="' . $modelo['nomeModelo'] . '">' . $modelo['nomeModelo'] . '</option>';
+                                }
+                            }
+
+
+                            echo '
+            <label for="modelo_' . $count . '">Modelo</label>
+            <select name="modelo" id="modelo_' . $count . '" class="modelo-select">
+                <option value="">Selecione a marca primeiro</option>
+            </select>
+        </div>';
+                            $count++; // Incrementa o $count no final da iteração
+                        }
+                        ?>
+
+                        <div class="button-comparative">
+                            <button type="submit">Comparar</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <script>
+
+            function fetchModelos(marca, count) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "get_modelos.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Atualiza o select de modelos correspondente
+                        document.getElementById("modelo_" + count).innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send("marca=" + marca); // Envia a marca selecionada
+            }
+
+        </script>
+
+
+    </main>
+
+
+    <footer>
         <div class="container">
             <div class="box-footer">
                 <div class="left-side-footer">
@@ -243,7 +176,10 @@ echo '<div class="item-comparative">';
                 </div>
                 <div class="right-side-footer">
                     <h2>Sobre nós</h2>
-                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua
+                        jornada
+                        de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor
+                        escolha da sua vida.
                     </p>
                 </div>
             </div>
@@ -253,6 +189,7 @@ echo '<div class="item-comparative">';
         </div>
     </footer>
 
-<script src="/GearTech/assets/js/script.js"></script>
+    <script src="/GearTech/assets/js/script.js"></script>
 </body>
+
 </html>

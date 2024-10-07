@@ -1,0 +1,336 @@
+
+
+.title-calculadora-tco {
+    padding: 30px 0px;
+}
+
+
+.card-calculadora-tco {
+    background-color: var(--cardBackground);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 28px;
+    margin: 0px 0px 60px;
+    max-width: 567px;
+    width: 100%;
+}
+
+
+.card-calculadora-tco h2 {
+    font-weight: 700;
+    font-size: 20px;
+    padding-bottom: 30px;
+    color: var(--secondary);
+}
+
+.card-calculadora-tco input,
+.card-calculadora-tco select {
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    background-color: var(--background);
+    border-radius: 5px;
+    border: 1px solid var(--background);
+    padding: 8px 5px;
+    margin-bottom: 20px;
+}
+
+.card-calculadora-tco label {
+    font-weight: 500;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.box-calculadora-tco {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-side-calculadora-tco {
+    max-width: 567px;
+    width: 100%;
+}
+
+.left-side-calculadora-tco,
+.right-side-calculadora-tco {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-side-calculadora-tco label,
+.right-side-calculadora-tco label {
+    margin-bottom: 10px;
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+}
+
+
+.radio input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+}
+
+.radio label {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+
+.radio input[type="radio"]:checked+label {
+    background-color: var(--secondary);
+    border: 1px solid var(--secondary);
+    color: white;
+}
+
+
+.radio input {
+    width: unset;
+}
+
+#credito-detalhes input,label {
+    display: block;
+}
+
+.flex-calculadora {
+    display: flex;
+    gap: 10px;
+}
+
+.card-calculadora-tco button {
+    background-color: var(--secondary);
+    color: #fff;
+    border: 1px solid var(--secondary);
+    font-weight: 700;
+    border-radius: 15px;
+    padding: 8px;
+    max-width: 150px;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+}
+
+.card-calculadora-tco button:hover {
+    opacity: 0.8;
+}
+
+.box-car {
+    max-width: 500px;
+}
+
+.box-car img {
+    width: 100%;
+}
+
+.grid-resultado-tco {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+}
+
+.card-resultado {
+    background-color: var(--cardBackground);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 20px;
+}
+
+.card-resultado h2 {
+    font-size: 20px;
+    color: var(--secondary);
+    margin-bottom: 10px;
+}
+
+.card-resultado table {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    border-spacing: 0;
+}
+
+.card-resultado td {
+   padding: 10px 3px;
+}
+
+.title-resultado-tco {
+    padding: 30px 0px;
+}
+
+.resultado-tco {
+    margin-bottom: 50px;
+}
+
+#total-resultado {
+    height: 200px;
+}
+
+#custos-fixos-resultado {
+    height: 100%;
+}
+
+.card-resultado td {
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+}
+
+.card-resultado td:last-child {
+    text-align: center;
+    font-weight: 500;
+}
+
+.table-red {
+    background-color: var(--secondary);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+.title-resultado-tco span {
+    color: var(--secondary);
+}
+
+.card-progress {
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    height: 125px;
+    padding: 20px;
+    max-width: 587px;
+    width: 100%;
+}
+
+.card-progress h2 {
+    font-size: 20px;
+    color: var(--secondary);
+    padding-bottom: 20px;
+}
+
+.progress-container {
+    position: relative;
+    height: 20px;
+}
+
+.progress-bar {
+    display: none;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+ 
+}
+
+.step {
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid var(--third);
+    border-radius: 50%;
+    padding: 8px 14px;
+}
+
+.step.active {
+    color: #fff;
+    background-color: var(--secondary);
+    border: 1px solid var(--secondary);
+}
+
+.step.completed {
+    color: #fff;
+    background-color: var(--secondary);
+    border: 1px solid var(--secondary);
+}
+
+.calculadora-tco form{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.container-button-tco {
+    display: flex;
+    gap: 10px;
+}
+
+#btn-2 {
+    border: 2px solid var(--secondary);
+    background-color: var(--cardBackground);
+    color: var(--secondary);
+}
+
+#btn-2:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+    .grid-resultado-tco {
+        grid-template-columns: 1fr;
+    }
+
+    .title-resultado-tco {
+        text-align: center;
+    }
+
+    .card-calculadora-tco {
+        margin-bottom: 20px;
+    }
+
+    .calculadora-tco form {
+        flex-direction: column;
+    }
+    
+    .calculadora-tco {
+        margin-bottom: 40px;
+    }
+    
+}
+
+@media (max-width: 900px) {
+    .card-calculadora-tco {
+        margin-bottom: 20px;
+    }
+
+    .calculadora-tco form {
+        flex-direction: column;
+    }
+    
+    .calculadora-tco {
+        margin-bottom: 40px;
+    }
+    
+    .card-calculadora-tco {
+        max-width: unset;
+        width: 100%;
+    }
+
+    .left-side-calculadora-tco {
+        max-width: unset;
+        width: 100%;
+    }
+
+    .calculadora-tco button {
+        max-width: unset;
+        width: 100%;
+    }
+}
+
+@media (max-width: 1023px) {
+    .grid-resultado-tco {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width:650px) {
+    .grid-resultado-tco {
+        grid-template-columns: 1fr;
+    }
+}

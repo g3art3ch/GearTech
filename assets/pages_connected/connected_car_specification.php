@@ -1,66 +1,165 @@
 <?php
 include('connection.php');
-include('connection_cars.php');
-include('protect.php');
+include('connection_carsgt.php');
+require("../fipeIN/vendor/autoload.php");
 
+use DeividFortuna\Fipe\FipeCarros;
+session_start();
 // Obtém o ID do carro a partir da URL
-if (isset($_GET['IdCar'])) {
-    $idCarURL = $_GET['IdCar'];
-    $idCar = str_replace('_', ' ', $idCarURL);
+if (isset($_GET['Marca'])) {
+    $Marca = $_GET['Marca'];
+    $Modelo = $_GET['Modelo'];
+    $Ano = $_GET['Ano'];
+    $CodModelo = $_GET['CodModelo'];
+    $CodAno = $_GET['codAno'];
 }
-// Inicia a sessão se ainda não estiver iniciada
+$setVehicle = FipeCarros::getVeiculo($Marca, $CodModelo, $CodAno);
+
+
+
+$carSpecConsult = "SELECT 
+    marca.marca,
+    marca.idMarca,
+    modelo.nomeCarro,
+    modelo.CodModelo,
+    modelo.codigoAno,
+    modelo.idModelo,
+    versao.ano
+FROM 
+    marca
+INNER JOIN 
+    modelo ON marca.idMarca = modelo.idMarca
+INNER JOIN 
+    versao ON modelo.idModelo = versao.idVersao
+WHERE marca.idMarca = $Marca and modelo.idModelo = $Modelo and versao.ano = $Ano";
+
+$carSpec = $finalDATA->query($carSpecConsult);
+foreach ($_SESSION['carSpec'] as $final) {
+    $nomeCarro = $final['nomeCarro'];
+    $MarcaCarro = $final['marca'];
+    $CodModelo = $final['CodModelo'];
+    $codigoAno = $final['codigoAno'];
+    $idModelo = $final['idModelo'];
+}
+
+
 if (!isset($_SESSION)) {
     session_start();
 }
-// Consulta as informações do carro
-$sql_code = "SELECT 
-    nc.nome,
-    fc.estilo,
-    oc.orcamento,
-    tc.combustivel,
-    cc.capacidade,
-    uc.tipoUso,
-    iden.idIden,
-    iden.urlCarro,
-    iden.Marca
-FROM 
-    nomeCarro nc
-INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
-INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
-INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
-INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
-INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
-INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome  
-WHERE nome = '$idCar'";
-
-$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-$quantidade = $sql_query->num_rows;
-$_SESSION['resultados'] = array();
-while ($result = $sql_query->fetch_assoc()) {
-    $_SESSION['resultados'][] = $result;
+$_SESSION['carSpec'] = array();
+while ($searchf = $carSpec->fetch_assoc()) {
+    $_SESSION['carSpec'][] = $searchf;
 }
-foreach ($_SESSION['resultados'] as $carro) { 
-    $favoriteMARCA = $carro['Marca'];
-};
 
 $nomeUSER = $_SESSION['nomeUsuario'];
 // Função para adicionar o carro aos favoritos
-function FavFunction($idCar, $favoriteMARCA, $nomeUSER) {
+
+
+
+
+
+function FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $codigoAno)
+{
+    // Inclui as conexões ao banco de dados
     include('connection_favorite.php');
-    $FavInsert = "INSERT INTO favorites (favoriteNAME, favoriteMARCA, favoriteUSER ) VALUES('$idCar', '$favoriteMARCA', '$nomeUSER')";
-    $sql_query = $favoriteDATA->query($FavInsert) or die("Falha na execução do código SQL: " . $mysqli->error);
+    include('connection_carsgt.php');
+
+    // Verifica se as variáveis GET estão definidas
+    if (isset($_GET['Marca'], $_GET['Modelo'], $_GET['Ano'], $_GET['CodModelo'], $_GET['codAno'])) {
+        $Marca = $_GET['Marca'];
+        $Modelo = $_GET['Modelo'];
+        $Ano = $_GET['Ano'];
+        $CodModelo = $_GET['CodModelo'];
+        $CodAno = $_GET['codAno'];
+    } else {
+        echo "Dados do carro incompletos.";
+        return; // Para a execução se os dados estiverem incompletos
+    }
+
+    // Consulta para obter as especificações do carro
+    $stmt = $finalDATA->prepare("
+        SELECT 
+            marca.marca,
+            marca.idMarca,
+            modelo.nomeCarro,
+            modelo.CodModelo,
+            modelo.codigoAno,
+            modelo.idModelo,
+            versao.ano
+        FROM 
+            marca
+        INNER JOIN 
+            modelo ON marca.idMarca = modelo.idMarca
+        INNER JOIN 
+            versao ON modelo.idModelo = versao.idVersao
+        WHERE 
+            marca.idMarca = ? AND modelo.idModelo = ? AND versao.ano = ?
+    ");
+
+    // Prepara e executa a consulta
+    $stmt->bind_param("iii", $Marca, $Modelo, $Ano); // "iii" significa 3 inteiros
+    $stmt->execute();
+    $carSpec = $stmt->get_result();
+
+    if ($carSpec->num_rows > 0) {
+        while ($final = $carSpec->fetch_assoc()) {
+            $nomeCarro = $final['nomeCarro'];
+            $MarcaCarro = $final['idMarca'];
+            $CodModelo = $final['CodModelo'];
+            $codigoAno = $final['codigoAno'];
+            $idModelo = $final['idModelo'];
+            $CodModelo = $final['CodModelo'];
+            $CodAno = $final['codigoAno'];
+            $AnoFav = $final['ano'];
+            $nomeMarca = $final['marca'];
+
+        }
+    } else {
+        echo "Especificações do carro não encontradas.";
+        return; // Para a execução se não houver resultados
+    }
+
+    // Verifica se o carro já foi favoritado
+    $chkFAV = $favoriteDATA->prepare("SELECT * FROM favorites WHERE favoriteNAME = ?");
+    $chkFAV->bind_param("s", $nomeCarro); // "s" para string
+    $chkFAV->execute();
+    $execCHK = $chkFAV->get_result();
+    $qtdchk = $execCHK->num_rows;
+
+
+
+    if ($qtdchk == 0) {
+        // Insere o carro nos favoritos
+        $FavInsert = $favoriteDATA->prepare("
+            INSERT INTO favorites (idfavorite, favoriteNAME, favoriteMARCA, favoriteUSER, CodModelo, CodAno, Ano, nomeMarca) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        ");
+        $FavInsert->bind_param("isssisis", $idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $CodAno, $AnoFav, $nomeMarca);
+        $FavInsert->execute();
+
+        var_dump($qtdchk);
+
+    } else {
+        // Se o carro já estiver favoritado
+        echo "<script>alert('Carro já inserido nos favoritos.');</script>";
+    }
 }
 
+
+
+
+
+
+
+
+
+
+
 // Função para remover o carro dos favoritos
-function DesfavFunction($idCar) {
+function DesfavFunction($idCar)
+{
     include('connection_favorite.php');
-    $UnfavDelete = "DELETE FROM favorites WHERE favoriteNAME = '$idCar'";
+    $UnfavDelete = "DELETE FROM favorites WHERE idfavorite = $idCar";
     $sql_query = $favoriteDATA->query($UnfavDelete);
 }
 
@@ -68,12 +167,12 @@ function DesfavFunction($idCar) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
     $idCar = $_POST['IdCar'];
     if (isset($_POST['FavButton'])) {
-        FavFunction($idCar, $favoriteMARCA, $nomeUSER);
+        FavFunction($idModelo, $nomeCarro, $MarcaCarro, $nomeUSER, $CodModelo, $codigoAno);
     } elseif (isset($_POST['UnfavButton'])) {
         DesfavFunction($idCar);
     }
     // Após a ação, recarregue a página para atualizar o botão
-    header("Location: ".$_SERVER['REQUEST_URI']);
+    header("Location: " . $_SERVER['REQUEST_URI']);
     exit();
 }
 
@@ -82,6 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,8 +193,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
     <link rel="stylesheet" href="../css/catalog.css">
     <link rel="stylesheet" href="../css/car-specification.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
-    <title>Seu carro ideal</title>
+    <title>Especificações</title>
 </head>
+
 <body>
     <main>
         <div class="container">
@@ -119,90 +220,152 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
-                        <li><a href="">Manutenções</a></li>
-                        <li>
+                        <li><a href="./connected_catalog.php">Catálogo</a></li>
+                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
+                        <li><a href="./calculadora_tco.php">Calculadora TCO</a></li>
+                        <li class="dropdown">
                             <div class="user-enter">
-                                <a href="../pages/login.php">
-                                    <img src="../icons/user.svg" alt="">
-                                    <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
-                                </a>
+                                <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
+                                <a href="#" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
                             </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="./user.php">Dados pessoais</a></li>
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="/GearTech/index.php">Sair</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
             </header>
         </div>
 
+
+
+        <section class="image-spec">
+            <!-- <div class="container">
+                <div class="title-car-title-specification">
+                    <?php echo '<img src="../car_images/' . $Modelo . '.png" alt="">';
+                    ?>
+                </div>
+            </div> -->
+
+
+
+
+
+        </section>
+
         <section class="car-specification">
             <div class="container">
                 <div class="title-car-title-specification">
                     <h2>Mais informações sobre - <?php
-                    foreach ($_SESSION['resultados'] as $carro) { 
-                        echo $carro['nome'];
-                    };?>
+                    foreach ($_SESSION['carSpec'] as $final) {
+                        echo $final['marca'] . "&nbsp;&nbsp;&nbsp;&nbsp;" . $final['nomeCarro'] . "<br><br>";
+
+                        ?>
                     </h2>
                 </div>
-
                 <div class="FAVORITE_BUTTON">
-                    <form method="post">
-                        <input type="hidden" name="IdCar" value="<?php echo htmlspecialchars($_GET['IdCar']); ?>">
-                        
-                            <button type="submit" name="UnfavButton">DESFAVORITAR</button>
-                        
-                            <button type="submit" name="FavButton">FAVORITAR</button>
-                        
+                    <form method="POST" action="">
+                        <!-- ID do carro e outros dados importantes -->
+                        <input type="hidden" name="IdCar" value="<?php echo $idModelo; ?>">
+                        <input type="hidden" name="nomeCarro" value="<?php echo $nomeCarro; ?>">
+                        <input type="hidden" name="MarcaCarro" value="<?php echo $MarcaCarro; ?>">
+                        <input type="hidden" name="nomeUSER" value="<?php echo $nomeUSER; ?>">
+                        <input type="hidden" name="CodModelo" value="<?php echo $CodModelo; ?>">
+                        <input type="hidden" name="codigoAno" value="<?php echo $codigoAno; ?>">
+
+                        <!-- Botão de Favoritar -->
+                        <button type="submit" name="FavButton" class="FavButton">Salvar veículo</button>
+                    </form>
+
+                    <!-- Formulário de Desfavoritar -->
+                    <form method="POST" action="">
+                        <!-- ID do carro para desfavoritar -->
+                        <input type="hidden" name="IdCar" value="<?php echo $idModelo; ?>">
+
+                        <!-- Botão de Desfavoritar -->
+                        <button type="submit" name="UnfavButton" class="UnfavButton">Remover veículo</button>
                     </form>
                 </div>
-
                 <div class="box-car-specification">
                     <div class="left-side-specification">
                         <div class="card-car-specification">
-                            <h2><?php echo $carro['nome'];?></h2>
-                            <?php 
-                            echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
-                            ?>
+                            <div class="title-car-title-specification">
+                                <?php echo '<img src="../car_images/' . $Modelo . '.png" alt="">';
+                    ?>
+                            </div>
+                            <div class="box-button-simulation">
+
+                            
+                                <h2><?php echo $setVehicle['Valor']; ?></h2>
+                                <a href="financiamento.php?Val='<?php echo $setVehicle['Valor']; ?>'">Simular financiamento</a>                            </div>
+                            
+                            <?php
+
+                                // echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
+                                ?>
                         </div>
+
                         <div class="card-technology-specification none-mobile">
-                            <h2>Conforto e tecnologia</h2>
+                            <h2>Manutenções e revisões</h2>
                             <table>
-                                <tr>
-                                    <td>Ar condicionado</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Travas Elétricas</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Freio ABS</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Multimídia</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Câmeras de estacionamento</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Airbags frontais</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Apoio de braço</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Retrovisores elétricos</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                                <tr>
-                                    <td>Teto Solar</td>
-                                    <td><p>...</p></td>
-                                </tr>
-                            </table>
+                            <tr>
+                                <td>Seguro</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>IPVA</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Desvalorização</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Garantia</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Revisões até 60.000 km</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consumo urbano (Gasolina)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consumo rodoviário (Gasolina)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consumo urbano (Álcool)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consumo rodoviário (Álcool)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
+                            </tr>
+                        </table>
                         </div>
                     </div>
                     <div class="right-side-specification">
@@ -211,90 +374,161 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                             <table>
                                 <tr>
                                     <td>Marca</td>
-                                    <td><p><?php echo $carro['Marca']?></p></td>
+                                    <td>
+                                        <p><?php echo $final['marca'] ?></p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Modelo</td>
-                                    <td><p><?php echo $carro['nome']?></p></td>
+                                    <td>
+                                        <p><?php echo $final['nomeCarro'] ?></p>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>Tipo de Carroceria</td>
-                                    <td><p><?php echo $carro['estilo']?></p></td>
+                                    <td>Carroceria</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>Capacidade de passageiros</td>
-                                    <td><p><?php echo $carro['capacidade']-1?></p></td>
+                                    <td>Ano</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
-                                
+
                                 <tr>
-                                    <td>Consumo</td>
-                                    <td><p>...</p></td>
+                                    <td>Preço</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>Motorização</td>
-                                    <td><p>...</p></td>
+                                    <td>Combustível</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>Transmissão</td>
-                                    <td><p>...</p></td>
+                                    <td>Direção </td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Câmbio</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Marchas</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cilindros</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Peso/Potência</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Velocidade máxima</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Porta-malas</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Tração</td>
-                                    <td><p>...</p></td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>Quantidade de portas</td>
-                                    <td><p>...</p></td>
+                                    <td>Lugares</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>Capacidade de Carga</td>
-                                    <td><p>...</p></td>
+                                    <td>Portas</td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>Estilo de Direção</td>
-                                    <td><p>...</p></td>
-                                </tr>
+                                
                             </table>
                         </div>
                     </div>
                     <div class="card-technology-specification flex-mobile">
-                        <h2>Conforto e tecnologia</h2>
+                        <h2>Manutenções e revisões</h2>
                         <table>
                             <tr>
-                                <td>Ar condicionado</td>
-                                <td><p>...</p></td>
+                                <td>Seguro</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Travas Elétricas</td>
-                                <td><p>...</p></td>
+                                <td>IPVA</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Freio ABS</td>
-                                <td><p>...</p></td>
+                                <td>Desvalorização</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Multimídia</td>
-                                <td><p>...</p></td>
+                                <td>Garantia</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Câmeras de estacionamento</td>
-                                <td><p>...</p></td>
+                                <td>Revisões até 60.000 km</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Airbags frontais</td>
-                                <td><p>...</p></td>
+                                <td>Consumo urbano (Gasolina)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Apoio de braço</td>
-                                <td><p>...</p></td>
+                                <td>Consumo rodoviário (Gasolina)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Retrovisores elétricos</td>
-                                <td><p>...</p></td>
+                                <td>Consumo urbano (Álcool)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Teto Solar</td>
-                                <td><p>...</p></td>
+                                <td>Consumo rodoviário (Álcool)</td>
+                                <td>
+                                    <p>...</p>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -302,6 +536,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
             </div>
         </section>
     </main>
+
+    <?php
+                    }
+                    ?>
+
+
 
     <footer>
         <div class="container">
@@ -334,5 +574,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
         </div>
     </footer>
     <script src="../js/script.js"></script>
+
+
 </body>
+
 </html>

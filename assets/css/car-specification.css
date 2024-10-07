@@ -8,8 +8,41 @@
     gap: 20px;
 }
 
-.title-car-title-specification {
-    padding-bottom: 30px;
+.FAVORITE_BUTTON {
+    display: flex;
+    margin-bottom: 32px;
+}
+
+
+.UnfavButton {
+    border: 1px solid var(--third);
+    background-color: var(--background);
+    color: var(--third);
+    border-radius: 15px;
+    padding: 13px 20px;
+    font-size: 16px;
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+.UnfavButton:hover {
+    color: #fff;
+    background-color: #555;
+    transition: all 0.1s ease;
+}
+
+.FavButton {
+    background-color: var(--secondary);
+    border-radius: 15px;
+    color: #fff;
+    font-size: 16px;
+    padding: 13px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.FavButton:hover {
+    opacity: 0.8;
 }
 
 .left-side-specification {
@@ -111,6 +144,31 @@
     display: none;
 }
 
+.box-button-simulation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-button-simulation h2 {
+    font-weight: 900;
+}
+
+.box-button-simulation a {
+    /* background-color: var(--secondary); */
+    border: 1px solid var(--secondary);
+    border-radius: 15px;
+    padding: 6px;
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.box-button-simulation a:hover {
+    background-color: var(--secondary);
+    color: #fff;
+
+}
+
 @media (min-width:531px) and (max-width:900px) {
 
     .car-specification h2 {
@@ -133,7 +191,7 @@
     .card-car-specification {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .card-car-specification h2 {
@@ -157,6 +215,14 @@
     .card-technology-specification table,
     .card-mecanic-specification table {
         table-layout: fixed;
+    }
+
+    .box-button-simulation {
+        flex-direction: column;
+    }
+
+    .box-button-simulation h2 {
+        margin-bottom: 12px;
     }
 }
 
@@ -193,5 +259,45 @@
     .card-mecanic-specification {
         width: 100%;
         max-width: 100%;
+    }
+
+    .FAVORITE_BUTTON {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .UnfavButton {
+        margin-left: 10px;
+    }
+
+    .box-button-simulation {
+        flex-direction: column;
+    }
+
+    .box-button-simulation h2 {
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width:340px) {
+    .FAVORITE_BUTTON {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+    }
+
+   .FavButton {
+        width: 100%;
+   }
+
+    .UnfavButton {
+        margin-left: 0px;
+        margin-top: 10px;
+        width: 100%;
     }
 }

@@ -5,6 +5,7 @@
 .title-recomendation h2 {
     font-weight: 800;
     padding-bottom: 28px;
+    font-size: 26px;
 }
 
 .grid-recomendation {
@@ -69,7 +70,34 @@
 }
 
 .saiba-mais-recomendation {
-    padding: 15px 0px 5px;
+    padding: 10px 5px;
+}
+
+.marca-modelo {
+    padding: 10px 8px 5px;
+    font-size: 19px;
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+.ano-modelo {
+    font-weight: 600;
+}
+
+.btn-catalog {
+    margin-top: 20px;
+    width: 100%;
+    background-color: var(--secondary);
+    color: #fff;
+    border: 1px solid var(--secondary);
+    padding: 8px 0px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.btn-catalog:hover {
+    opacity: 0.8;
 }
 
 .saiba-mais-recomendation a {

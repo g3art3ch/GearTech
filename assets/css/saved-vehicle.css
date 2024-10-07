@@ -1,0 +1,211 @@
+html {
+    overflow-x: hidden;
+}
+.saved-vehicle   {
+    padding: 30px 0px;
+}
+
+.title-saved-vehicle {
+    padding-bottom: 20px;
+}
+
+.box-saved {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.left-side-saved {
+    max-width: 555px;
+    width: 100%;
+}
+
+.card-saved-vehicle {
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.title-card-saved {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.title-card-saved h2 {
+    padding-left: 12px;
+    font-size: 20px;
+    color: var(--secondary);
+}
+
+.item-saved {
+    border: 1px solid #555;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin: 20px 0px;
+    padding: 0px 8px;
+}
+
+.item-saved h2 {
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+
+.info-saved-vehicle {
+    padding: 0px 5px;
+}
+
+.price {
+    color: var(--secondary);
+    font-weight: 700;
+    padding-top: 5px;
+}
+
+.scroll-slide {
+    display: flex;
+    justify-content: center;
+}
+
+.box-image-saved img{
+    max-width: 180px;
+    width: 100%;
+}
+
+.desc-saved-vehicle {
+    padding-top: 8px;
+}
+
+.desc-saved-vehicle p{
+    color: var(--third);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+
+.right-side-saved {
+    max-width: 562px;
+    width: 100%;
+}
+
+.card-comparative-saved {
+    background-color: var(--cardBackground);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.title-comparative-saved h2 {
+    color: var(--secondary);
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.title-comparative-saved p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.title-comparative-saved p span {
+    font-weight: 800;
+}
+
+.box-inputs-comparative form{
+    display: flex;
+    flex-direction: column;
+}
+
+.box-inputs-comparative form label {
+    margin-bottom: 7px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.box-inputs-comparative form select {
+    margin-bottom: 18px;
+    background-color: var(--background);
+    border: 1px solid var(--background);
+    border-radius: 5px;
+    padding: 8px 5px;
+    outline: none;
+}
+
+.button-comparative-saved {
+    max-width: 153px;
+    display: flex;
+}
+
+.button-comparative-saved a {
+    background-color: var(--secondary);
+    border-radius: 15px;
+    border: none;
+    font-weight: 700;
+    padding: 8px 12px;
+    font-size: 16px;
+    box-shadow: var(--shadow);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.button-comparative-saved a:hover {
+    opacity: 0.8;
+}
+
+.box-inputs-comparative button:hover {
+    opacity: 0.8;
+}
+
+
+.card-questionnaire button:hover {
+    opacity: 0.8;
+}
+
+.CheckCarInfo {
+    color: var(--third);
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+
+@media (max-width: 1100px) {
+    .box-saved {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .left-side-saved,
+    .right-side-saved {
+        max-width: unset;
+        width: 100%;
+    }
+
+    
+}
+
+
+@media (max-width: 480px) {
+    .item-saved {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .desc-saved-vehicle {
+        padding: 8px 0px;
+    }
+
+    .box-inputs-comparative button {
+        max-width: unset;
+        width: 100%;
+    }
+    
+    
+}

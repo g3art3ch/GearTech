@@ -20,7 +20,7 @@ include('protect.php');
     <link rel="stylesheet" href="../css/recomendation.css">
     <link rel="stylesheet" href="../css/catalog.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
-    <title>Seu carro ideal</title>
+    <title>Catálogo</title>
 </head>
 
 
@@ -47,175 +47,180 @@ include('protect.php');
                 </div>
             </div>
             <nav>
-                <ul>
-                    <li><a href="/GearTech/assets/pages_connected/connected_catalog.php">Catálogo</a></li>
-                    <li><a href="">Manutenções</a></li>
-                    <li>
-                        <div class="user-enter">
-                            <a href="/Geartech/assets/pages_connected/connected.php">
-                                <img src="/Geartech/assets/icons/user.svg" alt="">
-                                <a href="user.php" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+                    <ul>
+                        <li><a href="./connected_catalog.php">Catálogo</a></li>
+                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
+                        <li><a href="./calculadora_tco.php">Calculadora TCO</a></li>
+                        <li class="dropdown">
+                            <div class="user-enter">
+                                <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
+                                <a href="#" class="login-account"><?php echo $_SESSION['nomeUsuario']; ?></a>
+                                <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="./user.php">Dados pessoais</a></li>
+                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="/GearTech/index.php">Sair</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
         </header>
     </div>
 
 
-    <section class="recomendation">
+    <section class="catalog">
             <div class="container">
                 <div class="title-catalog">
                     <h2>Escolha a marca</h2>
                 </div>
                 <div class="grid-logotypes">
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Audi" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=6" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/audi.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Audi" class="name-logotype">Audi</a>
+                        <a href="connected_filtered_catalog.php?Marca=6" class="name-logotype">Audi</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=7" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/bmw.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=BMW" class="name-logotype">BMW</a>
+                        <a href="connected_filtered_catalog.php?Marca=7" class="name-logotype">BMW</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Byd" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=238" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/byd.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Byd" class="name-logotype">Byd</a>
+                        <a href="connected_filtered_catalog.php?Marca=238" class="name-logotype">Byd</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Chevrolet" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=23" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/chevrolet.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Chevrolet" class="name-logotype">Chevrolet</a>
+                        <a href="connected_filtered_catalog.php?Marca=23" class="name-logotype">Chevrolet</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Citroen" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=13" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/citroen.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Citroen" class="name-logotype">Citroen</a>
+                        <a href="connected_filtered_catalog.php?Marca=13" class="name-logotype">Citroen</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Fiat" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=21" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/fiat.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Fiat" class="name-logotype">Fiat</a>
+                        <a href="connected_filtered_catalog.php?Marca=21" class="name-logotype">Fiat</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Ford" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=22" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/ford.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Ford" class="name-logotype">Ford</a>
+                        <a href="connected_filtered_catalog.php?Marca=22" class="name-logotype">Ford</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Honda" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=25" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/honda.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Honda" class="name-logotype">Honda</a>
+                        <a href="connected_filtered_catalog.php?Marca=25" class="name-logotype">Honda</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Hyundai" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=26" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/hyundai.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Hyundai" class="name-logotype">Hyundai</a>
+                        <a href="connected_filtered_catalog.php?Marca=26" class="name-logotype">Hyundai</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Jeep" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=29" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/jeep.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Jeep" class="name-logotype">Jeep</a>
+                        <a href="connected_filtered_catalog.php?Marca=29" class="name-logotype">Jeep</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Mitsubishi" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=41" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/mitsubishi.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Mitsubishi" class="name-logotype">Mitsubishi</a>
+                        <a href="connected_filtered_catalog.php?Marca=41" class="name-logotype">Mitsubishi</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Mercedes" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=39" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/mercedesbenz.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Mercedes" class="name-logotype">Mercedes Benz</a>
+                        <a href="connected_filtered_catalog.php?Marca=39" class="name-logotype">Mercedes Benz</a>
                     </div>
                 </div>
 
                 <div class="grid-logotypes" style="display:none">
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Nissan" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=43" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/nissan.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Nissan" class="name-logotype">Nissan</a>
+                        <a href="connected_filtered_catalog.php?Marca=43" class="name-logotype">Nissan</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Porsche" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=47" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/porsche.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Porsche" class="name-logotype">Porsche</a>
+                        <a href="connected_filtered_catalog.php?Marca=47" class="name-logotype">Porsche</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Peugeot" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=44" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/peugeot.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Peugeot" class="name-logotype">Peugeot</a>
+                        <a href="connected_filtered_catalog.php?Marca=44" class="name-logotype">Peugeot</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Renault" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=48" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/renault.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Renault" class="name-logotype">Renault</a>
+                        <a href="connected_filtered_catalog.php?Marca=48" class="name-logotype">Renault</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Toyota" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=56" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/toyota.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Toyota" class="name-logotype">Toyota</a>
+                        <a href="connected_filtered_catalog.php?Marca=56" class="name-logotype">Toyota</a>
                     </div>
                     <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=Volkswagen" class="card-logotype">
+                        <a href="connected_filtered_catalog.php?Marca=59" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/volkswagen.png" alt="">
                             </div>
                         </a>
-                        <a href="connected_filtered_catalog.php?Marca=Volkswagen" class="name-logotype">Volkswagen</a>
+                        <a href="connected_filtered_catalog.php?Marca=59" class="name-logotype">Volkswagen</a>
                     </div>
                 </div>
                 <div class="more-logotypes">
@@ -224,7 +229,6 @@ include('protect.php');
             </div>
         </section>
     </main>
-
 
     <footer>
         <div class="container">
@@ -266,6 +270,7 @@ include('protect.php');
             this.style.display = 'none';
         });
     </script>
+
 
 </body>
 

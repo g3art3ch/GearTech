@@ -1,0 +1,173 @@
+.questionary {
+    padding: 30px 0px;
+}
+
+.box-questionary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.right-side-questionary {
+    width: 50%;
+}
+
+
+.ilustrative-questionary {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+}
+
+
+.ilustrative-questionary img {
+    width: 90%;
+}
+
+.left-side-questionary {
+
+    width: 50%;
+}
+
+.ilustrative-questionary h2 {
+    margin-top: -100px;
+    padding-bottom: 12px;
+
+}
+
+.ilustrative-questionary p {
+    line-height: 1.3;
+    font-size: 16px;
+}
+
+.card-questionary {
+    background-color: var(--cardBackground);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 20px;
+    max-width: 550px;
+    width: 100%;
+}
+
+.card-questionary h2 {
+    padding-bottom: 23px;
+    color: var(--secondary);
+}
+
+.card-questionary form {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-questionary label {
+    font-weight: 500;
+}
+
+.card-questionary form select,
+.card-questionary form input {
+    margin: 8px 0px 35px;
+    padding: 12px 5px;
+    background-color: var(--background);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.next-button {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.next-button button {
+    background-color: var(--secondary);
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    width: 35%;
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-navigation button {
+    background-color: var(--secondary);
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.form-navigation button:hover {
+    opacity: 0.8;
+}
+
+.next-button button:hover {
+    opacity: 0.8;
+}
+
+.fitst-form,
+.second-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#prev-step {
+    background-color: transparent;
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+}
+
+
+
+@media (max-width: 900px) {
+    .box-questionary {
+        flex-direction: column;
+    }
+
+    .left-side-questionary {
+        width: 100%;
+    }
+
+    .right-side-questionary {
+        width: 100%;
+    }
+
+    .card-questionary {
+        max-width: unset;
+        width: 100%;
+    }
+
+
+    .ilustrative-questionary h2 {
+        margin-top: 0px;
+
+    }
+
+    .ilustrative-questionary img {
+        width: 80%;
+        display: none;
+    }
+
+    .card-questionary button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+

@@ -10,8 +10,15 @@ $sql_code1 = "SELECT * FROM favorites WHERE favoriteUSER = '$nomeUSER'";
 $sql_query2 = $favoriteDATA->query($sql_code1);
 $quantidade = $sql_query2->num_rows;
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $carroceria = $_POST["carroceria"];
+    $marca = $_POST["marca"];
+    $modelo = $_POST["modelo"];
 
-
+    // Aqui você pode utilizar esses valores conforme necessário
+    echo "Carroceria: " . $carroceria . ", Marca: " . $marca . ", Modelo: " . $modelo;
+    exit;
+}
 
 ?>
 
@@ -27,10 +34,15 @@ $quantidade = $sql_query2->num_rows;
     <link rel="stylesheet" href="../css/var.css">
     <link rel="stylesheet" href="../css/main/main.css">
     <link rel="stylesheet" href="../css/main/header.css">
-    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/saved-vehicle.css">
+    <link rel="stylesheet" href="../css/profile-result.css">
     <link rel="stylesheet" href="../css/main/footer.css">
+    <link rel="stylesheet" href="../js/slick/slick.css">
+    <link rel="stylesheet" href="../js/slick/slick-theme.css">
+
+
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
-    <title>Minha conta</title>
+    <title>Seus salvos</title>
 </head>
 
 <body>
@@ -56,9 +68,10 @@ $quantidade = $sql_query2->num_rows;
                     </div>
                 </div>
                 <nav>
-                <ul>
+                    <ul>
                         <li><a href="./connected_catalog.php">Catálogo</a></li>
-                        <li><a href="">Manutenções</a></li>
+                        <li><a href="./connected_maintenance.php">Manutenções</a></li>
+                        <li><a href="./calculadora_tco.php">Calculadora TCO</a></li>
                         <li class="dropdown">
                             <div class="user-enter">
                                 <img src="/GearTech/assets/icons/user.svg" alt="" class="user-photo">
@@ -66,39 +79,32 @@ $quantidade = $sql_query2->num_rows;
                                 <img src="/GearTech/assets/icons/dowm-arrow.svg" alt="" onclick="toggleDropdown()">
                             </div>
                             <ul class="dropdown-menu">
-                                <li><a href="./saved-vehicle.php">Seus salvos</a></li>
+                                <li><a href="./user.php">Dados pessoais</a></li>
                                 <li><a href="/GearTech/index.php">Sair</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <!-- <ul>
-                        <li>
-                            <a href="/GearTech/index.php" class="logout-area">
-                                <img src="../icons/logout.svg" alt="">
-                                <p>Encerrar sessão</p>
-                            </a>
-                        </li>
-                    </ul> -->
                 </nav>
             </header>
         </div>
 
-        <div class="right-side-user">
-                        <div class="card-user-saved-vehicle">
-                            <div class="headline-saved-vehicle">
-                                <div class="title-card-save-vehicle">
-                                    <img src="../icons/saved.svg" alt="">
-                                    <h2>Veículos salvos</h2>
-                                </div>
-                                <div class="comparative">
-                                    <a href="./comparative.php">Comparativo</a>
-                                </div>
+
+        <section class="saved-vehicle">
+            <div class="container">
+                <div class="title-saved-vehicle">
+                    <h2>Seus salvos</h2>
+                </div>
+
+                <div class="box-saved">
+                    <div class="left-side-saved">
+                        <div class="card-saved-vehicle">
+                            <div class="title-card-saved">
+                                <img src="../icons/saved.svg" alt="">
+                                <h2>Veículos salvos</h2>
                             </div>
 
-                            <div class="slider-container"></div>
-
                             <?php
-
+                            echo '<div class="save-slides">';
                             if ($quantidade > 0) {
                                 if (!isset($_SESSION)) {
                                     session_start();
@@ -109,75 +115,85 @@ $quantidade = $sql_query2->num_rows;
                                 }
 
 
-                            
-
-                                foreach ($_SESSION['resultados'] as $results) {
-                                    echo '<h2>' . $results['favoriteNAME'] . '</h2>';
-                                    $consultNAME = $results['favoriteNAME'];
-
-
-                                    $sql_code = "SELECT 
-    nc.nome,
-    fc.estilo,
-    oc.orcamento,
-    tc.combustivel,
-    cc.capacidade,
-    uc.tipoUso,
-    iden.idIden,
-    iden.urlCarro,
-    iden.Marca
-FROM 
-    nomeCarro nc
-INNER JOIN 
-    filtroCarros fc ON nc.idFiltro = fc.idFiltro
-INNER JOIN 
-    orcamentoCarro oc ON nc.idNome = oc.idNome
-INNER JOIN 
-    tipoCombustivel tc ON nc.idNome = tc.idNome
-INNER JOIN 
-    capacidadeCarro cc ON nc.idNome = cc.idNome
-INNER JOIN 
-    usoCarro uc ON nc.idNome = uc.idNome
-INNER JOIN 
-    identificador iden ON nc.idNome = iden.idNome  
-WHERE nome = '$consultNAME'";
-
-$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-$quantidade1 = $sql_query->num_rows;
-$_SESSION['FAVORITES'] = array();
-while ($resultFAVORITES = $sql_query->fetch_assoc()) {
-    $_SESSION['FAVORITES'][] = $resultFAVORITES;
-}
-
-                foreach ($_SESSION['FAVORITES'] as $fav) {
 
 
 
-                                    echo '<div class="area-save-vehicle">
-                                    <div class="box-image-save-vehicle">';
-                                    echo '<img src="../car_images/' . $fav['idIden'] .'.png" alt="">
-                                    </div>';
-                                    echo '<div class="info-save-vehicle">';
-                                    echo '<h2>' . $fav['nome'] . '</h2>';
-                                    echo    '<p class="price-save-vehicle">' . $fav['orcamento'] . '</p>';
-                                    echo '<p class="desc-save-vehicle">' . $fav['combustivel'] . '</p>';
-                                    echo '<p class="desc-save-vehicle">' . $fav['capacidade'] . '</p>';
-                                    echo '<p class="desc-save-vehicle">' . $fav['tipoUso'] . '</p>';
+
+
+                                foreach ($_SESSION['resultados'] as $fav) {
+
+                                    echo '<div class="swiper-slide">';
+                                    echo '    <div class="item-saved">';
+                                    echo '        <div class="box-image-saved">';
+                                    echo '            <img src="../car_images/' . $fav['idfavorite'] . '.png" alt="">';
+                                    echo '        </div>';
+                                    echo '        <div class="info-saved-vehicle">';
+                                    echo '            <h2>' . $fav['favoriteNAME'] . '</h2>';
+                                    echo '            <div class="desc-saved-vehicle">';
+                                    echo '            </div>';
+                                    echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?Marca=' . $fav['favoriteMARCA'] . '&Modelo=' . $fav['idfavorite'] . '&CodModelo=' . $fav['CodModelo'] . '&Ano=' . $fav['Ano'] . '&codAno=' . $fav['CodAno'] . '">Ver detalhes</a>';
+                                    echo '        </div>';
+                                    echo '    </div>';
                                     echo '</div>';
-                                    echo '</div>';
+
                                 }
+
+
+
+
                             }
-
-                        }
-
+                            echo '</div>';
                             ?>
 
-                            <div class="icon-slider">
-                                <img id="toggleSlider" src="../icons/slider.svg" alt="">
-                            </div>
+
+
                         </div>
                     </div>
+                    <div class="right-side-saved">
+                        <div class="card-comparative-saved">
+                            <div class="title-comparative-saved">
+                                <h2>Faça uma comparação de seus veículos</h2>
+                                <p>Para tomar uma decisão melhor, faça uma comparação entre <span> componentes
+                                        mecânicos, recursos tecnológicos e custos de manutenção<span></p>
+                            </div>
+                            <div class="button-comparative-saved">
+                                <a href="./comparative.php">Comparar</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <script>
+                    document.getElementById('compareForm').addEventListener('submit', function(event) {
+                        event.preventDefault(); // Evita o envio padrão do formulário
+
+                        const carroceria = document.getElementById('carroceria').value;
+                        const marca = document.getElementById('marca').value;
+                        const modelo = document.getElementById('modelo').value;
+
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('POST', '', true); // O mesmo arquivo PHP processará o formulário
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                console.log(xhr.responseText);
+                            }
+                        };
+                        xhr.send('carroceria=' + carroceria + '&marca=' + marca + '&modelo=' + modelo);
+                    });
+                    </script>
+
+
+
+
+
                 </div>
+            </div>
+            </div>
+            </div>
+
+
+        </section>
     </main>
     <footer>
         <div class="container">
@@ -198,7 +214,9 @@ while ($resultFAVORITES = $sql_query->fetch_assoc()) {
                 </div>
                 <div class="right-side-footer">
                     <h2>Sobre nós</h2>
-                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada
+                        de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor
+                        escolha da sua vida.
                     </p>
                 </div>
             </div>
@@ -209,8 +227,32 @@ while ($resultFAVORITES = $sql_query->fetch_assoc()) {
     </footer>
 
 
+    <script src="/GearTech/assets/js/script.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/slick/slick.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.save-slides').slick({
+            vertical: true,
+            verticalSwiping: true,
+            slidesToShow: 3,
+            nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
+            prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
 
-    <script src="../js/script.js"></script>
+        });
+    });
+
+    $(document).ready(function() {
+        $('.option-slides').slick({
+            vertical: true,
+            verticalSwiping: true,
+            slidesToShow: 1,
+            nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
+            prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
+
+        });
+    });
+    </script>
+
 </body>
-
-</html>

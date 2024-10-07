@@ -1,69 +1,10 @@
-<?php
-include('connection.php');
-if (!isset($_SESSION)) {
-    session_start();
-}
-if (isset($_POST['email']) || isset($_POST['senha'])) {
-
-    if (strlen($_POST['email']) == 0) {
-        echo "<script> window.alert('Preencha seu email!');</script>";
-    } else if (strlen($_POST['senha']) == 0) {
-        echo "<script> window.alert('Preencha sua senha!');</script>";
-    } else {
-
-        $email = $mysqli->real_escape_string($_POST['email']);
-        $senha = $mysqli->real_escape_string($_POST['senha']);
-
-        $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
-        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-
-        $quantidade = $sql_query->num_rows;
-
-
-        if ($quantidade != 1) {
-            echo "<script type='text/javascript'>
-        Swal.fire({
-             position: 'top',
-        icon: 'error',
-        iconColor: '#C23A42',
-        title: 'Falha no login',
-        html: `<p style='font-size: 17px; margin='0px''>Seu email ou senha estão incorretos.</p>`,
-            showConfirmButton: false,
-        width: '27rem',
-        showCloseButton: true,
-        background: '#fafafa',
-        color: '#000',
-        customClass: {
-            title: 'custom-title',
-        }
-        });
-    </script>";
-        } 
-        else {
-        $usuario = $sql_query->fetch_assoc();
-        
-        $_SESSION['id'] = $usuario['id'];
-        $_SESSION['nomeUsuario'] = $usuario['nomeUsuario'];
-        $_SESSION['email'] = $usuario['email'];
-        $_SESSION['senha'] = $usuario['senha'];
-        $_SESSION['status'] = $usuario['status'];
-        if ($_SESSION['status'] == 2) {
-            header("Location: /GearTech/assets/pages_connected/connected.php");
-        } else {
-            echo 'Confirme seu email!';
-        }
-    }
-    }
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -73,19 +14,18 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/main/footer.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <title>Faça seu login</title>
     <style>
         .swal2-popup {
-            border-radius: 15px;
-            
+            border-radius: 15x;
+
         }
 
         .custom-title {
             font-size: 24px;
             font-weight: 600;
         }
-
     </style>
 </head>
 
@@ -129,21 +69,80 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             </header>
         </div>
 
-        <div style="display: flex; flex-direction:column; width:180px;gap: 10px;" >
+
+
+        <!-- <div style="display: flex; flex-direction:column; width:180px;gap: 10px;">
             <button onclick="popup()">Verificação</button>
             <button onclick="errorLogin()">Falha ao logar</button>
             <button onclick="senhasNaoCoincidem()">Email Cadastrado</button>
             <button onclick="senhaAtualIncorreta()">Senha atual incorreta</button>
-        </div>
-      
+        </div> -->
 
-        <div>
-            <?php
-            if (isset($_GET['message'])) {
-                $message = $_GET['message'];
-                echo "<script type='text/javascript'>alert('$message');</script>";
-            } ?>
-        </div>
+        <?php 
+        if(isset($_GET['error'])){
+        echo '<script type="text/javascript">
+         
+    Swal.fire({
+        position: "top",
+        icon: "error",
+        iconColor: "#C23A42",
+        title: "Falha no login",
+        html: `<p style="font-size: 17px; margin="0px"">Seu email ou senha estão incorretos.</p>`,
+            showConfirmButton: false,
+        width: "27rem",
+        showCloseButton: true,
+        background: "#fafafa",
+        color: "#000",
+        customClass: {
+            title: "custom-title",
+        }
+    });
+
+    </script>';
+}
+if(isset($_GET['errorempty'])){
+    echo '<script type="text/javascript">
+     
+Swal.fire({
+    position: "top",
+    icon: "error",
+    iconColor: "#C23A42",
+    title: "Falha no login",
+    html: `<p style="font-size: 17px; margin="0px"">Preencha seus dados</p>`,
+        showConfirmButton: false,
+    width: "27rem",
+    showCloseButton: true,
+    background: "#fafafa",
+    color: "#000",
+    customClass: {
+        title: "custom-title",
+    }
+});
+
+</script>';
+}
+if(isset($_GET['message'])){
+    echo '
+    <script>
+    Swal.fire({
+        position: "top",
+        icon: "success",
+        iconColor: "#23A669",
+        title: "Verifique sua caixa de entrada",
+        html: `<p style="font-size: 17px; margin="0px"">o link de ativação de cadastro foi enviado para seu e-mail.</p>`,
+            showConfirmButton: false,
+        width: "27rem",
+        showCloseButton: true,
+        background: "#fafafa",
+        color: "#000",
+        customClass: {
+            title: "custom-title",
+        }
+    });
+
+</script>';
+}
+    ?>
 
 
         <section class="login">
@@ -151,7 +150,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                 <div class="box-login">
                     <div class="card">
                         <h2><span>Seja bem vindo!</span><br>Acesse sua conta</h2>
-                        <form action="" method="post">
+                        <form action="login_process.php" method="POST" id="loginForm">
                             <label for="">Email</label>
                             <input type="mail" name="email" placeholder="Digite seu email">
                             <label for="">Senha</label>
@@ -160,7 +159,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                                 <img src="../icons/lock.svg" alt="">
                                 <a href="">Esqueceu sua senha</a>
                             </div>
-                            <button type="submit" class="account">Entrar</button>
+                            <button type="submit" class="account" >Entrar</button>
                             <div class="create-an-account">
                                 <p>Ainda não tem uma conta?<a href="register.php">Crie uma</a></p>
                             </div>
@@ -189,7 +188,9 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                 </div>
                 <div class="right-side-footer">
                     <h2>Sobre nós</h2>
-                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada
+                        de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor
+                        escolha da sua vida.
                     </p>
                 </div>
             </div>
@@ -202,7 +203,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     <script src="../js/script.js"></script>
 
     <script type='text/javascript'>
-        
+
     </script>
 
 </body>
