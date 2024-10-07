@@ -137,58 +137,56 @@ $ckMARCA = $favoriteDATA->query($distMARCA);
 
 
         <script>
-    function fetchModelos(marca, count) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "get_modelos.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Atualiza o select de modelos correspondente
-                document.getElementById("modelo_" + count).innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send("marca=" + marca); // Envia a marca selecionada
-    }
-</script>
+        function fetchModelos(marca, count) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "get_modelos.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Atualiza o select de modelos correspondente
+                    document.getElementById("modelo_" + count).innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send("marca=" + marca); // Envia a marca selecionada
+        }
+        </script>
 
 
+    </main>
 
-
-
-
-        <footer>
-            <div class="container">
-                <div class="box-footer">
-                    <div class="left-side-footer">
-                        <div class="links">
-                            <a href="">Termos de uso</a>
-                            <a href="">Catálogo</a>
-                            <a href="">Manutenções</a>
-                        </div>
-                        <div class="social-icons-footer">
-                            <a href=""><img src="/GearTech/assets/icons/instagram-footer.svg" alt=""></a>
-                            <a href=""><img src="/GearTech/assets/icons/email-footer.svg" alt=""></a>
-                        </div>
-                        <div class="mail-footer">
-                            Email: suporte.geartech@gmail.com
-                        </div>
+    <footer>
+        <div class="container">
+            <div class="box-footer">
+                <div class="left-side-footer">
+                    <div class="links">
+                        <a href="">Termos de uso</a>
+                        <a href="">Catálogo</a>
+                        <a href="">Manutenções</a>
                     </div>
-                    <div class="right-side-footer">
-                        <h2>Sobre nós</h2>
-                        <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua
-                            jornada
-                            de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor
-                            escolha da sua vida.
-                        </p>
+                    <div class="social-icons-footer">
+                        <a href=""><img src="/GearTech/assets/icons/instagram-footer.svg" alt=""></a>
+                        <a href=""><img src="/GearTech/assets/icons/email-footer.svg" alt=""></a>
+                    </div>
+                    <div class="mail-footer">
+                        Email: suporte.geartech@gmail.com
                     </div>
                 </div>
-                <div class="copy">
-                    <a href="">© GearTech - Todos os direitos reservados</a>
+                <div class="right-side-footer">
+                    <h2>Sobre nós</h2>
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua
+                        jornada
+                        de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor
+                        escolha da sua vida.
+                    </p>
                 </div>
             </div>
-        </footer>
+            <div class="copy">
+                <a href="">© GearTech - Todos os direitos reservados</a>
+            </div>
+        </div>
+    </footer>
 
-        <script src="/GearTech/assets/js/script.js"></script>
+    <script src="/GearTech/assets/js/script.js"></script>
 </body>
 
 </html>

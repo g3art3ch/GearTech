@@ -62,9 +62,10 @@
     width: 100%;
     margin-top: 30px;
     cursor: pointer;
+    margin-top: -50px;
 }
 
-.button-comparative a {
+.button-comparative button {
     background-color: var(--secondary);
     border-radius: 15px;
     color: #fff;
@@ -75,7 +76,7 @@
     text-decoration: none;
 }
 
-.button-comparative a:hover {
+.button-comparative button:hover {
     opacity: 0.8;
 }
 
@@ -96,6 +97,10 @@
     .grid-comparative {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    .button-comparative {
+        margin-top: -10px;
     }
     
 }
