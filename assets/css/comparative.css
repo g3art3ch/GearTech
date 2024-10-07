@@ -62,7 +62,6 @@
     width: 100%;
     margin-top: 30px;
     cursor: pointer;
-    margin-top: -50px;
 }
 
 .button-comparative button {
@@ -74,6 +73,7 @@
     font-size: 18px;
     padding: 10px 72px;
     text-decoration: none;
+    
 }
 
 .button-comparative button:hover {
@@ -99,8 +99,9 @@
         gap: 40px;
     }
 
-    .button-comparative {
-        margin-top: -10px;
+    .button-comparative button{
+        width: 100%;
     }
+
     
 }
