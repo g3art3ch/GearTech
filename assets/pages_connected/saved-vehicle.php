@@ -97,7 +97,7 @@ $quantidade = $sql_query2->num_rows;
 
                             <?php
                             echo '<div class="save-slides">';
-                            if ($quantidade > 0) {
+                            if ($quantidade > 1) {
                                 if (!isset($_SESSION)) {
                                     session_start();
                                 }
@@ -133,13 +133,13 @@ $quantidade = $sql_query2->num_rows;
 
 
 
-                            }
-                            echo '</div>';
-                            ?>
+
+                                echo '</div>';
 
 
 
-                        </div>
+
+                                echo ' </div>
                     </div>
                     <div class="right-side-saved">
                         <div class="card-comparative-saved">
@@ -152,27 +152,85 @@ $quantidade = $sql_query2->num_rows;
                                 <a href="./comparative.php">Comparar</a>
                             </div>
 
+                       ';
+                            } else if($quantidade <=1) {
+
+                                if (!isset($_SESSION)) {
+                                    session_start();
+                                }
+                                $_SESSION['resultados'] = array();
+                                while ($result = $sql_query2->fetch_assoc()) {
+                                    $_SESSION['resultados'][] = $result;
+                                }
+
+
+
+
+
+
+
+                                foreach ($_SESSION['resultados'] as $fav) {
+
+                                    echo '<div class="swiper-slide">';
+                                    echo '    <div class="item-saved">';
+                                    echo '        <div class="box-image-saved">';
+                                    echo '            <img src="../car_images/' . $fav['idfavorite'] . '.png" alt="">';
+                                    echo '        </div>';
+                                    echo '        <div class="info-saved-vehicle">';
+                                    echo '            <h2>' . $fav['favoriteNAME'] . '</h2>';
+                                    echo '            <div class="desc-saved-vehicle">';
+                                    echo '            </div>';
+                                    echo '            <a class="CheckCarInfo" href="/GearTech/assets/pages_connected/connected_car_specification.php?Marca=' . $fav['favoriteMARCA'] . '&Modelo=' . $fav['idfavorite'] . '&CodModelo=' . $fav['CodModelo'] . '&Ano=' . $fav['Ano'] . '&codAno=' . $fav['CodAno'] . '">Ver detalhes</a>';
+                                    echo '        </div>';
+                                    echo '    </div>';
+                                    echo '</div>';
+
+                                }
+
+                                
+
+                                echo '</div>';
+
+
+
+
+                                echo ' </div>
+                    </div>
+                    <div class="right-side-saved">
+                        <div class="card-comparative-saved">
+                            <div class="title-comparative-saved">
+                                <h2>Faça uma comparação de seus veículos</h2>
+                                <p>Para tomar uma decisão melhor, faça uma comparação entre <span> componentes
+                                        mecânicos, recursos tecnológicos e custos de manutenção<span></p>
+                            </div>
+                            <div class="button-comparative-saved">
+                                <a href="connected_catalog.php">Adicionar mais veículos</a>
+                            </div>
+
+                       ';
+                            }
+                            ?>
+
                         </div>
                     </div>
-
                     <script>
-                    document.getElementById('compareForm').addEventListener('submit', function(event) {
-                        event.preventDefault(); // Evita o envio padrão do formulário
+                        document.getElementById('compareForm').addEventListener('submit', function (event) {
+                            event.preventDefault(); // Evita o envio padrão do formulário
 
-                        const carroceria = document.getElementById('carroceria').value;
-                        const marca = document.getElementById('marca').value;
-                        const modelo = document.getElementById('modelo').value;
+                            const carroceria = document.getElementById('carroceria').value;
+                            const marca = document.getElementById('marca').value;
+                            const modelo = document.getElementById('modelo').value;
 
-                        const xhr = new XMLHttpRequest();
-                        xhr.open('POST', '', true); // O mesmo arquivo PHP processará o formulário
-                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState === 4 && xhr.status === 200) {
-                                console.log(xhr.responseText);
-                            }
-                        };
-                        xhr.send('carroceria=' + carroceria + '&marca=' + marca + '&modelo=' + modelo);
-                    });
+                            const xhr = new XMLHttpRequest();
+                            xhr.open('POST', '', true); // O mesmo arquivo PHP processará o formulário
+                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                    console.log(xhr.responseText);
+                                }
+                            };
+                            xhr.send('carroceria=' + carroceria + '&marca=' + marca + '&modelo=' + modelo);
+                        });
                     </script>
 
 
@@ -224,27 +282,27 @@ $quantidade = $sql_query2->num_rows;
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="../js/slick/slick.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('.save-slides').slick({
-            vertical: true,
-            verticalSwiping: true,
-            slidesToShow: 3,
-            nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
-            prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
+        $(document).ready(function () {
+            $('.save-slides').slick({
+                vertical: true,
+                verticalSwiping: true,
+                slidesToShow: 3,
+                nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
+                prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
 
+            });
         });
-    });
 
-    $(document).ready(function() {
-        $('.option-slides').slick({
-            vertical: true,
-            verticalSwiping: true,
-            slidesToShow: 1,
-            nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
-            prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
+        $(document).ready(function () {
+            $('.option-slides').slick({
+                vertical: true,
+                verticalSwiping: true,
+                slidesToShow: 1,
+                nextArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-down.svg"></img></button></div>',
+                prevArrow: '<div class="center-next"><button type="button" class="custom-next"><img src="../icons/seta-up.svg"></img></button></div>'
 
+            });
         });
-    });
     </script>
 
 </body>

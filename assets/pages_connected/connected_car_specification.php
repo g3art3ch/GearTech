@@ -24,22 +24,199 @@ $carSpecConsult = "SELECT
     modelo.CodModelo,
     modelo.codigoAno,
     modelo.idModelo,
-    versao.ano
+    versao.ano,
+    recursos.ano,
+    recursos.propulsao,
+    recursos.combustivel,
+    recursos.preco,
+    recursos.desvalorizacao,
+    recursos.garantia,
+    recursos.seguro,
+    recursos.ipva,
+    recursos.vendas_outubro,
+    recursos.revisoes_ate_60k,
+    recursos.indice_cnw,
+    recursos.ranking_cnw,
+    recursos.velocidade_maxima,
+    recursos.aceleracao_0_100,
+    recursos.potencia_maxima,
+    recursos.torque_maximo,
+    recursos.regime_potencia_maxima,
+    recursos.regime_torque_maximo,
+    recursos.peso_potencia,
+    recursos.potencia_especifica,
+    recursos.peso_torque,
+    recursos.torque_especifico,
+    recursos.consumo_urbano,
+    recursos.consumo_rodoviario,
+    recursos.tanque_combustivel,
+    recursos.autonomia_urbana,
+    recursos.autonomia_rodoviaria,
+    recursos.comprimento,
+    recursos.largura,
+    recursos.altura,
+    recursos.distancia_entre_eixos,
+    recursos.bitola_dianteira,
+    recursos.bitola_traseira,
+    recursos.flanco_pneu_dianteiro,
+    recursos.flanco_pneu_traseiro,
+    recursos.altura_minima_solo,
+    recursos.porta_malas,
+    recursos.diametro_minimo_giro,
+    recursos.coeficiente_arrasto,
+    recursos.area_frontal,
+    recursos.area_frontal_corrigida,
+    recursos.carga_util,
+    recursos.reboque_sem_freio,
+    recursos.reboque_com_freio,
+    recursos.peso,
+    recursos.instalacao_motor,
+    recursos.disposicao_motor,
+    recursos.codigo_motor,
+    recursos.cilindros,
+    recursos.tuchos,
+    recursos.diametro_cilindro,
+    recursos.curso_pistao,
+    recursos.cilindrada_unitaria,
+    recursos.deslocamento,
+    recursos.razao_compressao,
+    recursos.rotacao_maxima,
+    recursos.viscosidade_oleo_motor,
+    recursos.valvulas_por_cilindro,
+    recursos.comando_valvulas,
+    recursos.acionamento_comando,
+    recursos.variacao_comando,
+    recursos.aspiracao,
+    recursos.alimentacao,
+    recursos.cambio,
+    recursos.marchas,
+    recursos.codigo_cambio,
+    recursos.acoplamento,
+    recursos.tracao,
+    recursos.suspensao_dianteira,
+    recursos.elemento_elastico_dianteiro,
+    recursos.suspensao_traseira,
+    recursos.elemento_elastico_traseiro,
+    recursos.freios_dianteiros,
+    recursos.freios_traseiros,
+    recursos.direcao,
+    recursos.pneus_dianteiros,
+    recursos.pneus_traseiros,
+    recursos.estepe,
+    recursos.procedencia,
+    recursos.configuracao,
+    recursos.geracao,
+    recursos.plataforma,
+    recursos.serie,
+    recursos.porte,
+    recursos.lugares,
+    recursos.portas
 FROM 
     marca
-INNER JOIN 
+LEFT JOIN 
     modelo ON marca.idMarca = modelo.idMarca
-INNER JOIN 
-    versao ON modelo.idModelo = versao.idVersao
-WHERE marca.idMarca = $Marca and modelo.idModelo = $Modelo and versao.ano = $Ano";
+LEFT JOIN 
+    versao ON modelo.idModelo = versao.idModelo
+LEFT JOIN 
+    recursos ON modelo.idModelo = recursos.idModelo
+WHERE 
+marca.idMarca = $Marca and modelo.idModelo = $Modelo and (recursos.ano = $Ano or versao.ano = $Ano or modelo.codigoAno = '$CodAno')";
 
 $carSpec = $finalDATA->query($carSpecConsult);
 foreach ($_SESSION['carSpec'] as $final) {
-    $nomeCarro = $final['nomeCarro'];
-    $MarcaCarro = $final['marca'];
-    $CodModelo = $final['CodModelo'];
-    $codigoAno = $final['codigoAno'];
-    $idModelo = $final['idModelo'];
+    $marcaMarca = $final['marca'];
+$idMarca = $final['idMarca'];
+$nomeCarro = $final['nomeCarro'];
+$CodModelo = $final['CodModelo'];
+$codigoAno = $final['codigoAno'];
+$idModelo = $final['idModelo'];
+$anoVersao = $final['ano'];
+$anoRecursos = $final['ano'];
+$propulsao = $final['propulsao'];
+$combustivel = $final['combustivel'];
+$preco = $final['preco'];
+$desvalorizacao = $final['desvalorizacao'];
+$garantia = $final['garantia'];
+$seguro = $final['seguro'];
+$ipva = $final['ipva'];
+$vendasOutubro = $final['vendas_outubro'];
+$revisoesAte60k = $final['revisoes_ate_60k'];
+$indiceCnw = $final['indice_cnw'];
+$rankingCnw = $final['ranking_cnw'];
+$velocidadeMaxima = $final['velocidade_maxima'];
+$aceleracao0100 = $final['aceleracao_0_100'];
+$potenciaMaxima = $final['potencia_maxima'];
+$torqueMaximo = $final['torque_maximo'];
+$regimePotenciaMaxima = $final['regime_potencia_maxima'];
+$regimeTorqueMaximo = $final['regime_torque_maximo'];
+$pesoPotencia = $final['peso_potencia'];
+$potenciaEspecifica = $final['potencia_especifica'];
+$pesoTorque = $final['peso_torque'];
+$torqueEspecifico = $final['torque_especifico'];
+$consumoUrbano = $final['consumo_urbano'];
+$consumoRodoviario = $final['consumo_rodoviario'];
+$tanqueCombustivel = $final['tanque_combustivel'];
+$autonomiaUrbana = $final['autonomia_urbana'];
+$autonomiaRodoviaria = $final['autonomia_rodoviaria'];
+$comprimento = $final['comprimento'];
+$largura = $final['largura'];
+$altura = $final['altura'];
+$distanciaEntreEixos = $final['distancia_entre_eixos'];
+$bitolaDianteira = $final['bitola_dianteira'];
+$bitolaTraseira = $final['bitola_traseira'];
+$flancoPneuDianteiro = $final['flanco_pneu_dianteiro'];
+$flancoPneuTraseiro = $final['flanco_pneu_traseiro'];
+$alturaMinimaSolo = $final['altura_minima_solo'];
+$portaMalas = $final['porta_malas'];
+$diametroMinimoGiro = $final['diametro_minimo_giro'];
+$coeficienteArrasto = $final['coeficiente_arrasto'];
+$areaFrontal = $final['area_frontal'];
+$areaFrontalCorrigida = $final['area_frontal_corrigida'];
+$cargaUtil = $final['carga_util'];
+$reboqueSemFreio = $final['reboque_sem_freio'];
+$reboqueComFreio = $final['reboque_com_freio'];
+$peso = $final['peso'];
+$instalacaoMotor = $final['instalacao_motor'];
+$disposicaoMotor = $final['disposicao_motor'];
+$codigoMotor = $final['codigo_motor'];
+$cilindros = $final['cilindros'];
+$tuchos = $final['tuchos'];
+$diametroCilindro = $final['diametro_cilindro'];
+$cursoPistao = $final['curso_pistao'];
+$cilindradaUnitaria = $final['cilindrada_unitaria'];
+$deslocamento = $final['deslocamento'];
+$razaoCompressao = $final['razao_compressao'];
+$rotacaoMaxima = $final['rotacao_maxima'];
+$viscosidadeOleoMotor = $final['viscosidade_oleo_motor'];
+$valvulasPorCilindro = $final['valvulas_por_cilindro'];
+$comandoValvulas = $final['comando_valvulas'];
+$acionamentoComando = $final['acionamento_comando'];
+$variacaoComando = $final['variacao_comando'];
+$aspiracao = $final['aspiracao'];
+$alimentacao = $final['alimentacao'];
+$cambio = $final['cambio'];
+$marchas = $final['marchas'];
+$codigoCambio = $final['codigo_cambio'];
+$acoplamento = $final['acoplamento'];
+$tracao = $final['tracao'];
+$suspensaoDianteira = $final['suspensao_dianteira'];
+$elementoElasticoDianteiro = $final['elemento_elastico_dianteiro'];
+$suspensaoTraseira = $final['suspensao_traseira'];
+$elementoElasticoTraseiro = $final['elemento_elastico_traseiro'];
+$freiosDianteiros = $final['freios_dianteiros'];
+$freiosTraseiros = $final['freios_traseiros'];
+$direcao = $final['direcao'];
+$pneusDianteiros = $final['pneus_dianteiros'];
+$pneusTraseiros = $final['pneus_traseiros'];
+$estepe = $final['estepe'];
+$procedencia = $final['procedencia'];
+$configuracao = $final['configuracao'];
+$geracao = $final['geracao'];
+$plataforma = $final['plataforma'];
+$serie = $final['serie'];
+$porte = $final['porte'];
+$lugares = $final['lugares'];
+$portas = $final['portas'];
 }
 
 
@@ -281,12 +458,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                     </form>
 
                     <!-- Formulário de Desfavoritar -->
-                    <form method="POST" action="">
+                    <form method="GET" action="remove.php">
                         <!-- ID do carro para desfavoritar -->
-                        <input type="hidden" name="IdCar" value="<?php echo $idModelo; ?>">
+                        <input type="hidden" name="Marca" value="<?php echo $_GET['Marca']; ?>">
+                        <input type="hidden" name="Modelo" value="<?php echo $_GET['Modelo']; ?>">
+                        <input type="hidden" name="CodModelo" value="<?php echo $_GET['CodModelo']; ?>">
+                        <input type="hidden" name="Ano" value="<?php echo $_GET['Ano']; ?>">
+                        <input type="hidden" name="codAno" value="<?php echo $_GET['codAno']; ?>">
 
                         <!-- Botão de Desfavoritar -->
-                        <button type="submit" name="UnfavButton" class="UnfavButton">Remover veículo</button>
+                        <button type="submit" class="UnfavButton">Remover veículo</button>
                     </form>
                 </div>
                 <div class="box-car-specification">
@@ -302,10 +483,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                                 <h2><?php echo $setVehicle['Valor']; ?></h2>
                                 <a href="financiamento.php?Val='<?php echo $setVehicle['Valor']; ?>'">Simular financiamento</a>                            </div>
                             
-                            <?php
-
-                                // echo '<img src="../car_images/'. $carro['idIden'] . '.png" alt="">';
-                                ?>
                         </div>
 
                         <div class="card-technology-specification none-mobile">
@@ -314,55 +491,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                             <tr>
                                 <td>Seguro</td>
                                 <td>
-                                    <p>...</p>
+                                    <p><?php echo $final['seguro'] ?></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>IPVA</td>
                                 <td>
-                                    <p>...</p>
+                                    <p><?php echo $final['ipva'] ?></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Desvalorização</td>
                                 <td>
-                                    <p>...</p>
+                                    <p><?php echo $final['desvalorizacao'] ?></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Garantia</td>
                                 <td>
-                                    <p>...</p>
+                                    <p><?php echo $final['garantia'] ?></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Revisões até 60.000 km</td>
                                 <td>
-                                    <p>...</p>
+                                    <p><?php echo $final['revisoes_ate_60k'] ?></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Consumo urbano (Gasolina)</td>
                                 <td>
-                                    <p>...</p>
+                                    <p><?php echo $final['consumo_urbano'] ?></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Consumo rodoviário (Gasolina)</td>
                                 <td>
-                                    <p>...</p>
+                                    <p><?php echo $final['consumo_rodoviario'] ?></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Consumo urbano (Álcool)</td>
                                 <td>
-                                    <p>...</p>
+                                    <p><?php echo $final['consumo_urbano'] ?></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Consumo rodoviário (Álcool)</td>
                                 <td>
-                                    <p>...</p>
+                                    <p><?php echo $final['consumo_rodoviario'] ?></p>
                                 </td>
                             </tr>
                         </table>
@@ -387,151 +564,93 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                                 <tr>
                                     <td>Carroceria</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['configuracao'] ?></p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Ano</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['ano'] ?></p>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>Preço</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $setVehicle['Valor']; ?></p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Combustível</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['combustivel'] ?></p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Direção </td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['direcao'] ?></p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Câmbio</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['cambio'] ?></p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Marchas</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['marchas'] ?></p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Cilindros</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['cilindros'] ?></p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Peso/Potência</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['peso_potencia'] ?> Kg/Hp</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Velocidade máxima</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['velocidade_maxima'] ?> Km/h</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Porta-malas</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['porta_malas'] ?> L</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Tração</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['tracao'] ?></p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Lugares</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['lugares'] ?></p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Portas</td>
                                     <td>
-                                        <p>...</p>
+                                        <p><?php echo $final['portas'] ?></p>
                                     </td>
                                 </tr>
                                 
                             </table>
                         </div>
                     </div>
-                    <div class="card-technology-specification flex-mobile">
-                        <h2>Manutenções e revisões</h2>
-                        <table>
-                            <tr>
-                                <td>Seguro</td>
-                                <td>
-                                    <p>...</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>IPVA</td>
-                                <td>
-                                    <p>...</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Desvalorização</td>
-                                <td>
-                                    <p>...</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Garantia</td>
-                                <td>
-                                    <p>...</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Revisões até 60.000 km</td>
-                                <td>
-                                    <p>...</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Consumo urbano (Gasolina)</td>
-                                <td>
-                                    <p>...</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Consumo rodoviário (Gasolina)</td>
-                                <td>
-                                    <p>...</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Consumo urbano (Álcool)</td>
-                                <td>
-                                    <p>...</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Consumo rodoviário (Álcool)</td>
-                                <td>
-                                    <p>...</p>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                    
                 </div>
             </div>
         </section>

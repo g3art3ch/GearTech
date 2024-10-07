@@ -86,7 +86,7 @@ while ($resultmarca = $ckMARCA->fetch_assoc()) {
                     <h2>Comparativo de seus carros salvos</h2>
                 </div>
                 <div class="card-comparative">
-                <form method="POST" action="result_comparative.php">
+                <form method="GET" action="result_comparative.php">
     <div class="grid-comparative">
         <?php
         $count = 1;
@@ -95,6 +95,7 @@ while ($resultmarca = $ckMARCA->fetch_assoc()) {
                 <h2>Carro ' . $count . '</h2>
                 <label for="marca_' . $count . '">Marca</label>
                 <select name="marca_' . $count . '" id="marca_' . $count . '" class="marca-select" onchange="fetchModelos(this.value, ' . $count . ')">';
+                echo '<option value="">Selecione a marca</option>';
 
             foreach ($_SESSION['MARCA'] as $mar) {
                 echo '<option value="' . htmlspecialchars($mar['nomeMarca']) . '">' . htmlspecialchars($mar['nomeMarca']) . '</option>';
@@ -141,6 +142,7 @@ function fetchModelos(marca, count) {
     };
     xhr.send("marca=" + encodeURIComponent(marca));
 }
+
 
 function fetchAnos(modelo, count) {
     var xhr = new XMLHttpRequest();

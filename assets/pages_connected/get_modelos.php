@@ -18,8 +18,8 @@ if (isset($_POST['marca'])) {
     $result = $stmt->get_result();
     $modelos = $result->fetch_all(MYSQLI_ASSOC);
 
-   
-    
+    echo '<option value="">Selecione um modelo</option>';
+
     if ($modelos) {
         foreach ($modelos as $modelo) {
             // Escape special characters to avoid HTML issues
