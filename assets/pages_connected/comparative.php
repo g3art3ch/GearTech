@@ -9,6 +9,10 @@ $quantidade = $sql_query2->num_rows;
 
 $distMARCA = "SELECT DISTINCT nomeMarca FROM favorites;";
 $ckMARCA = $favoriteDATA->query($distMARCA);
+$_SESSION['MARCA'] = array();
+while ($resultmarca = $ckMARCA->fetch_assoc()) {
+    $_SESSION['MARCA'][] = $resultmarca;
+}
 
 
 ?>
@@ -82,56 +86,40 @@ $ckMARCA = $favoriteDATA->query($distMARCA);
                     <h2>Comparativo de seus carros salvos</h2>
                 </div>
                 <div class="card-comparative">
-                    <form  method="POST" action="result_comparative.php">
+                <form method="POST" action="result_comparative.php">
+    <div class="grid-comparative">
+        <?php
+        $count = 1;
+        foreach ($_SESSION['resultados'] as $fav) {
+            echo '<div class="item-comparative">
+                <h2>Carro ' . $count . '</h2>
+                <label for="marca_' . $count . '">Marca</label>
+                <select name="marca_' . $count . '" id="marca_' . $count . '" class="marca-select" onchange="fetchModelos(this.value, ' . $count . ')">';
 
-                        <div class="grid-comparative">
-                                <?php
-                            $count = 1;
-                            foreach ($_SESSION['resultados'] as $fav) {
-                                echo '<div class="item-comparative">
-                                <h2>Carro ' . $count . '</h2>
-                                <label for="marca_' . $count . '">Marca</label>
-                                <select name="marca_' . $count . '" id="marca_' . $count . '" class="marca-select" onchange="fetchModelos(this.value, ' . $count . ')">';
+            foreach ($_SESSION['MARCA'] as $mar) {
+                echo '<option value="' . htmlspecialchars($mar['nomeMarca']) . '">' . htmlspecialchars($mar['nomeMarca']) . '</option>';
+            }
+            echo '</select>';
 
-                                foreach ($_SESSION['resMARCA'] as $mar) {
-                                    echo '<option value="' . $mar['nomeMarca'] . '">' . $mar['nomeMarca'] . '</option>';
-                                }
-                                echo '</select>';
+            echo '
+                <label for="modelo_' . $count . '">Modelo</label>
+                <select name="modelo_' . $count . '" id="modelo_' . $count . '" class="modelo-select" onchange="fetchAnos(this.value, ' . $count . ')">
+                    <option value="">Selecione a marca primeiro</option>
+                </select>';
 
-                                if (isset($_POST['marca'])) {
-                                    $marca = $_POST['marca'];
-
-                                    // Exemplo de consulta ao banco de dados para buscar modelos da marca
-                                    // Substitua com a consulta correta ao seu banco de dados
-                                    $query = "SELECT favoriteNAME FROM favorites WHERE nomeMarca = ?";
-                                    $stmt = $pdo->prepare($query);
-                                    $stmt->execute([$marca]);
-                                    $modelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                                    // Gera as opções de modelo
-                                    echo '<option value="">Selecione um modelo</option>';
-                                    foreach ($modelos as $modelo) {
-                                        echo '<option value="' . $modelo['nomeModelo'] . '">' . $modelo['nomeModelo'] . '</option>';
-                                    }
-                                }
-
-
-                                                echo '
-                                <label for="modelo_' . $count . '">Modelo</label>
-                                <select name="modelo" id="modelo_' . $count . '" class="modelo-select">
-                                    <option value="">Selecione a marca primeiro</option>
-                                </select>
-                            </div>';
-                                $count++; // Incrementa o $count no final da iteração
-                            }
-                            ?>
-
-
-                        </div>
-                        <div class="button-comparative">
-                            <button type="submit">Comparar</button>
-                        </div>
-                    </form>
+            echo '<label for="ano_' . $count . '">Ano</label>
+                <select name="ano_' . $count . '" id="ano_' . $count . '" class="ano-select">
+                    <option value="">Selecione um modelo primeiro</option>
+                </select>
+            </div>';
+            $count++; // Incrementa o $count no final da iteração
+        }
+        ?>
+    </div>
+    <div class="button-comparative">
+        <button type="submit">Comparar</button>
+    </div>
+</form>
                 </div>
             </div>
         </section>
@@ -140,20 +128,32 @@ $ckMARCA = $favoriteDATA->query($distMARCA);
 
 
         <script>
-        function fetchModelos(marca, count) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "get_modelos.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Atualiza o select de modelos correspondente
-                    document.getElementById("modelo_" + count).innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send("marca=" + marca); // Envia a marca selecionada
+function fetchModelos(marca, count) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "get_modelos.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById("modelo_" + count).innerHTML = xhr.responseText;
+            // Limpar o select de anos quando uma nova marca é selecionada
+            document.getElementById("ano_" + count).innerHTML = '<option value="">Selecione um modelo primeiro</option>';
         }
-        </script>
+    };
+    xhr.send("marca=" + encodeURIComponent(marca));
+}
 
+function fetchAnos(modelo, count) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "get_anos.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById("ano_" + count).innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send("modelo=" + encodeURIComponent(modelo));
+}
+</script>
 
     </main>
 

@@ -10,15 +10,7 @@ $sql_code1 = "SELECT * FROM favorites WHERE favoriteUSER = '$nomeUSER'";
 $sql_query2 = $favoriteDATA->query($sql_code1);
 $quantidade = $sql_query2->num_rows;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $carroceria = $_POST["carroceria"];
-    $marca = $_POST["marca"];
-    $modelo = $_POST["modelo"];
 
-    // Aqui você pode utilizar esses valores conforme necessário
-    echo "Carroceria: " . $carroceria . ", Marca: " . $marca . ", Modelo: " . $modelo;
-    exit;
-}
 
 ?>
 

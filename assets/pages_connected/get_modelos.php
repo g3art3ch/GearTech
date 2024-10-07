@@ -18,8 +18,7 @@ if (isset($_POST['marca'])) {
     $result = $stmt->get_result();
     $modelos = $result->fetch_all(MYSQLI_ASSOC);
 
-    // Inicia as opções de modelo
-    echo '<option value="">Selecione um modelo</option>';
+   
     
     if ($modelos) {
         foreach ($modelos as $modelo) {
