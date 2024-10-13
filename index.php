@@ -171,7 +171,7 @@ if(isset($_GET['message'])){
                             
                             <button type="submit" class="account" >Entrar</button>
                             <div class="create-an-account">
-                                <p>Ainda não tem uma conta?<a href="assets/pages/register.php">Crie uma</a></p>
+                                <p>Ainda não tem uma conta?<a href="assets/pages/register.php"> Crie uma</a></p>
                             </div>
                         </form>
                     </div>
