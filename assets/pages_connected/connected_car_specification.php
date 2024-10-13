@@ -261,7 +261,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['IdCar'])) {
                 <div class="title-car-title-specification">
                     <h2>Mais informações sobre - <?php
                     foreach ($_SESSION['carSpec'] as $final) {
-                        echo $final['marca'] . "&nbsp;&nbsp;&nbsp;&nbsp;" . $final['nomeCarro'] . "<br><br>";
+                        echo "<span>" . $final['marca'] . "&nbsp;&nbsp;" . $final['nomeCarro'] . "</span><br><br>";
+
+
 
                         ?>
                     </h2>

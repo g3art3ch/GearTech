@@ -1,5 +1,5 @@
 .recomendation {
-    padding: 60px 0px;
+    padding: 40px 0px;
 }
 
 .title-recomendation h2 {
@@ -127,9 +127,7 @@
 
 @media (max-width: 576px) {
 
-    .recomendation {
-        padding: 40px 10px;
-    }
+    
 
     .grid-recomendation {
         grid-template-columns: 1fr;
@@ -139,9 +137,7 @@
         margin: auto;
     }
 
-    .title-recomendation {
-        padding-top: 20px;
-    }
+    
 
     .title-recomendation h2 {
         text-align: center;

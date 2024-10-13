@@ -169,6 +169,10 @@
 
 }
 
+.title-car-title-specification span {
+    color: var(--secondary);
+}
+
 @media (min-width:531px) and (max-width:900px) {
 
     .car-specification h2 {

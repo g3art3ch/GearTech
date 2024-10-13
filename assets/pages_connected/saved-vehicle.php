@@ -182,11 +182,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         xhr.send('carroceria=' + carroceria + '&marca=' + marca + '&modelo=' + modelo);
                     });
                     </script>
-
-
-
-
-
                 </div>
             </div>
             </div>

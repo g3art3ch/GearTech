@@ -1,5 +1,5 @@
 .catalog {
-    padding: 50px 0px;
+    padding: 40px 0px;
 }
 
 .title-catalog h2 {
@@ -79,9 +79,7 @@
 
 @media (max-width:530px) {
 
-    .title-catalog h2{
-        padding-top: 20px;
-    }
+  
 
     .grid-logotypes {
         grid-template-columns: repeat(2,1fr);

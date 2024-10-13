@@ -1,7 +1,8 @@
 html {
     overflow-x: hidden;
 }
-.saved-vehicle   {
+
+.saved-vehicle {
     padding: 30px 0px;
 }
 
@@ -70,7 +71,7 @@ html {
     justify-content: center;
 }
 
-.box-image-saved img{
+.box-image-saved img {
     max-width: 180px;
     width: 100%;
 }
@@ -79,13 +80,11 @@ html {
     padding-top: 8px;
 }
 
-.desc-saved-vehicle p{
+.desc-saved-vehicle p {
     color: var(--third);
     font-size: 15px;
     font-weight: 500;
 }
-
-
 
 .right-side-saved {
     max-width: 562px;
@@ -115,7 +114,7 @@ html {
     font-weight: 800;
 }
 
-.box-inputs-comparative form{
+.box-inputs-comparative form {
     display: flex;
     flex-direction: column;
 }
@@ -187,7 +186,7 @@ html {
         width: 100%;
     }
 
-    
+
 }
 
 
@@ -206,6 +205,14 @@ html {
         max-width: unset;
         width: 100%;
     }
-    
-    
+
+    .info-saved-vehicle {
+        padding: 0px 0px 10px;
+    }
+
+    .button-comparative-saved {
+        max-width: unset;
+        width: 100%;
+    }
+
 }

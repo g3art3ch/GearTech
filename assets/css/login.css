@@ -100,7 +100,7 @@ section .card form input {
     font-size: 15px;
     margin-bottom: 49px;
     outline: none;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 section .card form #password {
@@ -129,7 +129,7 @@ section .forgot-password a:hover {
 }
 
 section .card button {
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: var(--secondary);
     border: 1px solid var(--secondary);
     color: var(--white);

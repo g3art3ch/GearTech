@@ -130,7 +130,7 @@
                             <input type="password" name="senhaC" id="passwordConfirm"
                                 placeholder="Digite sua senha novamente" onkeyup="validatePassword()">
 
-                            <button type="submit" name="submit" class="account btn-register">Entrar</button>
+                            <button type="submit" name="submit" class="account btn-register">Cadastrar</button>
                         </form>
 
 
