@@ -219,9 +219,7 @@ if($_GET['error'] = 'Unc'){
             <div class="box-footer">
                 <div class="left-side-footer">
                     <div class="links">
-                        <a href="">Termos de uso</a>
-                        <a href="">Catálogo</a>
-                        <a href="">Manutenções</a>
+                        <a href="">Nossos canais de comunicação:</a>
                     </div>
                     <div class="social-icons-footer">
                         <a href=""><img src="/GearTech/assets/icons/instagram-footer.svg" alt=""></a>

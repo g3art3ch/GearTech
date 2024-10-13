@@ -232,7 +232,7 @@ while ($mcs = $searchMC->fetch_assoc()) {
                                 </div>
                                 <div class="itens-filter">
                                     <div class="headline">
-                                        <img src="/GearTech/assets/icons/volante.svg" alt="" width="20px">
+                                        <img src="/GearTech/assets/icons/Marca.svg" alt="" width="20px">
                                         <div class="title-headline">Marca</div>
                                     </div>
                                     <select name="marcas" id="">
