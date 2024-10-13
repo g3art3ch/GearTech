@@ -59,6 +59,7 @@ $qtdALL = $searchALL->num_rows;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -69,8 +70,20 @@ $qtdALL = $searchALL->num_rows;
     <link rel="stylesheet" href="../css/recomendation.css">
     <link rel="shortcut icon" href="../icons/logo.ico" type="image/x-icon">
     <title>Veículos da marca</title>
+    <style>
+        .swal2-popup {
+            border-radius: 15x;
+
+        }
+
+        .custom-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+    </style>
 
 </head>
+
 
 
 <body>
@@ -117,6 +130,30 @@ $qtdALL = $searchALL->num_rows;
                 </nav>
             </header>
         </div>
+
+        <?php 
+        if(isset($_GET['msg'])){
+            echo '<script type="text/javascript">
+             
+        Swal.fire({
+            position: "top",
+            icon: "success",
+            iconColor: "#23A669",
+            title: "Carro removido",
+            html: `<p style="font-size: 17px; margin="0px"">Modelo removido com sucesso.</p>`,
+                showConfirmButton: false,
+            width: "27rem",
+            showCloseButton: true,
+            background: "#fafafa",
+            color: "#000",
+            customClass: {
+                title: "custom-title",
+            }
+        });
+    
+        </script>';
+    }
+        ?>
 
 
         <section class="recomendation">

@@ -22,6 +22,13 @@ WHERE modelo.idModelo = 41447 OR modelo.idModelo = 55616 OR modelo.idModelo = 37
 $searchALL = $finalDATA->query($sql_code);
 $qtdALL = $searchALL->num_rows;
 
+$scmarca = "SELECT marca from marca;";
+$searchMC = $finalDATA->query($scmarca);
+$_SESSION['MARCAS'] = array();
+while ($mcs = $searchMC->fetch_assoc()) {
+    $_SESSION['MARCAS'][] = $mcs;
+}
+
 ?>
 
 
@@ -32,6 +39,7 @@ $qtdALL = $searchALL->num_rows;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -95,6 +103,61 @@ $qtdALL = $searchALL->num_rows;
             </header>
         </div>
 
+        <?php
+        if (isset($_GET['error'])) {
+            if ($_GET['error'] = 'NoRes') {
+                echo '<script type="text/javascript">
+             
+        Swal.fire({
+            position: "top",
+            icon: "warning",
+            iconColor: "#C23A42",
+            title: "Falha na busca",
+            html: `<p style="font-size: 17px; margin="0px"">Desculpe não encontramos nenhum carro.</p>`,
+                showConfirmButton: false,
+            width: "27rem",
+            showCloseButton: true,
+            background: "#fafafa",
+            color: "#000",
+            customClass: {
+                title: "custom-title",
+            }
+        });
+    
+        </script>';
+            }
+            if ($_GET['error'] = 'NoRes') {
+
+            }
+
+            if ($_GET['error'] = 'Empty') {
+                echo '<script type="text/javascript">
+             
+        Swal.fire({
+            position: "top",
+            icon: "warning",
+            iconColor: "#C23A42",
+            title: "Falha na busca",
+            html: `<p style="font-size: 17px; margin="0px"">Preencha pelo menos um dos campos</p>`,
+                showConfirmButton: false,
+            width: "27rem",
+            showCloseButton: true,
+            background: "#fafafa",
+            color: "#000",
+            customClass: {
+                title: "custom-title",
+            }
+        });
+    
+        </script>';
+            }
+            if ($_GET['error'] = 'NoRes') {
+
+            }
+
+        }
+        ?>
+
 
         <section class="banner">
             <div class="container">
@@ -118,14 +181,9 @@ $qtdALL = $searchALL->num_rows;
 
                 <div class="container">
                     <div class="card-filter">
-                        <form action="connected_recommendation_process.php" method="post" class="box-filter">
+                        <form action="connected_recommendation_process.php" method="POST" class="box-filter">
 
                             <div class="error-register-index">
-                                <?php
-                                if (isset($_GET['error'])) {
-                                    echo "<p  style='color:red;'>" . $_GET['error'] . "</p>";
-                                }
-                                ?>
                             </div>
                             <div class="group-1">
                                 <div class="itens-filter">
@@ -134,9 +192,9 @@ $qtdALL = $searchALL->num_rows;
                                         <div class="title-headline">Seu estilo de carro</div>
                                     </div>
                                     <select name="estilo" id="">
-                                        <option value="">Selecione seu estilo de carro</option>
-                                        <option value="Hatch">Hatch</option>
-                                        <option value="Sedan">Sedan</option>
+                                        <option value="NULL">Selecione seu estilo de carro</option>
+                                        <option value="Hatchback">Hatch</option>
+                                        <option value="Sedã">Sedan</option>
                                         <option value="Suv">SUV</option>
                                     </select>
                                 </div>
@@ -175,12 +233,17 @@ $qtdALL = $searchALL->num_rows;
                                 <div class="itens-filter">
                                     <div class="headline">
                                         <img src="/GearTech/assets/icons/volante.svg" alt="" width="20px">
-                                        <div class="title-headline">Uso do veículo</div>
+                                        <div class="title-headline">Marca</div>
                                     </div>
-                                    <select name="tipoUso" id="">
-                                        <option value="">Selecione o uso do veículo</option>
-                                        <option value="diario">Diário</option>
-                                        <option value="passeio">Passeios</option>
+                                    <select name="marcas" id="">
+                                        <option value="">Selecione a marca</option>
+
+                                        <?php 
+                                            foreach($_SESSION['MARCAS'] as $mca){
+                                                echo '<option value='.$mca['marca'].'>'.$mca['marca'].'</option>';
+                                            }
+                                        ?>
+                                        
                                     </select>
                                 </div>
                                 <div class="itens-filter">
@@ -220,7 +283,8 @@ $qtdALL = $searchALL->num_rows;
             <div class="container">
                 <div class="title-popular-cars">
                     <h2>Carros mais vendidos <br>no ultimo semestre</h2>
-                    <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais os veículos que lideram a lista de
+                    <p>Acompanhe alguns modelos que se destacaram em vendas e veja quais os veículos que lideram a lista
+                        de
                         mais vendidos.</p>
                 </div>
                 <?php
@@ -269,7 +333,7 @@ $qtdALL = $searchALL->num_rows;
                         echo '        <span>' . $setVehicle['Valor'] . '</span>';
                         echo '    </div>';
                         echo '    <div class="more-info-popular-cars">';
-                        echo '<a href="/GearTech/assets/pages_connected/connected_car_specification.php?Marca='.$carro['idMarca'].'&Modelo='.$carro['idModelo'].'&CodModelo='.$carro['CodModelo'].'&Ano='.$carro['ano'].'&codAno='.$carro['codigoAno'].'">Saiba mais</a>';
+                        echo '<a href="/GearTech/assets/pages_connected/connected_car_specification.php?Marca=' . $carro['idMarca'] . '&Modelo=' . $carro['idModelo'] . '&CodModelo=' . $carro['CodModelo'] . '&Ano=' . $carro['ano'] . '&codAno=' . $carro['codigoAno'] . '">Saiba mais</a>';
                         echo '    </div>';
                         echo '</div>';
 
@@ -376,7 +440,8 @@ $qtdALL = $searchALL->num_rows;
 
                     <div class="left-side-contact">
                         <div class="desc-contact">
-                            <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários. Se enfrentar problemas ou dificuldades, utilize nossos meios de contato.
+                            <p>Nossa equipe está pronta para oferecer orientação e prestar suporte a todos os usuários.
+                                Se enfrentar problemas ou dificuldades, utilize nossos meios de contato.
                             </p>
                         </div>
 

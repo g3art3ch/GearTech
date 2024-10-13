@@ -22,7 +22,7 @@ if(isset($_GET['hash'])){
             if(mysqli_query($mysqli, $sqlAlteraStatus)){
                 echo"<div class='alert alert-sucess' role = 'alert'>
 
-                Cadastro ativado com sucesso! <a href='login.php'> Clique aqui </a> para fazer o login
+                Cadastro ativado com sucesso! <a href='./index.php'> Clique aqui </a> para fazer o login
 
                 </div>";
             }else{

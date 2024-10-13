@@ -2,7 +2,10 @@
 include('connection.php');
 if (!isset($_SESSION['nome'])) {
     session_start();
+
 }
+require("../fipeIN/vendor/autoload.php");
+use DeividFortuna\Fipe\FipeCarros;
 ?>
 
 
@@ -29,25 +32,25 @@ if (!isset($_SESSION['nome'])) {
     <main>
         <div class="container">
             <header>
-            <div class="area">
-                <div class="logo">
-                    <a href="/GearTech/assets/pages_connected/connected.php">
-                        <img src="../images/logo.svg" alt="" />
-                    </a>
-                </div>
-                <div class="menu-opener">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                <div class="area">
+                    <div class="logo">
+                        <a href="/GearTech/assets/pages_connected/connected.php">
+                            <img src="../images/logo.svg" alt="" />
+                        </a>
                     </div>
-                    <div class="close-icon">
-                        <span></span>
-                        <span></span>
+                    <div class="menu-opener">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="close-icon">
+                            <span></span>
+                            <span></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <nav>
+                <nav>
                     <ul>
                         <li><a href="./connected_catalog.php">Catálogo</a></li>
                         <li><a href="./connected_maintenance.php">Manutenções</a></li>
@@ -66,55 +69,58 @@ if (!isset($_SESSION['nome'])) {
                         </li>
                     </ul>
                 </nav>
-        </header>
+            </header>
         </div>
-    
+
 
         <section class="recomendation">
-    <div class="container">
-        <div class="title-recomendation">
-            <?php
-                echo "<h2>" . $_SESSION['nomeUsuario'] . " - Carros que são feitos para você!</h2>";
-            ?>
-        </div>
-        <div class="grid-recomendation">
-            <?php
-            if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
-                foreach ($_SESSION['resultados'] as $carro) {
-                    echo '<div class="card-recomendation">';
-                    echo '<div class="box-image">';
-                    echo '<img src="' . $carro['urlCarro'] . $carro['idIden'] . '.png" alt="">';
-                    echo '</div>';
-                    echo '<div class="title-card-recomendation">' . $carro['nome'] . '</div>';
-                    echo '<div class="box-price">';
-                    echo '<div class="price">R$ ' . $carro['orcamento'] . '</div>';
-                    echo '</div>';
-                    echo '<div class="box-info">';
-                    echo '<div class="info">';
-                    echo '<img src="../icons/fuel-recomendation.svg" alt="">';
-                    echo '<p>' . $carro['combustivel'] . '</p>';
-                    echo '</div>';
-                    echo '<div class="info">';
-                    echo '<img src="../icons/passenger-recomendation.svg" alt="">';
-                    echo '<p>' . $carro['capacidade'] . ' Passageiros</p>';
-                    echo '</div>';
-                    echo '<div class="info">';
-                    echo '<img src="../icons/use-recomendation.svg" alt="">';
-                    echo '<p>' . $carro['tipoUso'] . '</p>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '<div class="saiba-mais-recomendation">';
-                    echo '<a href="/GearTech/assets/pages_connected/connected_car_specification.php?IdCar='. $carro['nome'] .' ">Saiba mais</a>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-            } else {
-                echo '<p>Nenhuma recomendação disponível.</p>';
-            }
-            ?>
-        </div>
-    </div>
-</section>
+            <div class="container">
+                <div class="title-recomendation">
+                    <?php
+                    echo "<h2>" . $_SESSION['nomeUsuario'] . " - Carros que são feitos para você!</h2>";
+                    ?>
+                </div>
+                <div class="grid-recomendation">
+                    <?php
+                    if (isset($_SESSION['resultados']) && !empty($_SESSION['resultados'])) {
+                        foreach ($_SESSION['resultados'] as $carro) {
+
+                            $cons = $carro['consumo_urbano'];
+                            echo '<div class="card-recomendation">';
+                            echo '<div class="box-image">';
+                            echo '<img src="../car_images/' . $carro['idModelo'] . '.png" alt="">';
+                            echo '</div>';
+                            echo '<div class="title-card-recomendation">' . $carro['nomeCarro'] . '</div>';
+                            echo '<div class="box-price">';
+                            $setVehicle = FipeCarros::getVeiculo($carro['idMarca'], $carro['CodModelo'], $carro['codigoAno']);
+                            echo '<div class="price">' . $setVehicle['Valor'] . '</div>';
+                            echo '</div>';
+                            echo '<div class="box-info">';
+                            echo '<div class="info">';
+                            echo '<img src="../icons/fuel-recomendation.svg" alt="">';
+                            echo '<p>' . $carro['combustivel'] . '</p>';
+                            echo '</div>';
+                            echo '<div class="info">';
+                            echo '<img src="../icons/passenger-recomendation.svg" alt="">';
+                            echo '<p>' . $carro['lugares'] . ' Passageiros</p>';
+                            echo '</div>';
+                            echo '<div class="info">';
+                            echo '<img src="../icons/use-recomendation.svg" alt="">';
+                            echo '<p>' . $cons . '</p>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="saiba-mais-recomendation">';
+                            echo '<a href="/GearTech/assets/pages_connected/connected_car_specification.php?Marca=' . $carro['idMarca'] . '&Modelo=' . $carro['idModelo'] . '&CodModelo=' . $carro['CodModelo'] . '&Ano=' . $carro['ano'] . '&codAno=' . $carro['codigoAno'] . '">Saiba mais</a>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo '<p>Nenhuma recomendação disponível.</p>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </section>
 
     </main>
     <footer>
@@ -136,7 +142,9 @@ if (!isset($_SESSION['nome'])) {
                 </div>
                 <div class="right-side-footer">
                     <h2>Sobre nós</h2>
-                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor escolha da sua vida.
+                    <p>Nós da GearTech compartilhamos nosso gosto por carros e somos dedicados a simplificar sua jornada
+                        de compra. Valorizamos a transparência e a confiabilidade, proporcionando a você a melhor
+                        escolha da sua vida.
                     </p>
                 </div>
             </div>
