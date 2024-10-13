@@ -271,7 +271,7 @@ if (isset($_GET['marca_4'])) {
                                     echo '<div class="item-result-comparative">
                             <div class="card-image-result-comparative">
                                 <div class="box-image-result-comparative">
-                                    <img src="../car_images/35196.png" alt="">
+                                    <img src="../car_images/35.png" alt="">
                                     <h2>'.${'car' . $i . 'MODELO'}.'</h2>
                                     <h2>Sinto muito, ainda não temos informações sobre esse carro</h2>
                                 </div>
@@ -347,7 +347,7 @@ if (isset($_GET['marca_4'])) {
                                         echo '<div class="item-result-comparative">
                                     <div class="card-image-result-comparative">
                                         <div class="box-image-result-comparative">
-                                            <img src="../car_images/35196.png" alt="">
+                                            <img src="../car_images/'.$resc['idModelo'].'.png" alt="">
                                             <h2>' . $resc['nomeCarro'] . '</h2>
                                         </div>
                                     </div>

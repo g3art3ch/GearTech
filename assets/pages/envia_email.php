@@ -62,7 +62,7 @@ $mail->Port = 587;
     echo "Falha ao enviar o link de ativação! Error: {$mail->ErrorInfo}";
 }
 
-header("Location: login.php?message=Confirm");
+header("Location: /Geartech/index.php?message=Confirm");
 
 
 

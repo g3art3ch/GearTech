@@ -26,6 +26,14 @@
             font-size: 24px;
             font-weight: 600;
         }
+        .custom-confirm-button{
+            background-color:#C23A42;
+            color: #fff;
+        }
+        .custom-confirm-button:focus {
+    outline: none; /* Remove o outline no foco */
+    box-shadow: none; /* Remove a sombra quando o botão recebe foco */
+}
     </style>
 </head>
 
@@ -89,7 +97,7 @@
         icon: "error",
         iconColor: "#C23A42",
         title: "Falha no login",
-        html: `<p style="font-size: 17px; margin="0px"">Seu email ou senha estão incorretos.</p>`,
+        html: `<p style="font-size: 17px; margin="0px"">Seu email ou senha estÃ£o incorretos.</p>`,
             showConfirmButton: false,
         width: "27rem",
         showCloseButton: true,
@@ -101,7 +109,7 @@
     });
 
     </script>';
-}
+
 if(isset($_GET['errorempty'])){
     echo '<script type="text/javascript">
      
@@ -131,7 +139,7 @@ if(isset($_GET['message'])){
         icon: "success",
         iconColor: "#23A669",
         title: "Verifique sua caixa de entrada",
-        html: `<p style="font-size: 17px; margin="0px"">o link de ativação de cadastro foi enviado para seu e-mail.</p>`,
+        html: `<p style="font-size: 17px; margin="0px"">o link de ativaÃ§Ã£o de cadastro foi enviado para seu e-mail.</p>`,
             showConfirmButton: false,
         width: "27rem",
         showCloseButton: true,
@@ -144,7 +152,33 @@ if(isset($_GET['message'])){
 
 </script>';
 }
+
+if($_GET['error'] = 'Unc'){
+        echo '<script type="text/javascript">
+         
+    Swal.fire({
+    position: "top",
+    icon: "warning",
+    iconColor: "#C23A42",
+    title: "Você não está conectado",
+    html: `<p style="font-size: 17px; margin="0px"">Faça seu login novamente</p>`,
+    showConfirmButton: true,
+    width: "27rem",
+    showCloseButton: false,
+    background: "#fafafa",
+    color: "#000",
+    customClass: {
+        title: "custom-title",
+        confirmButton: "custom-confirm-button",
+    },
+    timer: null,  // Sem tempo de expiração, o alerta não vai desaparecer automaticamente
+    allowOutsideClick: false,  // Impede que o alerta feche ao clicar fora
+});
+    </script>';
+}
+}
     ?>
+
 
 
         <section class="login">

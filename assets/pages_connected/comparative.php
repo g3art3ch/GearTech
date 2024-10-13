@@ -88,9 +88,11 @@ while ($resultmarca = $ckMARCA->fetch_assoc()) {
                 <div class="card-comparative">
                 <form method="GET" action="result_comparative.php">
     <div class="grid-comparative">
-        <?php
-        $count = 1;
-        foreach ($_SESSION['resultados'] as $fav) {
+    <?php
+    $count = 1; // Para contar os itens comparativos visíveis
+    foreach ($_SESSION['resultados'] as $fav) {
+        // Processa todos os dados, mas limita a exibição de blocos de comparativos a 4
+        if ($count <= 4) {
             echo '<div class="item-comparative">
                 <h2>Carro ' . $count . '</h2>
                 <label for="marca_' . $count . '">Marca</label>
@@ -113,9 +115,14 @@ while ($resultmarca = $ckMARCA->fetch_assoc()) {
                     <option value="">Selecione um modelo primeiro</option>
                 </select>
             </div>';
-            $count++; // Incrementa o $count no final da iteração
         }
-        ?>
+
+        // Continue processando os dados de cada item normalmente, mesmo se não exibir o comparativo
+        // Aqui você pode realizar outros tratamentos ou cálculos com os dados
+
+        $count++; // Incrementa o contador no final da iteração
+    }
+?>
     </div>
     <div class="button-comparative">
         <button type="submit">Comparar</button>
