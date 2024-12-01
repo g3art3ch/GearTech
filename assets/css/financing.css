@@ -38,12 +38,6 @@
     background-color: var(--background);
 }
 
-.button-financing {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 40px;
-}
 
 .button-financing button {
     background-color: var(--secondary);
@@ -53,8 +47,37 @@
     border-radius: 15px;
     padding: 10px 0px;
     color: #fff;
-    max-width: 215px;
+    max-width: 200px;
     width: 100%;
+    margin-left: -100px;
+    margin-top: 20px;
+}
+
+#bb {
+    border-radius: 5px
+}
+
+.item-taxas p {
+    padding-left: 10px;
+}
+
+.item-taxas {
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+}
+
+.grid-taxas-botoes {
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+}
+
+.item-taxas img {
+    width: 32px;
+}
+
+#caixa {
+    padding-bottom: 8px;
 }
 
 #resultado {
@@ -128,5 +151,13 @@
     .button-financing button {
         max-width: unset;
         width: 100%;
+    }
+
+    .grid-taxas-botoes {
+        grid-template-columns: 1fr;
+    }
+
+    .button-financing button {
+        margin-left: 0;
     }
 }

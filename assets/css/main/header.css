@@ -157,6 +157,40 @@ header .user-enter a {
     display: block;
 }
 
+.register-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.voltar a {
+    text-decoration: none;
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back p {
+    color: #000;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.back p:hover {
+    text-decoration: underline;
+}
+
+.back img {
+    width: 38px;
+    padding-right: 10px;
+}
+
 
 @media (width > 900px) {
 
@@ -243,5 +277,9 @@ header .user-enter a {
 
     .user-photo {
         display: none;
+    }
+    
+    .register-head {
+        padding: 20px 10px;
     }
 }

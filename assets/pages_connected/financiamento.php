@@ -1,21 +1,21 @@
-<?php 
+<?php
 include('connection.php');
 include('connection_carsgt.php');
 include('protect.php');
 
-if(isset($_GET['Val'])){
+if (isset($_GET['Val'])) {
     $valor = $_GET['Val'];
-// Remover 'R$', apóstrofos e espaços
-$valor_limpo = str_replace(["R$", "'", " "], "", $valor);
+    // Remover 'R$', apóstrofos e espaços
+    $valor_limpo = str_replace(["R$", "'", " "], "", $valor);
 
-// Substituir a vírgula por ponto
-$valor_limpo = str_replace(",", ".", $valor_limpo);
+    // Substituir a vírgula por ponto
+    $valor_limpo = str_replace(",", ".", $valor_limpo);
 
-// Remover pontos extras (separadores de milhar)
-$valor_limpo = str_replace(".", "", substr($valor_limpo, 0, -3)) . substr($valor_limpo, -3);
+    // Remover pontos extras (separadores de milhar)
+    $valor_limpo = str_replace(".", "", substr($valor_limpo, 0, -3)) . substr($valor_limpo, -3);
 
-// Converter para número decimal (float)
-$valor_numerico = (float) $valor_limpo;
+    // Converter para número decimal (float)
+    $valor_numerico = (float) $valor_limpo;
 
 }
 
@@ -43,7 +43,7 @@ $valor_numerico = (float) $valor_limpo;
 
 <body>
     <main>
-    <div class="container">
+        <div class="container">
             <header>
                 <div class="area">
                     <div class="logo">
@@ -97,7 +97,7 @@ $valor_numerico = (float) $valor_limpo;
                             <div class="item-financing">
                                 <div class="campo">
                                     <span class="labelSimula">Valor Financiado:</span>
-                                    <input type="text" name="valor" id="valor" value="<?php echo $valor_numerico; ?>"/>
+                                    <input type="text" name="valor" id="valor" value="<?php echo $valor_numerico; ?>" />
                                 </div>
                             </div>
                             <div class="item-financing">
@@ -115,9 +115,34 @@ $valor_numerico = (float) $valor_limpo;
                             </div>
                         </div>
 
-                        <div class="button-financing">
-                            <button id="simular">Simular</button>
+                        <div class="grid-taxas-botoes">
+                            <div class="taxas">
+                                <div class="item-taxas">
+                                    <img src="/GearTech/assets/icons/itau.svg" alt="">
+                                    <p>2,02% a.m</p>
+                                </div>
+                                <div class="item-taxas">
+                                    <img src="/GearTech/assets/icons/santander.svg" alt="">
+                                    <p>2,01% a.m</p>
+                                </div>
+                                <div class="item-taxas">
+                                    <img src="/GearTech/assets/icons/bb.svg" alt="" id="bb">
+                                    <p>1,89% a.m</p>
+                                </div>
+
+
+                                <div class="item-taxas">
+                                    <img src="/GearTech/assets/icons/caixa-logo.svg" alt="" id="caixa">
+                                    <p>1,69% a.m</p>
+                                </div>
+                                <a href="https://www.bcb.gov.br/estatisticas/reporttxjuros?codigoSegmento=1&codigoModalidade=401101&historicotaxajurosdiario_atual_page=1&tipoModalidade=D&InicioPeriodo=2024-11-04" target="_blank">Consulte as taxas do seu banco</a>
+                            </div>
+                            
+                            <div class="button-financing">
+                                <button id="simular">Simular</button>
+                            </div>
                         </div>
+
 
 
                     </form>
@@ -165,4 +190,5 @@ $valor_numerico = (float) $valor_limpo;
     <script src="bundle.js"></script>
 
 </body>
+
 </html>

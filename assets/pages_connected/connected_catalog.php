@@ -74,8 +74,11 @@ include('protect.php');
                 <div class="title-catalog">
                     <h2>Escolha a marca</h2>
                 </div>
-                <div class="grid-logotypes">
+                <div id="center">
                     
+                </div>
+                <div class="grid-logotypes">
+                   
                     <div class="item-logotype">
                         <a href="connected_filtered_catalog.php?Marca=23" class="card-logotype">
                             <div class="box-image-logotype">
@@ -140,10 +143,7 @@ include('protect.php');
                         </a>
                         <a href="connected_filtered_catalog.php?Marca=41" class="name-logotype">Mitsubishi</a>
                     </div>
-                   
-                </div>
 
-                <div class="grid-logotypes" style="display:none">
                     <div class="item-logotype">
                         <a href="connected_filtered_catalog.php?Marca=43" class="card-logotype">
                             <div class="box-image-logotype">
@@ -177,7 +177,7 @@ include('protect.php');
                         </a>
                         <a href="connected_filtered_catalog.php?Marca=56" class="name-logotype">Toyota</a>
                     </div>
-                    <div class="item-logotype">
+                    <div class="item-logotype" id="center">
                         <a href="connected_filtered_catalog.php?Marca=59" class="card-logotype">
                             <div class="box-image-logotype">
                                 <img src="../logo_images/volkswagen.png" alt="">
@@ -185,9 +185,6 @@ include('protect.php');
                         </a>
                         <a href="connected_filtered_catalog.php?Marca=59" class="name-logotype">Volkswagen</a>
                     </div>
-                </div>
-                <div class="more-logotypes">
-                    <button id="toggleButton">Mais marcas</button>
                 </div>
             </div>
         </section>

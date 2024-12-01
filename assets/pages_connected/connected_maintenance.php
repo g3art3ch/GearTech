@@ -74,30 +74,7 @@ include('protect.php');
                     <h2>Selecione a montadora</h2>
                 </div>
                 <div class="grid-maintenance">
-                    <div class="item-maintanance">
-                        <a href="https://www.manualpdf.com.br/audi" class="card-maintenance" target="_blank">
-                            <div class="box-maintenance">
-                                <img src="../logo_images/audi.png" alt="">
-                            </div>
-                            <p>Audi</p>
-                        </a>
-                    </div>
-                    <div class="item-maintanance">
-                        <a href="" class="card-maintenance">
-                            <div class="box-maintenance">
-                                <img src="../logo_images/bmw.png" alt="">
-                            </div>
-                            <p>BMW</p>
-                        </a>
-                    </div>
-                    <div class="item-maintanance">
-                        <a href="https://www.byd.com/br/manual-manutencao-garantia" class="card-maintenance" target="_blank">
-                            <div class="box-maintenance">
-                                <img src="../logo_images/byd.png" alt="">
-                            </div>
-                            <p>Byd</p>
-                        </a>
-                    </div>
+                    
                     <div class="item-maintanance">
                         <a href="https://meu.chevrolet.com.br/saiba-mais-e-suporte/manuais-guias" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
@@ -162,14 +139,7 @@ include('protect.php');
                             <p>Mitsubishi</p>
                         </a>
                     </div>
-                    <div class="item-maintanance">
-                        <a href="https://www.mercedes-benz-trucks.com.br/caminhoes/servicos-e-pecas/manuais" class="card-maintenance" target="_blank">
-                            <div class="box-maintenance">
-                                <img src="../logo_images/mercedesbenz.png" alt="">
-                            </div>
-                            <p>Mercedes Benz</p>
-                        </a>
-                    </div>
+                    
                     <div class="item-maintanance">
                         <a href="https://www.nissan.com.br/servicos/manuais.html" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
@@ -178,14 +148,7 @@ include('protect.php');
                             <p>Nissan</p>
                         </a>
                     </div>
-                    <div class="item-maintanance">
-                        <a href="https://relacionamento.porschebr.com.br/manutencao/" class="card-maintenance" target="_blank">
-                            <div class="box-maintenance">
-                                <img src="../logo_images/porsche.png" alt="">
-                            </div>
-                            <p>Porsche</p>
-                        </a>
-                    </div>
+                    
                     <div class="item-maintanance">
                         <a href="https://carros.peugeot.com.br/servicos-e-manutencao/manutencao-do-veiculo/manuais.html" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
@@ -213,7 +176,7 @@ include('protect.php');
                     <div class="item-maintanance">
                         <a href="https://www.vw.com.br/pt/servicos-e-acessorios/manuais-e-garantia/manuais.html" class="card-maintenance" target="_blank">
                             <div class="box-maintenance">
-                                <img src="../logo_images/volkswagen.png" alt="">
+                                <img src="../logo_images/volkswagen.png" alt="" >
                             </div>
                             <p>Volkswagen</p>
                         </a>

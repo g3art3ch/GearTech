@@ -409,7 +409,7 @@ while ($mcs = $searchMC->fetch_assoc()) {
                     <div class="logotipos">
                         <img src="../images/honda.svg" alt="">
                         <img src="../images/volkswagen.svg" alt="">
-                        <img src="../images/bmw-logo.svg" alt="">
+                        <img src="../images/TOYOTA-LOGO.svg" alt="">
                         <img src="../images/fiat-logo.svg" alt="">
                         <img src="../images/mitsubishi.svg" alt="">
                         <img src="../images/hyundai-logo.svg" alt="">

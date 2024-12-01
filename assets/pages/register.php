@@ -21,7 +21,7 @@
     <main>
         <div class="container">
             <header>
-                <div class="area">
+                <div class="register-head">
                     <div class="logo">
                         <a href="/GearTech/index.php">
                             <img src="../images/logo.svg" alt="" />
@@ -29,40 +29,22 @@
                         </a>
 
                     </div>
-                    <!-- <div class="menu-opener">
-                        <div class="hamburger-icon">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="close-icon">
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div> -->
+                    
+                    <div class="voltar">
+                        <a href="/GearTech/index.php" class="back">
+                            <img src="../icons/backk.svg" alt="">
+                            <p>Voltar</p>
+                        </a>
+                    </div>
                 </div>
-                <!-- <nav>
-                    <ul>
-                        <li><a href="./catalog.php">Catálogo</a></li>
-                        <li><a href="">Manutenções</a></li>
-                        <li>
-                            <div class="user-enter">
-                                <a href="/GearTech/assets/pages/login.php">
-                                    <img src="/GearTech/assets/icons/user.svg" alt="">
-                                    <a href="/GearTech/assets/pages/login.php" class="login-account">Entre em sua
-                                        conta</a>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav> -->
+
             </header>
         </div>
         <?php
 
         if (isset($_GET['error'])) {
 
-            if ($_GET['error'] == 'RegisteredEmail'){
+            if ($_GET['error'] == 'RegisteredEmail') {
                 echo '<script type="text/javascript">
          
                 Swal.fire({
@@ -82,9 +64,9 @@
                 });
             
                 </script>';
-            }else
+            } else
 
-            echo '<script type="text/javascript">
+                echo '<script type="text/javascript">
          
     Swal.fire({
         position: "top",
@@ -142,9 +124,9 @@
                     <div class="card-error">
                         <div class="error-register">
                             <div class="title-validacao">
-                            <h2>Sua senha precisa de:</h2>
+                                <h2>Sua senha precisa de:</h2>
                             </div>
-                            
+
                             <div class="error-message">
 
                                 <!-- <img src="/GearTech/assets/icons/check-register-none.svg"> </img> -->
