@@ -126,9 +126,7 @@ while ($mcs = $searchMC->fetch_assoc()) {
     
         </script>';
             }
-            if ($_GET['error'] = 'NoRes') {
-
-            }
+            
 
             if ($_GET['error'] = 'Empty') {
                 echo '<script type="text/javascript">
@@ -151,9 +149,7 @@ while ($mcs = $searchMC->fetch_assoc()) {
     
         </script>';
             }
-            if ($_GET['error'] = 'NoRes') {
-
-            }
+            
 
         }
         ?>

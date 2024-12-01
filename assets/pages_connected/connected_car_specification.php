@@ -411,25 +411,25 @@ $nomeUSER = $_SESSION['nomeUsuario'];
                                     <tr>
                                         <td>Seguro</td>
                                         <td>
-                                            <p><?php echo $final['seguro'] ?></p>
+                                            <p>R$ <?php echo $final['seguro'] ?></p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>IPVA</td>
                                         <td>
-                                            <p><?php echo $final['ipva'] ?></p>
+                                            <p>R$ <?php echo $final['ipva'] ?></p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Desvalorização</td>
                                         <td>
-                                            <p><?php echo $final['desvalorizacao'] ?></p>
+                                            <p><?php echo $final['desvalorizacao'] ?>%</p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Garantia</td>
                                         <td>
-                                            <p><?php echo $final['garantia'] ?></p>
+                                            <p><?php echo $final['garantia'] ?> anos</p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -441,25 +441,25 @@ $nomeUSER = $_SESSION['nomeUsuario'];
                                     <tr>
                                         <td>Consumo urbano (Gasolina)</td>
                                         <td>
-                                            <p><?php echo $final['consumo_urbano'] ?></p>
+                                            <p><?php echo $final['consumo_urbano'] ?> Km/L</p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Consumo rodoviário (Gasolina)</td>
                                         <td>
-                                            <p><?php echo $final['consumo_rodoviario'] ?></p>
+                                            <p><?php echo $final['consumo_rodoviario'] ?> Km/L</p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Consumo urbano (Álcool)</td>
                                         <td>
-                                            <p><?php echo $final['consumo_urbano'] ?></p>
+                                            <p><?php echo $final['consumo_urbano'] ?> Km/L</p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Consumo rodoviário (Álcool)</td>
                                         <td>
-                                            <p><?php echo $final['consumo_rodoviario'] ?></p>
+                                            <p><?php echo $final['consumo_rodoviario'] ?> Km/L</p>
                                         </td>
                                     </tr>
                                 </table>
@@ -570,6 +570,65 @@ $nomeUSER = $_SESSION['nomeUsuario'];
                                 </table>
                             </div>
                         </div>
+                        <div class="card-technology-specification flex-mobile">
+                        <h2>Manutenções e revisões</h2>
+                        <table>
+                                    <tr>
+                                        <td>Seguro</td>
+                                        <td>
+                                            <p>R$ <?php echo $final['seguro'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>IPVA</td>
+                                        <td>
+                                            <p>R$ <?php echo $final['ipva'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Desvalorização</td>
+                                        <td>
+                                            <p><?php echo $final['desvalorizacao'] ?>%</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Garantia</td>
+                                        <td>
+                                            <p><?php echo $final['garantia'] ?> anos</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Revisões até 60.000 km</td>
+                                        <td>
+                                            <p><?php echo $final['revisoes_ate_60k'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo urbano (Gasolina)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_urbano'] ?> Km/L</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo rodoviário (Gasolina)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_rodoviario'] ?> Km/L</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo urbano (Álcool)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_urbano'] ?> Km/L</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo rodoviário (Álcool)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_rodoviario'] ?> Km/L</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                    </div>
 
                     </div>
                 </div>

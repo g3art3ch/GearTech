@@ -799,3 +799,238 @@ div class="card-calculadora-tco" id="step2" style="display:none;">
                 </form>
             </div>
         </section>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="card-technology-specification none-mobile">
+                                <h2>Manutenções e revisões</h2>
+                                <table>
+                                    <tr>
+                                        <td>Seguro</td>
+                                        <td>
+                                            <p><?php echo $final['seguro'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>IPVA</td>
+                                        <td>
+                                            <p><?php echo $final['ipva'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Desvalorização</td>
+                                        <td>
+                                            <p><?php echo $final['desvalorizacao'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Garantia</td>
+                                        <td>
+                                            <p><?php echo $final['garantia'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Revisões até 60.000 km</td>
+                                        <td>
+                                            <p><?php echo $final['revisoes_ate_60k'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo urbano (Gasolina)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_urbano'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo rodoviário (Gasolina)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_rodoviario'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo urbano (Álcool)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_urbano'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo rodoviário (Álcool)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_rodoviario'] ?></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="right-side-specification">
+                            <div class="card-mecanic-specification">
+                                <h2>Especificações Gerais</h2>
+                                <table>
+                                    <tr>
+                                        <td>Marca</td>
+                                        <td>
+                                            <p><?php echo $final['marca'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Modelo</td>
+                                        <td>
+                                            <p><?php echo $final['nomeCarro'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Carroceria</td>
+                                        <td>
+                                            <p><?php echo $final['configuracao'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ano</td>
+                                        <td>
+                                            <p><?php echo $final['ano'] ?></p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Preço</td>
+                                        <td>
+                                            <p><?php echo $setVehicle['Valor']; ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Combustível</td>
+                                        <td>
+                                            <p><?php echo $final['combustivel'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Direção </td>
+                                        <td>
+                                            <p><?php echo $final['direcao'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Câmbio</td>
+                                        <td>
+                                            <p><?php echo $final['cambio'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Marchas</td>
+                                        <td>
+                                            <p><?php echo $final['marchas'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cilindros</td>
+                                        <td>
+                                            <p><?php echo $final['cilindros'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Peso/Potência</td>
+                                        <td>
+                                            <p><?php echo $final['peso_potencia'] ?> Kg/Hp</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Velocidade máxima</td>
+                                        <td>
+                                            <p><?php echo $final['velocidade_maxima'] ?> Km/h</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Porta-malas</td>
+                                        <td>
+                                            <p><?php echo $final['porta_malas'] ?> L</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tração</td>
+                                        <td>
+                                            <p><?php echo $final['tracao'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lugares</td>
+                                        <td>
+                                            <p><?php echo $final['lugares'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Portas</td>
+                                        <td>
+                                            <p><?php echo $final['portas'] ?></p>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-technology-specification flex-mobile">
+                                <h2>Manutenções e revisões</h2>
+                                <table>
+                                    <tr>
+                                        <td>Seguro</td>
+                                        <td>
+                                            <p><?php echo $final['seguro'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>IPVA</td>
+                                        <td>
+                                            <p><?php echo $final['ipva'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Desvalorização</td>
+                                        <td>
+                                            <p><?php echo $final['desvalorizacao'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Garantia</td>
+                                        <td>
+                                            <p><?php echo $final['garantia'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Revisões até 60.000 km</td>
+                                        <td>
+                                            <p><?php echo $final['revisoes_ate_60k'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo urbano (Gasolina)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_urbano'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo rodoviário (Gasolina)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_rodoviario'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo urbano (Álcool)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_urbano'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consumo rodoviário (Álcool)</td>
+                                        <td>
+                                            <p><?php echo $final['consumo_rodoviario'] ?></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>

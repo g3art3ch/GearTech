@@ -75,30 +75,7 @@ include('protect.php');
                     <h2>Escolha a marca</h2>
                 </div>
                 <div class="grid-logotypes">
-                    <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=6" class="card-logotype">
-                            <div class="box-image-logotype">
-                                <img src="../logo_images/audi.png" alt="">
-                            </div>
-                        </a>
-                        <a href="connected_filtered_catalog.php?Marca=6" class="name-logotype">Audi</a>
-                    </div>
-                    <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=7" class="card-logotype">
-                            <div class="box-image-logotype">
-                                <img src="../logo_images/bmw.png" alt="">
-                            </div>
-                        </a>
-                        <a href="connected_filtered_catalog.php?Marca=7" class="name-logotype">BMW</a>
-                    </div>
-                    <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=238" class="card-logotype">
-                            <div class="box-image-logotype">
-                                <img src="../logo_images/byd.png" alt="">
-                            </div>
-                        </a>
-                        <a href="connected_filtered_catalog.php?Marca=238" class="name-logotype">Byd</a>
-                    </div>
+                    
                     <div class="item-logotype">
                         <a href="connected_filtered_catalog.php?Marca=23" class="card-logotype">
                             <div class="box-image-logotype">
@@ -163,14 +140,7 @@ include('protect.php');
                         </a>
                         <a href="connected_filtered_catalog.php?Marca=41" class="name-logotype">Mitsubishi</a>
                     </div>
-                    <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=39" class="card-logotype">
-                            <div class="box-image-logotype">
-                                <img src="../logo_images/mercedesbenz.png" alt="">
-                            </div>
-                        </a>
-                        <a href="connected_filtered_catalog.php?Marca=39" class="name-logotype">Mercedes Benz</a>
-                    </div>
+                   
                 </div>
 
                 <div class="grid-logotypes" style="display:none">
@@ -182,14 +152,7 @@ include('protect.php');
                         </a>
                         <a href="connected_filtered_catalog.php?Marca=43" class="name-logotype">Nissan</a>
                     </div>
-                    <div class="item-logotype">
-                        <a href="connected_filtered_catalog.php?Marca=47" class="card-logotype">
-                            <div class="box-image-logotype">
-                                <img src="../logo_images/porsche.png" alt="">
-                            </div>
-                        </a>
-                        <a href="connected_filtered_catalog.php?Marca=47" class="name-logotype">Porsche</a>
-                    </div>
+                    
                     <div class="item-logotype">
                         <a href="connected_filtered_catalog.php?Marca=44" class="card-logotype">
                             <div class="box-image-logotype">
